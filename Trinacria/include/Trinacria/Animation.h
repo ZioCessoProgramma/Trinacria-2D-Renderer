@@ -4,7 +4,7 @@
 #include "Assert.h"
 #include "Renderer.h"
 
-#include "Trinacria/Definitions.h"
+#include "Trinacria/Macros.h"
 
 namespace TRCN_CORE_NAMESPACE
 {
@@ -28,7 +28,7 @@ namespace TRCN_CORE_NAMESPACE
 				_accumulatedDeltaTime = 0.f;
 			}
 			
-			Trinacria::Renderer::CreateQuad(position, &_sprites[_currentSpriteIndex], 0.5f, color);
+			Renderer::CreateQuad(position, &_sprites[_currentSpriteIndex], 0.5f, color);
 			
 		}
 

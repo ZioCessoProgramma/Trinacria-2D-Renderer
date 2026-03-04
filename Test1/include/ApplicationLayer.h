@@ -2,7 +2,7 @@
 
 #include <Trinacria/Layer.h>
 
-class ApplicationLayer : public Trinacria::Layer
+class ApplicationLayer : public Trinacria::DSL::Layer
 {
 public:
 	virtual void OnAttach() override;

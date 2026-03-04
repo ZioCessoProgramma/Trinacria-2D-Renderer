@@ -5,6 +5,7 @@
 #include <cassert>
 #include <glm/glm.hpp>
 
+#include "Trinacria/Animation.h"
 #include "Trinacria/Assert.h"
 
 
@@ -34,8 +35,8 @@ public:
 		layer->OnAttach();
 	}
 
-	void PushLayer(Trinacria::Layer* lay);
-	void PushOverlayLayer(Trinacria::Layer* lay);
+	void PushLayer(Trinacria::DSL::Layer* lay);
+	void PushOverlayLayer(Trinacria::DSL::Layer* lay);
 
 	template<typename T>
 	void DeleteLayer()
@@ -68,7 +69,7 @@ public:
 	}
 
 	template<typename T>
-	void TransitionTo(Trinacria::Layer* newLayer)
+	void TransitionTo(Trinacria::DSL::Layer* newLayer)
 	{
 		for (int i = 0; i < _layerStack.size(); i++)
 		{
@@ -113,7 +114,7 @@ public:
 private:
 	Application() = default;
 
-	std::vector<Trinacria::Layer*> _layerStack;
+	std::vector<Trinacria::DSL::Layer*> _layerStack;
 
 	GLFWwindow* _window;
 

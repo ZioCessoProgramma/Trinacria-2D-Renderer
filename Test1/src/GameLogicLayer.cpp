@@ -29,7 +29,7 @@ void GameLogicLayer::OnAttach()
 	DangerZoneEnteredDispatcher.SetOwner(this);
 	DangerZoneExitedDispatcher.SetOwner(this);
 
-	Trinacria::InputPollerLayer* layer = Application::Get()->GetLayer<Trinacria::InputPollerLayer>();
+	Trinacria::DSL::InputPollerLayer* layer = Application::Get()->GetLayer<Trinacria::DSL::InputPollerLayer>();
 
 	if (layer)
 	{
@@ -37,17 +37,17 @@ void GameLogicLayer::OnAttach()
 	}
 }
 
-void GameLogicLayer::keyBoardInput(const Trinacria::KeyboardEvent& event)
+void GameLogicLayer::keyBoardInput(const Trinacria::DSL::KeyboardEvent& event)
 {
 	const float speed = 3.f;
 
 	float deltaTime = Application::Get()->GetDeltaTime();
 
-	Trinacria::KeyValue key = event.GetKey();
-	Trinacria::InputEventType type = event.GetType();
+	Trinacria::DSL::KeyValue key = event.GetKey();
+	Trinacria::DSL::InputEventType type = event.GetType();
 
-	using Trinacria::InputEventType;
-	using Trinacria::KeyValue;
+	using Trinacria::DSL::InputEventType;
+	using Trinacria::DSL::KeyValue;
 	
 	if (key == KeyValue::Key_W && type == InputEventType::Pressed)
 	{

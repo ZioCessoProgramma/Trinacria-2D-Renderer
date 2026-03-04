@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Trinacria/Definitions.h"
+#include "Trinacria/Macros.h"
 #include "Log.h"
 #include "Layer.h"
 #include <functional>

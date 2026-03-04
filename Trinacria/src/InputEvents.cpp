@@ -94,17 +94,17 @@ bool TRCN_CORE_NAMESPACE::InputPollerLayer::isReleased(int key) const
 	return glfwGetKey(_window, key) == GLFW_RELEASE;
 }
 
-bool Trinacria::InputPollerLayer::isMousePressed(int key) const
+bool TRCN_CORE_NAMESPACE::InputPollerLayer::isMousePressed(int key) const
 {
 	return glfwGetMouseButton(_window, key) == GLFW_PRESS;
 }
 
-bool Trinacria::InputPollerLayer::isMouseReleased(int key) const
+bool TRCN_CORE_NAMESPACE::InputPollerLayer::isMouseReleased(int key) const
 {
 	return glfwGetMouseButton(_window, key) == GLFW_RELEASE;
 }
 
-void Trinacria::InputPollerLayer::submitMouseEvent(int glfwKey, MouseValue mouseKey)
+void TRCN_CORE_NAMESPACE::InputPollerLayer::submitMouseEvent(int glfwKey, MouseValue mouseKey)
 {
 	if (isMousePressed(glfwKey))
 	{

@@ -8,7 +8,7 @@ Application::~Application()
 {
 	if (_layerStack.empty()) return;
 
-	for (Trinacria::Layer* l : _layerStack)
+	for (Trinacria::DSL::Layer* l : _layerStack)
 	{
 		l->OnDetach();
 		delete l;
@@ -21,13 +21,13 @@ Application* Application::Get()
 	return &s_instance;
 }
 
-void Application::PushLayer(Trinacria::Layer* lay)
+void Application::PushLayer(Trinacria::DSL::Layer* lay)
 {
 	_layerStack.emplace(_layerStack.begin(), lay); // or push_back
 	lay->OnAttach();
 }
 
-void Application::PushOverlayLayer(Trinacria::Layer* lay)
+void Application::PushOverlayLayer(Trinacria::DSL::Layer* lay)
 {
 	_layerStack.emplace_back(lay); // or push_back
 	lay->OnAttach();
@@ -48,7 +48,7 @@ void Application::Run()
 
 		_deltaTime = deltaTime;
 
-		for (Trinacria::Layer* l : _layerStack)
+		for (Trinacria::DSL::Layer* l : _layerStack)
 		{
 			l->OnUpdate(deltaTime);
 		}

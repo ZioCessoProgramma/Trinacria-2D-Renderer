@@ -10,7 +10,7 @@ enum class PlayerEvents
 	DangerZoneExited
 };
 
-class DangerZoneEnteredEvent : public Trinacria::Event<PlayerEvents>
+class DangerZoneEnteredEvent : public Trinacria::DSL::Event<PlayerEvents>
 {
 public:
 	DangerZoneEnteredEvent(float damageToApply) : _damageToApply(damageToApply),
@@ -23,7 +23,7 @@ private:
 	float _damageToApply = 0;
 };
 
-class DangerZoneExitedEvent : public Trinacria::Event<PlayerEvents>
+class DangerZoneExitedEvent : public Trinacria::DSL::Event<PlayerEvents>
 {
 public:
 	DangerZoneExitedEvent(const glm::vec3& colorToRestore) : _colorToRestore(colorToRestore),

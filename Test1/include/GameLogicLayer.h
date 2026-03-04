@@ -6,7 +6,7 @@
 #include <glm/glm.hpp>
 #include <Trinacria/InputEvents.h>
 
-class GameLogicLayer : public Trinacria::Layer
+class GameLogicLayer : public Trinacria::DSL::Layer
 {
 public:
 	virtual void OnUpdate(float deltaTime) override;
@@ -16,8 +16,8 @@ public:
 
 	float ZOffset = 10.f;
 
-	Trinacria::EventDispatcher<DangerZoneEnteredEvent> DangerZoneEnteredDispatcher;
-	Trinacria::EventDispatcher<DangerZoneExitedEvent> DangerZoneExitedDispatcher;
+	Trinacria::DSL::EventDispatcher<DangerZoneEnteredEvent> DangerZoneEnteredDispatcher;
+	Trinacria::DSL::EventDispatcher<DangerZoneExitedEvent> DangerZoneExitedDispatcher;
 
 private:
 	glm::vec3 _cameraPos{ 0.f };
@@ -25,6 +25,6 @@ private:
 
 	bool _wasInDangerZone = false;
 
-	void keyBoardInput(const Trinacria::KeyboardEvent&);
+	void keyBoardInput(const Trinacria::DSL::KeyboardEvent&);
 };
 

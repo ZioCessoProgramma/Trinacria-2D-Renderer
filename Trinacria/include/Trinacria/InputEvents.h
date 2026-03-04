@@ -1,7 +1,6 @@
 #pragma once
 
-#include <cassert>
-#include <glm/vec2.hpp>
+#include "Macros.h"
 
 #include "Event.h"
 

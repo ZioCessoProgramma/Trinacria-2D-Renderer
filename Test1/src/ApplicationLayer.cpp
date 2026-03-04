@@ -7,7 +7,7 @@
 void ApplicationLayer::OnAttach()
 {
 	// Will be destroyed by application decostructor
-	Trinacria::InputPollerLayer* layer = new Trinacria::InputPollerLayer;
+	Trinacria::DSL::InputPollerLayer* layer = new Trinacria::DSL::InputPollerLayer;
 	layer->SetWindow(Application::Get()->GetWindow());
 
 	Application::Get()->PushOverlayLayer(layer);

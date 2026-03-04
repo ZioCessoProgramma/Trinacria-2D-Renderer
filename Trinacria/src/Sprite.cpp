@@ -1,7 +1,7 @@
 #include "Trinacria/Sprite.h"
 #include "Trinacria/Log.h"
 
-TRCN_CORE_NAMESPACE::QuadTexCoords Trinacria::SpriteSheet::GetCell(uint32_t xIndex, uint32_t yIndex)
+TRCN_CORE_NAMESPACE::QuadTexCoords TRCN_CORE_NAMESPACE::SpriteSheet::GetCell(uint32_t xIndex, uint32_t yIndex)
 {
 	QuadTexCoords out(0.f);
 
@@ -13,7 +13,7 @@ TRCN_CORE_NAMESPACE::QuadTexCoords Trinacria::SpriteSheet::GetCell(uint32_t xInd
 	return out;
 }
 
-TRCN_CORE_NAMESPACE::QuadTexCoords Trinacria::Sprite::GetTexCoords()
+TRCN_CORE_NAMESPACE::QuadTexCoords TRCN_CORE_NAMESPACE::Sprite::GetTexCoords()
 {
 	QuadTexCoords out = _parent->GetCell(_xIndex, _yIndex);
 
@@ -25,7 +25,7 @@ TRCN_CORE_NAMESPACE::QuadTexCoords Trinacria::Sprite::GetTexCoords()
 	return out;
 }
 
-TRCN_CORE_NAMESPACE::SpriteSheet* Trinacria::Sprite::GetParent()
+TRCN_CORE_NAMESPACE::SpriteSheet* TRCN_CORE_NAMESPACE::Sprite::GetParent()
 {
 	return _parent;
 }

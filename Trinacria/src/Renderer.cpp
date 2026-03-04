@@ -7,20 +7,20 @@
 #include "Trinacria/Sprite.h"
 #include "Trinacria/Log.h"
 
-std::vector<Trinacria::Vertex> Trinacria::Renderer::_buffer;
-std::vector<uint32_t> Trinacria::Renderer::_indexBuffer;
+std::vector<TRCN_CORE_NAMESPACE::Vertex> TRCN_CORE_NAMESPACE::Renderer::_buffer;
+std::vector<uint32_t> TRCN_CORE_NAMESPACE::Renderer::_indexBuffer;
 
-uint32_t Trinacria::Renderer::_vao;
-uint32_t Trinacria::Renderer::_vbo;
-uint32_t Trinacria::Renderer::_ebo;
+uint32_t TRCN_CORE_NAMESPACE::Renderer::_vao;
+uint32_t TRCN_CORE_NAMESPACE::Renderer::_vbo;
+uint32_t TRCN_CORE_NAMESPACE::Renderer::_ebo;
 
-Trinacria::Shader Trinacria::Renderer::ShaderProgram;
+TRCN_CORE_NAMESPACE::Shader TRCN_CORE_NAMESPACE::Renderer::ShaderProgram;
 
-const size_t Trinacria::Renderer::MaxQuads;
-const size_t Trinacria::Renderer::MaxVertices;
-const size_t Trinacria::Renderer::MaxIndices;
+const size_t TRCN_CORE_NAMESPACE::Renderer::MaxQuads;
+const size_t TRCN_CORE_NAMESPACE::Renderer::MaxVertices;
+const size_t TRCN_CORE_NAMESPACE::Renderer::MaxIndices;
 
-std::vector<std::pair<Trinacria::Texture*, uint32_t>> Trinacria::Renderer::_textures;
+std::vector<std::pair<TRCN_CORE_NAMESPACE::Texture*, uint32_t>> TRCN_CORE_NAMESPACE::Renderer::_textures;
 
 void TRCN_CORE_NAMESPACE::Renderer::Init()
 {
@@ -37,13 +37,13 @@ void TRCN_CORE_NAMESPACE::Renderer::Init()
 
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, MaxIndices * sizeof(uint32_t), nullptr, GL_DYNAMIC_DRAW);
 
-    attribPointer(0, 2, GL_FLOAT, sizeof(Trinacria::Vertex), (void*)offsetof(Trinacria::Vertex, Position));
+    attribPointer(0, 2, GL_FLOAT, sizeof(TRCN_CORE_NAMESPACE::Vertex), (void*)offsetof(TRCN_CORE_NAMESPACE::Vertex, Position));
  
     glEnableVertexAttribArray(1);
-    glVertexAttribIPointer(1, sizeof(int), GL_INT, sizeof(Trinacria::Vertex), (void*)offsetof(Trinacria::Vertex, TextureIndex));
+    glVertexAttribIPointer(1, sizeof(int), GL_INT, sizeof(TRCN_CORE_NAMESPACE::Vertex), (void*)offsetof(TRCN_CORE_NAMESPACE::Vertex, TextureIndex));
 
-    attribPointer(2, 2, GL_FLOAT, sizeof(Trinacria::Vertex), (void*)offsetof(Trinacria::Vertex, TexCoords));
-    attribPointer(3, 3, GL_FLOAT, sizeof(Trinacria::Vertex), (void*)offsetof(Trinacria::Vertex, Color));
+    attribPointer(2, 2, GL_FLOAT, sizeof(TRCN_CORE_NAMESPACE::Vertex), (void*)offsetof(TRCN_CORE_NAMESPACE::Vertex, TexCoords));
+    attribPointer(3, 3, GL_FLOAT, sizeof(TRCN_CORE_NAMESPACE::Vertex), (void*)offsetof(TRCN_CORE_NAMESPACE::Vertex, Color));
 
     _buffer.reserve(MaxVertices);
     _indexBuffer.reserve(MaxIndices);

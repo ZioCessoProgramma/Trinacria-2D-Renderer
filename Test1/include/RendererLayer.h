@@ -17,7 +17,7 @@ struct CameraData
 	float Zoom;
 };
 
-class RendererLayer : public Trinacria::Layer
+class RendererLayer : public Trinacria::DSL::Layer
 {
 public:
 	virtual void OnUpdate(float deltaTime);
@@ -33,22 +33,22 @@ public:
 private:
 	glm::vec2 _playerPos{ 0.f };
 
-	Trinacria::Texture _grey;
-	Trinacria::Texture _purple;
-	Trinacria::Texture _wood;
+	Trinacria::DSL::Texture _grey;
+	Trinacria::DSL::Texture _purple;
+	Trinacria::DSL::Texture _wood;
 
-	Trinacria::QuadTexCoords _lastCoords{ glm::vec2(0.f, 2.f / 3), glm::vec2(1.f / 3, 2.f / 3), glm::vec2(1.f / 3, 1.f), glm::vec2(0.f, 1.f) };
+	Trinacria::DSL::QuadTexCoords _lastCoords{ glm::vec2(0.f, 2.f / 3), glm::vec2(1.f / 3, 2.f / 3), glm::vec2(1.f / 3, 1.f), glm::vec2(0.f, 1.f) };
 
-	Trinacria::SpriteSheet _playerAnimationSpriteSheet{ 0.f, 0.f };
+	Trinacria::DSL::SpriteSheet _playerAnimationSpriteSheet{ 0.f, 0.f };
 
-	Trinacria::SpriteSheet _tinyVillage{ 0.f, 0.f };
+	Trinacria::DSL::SpriteSheet _tinyVillage{ 0.f, 0.f };
 
-	Trinacria::Sprite _animation[3] = { Trinacria::Sprite(&_playerAnimationSpriteSheet, 0, 2), Trinacria::Sprite(&_playerAnimationSpriteSheet, 1, 2),
-		Trinacria::Sprite(&_playerAnimationSpriteSheet, 2, 2) };
+	Trinacria::DSL::Sprite _animation[3] = { Trinacria::DSL::Sprite(&_playerAnimationSpriteSheet, 0, 2), Trinacria::DSL::Sprite(&_playerAnimationSpriteSheet, 1, 2),
+		Trinacria::DSL::Sprite(&_playerAnimationSpriteSheet, 2, 2) };
 
-	Trinacria::Animation<3> _playerAnimation;
+	Trinacria::DSL::Animation<3> _playerAnimation;
 
-	Trinacria::Sprite _tree{ &_tinyVillage, 3, 9, 1, 2 };
+	Trinacria::DSL::Sprite _tree{ &_tinyVillage, 3, 9, 1, 2 };
 
 	uint32_t _currentSpriteIndex = 0;
 
