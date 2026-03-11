@@ -1,5 +1,5 @@
 #pragma once
 
-#include <iostream>
+#include <print>
 
-#define TRCN_LOG(m) std::cout << (m) << "\n";
+#define TRCN_LOG(m) std::println((m));

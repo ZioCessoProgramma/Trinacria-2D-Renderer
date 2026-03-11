@@ -30,6 +30,7 @@ namespace TRCN_CORE_NAMESPACE
 		void Init(SpriteSheet* parent, uint32_t xIndex, uint32_t yIndex, uint32_t xExtent = 1, uint32_t yExtent = 1);
 
 		QuadTexCoords GetTexCoords();
+		TriangleTexCoords GetTriangleTexCoords();
 		SpriteSheet* GetParent();
 
 	private:

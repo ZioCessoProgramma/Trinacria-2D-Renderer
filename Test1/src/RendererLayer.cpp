@@ -53,6 +53,11 @@ void RendererLayer::OnUpdate(float deltaTime)
 
 	_playerAnimation.Play(deltaTime, _playerPos, color);
 
+	// Triangle
+
+	Trinacria::DSL::Renderer::CreateTriangle(glm::vec2(-4.f), &_tree);
+
+
 	Trinacria::DSL::Renderer::EndScene();
 
 	float zoom = _cameraData.Zoom;
@@ -75,6 +80,7 @@ void RendererLayer::OnAttach()
 {
 	_grey.LoadTexture("assets/textures/grey.jpg");
 	_purple.LoadTexture("assets/textures/purple.jpg");
+	_triangleTex.LoadTexture("assets/textures/425.jpg");
 
 	_playerAnimationSpriteSheet.LoadTexture("assets/textures/player.png", GL_NEAREST);
 

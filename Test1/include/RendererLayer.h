@@ -36,6 +36,7 @@ private:
 	Trinacria::DSL::Texture _grey;
 	Trinacria::DSL::Texture _purple;
 	Trinacria::DSL::Texture _wood;
+	Trinacria::DSL::Texture _triangleTex;
 
 	Trinacria::DSL::QuadTexCoords _lastCoords{ glm::vec2(0.f, 2.f / 3), glm::vec2(1.f / 3, 2.f / 3), glm::vec2(1.f / 3, 1.f), glm::vec2(0.f, 1.f) };
 

@@ -25,6 +25,19 @@ TRCN_CORE_NAMESPACE::QuadTexCoords TRCN_CORE_NAMESPACE::Sprite::GetTexCoords()
 	return out;
 }
 
+Trinacria::DSL::TriangleTexCoords Trinacria::DSL::Sprite::GetTriangleTexCoords()
+{
+	QuadTexCoords cell = _parent->GetCell(_xIndex, _yIndex);
+
+	TriangleTexCoords out(0.f);
+
+	out.Coord0 = { cell.Coord0.x, cell.Coord0.y};
+	out.Coord1 = { cell.Coord1.x, cell.Coord1.y};
+	out.Coord2 = { cell.Coord2.x, cell.Coord2.y};
+
+	return out;
+}
+
 TRCN_CORE_NAMESPACE::SpriteSheet* TRCN_CORE_NAMESPACE::Sprite::GetParent()
 {
 	return _parent;

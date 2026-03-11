@@ -6,7 +6,7 @@ in vec3 Color;
 
 out vec4 FragColor;
 
-uniform sampler2D u_Textures[5]; // no tex, tex1, tex...
+uniform sampler2D u_Textures[32]; // no tex, tex1, tex...
 
 void main()
 {

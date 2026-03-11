@@ -23,6 +23,20 @@ namespace TRCN_CORE_NAMESPACE
 		void Normalize(uint32_t texWidth, uint32_t texHeight);
 	};
 
+	struct TriangleTexCoords
+	{
+		glm::vec2 Coord0;
+		glm::vec2 Coord1;
+		glm::vec2 Coord2;
+
+		TriangleTexCoords(float f) : Coord0(f), Coord1(f), Coord2(f) { }
+
+		TriangleTexCoords(const glm::vec2& coord0, const glm::vec2& coord1, const glm::vec2& coord2) :
+			Coord0(coord0), Coord1(coord1), Coord2(coord2) { }
+
+		void Normalize(uint32_t texWidth, uint32_t texHeight);
+	};
+
 	struct Vertex
 	{
 		glm::vec2 Position;
@@ -32,6 +46,11 @@ namespace TRCN_CORE_NAMESPACE
 
 		Vertex(const glm::vec2& pos, float textureIndex, const glm::vec2& texCoords, const glm::vec3& color) : Position(pos),
 			TextureIndex(textureIndex), TexCoords(texCoords), Color(color) { }
+	};
+
+	enum class TriangleOrientation
+	{
+		Orientation_RIGHT, Orientation_LEFT
 	};
 	
 	class Renderer
@@ -56,6 +75,23 @@ namespace TRCN_CORE_NAMESPACE
 			const glm::vec3& color = glm::vec3(1.f)
 		);
 
+		static void CreateTriangle(
+			const glm::vec2& position,
+			Texture* texture,
+			TriangleOrientation orientation = TriangleOrientation::Orientation_RIGHT,
+			const glm::vec2& size = glm::vec2(0.5f),
+			const glm::vec3& color = glm::vec3(1.f),
+			const TriangleTexCoords& texCoords = TriangleTexCoords(glm::vec2(0.f), glm::vec2(1.f, 0.f), glm::vec2(0.f, 1.f))
+		);
+
+		static void CreateTriangle(
+			const glm::vec2& position,
+			Sprite* sprite,
+			TriangleOrientation orientation = TriangleOrientation::Orientation_RIGHT,
+			const glm::vec2& size = glm::vec2(0.5f),
+			const glm::vec3& color = glm::vec3(1.f)
+		);
+
 		static void EndScene();
 		static void Draw();
 
@@ -66,14 +102,20 @@ namespace TRCN_CORE_NAMESPACE
 		static Shader ShaderProgram;
 
 		static const size_t MaxQuads = 1000;
-		static const size_t MaxVertices = MaxQuads * 4;
-		static const size_t MaxIndices = MaxQuads * 6;
+		static const size_t MaxQuadVertices = MaxQuads * 4;
+		static const size_t MaxQuadIndices = MaxQuads * 6;
+
+		static const size_t MaxTriangles = 1000;
+		static const size_t MaxTrianglesVertices = MaxTriangles * 3;
 
 	private:
-		static std::vector<Vertex> _buffer;
-		static std::vector<uint32_t> _indexBuffer;
+		static std::vector<Vertex> _quadBuffer;
+		static std::vector<uint32_t> _quadIndexBuffer;
+
+		static std::vector<Vertex> _triangleBuffer;
 
 		static uint32_t _vao, _vbo, _ebo;
+		static uint32_t _triangleVao, _triangleVbo;
 
 		static std::vector<std::pair<Texture*, uint32_t>> _textures;
 
