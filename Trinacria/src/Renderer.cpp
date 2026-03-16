@@ -4,6 +4,11 @@
 #include <sstream>
 #include <glm/gtc/type_ptr.hpp>
 #include <format>
+
+#include "Trinacria/Animation.h"
+#include "Trinacria/Animation.h"
+#include "Trinacria/Animation.h"
+#include "Trinacria/Animation.h"
 #include "Trinacria/Sprite.h"
 #include "Trinacria/Log.h"
 
@@ -73,7 +78,7 @@ void TRCN_CORE_NAMESPACE::Renderer::Init()
     _triangleBuffer.reserve(MaxTrianglesVertices);
 }
 
-void TRCN_CORE_NAMESPACE::Renderer::CreateQuad(const glm::vec2& position, Texture* texture, float size, const glm::vec3& color, const QuadTexCoords& texCoords)
+void TRCN_CORE_NAMESPACE::Renderer::CreateQuad(const glm::vec2& position, Texture* texture, glm::vec2 size, const glm::vec3& color, const QuadTexCoords& texCoords)
 {
     if (_quadBuffer.size() > MaxQuadVertices)
     {
@@ -109,9 +114,9 @@ void TRCN_CORE_NAMESPACE::Renderer::CreateQuad(const glm::vec2& position, Textur
     }
 
     _quadBuffer.emplace_back(position, textureIndex, texCoords.Coord0, color);
-    _quadBuffer.emplace_back(position + glm::vec2(size, 0.f), textureIndex, texCoords.Coord1, color);
-    _quadBuffer.emplace_back(position + glm::vec2 (size), textureIndex, texCoords.Coord2, color);
-    _quadBuffer.emplace_back(position + glm::vec2(0.f, size), textureIndex, texCoords.Coord3, color);
+    _quadBuffer.emplace_back(position + glm::vec2(size.x, 0.f), textureIndex, texCoords.Coord1, color);
+    _quadBuffer.emplace_back(position + size, textureIndex, texCoords.Coord2, color);
+    _quadBuffer.emplace_back(position + glm::vec2(0.f, size.y), textureIndex, texCoords.Coord3, color);
 
     const size_t offset = _quadBuffer.size() - 4;
 
@@ -124,7 +129,7 @@ void TRCN_CORE_NAMESPACE::Renderer::CreateQuad(const glm::vec2& position, Textur
     _quadIndexBuffer.push_back(offset);
 }
 
-void TRCN_CORE_NAMESPACE::Renderer::CreateQuad(const glm::vec2& position, Sprite* sprite, float size, const glm::vec3& color)
+void TRCN_CORE_NAMESPACE::Renderer::CreateQuad(const glm::vec2& position, Sprite* sprite, glm::vec2 size, const glm::vec3& color)
 {
     QuadTexCoords texCoords = sprite->GetTexCoords();
     texCoords.Normalize(sprite->GetParent()->GetWidth(), sprite->GetParent()->GetHeight());

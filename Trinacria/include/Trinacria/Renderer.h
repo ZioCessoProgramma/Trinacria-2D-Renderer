@@ -63,7 +63,7 @@ namespace TRCN_CORE_NAMESPACE
 		static void CreateQuad(
 			const glm::vec2& position,
 			Texture* texture,
-			float size = 0.5f,
+			glm::vec2 size = glm::vec2(0.5f),
 			const glm::vec3& color = glm::vec3(1.f),
 			const QuadTexCoords& texCoords = QuadTexCoords(glm::vec2(0.f), glm::vec2(1.f, 0.f), glm::vec2(1.f), glm::vec2(0.f, 1.f))
 		);
@@ -71,7 +71,7 @@ namespace TRCN_CORE_NAMESPACE
 		static void CreateQuad(
 			const glm::vec2& position,
 			class Sprite* sprite,
-			float size = 0.5f,
+			glm::vec2 size = glm::vec2(0.5f),
 			const glm::vec3& color = glm::vec3(1.f)
 		);
 

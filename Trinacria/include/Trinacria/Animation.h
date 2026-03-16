@@ -28,7 +28,7 @@ namespace TRCN_CORE_NAMESPACE
 				_accumulatedDeltaTime = 0.f;
 			}
 			
-			Renderer::CreateQuad(position, &_sprites[_currentSpriteIndex], 0.5f, color);
+			Renderer::CreateQuad(position, &_sprites[_currentSpriteIndex], glm::vec2(0.5f), color);
 			
 		}
 

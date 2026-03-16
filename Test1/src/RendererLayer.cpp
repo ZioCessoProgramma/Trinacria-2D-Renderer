@@ -39,7 +39,7 @@ void RendererLayer::OnUpdate(float deltaTime)
 
 	// Grass
 
-	Trinacria::DSL::Renderer::CreateQuad(glm::vec2(-1.5f), Trinacria::DSL::Texture::NO_TEXTURE, 1.f, glm::vec3(0.1f, 0.6f, 0.1f));
+	Trinacria::DSL::Renderer::CreateQuad(glm::vec2(-1.5f), Trinacria::DSL::Texture::NO_TEXTURE, glm::vec2(0.5f), glm::vec3(0.1f, 0.6f, 0.1f));
 
 	// Tree
 
@@ -47,7 +47,8 @@ void RendererLayer::OnUpdate(float deltaTime)
 
 	// Danger Zone
 
-	Trinacria::DSL::Renderer::CreateQuad(glm::vec2(3.f), Trinacria::DSL::Texture::NO_TEXTURE, 6.f, glm::vec3(0.8f, 0.2f, 0.3f));
+	Trinacria::DSL::Renderer::CreateQuad(glm::vec2(3.f), Trinacria::DSL::Texture::NO_TEXTURE,
+		glm::vec2(6.f), glm::vec3(0.8f, 0.2f, 0.3f));
 
 	// Player
 
