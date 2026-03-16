@@ -78,7 +78,7 @@ void TRCN_CORE_NAMESPACE::Renderer::Init()
     _triangleBuffer.reserve(MaxTrianglesVertices);
 }
 
-void TRCN_CORE_NAMESPACE::Renderer::CreateQuad(const glm::vec2& position, Texture* texture, glm::vec2 size, const glm::vec3& color, const QuadTexCoords& texCoords)
+void TRCN_CORE_NAMESPACE::Renderer::CreateQuad(const glm::vec2& position, Texture* texture, const glm::vec2& size, const glm::vec3& color, const glm::mat4& transform, const QuadTexCoords& texCoords)
 {
     if (_quadBuffer.size() > MaxQuadVertices)
     {
@@ -113,10 +113,17 @@ void TRCN_CORE_NAMESPACE::Renderer::CreateQuad(const glm::vec2& position, Textur
         textureIndex = 0;
     }
 
-    _quadBuffer.emplace_back(position, textureIndex, texCoords.Coord0, color);
-    _quadBuffer.emplace_back(position + glm::vec2(size.x, 0.f), textureIndex, texCoords.Coord1, color);
-    _quadBuffer.emplace_back(position + size, textureIndex, texCoords.Coord2, color);
-    _quadBuffer.emplace_back(position + glm::vec2(0.f, size.y), textureIndex, texCoords.Coord3, color);
+    //size = glm::vec2(glm::vec4(size, 1.f, 1.f) * transform);
+
+    glm::vec2 p0 = glm::vec2(transform * glm::vec4(position, 1.f, 1.f));
+    glm::vec2 p1 = glm::vec2(transform * glm::vec4(position + glm::vec2(size.x, 0.f), 1.f, 1.f));
+    glm::vec2 p2 = glm::vec2(transform * glm::vec4(position + size, 1.f, 1.f));
+    glm::vec2 p3 = glm::vec2(transform * glm::vec4(position + glm::vec2(0.f, size.y), 1.f, 1.f));
+
+    _quadBuffer.emplace_back(p0, textureIndex, texCoords.Coord0, color);
+    _quadBuffer.emplace_back(p1, textureIndex, texCoords.Coord1, color);
+    _quadBuffer.emplace_back(p2, textureIndex, texCoords.Coord2, color);
+    _quadBuffer.emplace_back(p3, textureIndex, texCoords.Coord3, color);
 
     const size_t offset = _quadBuffer.size() - 4;
 
@@ -129,12 +136,12 @@ void TRCN_CORE_NAMESPACE::Renderer::CreateQuad(const glm::vec2& position, Textur
     _quadIndexBuffer.push_back(offset);
 }
 
-void TRCN_CORE_NAMESPACE::Renderer::CreateQuad(const glm::vec2& position, Sprite* sprite, glm::vec2 size, const glm::vec3& color)
+void TRCN_CORE_NAMESPACE::Renderer::CreateQuad(const glm::vec2& position, Sprite* sprite, const glm::vec2& size, const glm::vec3& color, const glm::mat4& transform)
 {
     QuadTexCoords texCoords = sprite->GetTexCoords();
     texCoords.Normalize(sprite->GetParent()->GetWidth(), sprite->GetParent()->GetHeight());
 
-    CreateQuad(position, sprite->GetParent(), size, color, texCoords);
+    CreateQuad(position, sprite->GetParent(), size, color, transform, texCoords);
 }
 
 void TRCN_CORE_NAMESPACE::Renderer::CreateTriangle(const glm::vec2& position, Texture* texture, TriangleOrientation orientation, const glm::vec2& size,

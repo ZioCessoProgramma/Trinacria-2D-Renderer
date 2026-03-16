@@ -39,7 +39,11 @@ void RendererLayer::OnUpdate(float deltaTime)
 
 	// Grass
 
-	Trinacria::DSL::Renderer::CreateQuad(glm::vec2(-1.5f), Trinacria::DSL::Texture::NO_TEXTURE, glm::vec2(0.5f), glm::vec3(0.1f, 0.6f, 0.1f));
+	Trinacria::DSL::Renderer::CreateQuad(glm::vec2(-1.5f), Trinacria::DSL::Texture::NO_TEXTURE,
+		glm::vec2(1.f), glm::vec3(0.1f, 0.6f, 0.1f),
+		glm::rotate(glm::mat4(1.f), glm::radians(20.f), glm::vec3(0.f, 0.f, 1.f)));
+
+	// TODO: make a transform class so that you could rotate things around themself
 
 	// Tree
 
