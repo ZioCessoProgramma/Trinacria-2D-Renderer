@@ -144,8 +144,18 @@ void TRCN_CORE_NAMESPACE::Renderer::CreateQuad(const glm::vec2& position, Sprite
     CreateQuad(position, sprite->GetParent(), size, color, transform, texCoords);
 }
 
+void Trinacria::DSL::Renderer::CreateQuad(const Transform& transform, Sprite* texture, const glm::vec3& color)
+{
+    CreateQuad(glm::vec3(0.f), texture, glm::vec2(1.f), color, transform.GetMatrix());
+}
+
+void Trinacria::DSL::Renderer::CreateQuad(const Transform& transform, Texture* texture, const glm::vec3& color, const QuadTexCoords& texCoords)
+{
+    CreateQuad(glm::vec3(0.f), texture, glm::vec2(1.f), color, transform.GetMatrix(), texCoords);
+}
+
 void TRCN_CORE_NAMESPACE::Renderer::CreateTriangle(const glm::vec2& position, Texture* texture, TriangleOrientation orientation, const glm::vec2& size,
-    const glm::vec3& color, const glm::mat4& transform, const TriangleTexCoords& texCoords)
+                                                   const glm::vec3& color, const glm::mat4& transform, const TriangleTexCoords& texCoords)
 {
     if (_triangleBuffer.size() > MaxTrianglesVertices)
     {
@@ -204,6 +214,20 @@ void Trinacria::DSL::Renderer::CreateTriangle(const glm::vec2& position, Sprite*
     texCoords.Normalize(sprite->GetParent()->GetWidth(), sprite->GetParent()->GetHeight());
 
     CreateTriangle(position, sprite->GetParent(), orientation, size, color, transform, texCoords);
+}
+
+void Trinacria::DSL::Renderer::CreateTriangle(const Transform& transform, Texture* texture,
+    TriangleOrientation orientation, const glm::vec3& color, const TriangleTexCoords& texCoords)
+{
+    CreateTriangle(glm::vec2(0.f), texture, orientation,
+        glm::vec2(0.5f),color, transform.GetMatrix(), texCoords);
+}
+
+void Trinacria::DSL::Renderer::CreateTriangle(const Transform& transform, Sprite* sprite,
+    TriangleOrientation orientation, const glm::vec3& color)
+{
+    CreateTriangle(glm::vec2(0.f), sprite, orientation,
+        glm::vec2(1.f), color, transform.GetMatrix());
 }
 
 void TRCN_CORE_NAMESPACE::Renderer::EndScene()

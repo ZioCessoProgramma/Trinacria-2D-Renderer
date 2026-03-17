@@ -39,9 +39,10 @@ void RendererLayer::OnUpdate(float deltaTime)
 
 	// Grass
 
-	Trinacria::DSL::Renderer::CreateQuad(glm::vec2(-1.5f), Trinacria::DSL::Texture::NO_TEXTURE,
-		glm::vec2(1.f), glm::vec3(0.1f, 0.6f, 0.1f),
-		glm::rotate(glm::mat4(1.f), glm::radians(20.f), glm::vec3(0.f, 0.f, 1.f)));
+	Trinacria::DSL::Transform transform1(glm::vec2(-1.5f), glm::vec2(4.f), sin(glfwGetTime()) * 20);
+
+	Trinacria::DSL::Renderer::CreateQuad(transform1, Trinacria::DSL::Texture::NO_TEXTURE
+		, glm::vec3(0.1f, 0.6f, 0.1f));
 
 	// TODO: make a transform class so that you could rotate things around themself
 
@@ -60,14 +61,11 @@ void RendererLayer::OnUpdate(float deltaTime)
 
 	// Triangle
 
-	glm::mat4 transform = glm::mat4(1.f);
-	transform = glm::translate(transform, glm::vec3(-4.f));
-	transform = glm::scale(transform, glm::vec3(3.f));
 
-	Trinacria::DSL::Renderer::CreateTriangle(glm::vec2(0.f), Trinacria::DSL::Texture::NO_TEXTURE,
-		Trinacria::DSL::TriangleOrientation::Orientation_RIGHT, glm::vec2(0.5f), glm::vec3(1.f)
-		, transform
-		);
+
+	Trinacria::DSL::Transform transform(glm::vec2(-4.f), glm::vec2(4.f), sin(glfwGetTime()) * 20);
+
+	Trinacria::DSL::Renderer::CreateTriangle(transform);
 
 
 	Trinacria::DSL::Renderer::EndScene();
