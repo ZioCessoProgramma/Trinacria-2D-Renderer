@@ -60,7 +60,14 @@ void RendererLayer::OnUpdate(float deltaTime)
 
 	// Triangle
 
-	Trinacria::DSL::Renderer::CreateTriangle(glm::vec2(-4.f), &_tree);
+	glm::mat4 transform = glm::mat4(1.f);
+	transform = glm::translate(transform, glm::vec3(-4.f));
+	transform = glm::scale(transform, glm::vec3(3.f));
+
+	Trinacria::DSL::Renderer::CreateTriangle(glm::vec2(0.f), Trinacria::DSL::Texture::NO_TEXTURE,
+		Trinacria::DSL::TriangleOrientation::Orientation_RIGHT, glm::vec2(0.5f), glm::vec3(1.f)
+		, transform
+		);
 
 
 	Trinacria::DSL::Renderer::EndScene();

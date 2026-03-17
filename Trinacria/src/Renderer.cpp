@@ -145,7 +145,7 @@ void TRCN_CORE_NAMESPACE::Renderer::CreateQuad(const glm::vec2& position, Sprite
 }
 
 void TRCN_CORE_NAMESPACE::Renderer::CreateTriangle(const glm::vec2& position, Texture* texture, TriangleOrientation orientation, const glm::vec2& size,
-    const glm::vec3& color, const TriangleTexCoords& texCoords)
+    const glm::vec3& color, const glm::mat4& transform, const TriangleTexCoords& texCoords)
 {
     if (_triangleBuffer.size() > MaxTrianglesVertices)
     {
@@ -174,30 +174,36 @@ void TRCN_CORE_NAMESPACE::Renderer::CreateTriangle(const glm::vec2& position, Te
         textureIndex = 0;
     }
 
-    _triangleBuffer.emplace_back(position, textureIndex, texCoords.Coord0, color);
+    glm::vec2 p0 = transform * glm::vec4(position, 1.f, 1.f);
+    glm::vec2 p3 = transform * glm::vec4(position.x, position.y + size.y, 1.f, 1.f);
+
+
+    _triangleBuffer.emplace_back(p0, textureIndex, texCoords.Coord0, color);
 
     if (orientation == TriangleOrientation::Orientation_LEFT)
     {
-        _triangleBuffer.emplace_back(glm::vec2(position.x - size.x, position.y), textureIndex,
+        glm::vec2 p1 = transform * glm::vec4(position.x - size.x, position.y, 1.f, 1.f);
+        _triangleBuffer.emplace_back(p1, textureIndex,
             texCoords.Coord1, color);
     }
     else if (orientation == TriangleOrientation::Orientation_RIGHT)
     {
-        _triangleBuffer.emplace_back(glm::vec2(position.x + size.x, position.y), textureIndex,
+        glm::vec2 p2 = transform * glm::vec4(position.x + size.x, position.y, 1.f, 1.f);
+        _triangleBuffer.emplace_back(p2, textureIndex,
             texCoords.Coord1, color);
     }
 
-    _triangleBuffer.emplace_back(glm::vec2(position.x, position.y + size.y), textureIndex,
+    _triangleBuffer.emplace_back(p3, textureIndex,
         texCoords.Coord2, color);
 }
 
 void Trinacria::DSL::Renderer::CreateTriangle(const glm::vec2& position, Sprite* sprite,
-    TriangleOrientation orientation, const glm::vec2& size, const glm::vec3& color)
+    TriangleOrientation orientation, const glm::vec2& size, const glm::vec3& color, const glm::mat4& transform)
 {
     TriangleTexCoords texCoords = sprite->GetTriangleTexCoords();
     texCoords.Normalize(sprite->GetParent()->GetWidth(), sprite->GetParent()->GetHeight());
 
-    CreateTriangle(position, sprite->GetParent(), orientation, size, color, texCoords);
+    CreateTriangle(position, sprite->GetParent(), orientation, size, color, transform, texCoords);
 }
 
 void TRCN_CORE_NAMESPACE::Renderer::EndScene()
