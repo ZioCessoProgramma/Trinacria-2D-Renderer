@@ -113,8 +113,6 @@ void TRCN_CORE_NAMESPACE::Renderer::CreateQuad(const glm::vec2& position, Textur
         textureIndex = 0;
     }
 
-    //size = glm::vec2(glm::vec4(size, 1.f, 1.f) * transform);
-
     glm::vec2 p0 = glm::vec2(transform * glm::vec4(position, 1.f, 1.f));
     glm::vec2 p1 = glm::vec2(transform * glm::vec4(position + glm::vec2(size.x, 0.f), 1.f, 1.f));
     glm::vec2 p2 = glm::vec2(transform * glm::vec4(position + size, 1.f, 1.f));
@@ -146,12 +144,12 @@ void TRCN_CORE_NAMESPACE::Renderer::CreateQuad(const glm::vec2& position, Sprite
 
 void Trinacria::DSL::Renderer::CreateQuad(const Transform& transform, Sprite* texture, const glm::vec3& color)
 {
-    CreateQuad(glm::vec3(0.f), texture, glm::vec2(1.f), color, transform.GetMatrix());
+    CreateQuad(-transform.Pivot, texture, glm::vec2(1.f), color, transform.GetMatrix());
 }
 
 void Trinacria::DSL::Renderer::CreateQuad(const Transform& transform, Texture* texture, const glm::vec3& color, const QuadTexCoords& texCoords)
 {
-    CreateQuad(glm::vec3(0.f), texture, glm::vec2(1.f), color, transform.GetMatrix(), texCoords);
+    CreateQuad(-transform.Pivot, texture, glm::vec2(1.f), color, transform.GetMatrix(), texCoords);
 }
 
 void TRCN_CORE_NAMESPACE::Renderer::CreateTriangle(const glm::vec2& position, Texture* texture, TriangleOrientation orientation, const glm::vec2& size,
@@ -219,14 +217,14 @@ void Trinacria::DSL::Renderer::CreateTriangle(const glm::vec2& position, Sprite*
 void Trinacria::DSL::Renderer::CreateTriangle(const Transform& transform, Texture* texture,
     TriangleOrientation orientation, const glm::vec3& color, const TriangleTexCoords& texCoords)
 {
-    CreateTriangle(glm::vec2(0.f), texture, orientation,
+    CreateTriangle(-transform.Pivot, texture, orientation,
         glm::vec2(0.5f),color, transform.GetMatrix(), texCoords);
 }
 
 void Trinacria::DSL::Renderer::CreateTriangle(const Transform& transform, Sprite* sprite,
     TriangleOrientation orientation, const glm::vec3& color)
 {
-    CreateTriangle(glm::vec2(0.f), sprite, orientation,
+    CreateTriangle(-transform.Pivot, sprite, orientation,
         glm::vec2(1.f), color, transform.GetMatrix());
 }
 
