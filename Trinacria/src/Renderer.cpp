@@ -1,16 +1,14 @@
 #include "Trinacria/Renderer.h"
 #include <glad/glad.h>
-#include <fstream>
 #include <sstream>
 #include <glm/gtc/type_ptr.hpp>
 #include <format>
 
 #include "Trinacria/Animation.h"
-#include "Trinacria/Animation.h"
-#include "Trinacria/Animation.h"
-#include "Trinacria/Animation.h"
 #include "Trinacria/Sprite.h"
 #include "Trinacria/Log.h"
+
+#include "Trinacria/ShapesData.h"
 
 std::vector<TRCN_CORE_NAMESPACE::Vertex> TRCN_CORE_NAMESPACE::Renderer::_quadBuffer;
 std::vector<uint32_t> TRCN_CORE_NAMESPACE::Renderer::_quadIndexBuffer;
@@ -145,6 +143,26 @@ void TRCN_CORE_NAMESPACE::Renderer::CreateQuad(const glm::vec2& position, Sprite
 void Trinacria::DSL::Renderer::CreateQuad(const Transform& transform, Sprite* texture, const glm::vec3& color)
 {
     CreateQuad(-transform.Pivot, texture, glm::vec2(1.f), color, transform.GetMatrix());
+}
+
+void Trinacria::DSL::Renderer::CreateTriangle(const struct TriangleData& triangleData)
+{
+    if (triangleData.Texture != nullptr)
+    {
+        CreateTriangle(triangleData.Transform, triangleData.Texture, triangleData.Orientation,
+            triangleData.Color, triangleData.TexCoords);
+    }
+    else if (triangleData.Sprite != nullptr)
+    {
+        CreateTriangle(triangleData.Transform, triangleData.Sprite, triangleData.Orientation,
+            triangleData.Color);
+    }
+    // using plain color
+    else
+    {
+        CreateTriangle(triangleData.Transform, Texture::NO_TEXTURE, triangleData.Orientation,
+            triangleData.Color);
+    }
 }
 
 void Trinacria::DSL::Renderer::CreateQuad(const Transform& transform, Texture* texture, const glm::vec3& color, const QuadTexCoords& texCoords)
@@ -310,6 +328,23 @@ void TRCN_CORE_NAMESPACE::Renderer::ClearColorBuffer(const glm::vec3& color)
 {
     glClearColor(color.r, color.g, color.b, 1.f);
     glClear(GL_COLOR_BUFFER_BIT);
+}
+
+void Trinacria::DSL::Renderer::CreateQuad(const QuadData& quadData)
+{
+    if (quadData.Texture != nullptr)
+    {
+        CreateQuad(quadData.Transform, quadData.Texture, quadData.Color, quadData.TexCoords);
+    }
+    else if (quadData.Sprite != nullptr)
+    {
+        CreateQuad(quadData.Transform, quadData.Sprite, quadData.Color);
+    }
+    // using plain color
+    else
+    {
+        CreateQuad(quadData.Transform, Texture::NO_TEXTURE, quadData.Color);
+    }
 }
 
 void TRCN_CORE_NAMESPACE::QuadTexCoords::Normalize(uint32_t texWidth, uint32_t texHeight)

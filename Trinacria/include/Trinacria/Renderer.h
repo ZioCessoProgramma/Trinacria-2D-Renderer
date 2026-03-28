@@ -61,6 +61,8 @@ namespace TRCN_CORE_NAMESPACE
 
 		static void ClearColorBuffer(const glm::vec3& color = { 0.1f, 0.1f, 0.1f });
 
+		static void CreateQuad(const struct QuadData& quadData);
+
 		static void CreateQuad(
 			const glm::vec2& position,
 			Texture* texture = nullptr,
@@ -94,6 +96,8 @@ namespace TRCN_CORE_NAMESPACE
 		);
 
 		// Triangle
+
+		static void CreateTriangle(const struct TriangleData& triangleData);
 
 		static void CreateTriangle(
 			const glm::vec2& position,

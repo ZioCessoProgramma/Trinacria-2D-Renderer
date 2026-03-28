@@ -5,6 +5,7 @@
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 #include <glm/ext/matrix_transform.hpp>
+#include <Trinacria/ShapesData.h>
 
 
 #define ANIMATION_FPS 12
@@ -14,11 +15,6 @@ static glm::vec3 color{ 1.f };
 void RendererLayer::OnUpdate(float deltaTime)
 {
 	Trinacria::DSL::Renderer::ClearColorBuffer();
-
-	GLFWwindow* window = Application::Get()->GetWindow();
-
-	const float speed = 3.f;
-
 
 	// Grid
 
@@ -47,12 +43,21 @@ void RendererLayer::OnUpdate(float deltaTime)
 
 	// Tree
 
-	Trinacria::DSL::Renderer::CreateQuad(glm::vec2(-1.f), &_tree);
+	{
+		Trinacria::DSL::Transform transform(glm::vec2(-1.f));
+		Trinacria::DSL::QuadData treeData(transform, &_tree);
+
+		Trinacria::DSL::Renderer::CreateQuad(treeData);
+	}
 
 	// Danger Zone
 
-	Trinacria::DSL::Renderer::CreateQuad(glm::vec2(3.f), Trinacria::DSL::Texture::NO_TEXTURE,
-		glm::vec2(6.f), glm::vec3(0.8f, 0.2f, 0.3f));
+	{
+		Trinacria::DSL::Transform transform(glm::vec2(3.f), glm::vec2(6.f), 0.f, glm::vec2(0.f));
+		Trinacria::DSL::QuadData data(transform, Trinacria::DSL::Texture::NO_TEXTURE, glm::vec3(0.7f, 0.2f, 0.2f));
+
+		Trinacria::DSL::Renderer::CreateQuad(data);
+	}
 
 	// Player
 
