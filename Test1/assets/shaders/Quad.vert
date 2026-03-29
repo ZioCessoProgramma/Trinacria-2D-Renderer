@@ -10,6 +10,7 @@ uniform mat4 u_View;
 out vec2 TexCoords;
 flat out int Index;
 out vec3 Color;
+out vec2 FragPos;
 
 void main()
 {
@@ -18,4 +19,6 @@ void main()
 	TexCoords = a_TexCoords;
 	Index = a_TextureIndex;
 	Color = a_Color;
+
+	FragPos = a_Pos;
 }

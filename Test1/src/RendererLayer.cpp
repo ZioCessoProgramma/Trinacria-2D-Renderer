@@ -65,11 +65,19 @@ void RendererLayer::OnUpdate(float deltaTime)
 
 	// Triangle
 
+	{
+		Trinacria::DSL::Transform transform(glm::vec2(-4.f), glm::vec2(4.f), sin(glfwGetTime()) * 20);
+
+		Trinacria::DSL::Renderer::CreateTriangle(transform);
+	}
+
+	// Light
 
 
-	Trinacria::DSL::Transform transform(glm::vec2(-4.f), glm::vec2(4.f), sin(glfwGetTime()) * 20);
+	Trinacria::DSL::Transform lightTransform(glm::vec2(-4.f, 3.f));
 
-	Trinacria::DSL::Renderer::CreateTriangle(transform);
+	Trinacria::DSL::Renderer::CreateQuad(lightTransform);
+
 
 
 	Trinacria::DSL::Renderer::EndScene();
@@ -84,7 +92,11 @@ void RendererLayer::OnUpdate(float deltaTime)
 	viewProjection = glm::translate(viewProjection, glm::vec3(-_cameraData.CameraPos.x, -_cameraData.CameraPos.y, 0.f));
 
 	Trinacria::DSL::Renderer::ShaderProgram.Bind();
+
 	Trinacria::DSL::Renderer::ShaderProgram.SetUniformMat4("u_View", viewProjection);
+	Trinacria::DSL::Renderer::ShaderProgram.SetUniformVec2("u_LightPos", lightTransform.Position);
+	Trinacria::DSL::Renderer::ShaderProgram.SetUniformVec3("u_LightColor", glm::vec3(1.f));
+	Trinacria::DSL::Renderer::ShaderProgram.SetUniformVec2("u_ViewPos", _cameraData.CameraPos);
 
 	Trinacria::DSL::Renderer::Draw();
 	Trinacria::DSL::Renderer::FlushBuffers();
