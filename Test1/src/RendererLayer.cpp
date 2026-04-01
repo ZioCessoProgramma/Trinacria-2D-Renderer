@@ -97,7 +97,7 @@ void RendererLayer::OnUpdate(float deltaTime)
 
 	Trinacria::DSL::Renderer::ShaderProgram.SetUniformMat4("u_View", viewProjection);
 
-	Trinacria::DSL::LightSystem::SetAmbientStrength(Trinacria::DSL::DEFAULT_USE_OF_LIGHT);
+	Trinacria::DSL::LightSystem::SetAmbientStrength(Trinacria::DSL::LightSystem::DEFAULT_USE_OF_LIGHT);
 
 	Trinacria::DSL::PointLightData pointLight(lightTransform.Position,
 		_cameraData.CameraPos, glm::vec3(1.f), 1.f);
