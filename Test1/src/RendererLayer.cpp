@@ -7,6 +7,8 @@
 #include <glm/ext/matrix_transform.hpp>
 #include <Trinacria/ShapesData.h>
 
+#include "Trinacria/LightSystem.h"
+
 
 #define ANIMATION_FPS 12
 
@@ -94,9 +96,13 @@ void RendererLayer::OnUpdate(float deltaTime)
 	Trinacria::DSL::Renderer::ShaderProgram.Bind();
 
 	Trinacria::DSL::Renderer::ShaderProgram.SetUniformMat4("u_View", viewProjection);
-	Trinacria::DSL::Renderer::ShaderProgram.SetUniformVec2("u_LightPos", lightTransform.Position);
-	Trinacria::DSL::Renderer::ShaderProgram.SetUniformVec3("u_LightColor", glm::vec3(1.f));
-	Trinacria::DSL::Renderer::ShaderProgram.SetUniformVec2("u_ViewPos", _cameraData.CameraPos);
+
+	Trinacria::DSL::LightSystem::SetAmbientStrength(Trinacria::DSL::DEFAULT_USE_OF_LIGHT);
+
+	Trinacria::DSL::PointLightData pointLight(lightTransform.Position,
+		_cameraData.CameraPos, glm::vec3(1.f), 1.f);
+
+	Trinacria::DSL::LightSystem::SetupLight(pointLight);
 
 	Trinacria::DSL::Renderer::Draw();
 	Trinacria::DSL::Renderer::FlushBuffers();
@@ -130,7 +136,7 @@ void RendererLayer::OnAttach()
 			color = event.GetColorToRestore();
 			});
 	}
-	
+
 	Trinacria::DSL::Renderer::Init();
 	Trinacria::DSL::Renderer::ShaderProgram.LoadShader("assets/shaders/Quad.vert", "assets/shaders/Quad.frag");
 }

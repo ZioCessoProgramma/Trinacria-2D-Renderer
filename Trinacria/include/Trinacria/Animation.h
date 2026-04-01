@@ -45,6 +45,7 @@ namespace TRCN_CORE_NAMESPACE
 			{
 				TRCN_ASSERT(false, "You cannot initialize an asset more than one time");
 			}
+
 		}
 
 		uint32_t Fps = 0;

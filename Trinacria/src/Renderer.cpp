@@ -29,6 +29,7 @@ uint32_t TRCN_CORE_NAMESPACE::Renderer::_triangleVao;
 
 std::vector<std::pair<TRCN_CORE_NAMESPACE::Texture*, uint32_t>> TRCN_CORE_NAMESPACE::Renderer::_textures;
 
+
 void TRCN_CORE_NAMESPACE::Renderer::Init()
 {
     glGenVertexArrays(1, &_vao);

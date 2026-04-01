@@ -1,9 +1,10 @@
 #pragma once
 
 #include <glm/glm.hpp>
-#include <string>
 #include "Texture.h"
 #include <vector>
+
+#include "Log.h"
 #include "Shader.h"
 #include "Transform.h"
 

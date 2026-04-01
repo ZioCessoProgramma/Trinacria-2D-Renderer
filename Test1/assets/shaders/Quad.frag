@@ -14,17 +14,20 @@ uniform vec2 u_LightPos;
 uniform vec3 u_LightColor;
 uniform vec2 u_ViewPos;
 
+uniform float u_Attenuation;
+
+uniform float u_AmbientStrength;
+
 void main()
 {
-	float ambientStrength = 0.1f;
 	float specularStrength = 0.5f;
-	float diffusestrenght = 10.f;
+	float diffuseStrength = 10.f;
 
 	vec3 lightDir = normalize(vec3(u_LightPos, 0.f) - vec3(FragPos, 0.f));
 
 	float dist = length(u_LightPos - FragPos);
-	float diff = 1.0 / (1.0 + dist * dist);
-	vec3 diffuse = diff * u_LightColor * diffusestrenght;
+	float diff = 1.0 / (1.0 + u_Attenuation * dist * dist);
+	vec3 diffuse = diff * u_LightColor * diffuseStrength;
 
 	vec3 viewDir = normalize(vec3(u_ViewPos, 0.f) - vec3(FragPos, 0.f));
 	vec3 reflectDir = reflect(-lightDir, vec3(0.f, 0.f, 1.f));
@@ -42,11 +45,11 @@ void main()
 			discard;
 		}
 	
-		FragColor = vec4(min(color.rgb * Color * (ambientStrength + diffuse + specular), vec3(1.f)), 1.f);
+		FragColor = vec4(min(color.rgb * Color * (u_AmbientStrength + diffuse + specular), vec3(1.f)), 1.f);
 	}
 	else
 	{
-		FragColor = vec4(min(Color * (ambientStrength + diffuse + specular), vec3(1.f)), 1.f);
+		FragColor = vec4(min(Color * (u_AmbientStrength + diffuse + specular), vec3(1.f)), 1.f);
 	}
 
 }
