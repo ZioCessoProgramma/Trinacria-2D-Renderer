@@ -14,13 +14,33 @@ namespace TRCN_CORE_NAMESPACE
         float Attenuation;
     };
 
-    
+    struct SpotLightData
+    {
+        glm::vec2 LightPosition;
+        glm::vec2 ViewPosition;
+        glm::vec3 LightColor;
+        glm::vec2 LightDirection;
+        float Attenuation;
+
+        float InnerAngleInDegrees;
+        float OuterAngleInDegrees;
+    };
+
+    struct DirectionalLightData
+    {
+        glm::vec2 LightDirection;
+        glm::vec2 ViewPosition;
+        glm::vec3 LightColor;
+    };
+
     class LightSystem
     {
     public:
         static void SetAmbientStrength(float strength);
 
         static void SetupLight(const PointLightData& lightData);
+        static void SetupLight(const SpotLightData& lightData);
+        static void SetupLight(const DirectionalLightData& lightData);
 
         // ambient strength provided values
         static constexpr float WORLD_NOT_AFFECTED_BY_LIGHT = 1.f;
