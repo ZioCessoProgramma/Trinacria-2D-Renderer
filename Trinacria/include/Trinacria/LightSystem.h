@@ -3,44 +3,47 @@
 #include "Macros.h"
 #include <glm/glm.hpp>
 
+#include "Texture.h"
+
 namespace TRCN_CORE_NAMESPACE
 {
     struct PointLightData
     {
-        glm::vec2 LightPosition;
-        glm::vec2 ViewPosition;
         glm::vec3 LightColor;
+        glm::vec2 LightPosition;
 
         float Attenuation;
-    };
+    }; // 6 float ---> 2 texel
 
     struct SpotLightData
     {
-        glm::vec2 LightPosition;
-        glm::vec2 ViewPosition;
         glm::vec3 LightColor;
+        glm::vec2 LightPosition;
         glm::vec2 LightDirection;
         float Attenuation;
 
         float InnerAngleInDegrees;
         float OuterAngleInDegrees;
-    };
+    }; // 10 float --> 3 texel
 
     struct DirectionalLightData
     {
-        glm::vec2 LightDirection;
-        glm::vec2 ViewPosition;
         glm::vec3 LightColor;
-    };
+        glm::vec2 LightDirection;
+    }; // 5 float ---> 2 texel
 
     class LightSystem
     {
     public:
-        static void SetAmbientStrength(float strength);
+        static void Init(float strength);
+
+        static void SetViewPos(glm::vec2 viewPos);
 
         static void SetupLight(const PointLightData& lightData);
         static void SetupLight(const SpotLightData& lightData);
         static void SetupLight(const DirectionalLightData& lightData);
+
+        static void Done();
 
         // ambient strength provided values
         static constexpr float WORLD_NOT_AFFECTED_BY_LIGHT = 1.f;
@@ -49,5 +52,20 @@ namespace TRCN_CORE_NAMESPACE
         static constexpr float SUPER_BRIGHT = 0.4f;
         static constexpr float DARK = 0.06f;
         static constexpr float SUPER_DARK = 0.01f;
+
+        static constexpr uint32_t MAX_POINT_LIGHTS = 64;
+        static constexpr uint32_t MAX_SPOT_LIGHTS = 32;
+        static constexpr uint32_t MAX_DIRECTIONAL_LIGHTS = 8;
+
+    private:
+        static Texture _pointTexture;
+        static Texture _spotTexture;
+        static Texture _directionalTexture;
+
+        static std::vector<float> _pointLights;
+        static std::vector<float> _spotLights;
+        static std::vector<float> _dirLights;
+
+        static void setupUniform(const std::string& uniformName, Texture& texture, std::vector<float>& data, size_t textureWidth);
     };
 }

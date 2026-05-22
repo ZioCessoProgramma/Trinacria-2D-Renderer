@@ -281,6 +281,8 @@ void TRCN_CORE_NAMESPACE::Renderer::Draw()
 
     glBindVertexArray(_triangleVao);
     glDrawArrays(GL_TRIANGLES, 0, _triangleBuffer.size());
+
+    Texture::ClearTextureSlots();
 }
 
 void TRCN_CORE_NAMESPACE::Renderer::FlushBuffers()

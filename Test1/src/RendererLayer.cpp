@@ -102,23 +102,24 @@ void RendererLayer::OnUpdate(float deltaTime)
 
 	Trinacria::DSL::Renderer::ShaderProgram.SetUniformMat4("u_View", viewProjection);
 
-	Trinacria::DSL::LightSystem::SetAmbientStrength(Trinacria::DSL::LightSystem::DEFAULT_USE_OF_LIGHT);
+	Trinacria::DSL::LightSystem::Init(Trinacria::DSL::LightSystem::DEFAULT_USE_OF_LIGHT);
 
-	Trinacria::DSL::PointLightData pointLight(pointLightTransform.Position,
-		_cameraData.CameraPos, glm::vec3(1.f), 1.f);
+	Trinacria::DSL::PointLightData pointLight( glm::vec3(1.f, 1.f, 1.f),
+		pointLightTransform.Position, 1.f);
 
-	Trinacria::DSL::SpotLightData spotLight(spotLightTransform.Position,
-		_cameraData.CameraPos,
-		glm::vec3(1.f), glm::vec2(-1.f, 1.f), 1.f,
+	Trinacria::DSL::SpotLightData spotLight(glm::vec3(1.f), spotLightTransform.Position,
+		glm::vec2(-1.f, 1.f), 1.f,
 		12.5f, 17.5f);
 
-	Trinacria::DSL::DirectionalLightData dirLight(glm::vec2(0.1f, 0.4f),
-		_cameraData.CameraPos, glm::vec3(sin(glfwGetTime() * 2) / 10));
+	Trinacria::DSL::DirectionalLightData dirLight(glm::vec3(0.1f), glm::vec2(0.1f, 0.4f));
 
+	Trinacria::DSL::LightSystem::SetViewPos(_cameraData.CameraPos);
 
 	Trinacria::DSL::LightSystem::SetupLight(pointLight);
 	Trinacria::DSL::LightSystem::SetupLight(spotLight);
 	Trinacria::DSL::LightSystem::SetupLight(dirLight);
+
+	Trinacria::DSL::LightSystem::Done();
 
 	Trinacria::DSL::Renderer::Draw();
 	Trinacria::DSL::Renderer::FlushBuffers();

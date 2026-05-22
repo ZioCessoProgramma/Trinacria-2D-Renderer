@@ -12,35 +12,37 @@ uniform sampler2D u_Textures[32]; // no tex, tex1, tex...
 
 struct PointLight
 {
-	vec2 u_LightPos;
-	vec3 u_LightColor;
-	vec2 u_ViewPos;
-	float u_Attenuation;
+	vec3 LightColor;
+	vec2 LightPos;
+	float Attenuation;
 };
 
 struct SpotLight
 {
-	vec2 u_LightPos;
-	vec3 u_LightColor;
-	vec2 u_ViewPos;
-	float u_Attenuation;
-	vec2 u_LightDirection;
-	float u_InnerCutOff;
-	float u_OuterCutOff;
+	vec2 LightPos;
+	vec3 LightColor;
+	float Attenuation;
+	vec2 LightDirection;
+	float InnerCutOff;
+	float OuterCutOff;
 };
 
 
 struct DirectionalLight
 {
-	vec2 u_LightDirection;
-	vec2 u_ViewPos;
-	vec3 u_LightColor;
+	vec2 LightDirection;
+	vec3 LightColor;
 };
 
+uniform vec2 u_ViewPos;
 
-uniform PointLight u_PointLight;
+/*uniform PointLight u_PointLight;
 uniform SpotLight u_SpotLight;
-uniform DirectionalLight u_DirectionalLight;
+uniform DirectionalLight u_DirectionalLight;*/
+
+uniform sampler2D u_PointLights;
+uniform sampler2D u_SpotLights;
+uniform sampler2D u_DirLights;
 
 vec3 CalculateLight(vec2 lightPos, float attenuation, vec3 lightColor,
 					float diffuseStrength, float specularStrength, vec2 viewPos, vec3 color);
@@ -49,6 +51,10 @@ vec3 CalculateDirectionalLight(vec2 lightDir, vec2 viewPos, vec3 lightColor, vec
 							   float specStrength, float diffuseStrength);
 
 vec3 SumAllLights(vec3 baseColor);
+
+PointLight FetchPointLight(int index);
+SpotLight FetchSpotLight(int index);
+DirectionalLight FetchDirectionalLight(int index);
 
 uniform float u_AmbientStrength;
 
@@ -62,7 +68,7 @@ void main()
 	{
 		vec4 color = texture(u_Textures[Index], vec2(TexCoords.x, 1 - TexCoords.y));
 
-		if(color.a != 1.f)
+		if(color.a < 0.1f)
 		{
 			discard;
 		}
@@ -115,33 +121,38 @@ vec3 SumAllLights(vec3 baseColor)
 	float specularStrength = 0.5f;
 	float diffuseStrength = 10.f;
 
-	vec3 pointLight = CalculateLight(u_PointLight.u_LightPos, u_PointLight.u_Attenuation,
-									 u_PointLight.u_LightColor,
-									 diffuseStrength, specularStrength, u_PointLight.u_ViewPos,
+	PointLight pointLight = FetchPointLight(0);
+
+	vec3 pointLightWeight = CalculateLight(pointLight.LightPos, pointLight.Attenuation,
+										   pointLight.LightColor,
+									 diffuseStrength, specularStrength, u_ViewPos,
 									 baseColor);
 
-	vec3 spotLight = vec3(0.f);
 
-	vec2 spotLightDirection = normalize(u_SpotLight.u_LightDirection);
+	SpotLight spotLight = FetchSpotLight(0);
 
-	vec2 lightDir = vec2(normalize(vec3(u_SpotLight.u_LightPos, 0.f) - vec3(FragPos, 0.f)));
+	vec2 spotLightDirection = normalize(spotLight.LightDirection);
+
+	vec2 lightDir = vec2(normalize(vec3(spotLight.LightPos, 0.f) - vec3(FragPos, 0.f)));
 
 	float theta = dot(lightDir, normalize(-spotLightDirection));
-	float epsilon = u_SpotLight.u_InnerCutOff - u_SpotLight.u_OuterCutOff;
-	float intesity = clamp((theta - u_SpotLight.u_OuterCutOff) / epsilon, 0.f, 1.f);
+	float epsilon = spotLight.InnerCutOff - spotLight.OuterCutOff;
+	float intesity = clamp((theta - spotLight.OuterCutOff) / epsilon, 0.f, 1.f);
 
-	spotLight = CalculateLight(u_SpotLight.u_LightPos, u_SpotLight.u_Attenuation,
-							   u_SpotLight.u_LightColor, 2.f, specularStrength,
-							   u_SpotLight.u_ViewPos, baseColor);
+	vec3 spotLightWeight = CalculateLight(spotLight.LightPos, spotLight.Attenuation,
+							   spotLight.LightColor, 2.f, specularStrength,
+							   u_ViewPos, baseColor);
 
-	spotLight = spotLight * intesity;
+	spotLightWeight = spotLightWeight * intesity;
 
-	vec3 directionalLight = CalculateDirectionalLight(u_DirectionalLight.u_LightDirection,
-													  u_DirectionalLight.u_ViewPos,
-													  u_DirectionalLight.u_LightColor, baseColor,
+	DirectionalLight dirLight = FetchDirectionalLight(0);
+
+	vec3 directionalLight = CalculateDirectionalLight(dirLight.LightDirection,
+													  u_ViewPos,
+													  dirLight.LightColor, baseColor,
 													  specularStrength, diffuseStrength);
 
-	return pointLight + spotLight + directionalLight;
+	return  pointLightWeight + spotLightWeight  + directionalLight;
 }
 
 vec3 CalculateDirectionalLight(vec2 lightDir, vec2 viewPos, vec3 lightColor,
@@ -165,4 +176,55 @@ vec3 CalculateDirectionalLight(vec2 lightDir, vec2 viewPos, vec3 lightColor,
 	vec3 specular = specStrength * spec * lightColor;
 
 	return ambient + diffuse + specular;
+}
+
+PointLight FetchPointLight(int index)
+{
+	int x = index * 2; // point light occupates 2 texels;
+
+	vec4 t0 = texelFetch(u_PointLights, ivec2(x, 0), 0);
+	vec4 t1 = texelFetch(u_PointLights, ivec2(x + 1, 0), 0);
+
+	PointLight light;
+
+	light.LightColor = t0.rgb;
+	light.LightPos = vec2(t0.a, t1.r);
+	light.Attenuation = t1.g;
+
+	return light;
+}
+
+SpotLight FetchSpotLight(int index)
+{
+	int x = index * 3; // spot light occupatess 3 texels
+
+	vec4 t0 = texelFetch(u_SpotLights, ivec2(x, 0), 0);
+	vec4 t1 = texelFetch(u_SpotLights, ivec2(x + 1, 0), 0);
+	vec4 t2 = texelFetch(u_SpotLights, ivec2(x + 2, 0), 0);
+
+	SpotLight light;
+
+	light.LightColor = t0.rgb;
+	light.LightPos = vec2(t0.a, t1.r);
+	light.LightDirection = t1.gb;
+	light.Attenuation = t1.a;
+	light.InnerCutOff = t2.r;
+	light.OuterCutOff = t2.g;
+
+	return light;
+}
+
+DirectionalLight FetchDirectionalLight(int index)
+{
+	int x = index * 2; // directional light occupates 2 texels ( 5 byte )
+
+	vec4 t0 = texelFetch(u_DirLights, ivec2(x, 0), 0);
+	vec4 t1 = texelFetch(u_DirLights, ivec2(x + 1, 0), 0);
+
+	DirectionalLight light;
+
+	light.LightColor = t0.rgb;
+	light.LightDirection = vec2(t0.a, t1.r);
+
+	return light;
 }
