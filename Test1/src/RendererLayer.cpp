@@ -18,6 +18,12 @@ void RendererLayer::OnUpdate(float deltaTime)
 {
 	Trinacria::DSL::Renderer::ClearColorBuffer();
 
+	// Ground
+
+	Trinacria::DSL::Transform ground(glm::vec2(0.f), glm::vec2(100.f));
+
+	Trinacria::DSL::Renderer::CreateQuad(ground);
+
 	// Grid
 
 	const float size = 1.f / 2;
@@ -76,15 +82,20 @@ void RendererLayer::OnUpdate(float deltaTime)
 	// Point light
 
 	Trinacria::DSL::Transform pointLightTransform(glm::vec2(-4.f, 3.f));
+	Trinacria::DSL::Transform pointLightTransform1(glm::vec2(4.f, 3.f));
 
 	Trinacria::DSL::Renderer::CreateQuad(pointLightTransform);
 
 	// Spotlight
 
-	Trinacria::DSL::Transform spotLightTransform(glm::vec2(5.f, 0.f), glm::vec2(0.5f), 0,
+	Trinacria::DSL::Transform spotLightTransform(glm::vec2(7.f, -3.f), glm::vec2(0.5f), 0,
 		glm::vec2(1.f, 0.f));
 
+	Trinacria::DSL::Transform spotLightTransform1(glm::vec2(15.f, -3.f), glm::vec2(0.5f), 0,
+	glm::vec2(1.f, 0.f));
+
 	Trinacria::DSL::Renderer::CreateQuad(spotLightTransform);
+	Trinacria::DSL::Renderer::CreateQuad(spotLightTransform1);
 
 
 	Trinacria::DSL::Renderer::EndScene();
@@ -107,7 +118,14 @@ void RendererLayer::OnUpdate(float deltaTime)
 	Trinacria::DSL::PointLightData pointLight( glm::vec3(1.f, 1.f, 1.f),
 		pointLightTransform.Position, 1.f);
 
+	Trinacria::DSL::PointLightData pointLight1( glm::vec3(1.f, 1.f, 1.f),
+	pointLightTransform1.Position, 1.f);
+
 	Trinacria::DSL::SpotLightData spotLight(glm::vec3(1.f), spotLightTransform.Position,
+		glm::vec2(-1.f, 1.f), 1.f,
+		12.5f, 17.5f);
+
+	Trinacria::DSL::SpotLightData spotLight1(glm::vec3(1.f), spotLightTransform1.Position,
 		glm::vec2(-1.f, 1.f), 1.f,
 		12.5f, 17.5f);
 
@@ -115,7 +133,9 @@ void RendererLayer::OnUpdate(float deltaTime)
 
 	Trinacria::DSL::LightSystem::SetViewPos(_cameraData.CameraPos);
 
+	Trinacria::DSL::LightSystem::SetupLight(pointLight1);
 	Trinacria::DSL::LightSystem::SetupLight(pointLight);
+	Trinacria::DSL::LightSystem::SetupLight(spotLight1);
 	Trinacria::DSL::LightSystem::SetupLight(spotLight);
 	Trinacria::DSL::LightSystem::SetupLight(dirLight);
 

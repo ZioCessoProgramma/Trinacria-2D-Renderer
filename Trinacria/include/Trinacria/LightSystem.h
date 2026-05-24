@@ -62,10 +62,12 @@ namespace TRCN_CORE_NAMESPACE
         static Texture _spotTexture;
         static Texture _directionalTexture;
 
-        static std::vector<float> _pointLights;
-        static std::vector<float> _spotLights;
-        static std::vector<float> _dirLights;
+        static std::array<float, MAX_POINT_LIGHTS * 8> _pointLights;
+        static std::array<float, MAX_SPOT_LIGHTS * 12> _spotLights;
+        static std::array<float, MAX_DIRECTIONAL_LIGHTS * 8> _dirLights;
 
-        static void setupUniform(const std::string& uniformName, Texture& texture, std::vector<float>& data, size_t textureWidth);
+        static int _pointLightIndex;
+        static int _spotLightIndex;
+        static int _dirLightIndex;
     };
 }

@@ -118,41 +118,76 @@ vec3 CalculateLight(vec2 lightPos, float attenuation, vec3 lightColor,
 vec3 SumAllLights(vec3 baseColor)
 {
 
+	vec3 pointLightWeight = vec3(0);
+
 	float specularStrength = 0.5f;
 	float diffuseStrength = 10.f;
 
-	PointLight pointLight = FetchPointLight(0);
+	for(int i = 0; i < (textureSize(u_PointLights, 0).x / 2); i++)
+	{
+		PointLight pointLight = FetchPointLight(i);
 
-	vec3 pointLightWeight = CalculateLight(pointLight.LightPos, pointLight.Attenuation,
-										   pointLight.LightColor,
-									 diffuseStrength, specularStrength, u_ViewPos,
-									 baseColor);
+		if(pointLight.LightColor == vec3(0.f))
+		{
+			break;
+		}
+
+		 pointLightWeight += CalculateLight(pointLight.LightPos, pointLight.Attenuation,
+											   pointLight.LightColor,
+											   diffuseStrength, specularStrength, u_ViewPos,
+											   baseColor);
+	}
 
 
-	SpotLight spotLight = FetchSpotLight(0);
+	vec3 spotLightWeight = vec3(0.f);
 
-	vec2 spotLightDirection = normalize(spotLight.LightDirection);
+	for(int i = 0; i < textureSize(u_SpotLights, 0).x / 3; i++)
+	{
+		SpotLight spotLight = FetchSpotLight(i);
 
-	vec2 lightDir = vec2(normalize(vec3(spotLight.LightPos, 0.f) - vec3(FragPos, 0.f)));
+		if(spotLight.LightColor == vec3(0.f))
+		{
+			break;
+		}
 
-	float theta = dot(lightDir, normalize(-spotLightDirection));
-	float epsilon = spotLight.InnerCutOff - spotLight.OuterCutOff;
-	float intesity = clamp((theta - spotLight.OuterCutOff) / epsilon, 0.f, 1.f);
+		vec2 spotLightDirection = normalize(spotLight.LightDirection);
 
-	vec3 spotLightWeight = CalculateLight(spotLight.LightPos, spotLight.Attenuation,
-							   spotLight.LightColor, 2.f, specularStrength,
-							   u_ViewPos, baseColor);
+		vec2 lightDir = vec2(normalize(vec3(spotLight.LightPos, 0.f) - vec3(FragPos, 0.f)));
 
-	spotLightWeight = spotLightWeight * intesity;
+		float theta = dot(lightDir, normalize(-spotLightDirection));
+		float epsilon = spotLight.InnerCutOff - spotLight.OuterCutOff;
+		float intesity = clamp((theta - spotLight.OuterCutOff) / epsilon, 0.f, 1.f);
 
-	DirectionalLight dirLight = FetchDirectionalLight(0);
+		vec3 localSpotLightWeight = CalculateLight(spotLight.LightPos, spotLight.Attenuation,
+												   spotLight.LightColor, 2.f, specularStrength,
+												   u_ViewPos, baseColor);
 
-	vec3 directionalLight = CalculateDirectionalLight(dirLight.LightDirection,
-													  u_ViewPos,
-													  dirLight.LightColor, baseColor,
-													  specularStrength, diffuseStrength);
+		localSpotLightWeight = localSpotLightWeight * intesity;
 
-	return  pointLightWeight + spotLightWeight  + directionalLight;
+		spotLightWeight += localSpotLightWeight;
+	}
+
+
+	vec3 dirLightWeight = vec3(0.f);
+
+	for(int i = 0; i < textureSize(u_DirLights, 0).x / 2; i++)
+	{
+		DirectionalLight dirLight = FetchDirectionalLight(i);
+
+		if(dirLight.LightColor == vec3(0.f))
+		{
+			break;
+		}
+
+		dirLightWeight += CalculateDirectionalLight(dirLight.LightDirection,
+														  u_ViewPos,
+														  dirLight.LightColor, baseColor,
+														  specularStrength, diffuseStrength);
+	}
+
+
+
+	return  pointLightWeight + spotLightWeight  + dirLightWeight;
 }
 
 vec3 CalculateDirectionalLight(vec2 lightDir, vec2 viewPos, vec3 lightColor,
