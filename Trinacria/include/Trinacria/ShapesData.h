@@ -16,6 +16,9 @@ namespace TRCN_CORE_NAMESPACE
         QuadData(const Transform& transform, Sprite* sprite, const glm::vec3& color = glm::vec3(1.f)) :
             Transform(transform), Sprite(sprite), Color(color) { }
 
+        QuadData(const Transform& transform, const glm::vec3& color = glm::vec3(1.f)) :
+            Transform(transform), Color(color) { }
+
         Transform Transform;
         Texture* Texture = nullptr;
         Sprite* Sprite = nullptr;
@@ -27,13 +30,20 @@ namespace TRCN_CORE_NAMESPACE
 
     struct TriangleData
     {
-        TriangleData(const Transform& transform, Texture* texture, TriangleOrientation orientation,
+        TriangleData(const Transform& transform, Texture* texture,
+            TriangleOrientation orientation = TriangleOrientation::Orientation_RIGHT,
             const glm::vec3& color = glm::vec3(1.f)) :
                 Transform(transform), Texture(texture), Orientation(orientation), Color(color) { }
 
-        TriangleData(const Transform& transform, Sprite* sprite, TriangleOrientation orientation,
+        TriangleData(const Transform& transform, Sprite* sprite,
+            TriangleOrientation orientation = TriangleOrientation::Orientation_RIGHT,
             const glm::vec3& color = glm::vec3(1.f)) :
                 Transform(transform), Sprite(sprite), Orientation(orientation), Color(color) { }
+
+        TriangleData(const Transform& transform,
+            TriangleOrientation orientation = TriangleOrientation::Orientation_RIGHT,
+            const glm::vec3& color = glm::vec3(1.f)) :
+            Transform(transform), Orientation(orientation), Color(color) { }
 
         Transform Transform;
         Texture* Texture = nullptr;

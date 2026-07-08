@@ -8,6 +8,7 @@
 #include <Trinacria/ShapesData.h>
 
 #include "Trinacria/LightSystem.h"
+#include "Trinacria/Materials.h"
 
 
 #define ANIMATION_FPS 12
@@ -21,8 +22,9 @@ void RendererLayer::OnUpdate(float deltaTime)
 	// Ground
 
 	Trinacria::DSL::Transform ground(glm::vec2(0.f), glm::vec2(100.f));
+	Trinacria::DSL::QuadData groundData(ground);
 
-	Trinacria::DSL::Renderer::CreateQuad(ground);
+	Trinacria::DSL::Renderer::CreateQuad(groundData);
 
 	// Grid
 
@@ -35,7 +37,10 @@ void RendererLayer::OnUpdate(float deltaTime)
 		{
 			Trinacria::DSL::Texture* tex = i % 2 == 0 ? &_grey : &_purple;
 
-			Trinacria::DSL::Renderer::CreateQuad(glm::vec2(x * size, y * size), tex);
+			Trinacria::DSL::Transform transform(glm::vec2(x * size, y * size));
+			Trinacria::DSL::QuadData data(transform, tex);
+
+			Trinacria::DSL::Renderer::CreateQuad(data);
 			i++;
 		}
 	}
@@ -46,8 +51,9 @@ void RendererLayer::OnUpdate(float deltaTime)
 	Trinacria::DSL::Transform transform1(glm::vec2(0.5f), glm::vec2(4.f),
 		glfwGetTime() * 60);
 
-	Trinacria::DSL::Renderer::CreateQuad(transform1, Trinacria::DSL::Texture::NO_TEXTURE
-		, glm::vec3(0.1f, 0.6f, 0.1f));
+	Trinacria::DSL::QuadData grassData(transform1, glm::vec3(0.1f, 0.6f, 0.1f));
+
+	Trinacria::DSL::Renderer::CreateQuad(grassData);
 
 	// Tree
 
@@ -62,7 +68,7 @@ void RendererLayer::OnUpdate(float deltaTime)
 
 	{
 		Trinacria::DSL::Transform transform(glm::vec2(3.f), glm::vec2(6.f), 0.f, glm::vec2(0.f));
-		Trinacria::DSL::QuadData data(transform, Trinacria::DSL::Texture::NO_TEXTURE, glm::vec3(0.7f, 0.2f, 0.2f));
+		Trinacria::DSL::QuadData data(transform, glm::vec3(0.7f, 0.2f, 0.2f));
 
 		Trinacria::DSL::Renderer::CreateQuad(data);
 	}
@@ -76,26 +82,34 @@ void RendererLayer::OnUpdate(float deltaTime)
 	{
 		Trinacria::DSL::Transform transform(glm::vec2(-4.f), glm::vec2(4.f), sin(glfwGetTime()) * 20);
 
-		Trinacria::DSL::Renderer::CreateTriangle(transform);
+		Trinacria::DSL::TriangleData data(transform);
+
+		Trinacria::DSL::Renderer::CreateTriangle(data);
 	}
 
 	// Point light
 
 	Trinacria::DSL::Transform pointLightTransform(glm::vec2(-4.f, 3.f));
-	Trinacria::DSL::Transform pointLightTransform1(glm::vec2(4.f, 3.f));
+	Trinacria::DSL::QuadData pointData(pointLightTransform);
 
-	Trinacria::DSL::Renderer::CreateQuad(pointLightTransform);
+
+	Trinacria::DSL::Renderer::CreateQuad(pointData);
+
+	Trinacria::DSL::Transform pointLightTransform1(glm::vec2(4.f, 4.f));
 
 	// Spotlight
 
-	Trinacria::DSL::Transform spotLightTransform(glm::vec2(7.f, -3.f), glm::vec2(0.5f), 0,
+	Trinacria::DSL::Transform spotLightTransform(glm::vec2(-7.f, -3.f), glm::vec2(0.5f), 0,
 		glm::vec2(1.f, 0.f));
 
 	Trinacria::DSL::Transform spotLightTransform1(glm::vec2(15.f, -3.f), glm::vec2(0.5f), 0,
 	glm::vec2(1.f, 0.f));
 
-	Trinacria::DSL::Renderer::CreateQuad(spotLightTransform);
-	Trinacria::DSL::Renderer::CreateQuad(spotLightTransform1);
+	Trinacria::DSL::QuadData data(spotLightTransform);
+	Trinacria::DSL::QuadData data1(spotLightTransform1);
+
+	Trinacria::DSL::Renderer::CreateQuad(data);
+	Trinacria::DSL::Renderer::CreateQuad(data1);
 
 
 	Trinacria::DSL::Renderer::EndScene();
@@ -116,7 +130,7 @@ void RendererLayer::OnUpdate(float deltaTime)
 	Trinacria::DSL::LightSystem::Init(Trinacria::DSL::LightSystem::DEFAULT_USE_OF_LIGHT);
 
 	Trinacria::DSL::PointLightData pointLight( glm::vec3(1.f, 1.f, 1.f),
-		pointLightTransform.Position, 1.f);
+		pointLightTransform.Position, 40.f);
 
 	Trinacria::DSL::PointLightData pointLight1( glm::vec3(1.f, 1.f, 1.f),
 	pointLightTransform1.Position, 1.f);
@@ -138,6 +152,8 @@ void RendererLayer::OnUpdate(float deltaTime)
 	Trinacria::DSL::LightSystem::SetupLight(spotLight1);
 	Trinacria::DSL::LightSystem::SetupLight(spotLight);
 	Trinacria::DSL::LightSystem::SetupLight(dirLight);
+
+	Trinacria::DSL::SOLID_OPAQUE.SetUniforms();
 
 	Trinacria::DSL::LightSystem::Done();
 

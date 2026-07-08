@@ -3,6 +3,7 @@
 #include "Sprite.h"
 #include "Assert.h"
 #include "Renderer.h"
+#include "ShapesData.h"
 
 #include "Trinacria/Macros.h"
 
@@ -27,8 +28,11 @@ namespace TRCN_CORE_NAMESPACE
 
 				_accumulatedDeltaTime = 0.f;
 			}
-			
-			Renderer::CreateQuad(position, &_sprites[_currentSpriteIndex], glm::vec2(0.5f), color);
+
+			Transform transform(position, glm::vec2(0.5f));
+			QuadData data(transform, &_sprites[_currentSpriteIndex], color);
+
+			Renderer::CreateQuad(data);
 			
 		}
 

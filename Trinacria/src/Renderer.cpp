@@ -77,7 +77,7 @@ void TRCN_CORE_NAMESPACE::Renderer::Init()
     _triangleBuffer.reserve(MaxTrianglesVertices);
 }
 
-void TRCN_CORE_NAMESPACE::Renderer::CreateQuad(const glm::vec2& position, Texture* texture, const glm::vec2& size, const glm::vec3& color, const glm::mat4& transform, const QuadTexCoords& texCoords)
+void TRCN_CORE_NAMESPACE::Renderer::createQuad(const glm::vec2& position, Texture* texture, const glm::vec2& size, const glm::vec3& color, const glm::mat4& transform, const QuadTexCoords& texCoords)
 {
     if (_quadBuffer.size() > MaxQuadVertices)
     {
@@ -133,45 +133,45 @@ void TRCN_CORE_NAMESPACE::Renderer::CreateQuad(const glm::vec2& position, Textur
     _quadIndexBuffer.push_back(offset);
 }
 
-void TRCN_CORE_NAMESPACE::Renderer::CreateQuad(const glm::vec2& position, Sprite* sprite, const glm::vec2& size, const glm::vec3& color, const glm::mat4& transform)
+void TRCN_CORE_NAMESPACE::Renderer::createQuad(const glm::vec2& position, Sprite* sprite, const glm::vec2& size, const glm::vec3& color, const glm::mat4& transform)
 {
     QuadTexCoords texCoords = sprite->GetTexCoords();
     texCoords.Normalize(sprite->GetParent()->GetWidth(), sprite->GetParent()->GetHeight());
 
-    CreateQuad(position, sprite->GetParent(), size, color, transform, texCoords);
+    createQuad(position, sprite->GetParent(), size, color, transform, texCoords);
 }
 
-void Trinacria::DSL::Renderer::CreateQuad(const Transform& transform, Sprite* texture, const glm::vec3& color)
+void Trinacria::DSL::Renderer::createQuad(const Transform& transform, Sprite* texture, const glm::vec3& color)
 {
-    CreateQuad(-transform.Pivot, texture, glm::vec2(1.f), color, transform.GetMatrix());
+    createQuad(-transform.Pivot, texture, glm::vec2(1.f), color, transform.GetMatrix());
 }
 
 void Trinacria::DSL::Renderer::CreateTriangle(const struct TriangleData& triangleData)
 {
     if (triangleData.Texture != nullptr)
     {
-        CreateTriangle(triangleData.Transform, triangleData.Texture, triangleData.Orientation,
+        createTriangle(triangleData.Transform, triangleData.Texture, triangleData.Orientation,
             triangleData.Color, triangleData.TexCoords);
     }
     else if (triangleData.Sprite != nullptr)
     {
-        CreateTriangle(triangleData.Transform, triangleData.Sprite, triangleData.Orientation,
+        createTriangle(triangleData.Transform, triangleData.Sprite, triangleData.Orientation,
             triangleData.Color);
     }
     // using plain color
     else
     {
-        CreateTriangle(triangleData.Transform, Texture::NO_TEXTURE, triangleData.Orientation,
+        createTriangle(triangleData.Transform, Texture::NO_TEXTURE, triangleData.Orientation,
             triangleData.Color);
     }
 }
 
-void Trinacria::DSL::Renderer::CreateQuad(const Transform& transform, Texture* texture, const glm::vec3& color, const QuadTexCoords& texCoords)
+void Trinacria::DSL::Renderer::createQuad(const Transform& transform, Texture* texture, const glm::vec3& color, const QuadTexCoords& texCoords)
 {
-    CreateQuad(-transform.Pivot, texture, glm::vec2(1.f), color, transform.GetMatrix(), texCoords);
+    createQuad(-transform.Pivot, texture, glm::vec2(1.f), color, transform.GetMatrix(), texCoords);
 }
 
-void TRCN_CORE_NAMESPACE::Renderer::CreateTriangle(const glm::vec2& position, Texture* texture, TriangleOrientation orientation, const glm::vec2& size,
+void TRCN_CORE_NAMESPACE::Renderer::createTriangle(const glm::vec2& position, Texture* texture, TriangleOrientation orientation, const glm::vec2& size,
                                                    const glm::vec3& color, const glm::mat4& transform, const TriangleTexCoords& texCoords)
 {
     if (_triangleBuffer.size() > MaxTrianglesVertices)
@@ -224,26 +224,26 @@ void TRCN_CORE_NAMESPACE::Renderer::CreateTriangle(const glm::vec2& position, Te
         texCoords.Coord2, color);
 }
 
-void Trinacria::DSL::Renderer::CreateTriangle(const glm::vec2& position, Sprite* sprite,
+void Trinacria::DSL::Renderer::createTriangle(const glm::vec2& position, Sprite* sprite,
     TriangleOrientation orientation, const glm::vec2& size, const glm::vec3& color, const glm::mat4& transform)
 {
     TriangleTexCoords texCoords = sprite->GetTriangleTexCoords();
     texCoords.Normalize(sprite->GetParent()->GetWidth(), sprite->GetParent()->GetHeight());
 
-    CreateTriangle(position, sprite->GetParent(), orientation, size, color, transform, texCoords);
+    createTriangle(position, sprite->GetParent(), orientation, size, color, transform, texCoords);
 }
 
-void Trinacria::DSL::Renderer::CreateTriangle(const Transform& transform, Texture* texture,
+void Trinacria::DSL::Renderer::createTriangle(const Transform& transform, Texture* texture,
     TriangleOrientation orientation, const glm::vec3& color, const TriangleTexCoords& texCoords)
 {
-    CreateTriangle(-transform.Pivot, texture, orientation,
+    createTriangle(-transform.Pivot, texture, orientation,
         glm::vec2(0.5f),color, transform.GetMatrix(), texCoords);
 }
 
-void Trinacria::DSL::Renderer::CreateTriangle(const Transform& transform, Sprite* sprite,
+void Trinacria::DSL::Renderer::createTriangle(const Transform& transform, Sprite* sprite,
     TriangleOrientation orientation, const glm::vec3& color)
 {
-    CreateTriangle(-transform.Pivot, sprite, orientation,
+    createTriangle(-transform.Pivot, sprite, orientation,
         glm::vec2(1.f), color, transform.GetMatrix());
 }
 
@@ -337,16 +337,16 @@ void Trinacria::DSL::Renderer::CreateQuad(const QuadData& quadData)
 {
     if (quadData.Texture != nullptr)
     {
-        CreateQuad(quadData.Transform, quadData.Texture, quadData.Color, quadData.TexCoords);
+        createQuad(quadData.Transform, quadData.Texture, quadData.Color, quadData.TexCoords);
     }
     else if (quadData.Sprite != nullptr)
     {
-        CreateQuad(quadData.Transform, quadData.Sprite, quadData.Color);
+        createQuad(quadData.Transform, quadData.Sprite, quadData.Color);
     }
     // using plain color
     else
     {
-        CreateQuad(quadData.Transform, Texture::NO_TEXTURE, quadData.Color);
+        createQuad(quadData.Transform, Texture::NO_TEXTURE, quadData.Color);
     }
 }
 

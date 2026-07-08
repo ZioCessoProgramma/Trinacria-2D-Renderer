@@ -34,11 +34,18 @@ struct DirectionalLight
 	vec3 LightColor;
 };
 
-uniform vec2 u_ViewPos;
+struct Material
+{
+	vec3 ambient;
+	vec3 diffuse;
+	vec3 specular;
 
-/*uniform PointLight u_PointLight;
-uniform SpotLight u_SpotLight;
-uniform DirectionalLight u_DirectionalLight;*/
+	float shininess;
+};
+
+uniform Material u_Material;
+
+uniform vec2 u_ViewPos;
 
 uniform sampler2D u_PointLights;
 uniform sampler2D u_SpotLights;
@@ -47,8 +54,8 @@ uniform sampler2D u_DirLights;
 vec3 CalculateLight(vec2 lightPos, float attenuation, vec3 lightColor,
 					float diffuseStrength, float specularStrength, vec2 viewPos, vec3 color);
 
-vec3 CalculateDirectionalLight(vec2 lightDir, vec2 viewPos, vec3 lightColor, vec3 objColor,
-							   float specStrength, float diffuseStrength);
+vec3 CalculateDirectionalLight(vec2 lightDir, vec2 viewPos, vec3 lightColor,
+							   float specStrength, float diffuseStrength, vec3 baseColor);
 
 vec3 SumAllLights(vec3 baseColor);
 
@@ -103,16 +110,16 @@ vec3 CalculateLight(vec2 lightPos, float attenuation, vec3 lightColor,
 
 	float dist = length(lightPos - FragPos);
 	float diff = 1.0 / (1.0 + attenuation * dist * dist);
-	vec3 diffuse = diff * lightColor * diffuseStrength;
+	vec3 diffuse = diff * lightColor * diffuseStrength * u_Material.diffuse;
 
 	vec3 viewDir = normalize(vec3(viewPos, 0.f) - vec3(FragPos, 0.f));
 	vec3 reflectDir = reflect(-lightDir, vec3(0.f, 0.f, 1.f));
 
 	vec3 halfDir = normalize(lightDir + viewDir);
-	float spec = pow(max(dot(vec3(0.f, 0.f, 1.f), halfDir), 0.f), 32.0);
-	vec3 specular = spec * specularStrength * lightColor;
+	float spec = pow(max(dot(vec3(0.f, 0.f, 1.f), halfDir), 0.f), u_Material.shininess);
+	vec3 specular = spec * specularStrength * lightColor * u_Material.specular;
 
-	return min(color * (u_AmbientStrength + diffuse + specular), vec3(1.f));
+	return min(color * (u_AmbientStrength * u_Material.ambient + diffuse + specular), vec3(1.f));
 }
 
 vec3 SumAllLights(vec3 baseColor)
@@ -181,8 +188,7 @@ vec3 SumAllLights(vec3 baseColor)
 
 		dirLightWeight += CalculateDirectionalLight(dirLight.LightDirection,
 														  u_ViewPos,
-														  dirLight.LightColor, baseColor,
-														  specularStrength, diffuseStrength);
+														  dirLight.LightColor, specularStrength, 1.f, baseColor);
 	}
 
 
@@ -191,7 +197,7 @@ vec3 SumAllLights(vec3 baseColor)
 }
 
 vec3 CalculateDirectionalLight(vec2 lightDir, vec2 viewPos, vec3 lightColor,
-							   vec3 objColor, float specStrength, float diffuseStrength)
+							   float specStrength, float diffuseStrength, vec3 baseColor)
 {
 
 	vec3 N = vec3(0.f, 0.f, 1.f);
@@ -206,11 +212,11 @@ vec3 CalculateDirectionalLight(vec2 lightDir, vec2 viewPos, vec3 lightColor,
 		spec = pow(max(dot(N, H), 0.0), 32);
 	}
 
-	vec3 ambient = 0.2 * objColor;
-	vec3 diffuse = diff * objColor * lightColor;
-	vec3 specular = specStrength * spec * lightColor;
+	vec3 ambient = u_AmbientStrength * u_Material.ambient;
+	vec3 diffuse = diff * u_Material.diffuse * lightColor * diffuseStrength;
+	vec3 specular = specStrength * spec * lightColor * u_Material.specular;
 
-	return ambient + diffuse + specular;
+	return min((ambient + diffuse + specular) * baseColor, 1.f);
 }
 
 PointLight FetchPointLight(int index)
