@@ -6,11 +6,6 @@
 #include <fstream>
 #include <iostream>
 
-TRCN_CORE_NAMESPACE::Shader::~Shader()
-{
-	glDeleteProgram(_shaderProgram);
-}
-
 void TRCN_CORE_NAMESPACE::Shader::Bind()
 {
 	glUseProgram(_shaderProgram);

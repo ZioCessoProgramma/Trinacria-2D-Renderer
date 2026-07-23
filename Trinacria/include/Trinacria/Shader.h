@@ -10,7 +10,7 @@ namespace TRCN_CORE_NAMESPACE
     {
     public:
         Shader() = default;
-        ~Shader();
+        ~Shader() = default;
 
         void LoadShader(const std::string& vert, const std::string& frag);
 

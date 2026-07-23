@@ -6,6 +6,7 @@
 #include "ShapesData.h"
 
 #include "Trinacria/Macros.h"
+#include <cstring>
 
 namespace TRCN_CORE_NAMESPACE
 {
@@ -13,7 +14,7 @@ namespace TRCN_CORE_NAMESPACE
 	class Animation
 	{
 	public:
-		void Play(float deltaTime, const glm::vec2& position, const glm::vec3& color = 1.f)
+		void Play(float deltaTime, const glm::vec2& position, const glm::vec3& color = 1.f, int materialIndex = 0)
 		{
 			_accumulatedDeltaTime += deltaTime;
 
@@ -30,7 +31,7 @@ namespace TRCN_CORE_NAMESPACE
 			}
 
 			Transform transform(position, glm::vec2(0.5f));
-			QuadData data(transform, &_sprites[_currentSpriteIndex], color);
+			QuadData data(transform, &_sprites[_currentSpriteIndex], materialIndex, color);
 
 			Renderer::CreateQuad(data);
 			

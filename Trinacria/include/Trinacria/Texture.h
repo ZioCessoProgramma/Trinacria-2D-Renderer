@@ -14,7 +14,7 @@ namespace TRCN_CORE_NAMESPACE
 		Texture(uint32_t id, int width, int height, int channels);
 		Texture() = default;
 
-		~Texture();
+		~Texture() = default;
 
 		virtual int GetId() { return _id; }
 
@@ -30,6 +30,7 @@ namespace TRCN_CORE_NAMESPACE
 
 		virtual void Bind(uint32_t textureSlot);
 		virtual void Bind(); // to first available texture slot
+		virtual void Cleanup();
 
 		static void ClearTextureSlots();
 

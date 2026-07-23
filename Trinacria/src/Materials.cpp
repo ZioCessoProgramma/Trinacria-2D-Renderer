@@ -1,10 +1,17 @@
 ﻿#include "Trinacria/Materials.h"
 #include "Trinacria/Renderer.h"
 
-void TRCN_CORE_NAMESPACE::Material::SetUniforms() const
+void TRCN_CORE_NAMESPACE::Material::SetUniforms(int materialIndex) const
 {
-    Renderer::ShaderProgram.SetUniformVec3("u_Material.ambient", ambient);
-    Renderer::ShaderProgram.SetUniformVec3("u_Material.diffuse", diffuse);
-    Renderer::ShaderProgram.SetUniformVec3("u_Material.specular", specular);
-    Renderer::ShaderProgram.SetUniformFloat("u_Material.shininess", shininess);
+    Renderer::ShaderProgram.SetUniformVec3(std::format("u_Materials[{}].ambient",
+        materialIndex).c_str(), ambient);
+
+    Renderer::ShaderProgram.SetUniformVec3(std::format("u_Materials[{}].diffuse",
+        materialIndex).c_str(), diffuse);
+
+    Renderer::ShaderProgram.SetUniformVec3(std::format("u_Materials[{}].specular",
+        materialIndex).c_str(), specular);
+
+    Renderer::ShaderProgram.SetUniformFloat(std::format("u_Materials[{}].shininess",
+        materialIndex).c_str(), shininess);
 }

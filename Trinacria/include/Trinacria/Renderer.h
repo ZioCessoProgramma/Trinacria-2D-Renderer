@@ -42,12 +42,13 @@ namespace TRCN_CORE_NAMESPACE
 	struct Vertex
 	{
 		glm::vec2 Position;
-		int TextureIndex; // Using float 'cause GPUs like floats
+		int TextureIndex;
 		glm::vec2 TexCoords;
 		glm::vec3 Color;
+		int MaterialIndex;
 
-		Vertex(const glm::vec2& pos, float textureIndex, const glm::vec2& texCoords, const glm::vec3& color) : Position(pos),
-			TextureIndex(textureIndex), TexCoords(texCoords), Color(color) { }
+		Vertex(const glm::vec2& pos, float textureIndex, const glm::vec2& texCoords, const glm::vec3& color, int materialIndex)
+		: Position(pos), TextureIndex(textureIndex), TexCoords(texCoords), Color(color), MaterialIndex(materialIndex) { }
 	};
 
 	enum class TriangleOrientation
@@ -64,10 +65,7 @@ namespace TRCN_CORE_NAMESPACE
 
 		static void CreateQuad(const struct QuadData& quadData);
 
-		// Triangle
-
 		static void CreateTriangle(const struct TriangleData& triangleData);
-
 
 		static void EndScene();
 		static void Draw();
@@ -106,6 +104,7 @@ namespace TRCN_CORE_NAMESPACE
 			Texture* texture = nullptr,
 			const glm::vec2& size = glm::vec2(0.5f),
 			const glm::vec3& color = glm::vec3(1.f),
+			int materialIndex = 0,
 			const glm::mat4& transform = glm::mat4(1.0f),
 			const QuadTexCoords& texCoords = QuadTexCoords(glm::vec2(0.f), glm::vec2(1.f, 0.f), glm::vec2(1.f), glm::vec2(0.f, 1.f))
 		);
@@ -115,7 +114,8 @@ namespace TRCN_CORE_NAMESPACE
 			class Sprite* sprite,
 			const glm::vec2& size = glm::vec2(0.5f),
 			const glm::vec3& color = glm::vec3(1.f),
-			const glm::mat4& transform = glm::mat4(1.0f)
+			int materialIndex = 0,
+			const glm::mat4& transform = glm::mat4(1.f)
 		);
 
 		// Transform
@@ -124,14 +124,18 @@ namespace TRCN_CORE_NAMESPACE
 			const Transform& transform,
 			Texture* texture = nullptr,
 			const glm::vec3& color = glm::vec3(1.f),
+			int materialIndex = 0,
 			const QuadTexCoords& texCoords = QuadTexCoords(glm::vec2(0.f), glm::vec2(1.f, 0.f), glm::vec2(1.f), glm::vec2(0.f, 1.f))
 		);
 
 		static void createQuad(
 			const Transform& transform,
 			Sprite* texture,
-			const glm::vec3& color = glm::vec3(1.f)
+			const glm::vec3& color = glm::vec3(1.f),
+			int materialIndex = 0
 		);
+
+		// Triangle
 
 		static void createTriangle(
 			const glm::vec2& position,
@@ -139,6 +143,7 @@ namespace TRCN_CORE_NAMESPACE
 			TriangleOrientation orientation = TriangleOrientation::Orientation_RIGHT,
 			const glm::vec2& size = glm::vec2(0.5f),
 			const glm::vec3& color = glm::vec3(1.f),
+			int materialIndex = 0,
 			const glm::mat4& transform = glm::mat4(1.f),
 			const TriangleTexCoords& texCoords = TriangleTexCoords(glm::vec2(0.f), glm::vec2(1.f, 0.f), glm::vec2(0.f, 1.f))
 		);
@@ -149,6 +154,7 @@ namespace TRCN_CORE_NAMESPACE
 			TriangleOrientation orientation = TriangleOrientation::Orientation_RIGHT,
 			const glm::vec2& size = glm::vec2(0.5f),
 			const glm::vec3& color = glm::vec3(1.f),
+			int materialIndex = 0,
 			const glm::mat4& transform = glm::mat4(1.f)
 		);
 
@@ -159,6 +165,7 @@ namespace TRCN_CORE_NAMESPACE
 			Texture* texture = nullptr,
 			TriangleOrientation orientation = TriangleOrientation::Orientation_RIGHT,
 			const glm::vec3& color = glm::vec3(1.f),
+			int materialIndex = 0,
 			const TriangleTexCoords& texCoords = TriangleTexCoords(glm::vec2(0.f), glm::vec2(1.f, 0.f), glm::vec2(0.f, 1.f))
 		);
 
@@ -166,7 +173,8 @@ namespace TRCN_CORE_NAMESPACE
 			const Transform& transform,
 			Sprite* sprite,
 			TriangleOrientation orientation = TriangleOrientation::Orientation_RIGHT,
-			const glm::vec3& color = glm::vec3(1.f)
+			const glm::vec3& color = glm::vec3(1.f),
+			int materialIndex = 0
 		);
 	};
 }

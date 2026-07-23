@@ -14,10 +14,13 @@ namespace TRCN_CORE_NAMESPACE
 
         float shininess;
 
-        void SetUniforms() const;
+        void SetUniforms(int materialIndex) const;
     };
 
     inline constexpr Material SOLID_OPAQUE {glm::vec3(1.f), glm::vec3(1.f),
         glm::vec3(1.f), 32.f};
+
+    inline constexpr Material METAL {glm::vec3(0.01f), glm::vec3(0.7f),
+        glm::vec3(1.f), 256};
 
 }

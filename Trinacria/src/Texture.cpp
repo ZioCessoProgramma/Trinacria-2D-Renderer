@@ -11,7 +11,7 @@ TRCN_CORE_NAMESPACE::Texture::Texture(uint32_t id, int width, int height, int ch
 
 }
 
-Trinacria::DSL::Texture::~Texture()
+void Trinacria::DSL::Texture::Cleanup()
 {
 	glDeleteTextures(1, &_id);
 }

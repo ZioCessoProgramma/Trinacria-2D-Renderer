@@ -12,7 +12,7 @@
 class Application
 {
 public:
-	~Application();
+	~Application() = default;
 
 	static Application* Get();
 

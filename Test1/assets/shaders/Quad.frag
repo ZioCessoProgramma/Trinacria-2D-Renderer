@@ -3,9 +3,8 @@
 in vec2 TexCoords;
 flat in int Index;
 in vec3 Color;
-
+flat in int MaterialIndex;
 in vec2 FragPos;
-
 out vec4 FragColor;
 
 uniform sampler2D u_Textures[32]; // no tex, tex1, tex...
@@ -43,7 +42,7 @@ struct Material
 	float shininess;
 };
 
-uniform Material u_Material;
+uniform Material u_Materials[32];
 
 uniform vec2 u_ViewPos;
 
@@ -110,16 +109,16 @@ vec3 CalculateLight(vec2 lightPos, float attenuation, vec3 lightColor,
 
 	float dist = length(lightPos - FragPos);
 	float diff = 1.0 / (1.0 + attenuation * dist * dist);
-	vec3 diffuse = diff * lightColor * diffuseStrength * u_Material.diffuse;
+	vec3 diffuse = diff * lightColor * diffuseStrength * u_Materials[MaterialIndex].diffuse;
 
 	vec3 viewDir = normalize(vec3(viewPos, 0.f) - vec3(FragPos, 0.f));
 	vec3 reflectDir = reflect(-lightDir, vec3(0.f, 0.f, 1.f));
 
 	vec3 halfDir = normalize(lightDir + viewDir);
-	float spec = pow(max(dot(vec3(0.f, 0.f, 1.f), halfDir), 0.f), u_Material.shininess);
-	vec3 specular = spec * specularStrength * lightColor * u_Material.specular;
+	float spec = pow(max(dot(vec3(0.f, 0.f, 1.f), halfDir), 0.f), u_Materials[MaterialIndex].shininess);
+	vec3 specular = spec * specularStrength * lightColor * u_Materials[MaterialIndex].specular;
 
-	return min(color * (u_AmbientStrength * u_Material.ambient + diffuse + specular), vec3(1.f));
+	return min(color * (u_AmbientStrength * u_Materials[MaterialIndex].ambient + diffuse + specular), vec3(1.f));
 }
 
 vec3 SumAllLights(vec3 baseColor)
@@ -212,9 +211,9 @@ vec3 CalculateDirectionalLight(vec2 lightDir, vec2 viewPos, vec3 lightColor,
 		spec = pow(max(dot(N, H), 0.0), 32);
 	}
 
-	vec3 ambient = u_AmbientStrength * u_Material.ambient;
-	vec3 diffuse = diff * u_Material.diffuse * lightColor * diffuseStrength;
-	vec3 specular = specStrength * spec * lightColor * u_Material.specular;
+	vec3 ambient = u_AmbientStrength * u_Materials[MaterialIndex].ambient;
+	vec3 diffuse = diff * u_Materials[MaterialIndex].diffuse * lightColor * diffuseStrength;
+	vec3 specular = specStrength * spec * lightColor * u_Materials[MaterialIndex].specular;
 
 	return min((ambient + diffuse + specular) * baseColor, 1.f);
 }

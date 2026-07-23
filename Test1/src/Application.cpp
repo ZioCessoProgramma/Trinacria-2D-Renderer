@@ -4,17 +4,6 @@
 #include "GameLogicLayer.h"
 
 
-Application::~Application()
-{
-	if (_layerStack.empty()) return;
-
-	for (Trinacria::DSL::Layer* l : _layerStack)
-	{
-		l->OnDetach();
-		delete l;
-	}
-}
-
 Application* Application::Get()
 {
 	static Application s_instance;
@@ -60,6 +49,14 @@ void Application::Run()
 
 void Application::CleanUp()
 {
+	if (_layerStack.empty()) return;
+
+	for (Trinacria::DSL::Layer* l : _layerStack)
+	{
+		l->OnDetach();
+		delete l;
+	}
+
 	glfwTerminate();
 }
 

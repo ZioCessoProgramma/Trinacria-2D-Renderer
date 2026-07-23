@@ -68,7 +68,7 @@ void RendererLayer::OnUpdate(float deltaTime)
 
 	{
 		Trinacria::DSL::Transform transform(glm::vec2(3.f), glm::vec2(6.f), 0.f, glm::vec2(0.f));
-		Trinacria::DSL::QuadData data(transform, glm::vec3(0.7f, 0.2f, 0.2f));
+		Trinacria::DSL::QuadData data(transform, glm::vec3(0.7f, 0.2f, 0.2f), 1);
 
 		Trinacria::DSL::Renderer::CreateQuad(data);
 	}
@@ -130,10 +130,10 @@ void RendererLayer::OnUpdate(float deltaTime)
 	Trinacria::DSL::LightSystem::Init(Trinacria::DSL::LightSystem::DEFAULT_USE_OF_LIGHT);
 
 	Trinacria::DSL::PointLightData pointLight( glm::vec3(1.f, 1.f, 1.f),
-		pointLightTransform.Position, 40.f);
+		pointLightTransform.Position, 1.f);
 
 	Trinacria::DSL::PointLightData pointLight1( glm::vec3(1.f, 1.f, 1.f),
-	pointLightTransform1.Position, 1.f);
+	pointLightTransform1.Position, 10.f);
 
 	Trinacria::DSL::SpotLightData spotLight(glm::vec3(1.f), spotLightTransform.Position,
 		glm::vec2(-1.f, 1.f), 1.f,
@@ -153,7 +153,8 @@ void RendererLayer::OnUpdate(float deltaTime)
 	Trinacria::DSL::LightSystem::SetupLight(spotLight);
 	Trinacria::DSL::LightSystem::SetupLight(dirLight);
 
-	Trinacria::DSL::SOLID_OPAQUE.SetUniforms();
+	Trinacria::DSL::SOLID_OPAQUE.SetUniforms(0);
+	Trinacria::DSL::METAL.SetUniforms(1);
 
 	Trinacria::DSL::LightSystem::Done();
 
@@ -183,7 +184,7 @@ void RendererLayer::OnAttach()
 
 	if (layer)
 	{
-		layer->DangerZoneEnteredDispatcher.RegistCallback(RendererLayer::OnEnteredDangerZone);
+		layer->DangerZoneEnteredDispatcher.RegistCallback(OnEnteredDangerZone);
 
 		layer->DangerZoneExitedDispatcher.RegistCallback([](const DangerZoneExitedEvent& event) {
 			color = event.GetColorToRestore();

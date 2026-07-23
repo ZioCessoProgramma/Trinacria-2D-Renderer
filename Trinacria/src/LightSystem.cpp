@@ -3,6 +3,7 @@
 #include <array>
 
 #include "Trinacria/Renderer.h"
+#include <cstring>
 
 
 TRCN_CORE_NAMESPACE::Texture TRCN_CORE_NAMESPACE::LightSystem::_pointTexture;
