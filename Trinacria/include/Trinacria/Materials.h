@@ -15,6 +15,9 @@ namespace TRCN_CORE_NAMESPACE
         float shininess;
 
         void SetUniforms(int materialIndex) const;
+
+        bool operator==(const Material& material) const {return this->ambient == material.ambient &&
+            this->diffuse == material.diffuse && this->specular == material.specular;}
     };
 
     inline constexpr Material SOLID_OPAQUE {glm::vec3(1.f), glm::vec3(1.f),

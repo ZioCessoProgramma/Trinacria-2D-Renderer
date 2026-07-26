@@ -29,6 +29,9 @@ uint32_t TRCN_CORE_NAMESPACE::Renderer::_triangleVao;
 
 std::vector<std::pair<TRCN_CORE_NAMESPACE::Texture*, uint32_t>> TRCN_CORE_NAMESPACE::Renderer::_textures;
 
+std::array<TRCN_CORE_NAMESPACE::Material, 32> TRCN_CORE_NAMESPACE::Renderer::_materials;
+int TRCN_CORE_NAMESPACE::Renderer::materialCount = 0;
+
 
 void TRCN_CORE_NAMESPACE::Renderer::Init()
 {
@@ -307,6 +310,27 @@ void TRCN_CORE_NAMESPACE::Renderer::FlushBuffers()
     _quadIndexBuffer.clear();
 
     _triangleBuffer.clear();
+}
+
+void Trinacria::DSL::Renderer::AddMaterial(const Material& material)
+{
+    if (materialCount >= 32) return;
+
+    _materials[materialCount] = material;
+    material.SetUniforms(materialCount++);
+}
+
+int Trinacria::DSL::Renderer::SearchMaterial(const Material& material)
+{
+    for (int i = 0; i < materialCount; i++)
+    {
+        if (_materials[i] == material)
+        {
+            return i;
+        }
+    }
+
+    return 0;
 }
 
 void TRCN_CORE_NAMESPACE::Renderer::CleanUp()

@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "Log.h"
+#include "Materials.h"
 #include "Shader.h"
 #include "Transform.h"
 
@@ -74,6 +75,9 @@ namespace TRCN_CORE_NAMESPACE
 
 		static void FlushBuffers();
 
+		static void AddMaterial(const Material& material);
+		static int SearchMaterial(const Material& material);
+
 		static Shader ShaderProgram;
 
 		static const size_t MaxQuads = 1000;
@@ -93,6 +97,9 @@ namespace TRCN_CORE_NAMESPACE
 		static uint32_t _triangleVao, _triangleVbo;
 
 		static std::vector<std::pair<Texture*, uint32_t>> _textures;
+
+		static std::array<Material, 32> _materials;
+		static int materialCount;
 
 		static void attribPointer(uint32_t location, uint32_t nParameters, uint32_t parameterType,
 			size_t stride, void* offsetFromOrigin);

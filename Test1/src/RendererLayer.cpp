@@ -153,8 +153,8 @@ void RendererLayer::OnUpdate(float deltaTime)
 	Trinacria::DSL::LightSystem::SetupLight(spotLight);
 	Trinacria::DSL::LightSystem::SetupLight(dirLight);
 
-	Trinacria::DSL::SOLID_OPAQUE.SetUniforms(0);
-	Trinacria::DSL::METAL.SetUniforms(1);
+	Trinacria::DSL::Renderer::AddMaterial(Trinacria::DSL::SOLID_OPAQUE);
+	Trinacria::DSL::Renderer::AddMaterial(Trinacria::DSL::METAL);
 
 	Trinacria::DSL::LightSystem::Done();
 
