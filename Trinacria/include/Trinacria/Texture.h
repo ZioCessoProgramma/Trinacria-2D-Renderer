@@ -24,6 +24,8 @@ namespace TRCN_CORE_NAMESPACE
 
 		virtual void LoadTexture(const std::string& path, uint32_t filter = GL_LINEAR);
 
+		virtual void GenerateTexture();
+
 		static void TexImage(uint32_t internalFormat, uint32_t format, uint32_t width, uint32_t height, uint32_t type, void* data, uint32_t filter);
 		void BoundTexImage(uint32_t
 		                   internalFormat, uint32_t format, uint32_t width, uint32_t height, uint32_t type, void* data, uint32_t filter);
@@ -32,9 +34,11 @@ namespace TRCN_CORE_NAMESPACE
 		virtual void Bind(); // to first available texture slot
 		virtual void Cleanup();
 
+		virtual void Unbind();
+
 		static void ClearTextureSlots();
 
-		uint32_t GetTextureChosenSlot() const {return _textureSlotChosen;}
+		uint32_t GetTextureChosenSlot() const {return _textureSlotChosenIndex;}
 
 		void Init();
 
@@ -44,7 +48,7 @@ namespace TRCN_CORE_NAMESPACE
 		uint32_t _id;
 		int _width, _height;
 		int _channels;
-		uint32_t _textureSlotChosen = -1; // value for not choosing any
+		uint32_t _textureSlotChosenIndex = -1; // value for not choosing any
 
 		static bool _isTextureSlotOccupied[32];
 	};

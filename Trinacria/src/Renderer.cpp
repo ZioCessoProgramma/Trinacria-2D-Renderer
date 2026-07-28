@@ -19,10 +19,6 @@ uint32_t TRCN_CORE_NAMESPACE::Renderer::_ebo;
 
 TRCN_CORE_NAMESPACE::Shader TRCN_CORE_NAMESPACE::Renderer::ShaderProgram;
 
-const size_t TRCN_CORE_NAMESPACE::Renderer::MaxQuads;
-const size_t TRCN_CORE_NAMESPACE::Renderer::MaxQuadVertices;
-const size_t TRCN_CORE_NAMESPACE::Renderer::MaxQuadIndices;
-
 std::vector<TRCN_CORE_NAMESPACE::Vertex> TRCN_CORE_NAMESPACE::Renderer::_triangleBuffer;
 uint32_t TRCN_CORE_NAMESPACE::Renderer::_triangleVbo;
 uint32_t TRCN_CORE_NAMESPACE::Renderer::_triangleVao;
@@ -31,6 +27,9 @@ std::vector<std::pair<TRCN_CORE_NAMESPACE::Texture*, uint32_t>> TRCN_CORE_NAMESP
 
 std::array<TRCN_CORE_NAMESPACE::Material, 32> TRCN_CORE_NAMESPACE::Renderer::_materials;
 int TRCN_CORE_NAMESPACE::Renderer::materialCount = 0;
+
+TRCN_CORE_NAMESPACE::FrameBuffer TRCN_CORE_NAMESPACE::Renderer::_frameBuffer;
+TRCN_CORE_NAMESPACE::Texture TRCN_CORE_NAMESPACE::Renderer::_colorAttachment;
 
 
 void TRCN_CORE_NAMESPACE::Renderer::Init()
@@ -91,6 +90,14 @@ void TRCN_CORE_NAMESPACE::Renderer::Init()
 
     _triangleBuffer.reserve(MaxTrianglesVertices);
 
+    _colorAttachment.GenerateTexture();
+    _colorAttachment.BoundTexImage(GL_RGB, GL_RGB, 800.f, 600.f,
+        GL_UNSIGNED_BYTE, nullptr, GL_LINEAR);
+
+    _colorAttachment.Unbind(); // free the texture slot
+
+    _frameBuffer.GenFrameBuffer();
+    _frameBuffer.BindAttachTexture(GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, _colorAttachment.GetId());
 }
 
 void TRCN_CORE_NAMESPACE::Renderer::createQuad(const glm::vec2& position, Texture* texture, const glm::vec2& size,
@@ -266,6 +273,44 @@ void Trinacria::DSL::Renderer::createTriangle(const Transform& transform, Sprite
                    glm::vec2(1.f), color, 0, transform.GetMatrix());
 }
 
+void Trinacria::DSL::Renderer::drawInScreen(Shader& screenShader)
+{
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+    screenShader.Bind();
+
+    _colorAttachment.Bind(GL_TEXTURE0);
+
+    screenShader.SetUniformInt("u_ColorAttachment", 0);
+
+    constexpr float screenQuadVertices[] = {
+        -1.f, -1.f,
+        1.f, -1.f,
+        -1.f, 1.f,
+        1.f, -1.f,
+        1.f, 1.f,
+        -1.f, 1.f
+    };
+
+    uint32_t vao;
+
+    glGenVertexArrays(1, &vao);
+    glBindVertexArray(vao);
+
+    uint32_t vbo;
+
+    glGenBuffers(1, &vbo);
+    glBindBuffer(GL_ARRAY_BUFFER, vbo);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(screenQuadVertices), screenQuadVertices, GL_STATIC_DRAW);
+
+    attribPointer(0, 2, GL_FLOAT, 2 * sizeof(float), nullptr);
+
+    glDrawArrays(GL_TRIANGLES, 0, 6);
+
+    glDeleteBuffers(1, &vbo);
+    glDeleteVertexArrays(1, &vao);
+}
+
 void TRCN_CORE_NAMESPACE::Renderer::EndScene()
 {
     glBindBuffer(GL_ARRAY_BUFFER, _vbo);
@@ -278,8 +323,10 @@ void TRCN_CORE_NAMESPACE::Renderer::EndScene()
     glBufferSubData(GL_ARRAY_BUFFER, 0, _triangleBuffer.size() * sizeof(Vertex), _triangleBuffer.data());
 }
 
-void TRCN_CORE_NAMESPACE::Renderer::Draw()
+void TRCN_CORE_NAMESPACE::Renderer::Draw(Shader& screenShader)
 {
+    _frameBuffer.Bind();
+
     glUseProgram(ShaderProgram.GetShaderProgram());
  
     for (auto& element : _textures)
@@ -302,6 +349,9 @@ void TRCN_CORE_NAMESPACE::Renderer::Draw()
     glDrawArrays(GL_TRIANGLES, 0, _triangleBuffer.size());
 
     Texture::ClearTextureSlots();
+
+    drawInScreen(screenShader);
+
 }
 
 void TRCN_CORE_NAMESPACE::Renderer::FlushBuffers()
@@ -344,6 +394,8 @@ void TRCN_CORE_NAMESPACE::Renderer::CleanUp()
     glDeleteProgram(ShaderProgram.GetShaderProgram());
 
     glDeleteBuffers(1, &_triangleVbo);
+
+    _frameBuffer.Cleanup();
 }
 
 void TRCN_CORE_NAMESPACE::Renderer::attribPointer(uint32_t location, uint32_t nParameters, uint32_t parameterType,

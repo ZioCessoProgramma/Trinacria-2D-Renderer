@@ -54,5 +54,7 @@ private:
 	uint32_t _currentSpriteIndex = 0;
 
 	CameraData _cameraData;
+
+	Trinacria::DSL::Shader screenShader;
 };
 

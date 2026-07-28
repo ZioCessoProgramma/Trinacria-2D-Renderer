@@ -8,6 +8,7 @@
 #include "Materials.h"
 #include "Shader.h"
 #include "Transform.h"
+#include "Trinacria/FrameBuffer.h"
 
 namespace TRCN_CORE_NAMESPACE
 {
@@ -69,7 +70,7 @@ namespace TRCN_CORE_NAMESPACE
 		static void CreateTriangle(const struct TriangleData& triangleData);
 
 		static void EndScene();
-		static void Draw();
+		static void Draw(Shader& screenShader);
 
 		static void CleanUp();
 
@@ -80,12 +81,12 @@ namespace TRCN_CORE_NAMESPACE
 
 		static Shader ShaderProgram;
 
-		static const size_t MaxQuads = 1000;
-		static const size_t MaxQuadVertices = MaxQuads * 4;
-		static const size_t MaxQuadIndices = MaxQuads * 6;
+		static constexpr size_t MaxQuads = 1000;
+		static constexpr size_t MaxQuadVertices = MaxQuads * 4;
+		static constexpr size_t MaxQuadIndices = MaxQuads * 6;
 
-		static const size_t MaxTriangles = 1000;
-		static const size_t MaxTrianglesVertices = MaxTriangles * 3;
+		static constexpr size_t MaxTriangles = 1000;
+		static constexpr size_t MaxTrianglesVertices = MaxTriangles * 3;
 
 	private:
 		static std::vector<Vertex> _quadBuffer;
@@ -100,6 +101,9 @@ namespace TRCN_CORE_NAMESPACE
 
 		static std::array<Material, 32> _materials;
 		static int materialCount;
+
+		static FrameBuffer _frameBuffer;
+		static Texture _colorAttachment;
 
 		static void attribPointer(uint32_t location, uint32_t nParameters, uint32_t parameterType,
 			size_t stride, void* offsetFromOrigin);
@@ -183,5 +187,7 @@ namespace TRCN_CORE_NAMESPACE
 			const glm::vec3& color = glm::vec3(1.f),
 			int materialIndex = 0
 		);
+
+		static void drawInScreen(Shader& screenShader);
 	};
 }

@@ -9,14 +9,14 @@ namespace TRCN_CORE_NAMESPACE
     class FrameBuffer
     {
     public:
-        FrameBuffer();
-        ~FrameBuffer();
+        void Cleanup();
 
-        void Bind();
+        void GenFrameBuffer();
+        void Bind() const;
 
-        void AttachTexture(uint32_t attachment, uint32_t textureType, uint32_t textureId);
+        void BindAttachTexture(uint32_t attachment, uint32_t textureType, uint32_t textureId) const;
 
     private:
-        uint32_t _frameBufferId;
+        uint32_t _frameBufferId = 0;
     };
 }

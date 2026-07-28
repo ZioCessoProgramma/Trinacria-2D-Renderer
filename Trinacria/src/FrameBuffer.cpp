@@ -1,24 +1,23 @@
 ﻿#include "Trinacria/FrameBuffer.h"
 #include <glad/glad.h>
 
-Trinacria::DSL::FrameBuffer::FrameBuffer()
-{
-    glGenFramebuffers(1, &_frameBufferId);
-
-    Bind();
-}
-
-Trinacria::DSL::FrameBuffer::~FrameBuffer()
+void Trinacria::DSL::FrameBuffer::Cleanup()
 {
     glDeleteFramebuffers(1, &_frameBufferId);
 }
 
-void Trinacria::DSL::FrameBuffer::Bind()
+void Trinacria::DSL::FrameBuffer::GenFrameBuffer()
+{
+    glGenFramebuffers(1, &_frameBufferId);
+}
+
+void Trinacria::DSL::FrameBuffer::Bind() const
 {
     glBindFramebuffer(GL_FRAMEBUFFER, _frameBufferId);
 }
 
-void Trinacria::DSL::FrameBuffer::AttachTexture(uint32_t attachment, uint32_t textureType, uint32_t textureId)
+void Trinacria::DSL::FrameBuffer::BindAttachTexture(uint32_t attachment, uint32_t textureType, uint32_t textureId) const
 {
+    Bind();
     glFramebufferTexture2D(GL_FRAMEBUFFER, attachment, textureType, textureId, 0);
 }

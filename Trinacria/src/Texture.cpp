@@ -16,6 +16,16 @@ void Trinacria::DSL::Texture::Cleanup()
 	glDeleteTextures(1, &_id);
 }
 
+void Trinacria::DSL::Texture::Unbind()
+{
+	glBindTexture(GL_TEXTURE_2D, 0);
+
+	if (_textureSlotChosenIndex != -1)
+	{
+		_isTextureSlotOccupied[_textureSlotChosenIndex] = false;
+	}
+}
+
 void TRCN_CORE_NAMESPACE::Texture::LoadTexture(const std::string& path, uint32_t filter)
 {
 	uint8_t* data = stbi_load(path.c_str(), &_width, &_height, &_channels, 0);
@@ -67,6 +77,11 @@ void TRCN_CORE_NAMESPACE::Texture::LoadTexture(const std::string& path, uint32_t
 	glBindTexture(GL_TEXTURE_2D, 0);
 }
 
+void Trinacria::DSL::Texture::GenerateTexture()
+{
+	glGenTextures(1, &_id);
+}
+
 void Trinacria::DSL::Texture::TexImage(uint32_t internalFormat, uint32_t format, uint32_t width, uint32_t height, uint32_t type, void* data, uint32_t filter)
 {
 	glTexImage2D(GL_TEXTURE_2D, 0, internalFormat, width, height, 0, format, type, data);
@@ -89,14 +104,14 @@ void TRCN_CORE_NAMESPACE::Texture::Bind(uint32_t textureSlot)
 
 	_isTextureSlotOccupied[textureSlot - GL_TEXTURE0] = true;
 
-	_textureSlotChosen = textureSlot;
+	_textureSlotChosenIndex = textureSlot;
 }
 
 void Trinacria::DSL::Texture::Bind()
 {
-	if (_textureSlotChosen != -1)
+	if (_textureSlotChosenIndex != -1)
 	{
-		Bind(_textureSlotChosen);
+		Bind(_textureSlotChosenIndex);
 		return;
 	}
 

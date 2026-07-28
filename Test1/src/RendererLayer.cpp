@@ -158,7 +158,7 @@ void RendererLayer::OnUpdate(float deltaTime)
 
 	Trinacria::DSL::LightSystem::Done();
 
-	Trinacria::DSL::Renderer::Draw();
+	Trinacria::DSL::Renderer::Draw(screenShader);
 	Trinacria::DSL::Renderer::FlushBuffers();
 }
 
@@ -193,6 +193,8 @@ void RendererLayer::OnAttach()
 
 	Trinacria::DSL::Renderer::Init();
 	Trinacria::DSL::Renderer::ShaderProgram.LoadShader("assets/shaders/Quad.vert", "assets/shaders/Quad.frag");
+
+	screenShader.LoadShader("assets/shaders/Screen.vert", "assets/shaders/Screen.frag");
 }
 
 void RendererLayer::OnDetach()
