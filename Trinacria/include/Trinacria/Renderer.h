@@ -8,7 +8,10 @@
 #include "Materials.h"
 #include "Shader.h"
 #include "Transform.h"
+#include "GLFW/glfw3.h"
 #include "Trinacria/FrameBuffer.h"
+
+#include <GLFW/glfw3.h>
 
 namespace TRCN_CORE_NAMESPACE
 {
@@ -61,7 +64,7 @@ namespace TRCN_CORE_NAMESPACE
 	class Renderer
 	{
 	public:
-		static void Init();
+		static void Init(const glm::vec2& windowDimensions, GLFWwindow* window);
 
 		static void ClearColorBuffer(const glm::vec3& color = { 0.1f, 0.1f, 0.1f });
 
@@ -78,6 +81,8 @@ namespace TRCN_CORE_NAMESPACE
 
 		static void AddMaterial(const Material& material);
 		static int SearchMaterial(const Material& material);
+
+		static void OnResize(const glm::vec2& windowDimensions);
 
 		static Shader ShaderProgram;
 

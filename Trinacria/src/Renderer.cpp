@@ -10,6 +10,8 @@
 
 #include "Trinacria/ShapesData.h"
 
+#include <GLFW/glfw3.h>
+
 std::vector<TRCN_CORE_NAMESPACE::Vertex> TRCN_CORE_NAMESPACE::Renderer::_quadBuffer;
 std::vector<uint32_t> TRCN_CORE_NAMESPACE::Renderer::_quadIndexBuffer;
 
@@ -32,7 +34,7 @@ TRCN_CORE_NAMESPACE::FrameBuffer TRCN_CORE_NAMESPACE::Renderer::_frameBuffer;
 TRCN_CORE_NAMESPACE::Texture TRCN_CORE_NAMESPACE::Renderer::_colorAttachment;
 
 
-void TRCN_CORE_NAMESPACE::Renderer::Init()
+void TRCN_CORE_NAMESPACE::Renderer::Init(const glm::vec2& windowDimensions, GLFWwindow* window)
 {
     glGenVertexArrays(1, &_vao);
     glBindVertexArray(_vao);
@@ -91,13 +93,17 @@ void TRCN_CORE_NAMESPACE::Renderer::Init()
     _triangleBuffer.reserve(MaxTrianglesVertices);
 
     _colorAttachment.GenerateTexture();
-    _colorAttachment.BoundTexImage(GL_RGB, GL_RGB, 800.f, 600.f,
+    _colorAttachment.BoundTexImage(GL_RGB, GL_RGB, windowDimensions.x, windowDimensions.y,
         GL_UNSIGNED_BYTE, nullptr, GL_LINEAR);
 
     _colorAttachment.Unbind(); // free the texture slot
 
     _frameBuffer.GenFrameBuffer();
     _frameBuffer.BindAttachTexture(GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, _colorAttachment.GetId());
+
+
+
+
 }
 
 void TRCN_CORE_NAMESPACE::Renderer::createQuad(const glm::vec2& position, Texture* texture, const glm::vec2& size,
@@ -381,6 +387,14 @@ int Trinacria::DSL::Renderer::SearchMaterial(const Material& material)
     }
 
     return 0;
+}
+
+void Trinacria::DSL::Renderer::OnResize(const glm::vec2& windowDimensions)
+{
+    _colorAttachment.BoundTexImage(GL_RGB, GL_RGB, windowDimensions.x, windowDimensions.y,
+    GL_UNSIGNED_BYTE, nullptr, GL_LINEAR);
+
+    glViewport(0, 0, windowDimensions.x, windowDimensions.y);
 }
 
 void TRCN_CORE_NAMESPACE::Renderer::CleanUp()

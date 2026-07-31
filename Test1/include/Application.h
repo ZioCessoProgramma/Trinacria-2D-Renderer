@@ -2,11 +2,9 @@
 
 #include <vector>
 #include <Trinacria/Layer.h>
-#include <cassert>
 #include <glm/glm.hpp>
 
 #include "Trinacria/Animation.h"
-#include "Trinacria/Assert.h"
 
 
 class Application

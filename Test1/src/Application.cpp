@@ -124,9 +124,10 @@ void Application::Init()
 
 	glfwSetFramebufferSizeCallback(_window, [](GLFWwindow* window, int width, int height) 
 		{
-			glViewport(0, 0, width, height);
 			Application::Get()->_windowWidth = width;
 			Application::Get()->_windowHeight = height;
+
+			Trinacria::DSL::Renderer::OnResize(glm::vec2(width, height));
 		});
 
 	glfwSetScrollCallback(_window, scrollCallback);

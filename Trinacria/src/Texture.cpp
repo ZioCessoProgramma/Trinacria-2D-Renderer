@@ -97,6 +97,18 @@ void Trinacria::DSL::Texture::BoundTexImage(uint32_t internalFormat, uint32_t fo
 	TexImage(internalFormat, format, width, height, type, data, filter);
 }
 
+void Trinacria::DSL::Texture::SubImage(uint32_t format, uint32_t width, uint32_t height,
+	uint32_t type, void* data)
+{
+	glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, width, height, format, type, data);
+}
+
+void Trinacria::DSL::Texture::BoundSubImage(uint32_t format, uint32_t width, uint32_t height, uint32_t type, void* data)
+{
+	Bind();
+	SubImage(format, width, height, type, data);
+}
+
 void TRCN_CORE_NAMESPACE::Texture::Bind(uint32_t textureSlot)
 {
 	glActiveTexture(textureSlot);

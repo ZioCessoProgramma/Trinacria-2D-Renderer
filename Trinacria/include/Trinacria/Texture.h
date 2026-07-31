@@ -30,6 +30,9 @@ namespace TRCN_CORE_NAMESPACE
 		void BoundTexImage(uint32_t
 		                   internalFormat, uint32_t format, uint32_t width, uint32_t height, uint32_t type, void* data, uint32_t filter);
 
+		static void SubImage(uint32_t format, uint32_t width, uint32_t height, uint32_t type, void* data);
+		void BoundSubImage(uint32_t format, uint32_t width, uint32_t height, uint32_t type, void* data);
+
 		virtual void Bind(uint32_t textureSlot);
 		virtual void Bind(); // to first available texture slot
 		virtual void Cleanup();

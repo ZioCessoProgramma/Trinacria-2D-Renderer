@@ -191,7 +191,7 @@ void RendererLayer::OnAttach()
 			});
 	}
 
-	Trinacria::DSL::Renderer::Init();
+	Trinacria::DSL::Renderer::Init(Application::Get()->GetWindowDimensions(), Application::Get()->GetWindow());
 	Trinacria::DSL::Renderer::ShaderProgram.LoadShader("assets/shaders/Quad.vert", "assets/shaders/Quad.frag");
 
 	screenShader.LoadShader("assets/shaders/Screen.vert", "assets/shaders/Screen.frag");
