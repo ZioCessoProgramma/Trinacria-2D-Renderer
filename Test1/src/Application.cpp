@@ -92,32 +92,27 @@ void Application::Init()
 {
 	if (!glfwInit())
 	{
-		std::cerr << "ERRORE: Impossibile inizializzare GLFW!" << std::endl;
+		std::cerr << "ERROR: GLFW was not initialized correctly" << std::endl;
 	}
 
-	std::cout << "GLFW inizializzato con successo" << std::endl;
-
-	// Configura GLFW per OpenGL 3.3 Core
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 
-	_window = glfwCreateWindow(_windowWidth, _windowHeight, "Finestra OpenGL", NULL, NULL);
+	_window = glfwCreateWindow(_windowWidth, _windowHeight, "Test1 window", NULL, NULL);
 
 	if (_window == NULL)
 	{
-		std::cerr << "ERRORE: Impossibile creare la finestra GLFW!" << std::endl;
+		std::cerr << "ERROR: creating window did not go as expected" << std::endl;
 		glfwTerminate();
 	}
 
-	// Rendi il contesto OpenGL corrente per questa finestra
 	glfwMakeContextCurrent(_window);
 
-	// Inizializza GLAD - DEVE essere fatto DOPO glfwMakeContextCurrent
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 	{
-		std::cerr << "ERRORE: Impossibile inizializzare GLAD!" << std::endl;
+		std::cerr << "ERROR: GLAD init did not go as expected" << std::endl;
 		glfwDestroyWindow(_window);
 		glfwTerminate();
 	}

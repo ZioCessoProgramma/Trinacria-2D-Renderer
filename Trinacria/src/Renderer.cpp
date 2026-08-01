@@ -96,14 +96,8 @@ void TRCN_CORE_NAMESPACE::Renderer::Init(const glm::vec2& windowDimensions, GLFW
     _colorAttachment.BoundTexImage(GL_RGB, GL_RGB, windowDimensions.x, windowDimensions.y,
         GL_UNSIGNED_BYTE, nullptr, GL_LINEAR);
 
-    _colorAttachment.Unbind(); // free the texture slot
-
     _frameBuffer.GenFrameBuffer();
     _frameBuffer.BindAttachTexture(GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, _colorAttachment.GetId());
-
-
-
-
 }
 
 void TRCN_CORE_NAMESPACE::Renderer::createQuad(const glm::vec2& position, Texture* texture, const glm::vec2& size,
@@ -283,6 +277,8 @@ void Trinacria::DSL::Renderer::drawInScreen(Shader& screenShader)
 {
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
+    ClearColorBuffer(glm::vec3(1.f));
+
     screenShader.Bind();
 
     _colorAttachment.Bind(GL_TEXTURE0);
@@ -315,6 +311,8 @@ void Trinacria::DSL::Renderer::drawInScreen(Shader& screenShader)
 
     glDeleteBuffers(1, &vbo);
     glDeleteVertexArrays(1, &vao);
+
+    _frameBuffer.Bind();
 }
 
 void TRCN_CORE_NAMESPACE::Renderer::EndScene()
