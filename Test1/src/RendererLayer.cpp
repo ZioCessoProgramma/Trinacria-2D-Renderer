@@ -199,7 +199,7 @@ void RendererLayer::OnAttach()
 
 void RendererLayer::OnDetach()
 {
-	Trinacria::DSL::Renderer::CleanUp();
+	Trinacria::DSL::Renderer::Cleanup();
 }
 
 void RendererLayer::SetCameraData(const CameraData& cameraData)

@@ -75,7 +75,7 @@ namespace TRCN_CORE_NAMESPACE
 		static void EndScene();
 		static void Draw(Shader& screenShader);
 
-		static void CleanUp();
+		static void Cleanup();
 
 		static void FlushBuffers();
 

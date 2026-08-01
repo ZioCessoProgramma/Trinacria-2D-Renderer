@@ -395,7 +395,7 @@ void Trinacria::DSL::Renderer::OnResize(const glm::vec2& windowDimensions)
     glViewport(0, 0, windowDimensions.x, windowDimensions.y);
 }
 
-void TRCN_CORE_NAMESPACE::Renderer::CleanUp()
+void TRCN_CORE_NAMESPACE::Renderer::Cleanup()
 {
     glDeleteBuffers(1, &_vbo);
     glDeleteBuffers(1, &_ebo);
