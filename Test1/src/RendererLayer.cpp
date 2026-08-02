@@ -82,7 +82,8 @@ void RendererLayer::OnUpdate(float deltaTime)
 	{
 		Trinacria::DSL::Transform transform(glm::vec2(-4.f), glm::vec2(4.f), sin(glfwGetTime()) * 20);
 
-		Trinacria::DSL::TriangleData data(transform);
+		Trinacria::DSL::TriangleData data(transform, Trinacria::DSL::Texture::NO_TEXTURE,
+			0, Trinacria::DSL::TriangleOrientation::Orientation_RIGHT, glm::vec3(0.2f, 0.2f, 0.6f));
 
 		Trinacria::DSL::Renderer::CreateTriangle(data);
 	}

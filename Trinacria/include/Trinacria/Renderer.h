@@ -134,22 +134,6 @@ namespace TRCN_CORE_NAMESPACE
 			const glm::mat4& transform = glm::mat4(1.f)
 		);
 
-		// Transform
-
-		static void createQuad(
-			const Transform& transform,
-			Texture* texture = nullptr,
-			const glm::vec3& color = glm::vec3(1.f),
-			int materialIndex = 0,
-			const QuadTexCoords& texCoords = QuadTexCoords(glm::vec2(0.f), glm::vec2(1.f, 0.f), glm::vec2(1.f), glm::vec2(0.f, 1.f))
-		);
-
-		static void createQuad(
-			const Transform& transform,
-			Sprite* texture,
-			const glm::vec3& color = glm::vec3(1.f),
-			int materialIndex = 0
-		);
 
 		// Triangle
 
@@ -172,25 +156,6 @@ namespace TRCN_CORE_NAMESPACE
 			const glm::vec3& color = glm::vec3(1.f),
 			int materialIndex = 0,
 			const glm::mat4& transform = glm::mat4(1.f)
-		);
-
-		// Triangle transform
-
-		static void createTriangle(
-			const Transform& transform,
-			Texture* texture = nullptr,
-			TriangleOrientation orientation = TriangleOrientation::Orientation_RIGHT,
-			const glm::vec3& color = glm::vec3(1.f),
-			int materialIndex = 0,
-			const TriangleTexCoords& texCoords = TriangleTexCoords(glm::vec2(0.f), glm::vec2(1.f, 0.f), glm::vec2(0.f, 1.f))
-		);
-
-		static void createTriangle(
-			const Transform& transform,
-			Sprite* sprite,
-			TriangleOrientation orientation = TriangleOrientation::Orientation_RIGHT,
-			const glm::vec3& color = glm::vec3(1.f),
-			int materialIndex = 0
 		);
 
 		static void drawInScreen(Shader& screenShader);

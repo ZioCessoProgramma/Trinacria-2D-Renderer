@@ -167,34 +167,26 @@ void TRCN_CORE_NAMESPACE::Renderer::createQuad(const glm::vec2& position, Sprite
     createQuad(position, sprite->GetParent(), size, color, materialIndex, transform,texCoords);
 }
 
-void Trinacria::DSL::Renderer::createQuad(const Transform& transform, Sprite* texture, const glm::vec3& color, int materialIndex)
-{
-    createQuad(-transform.Pivot, texture, glm::vec2(1.f), color, materialIndex,transform.GetMatrix());
-}
-
-void Trinacria::DSL::Renderer::CreateTriangle(const struct TriangleData& triangleData)
+void Trinacria::DSL::Renderer::CreateTriangle(const TriangleData& triangleData)
 {
     if (triangleData.texture != nullptr)
     {
-        createTriangle(triangleData.transform, triangleData.texture, triangleData.Orientation,
-                       triangleData.Color, triangleData.MaterialIndex, triangleData.TexCoords);
+        createTriangle(-triangleData.transform.Pivot, triangleData.texture, triangleData.Orientation,
+            glm::vec2(1.f), triangleData.Color, triangleData.MaterialIndex,
+            triangleData.transform.GetMatrix(), triangleData.TexCoords);
     }
     else if (triangleData.sprite != nullptr)
     {
-        createTriangle(triangleData.transform, triangleData.sprite, triangleData.Orientation,
-            triangleData.Color);
+        createTriangle(-triangleData.transform.Pivot, triangleData.sprite, triangleData.Orientation,
+            glm::vec2(1.f), triangleData.Color, triangleData.MaterialIndex, triangleData.transform.GetMatrix());
     }
     // using plain color
     else
     {
-        createTriangle(triangleData.transform, Texture::NO_TEXTURE, triangleData.Orientation,
-                       triangleData.Color);
+        createTriangle(-triangleData.transform.Pivot, Texture::NO_TEXTURE, triangleData.Orientation,
+            glm::vec2(1.f), triangleData.Color, triangleData.MaterialIndex,
+            triangleData.transform.GetMatrix());
     }
-}
-
-void Trinacria::DSL::Renderer::createQuad(const Transform& transform, Texture* texture, const glm::vec3& color, int materialIndex, const QuadTexCoords& texCoords)
-{
-    createQuad(-transform.Pivot, texture, glm::vec2(1.f), color, materialIndex,transform.GetMatrix(), texCoords);
 }
 
 void TRCN_CORE_NAMESPACE::Renderer::createTriangle(const glm::vec2& position, Texture* texture, TriangleOrientation orientation, const glm::vec2& size,
@@ -257,20 +249,6 @@ void Trinacria::DSL::Renderer::createTriangle(const glm::vec2& position, Sprite*
     texCoords.Normalize(sprite->GetParent()->GetWidth(), sprite->GetParent()->GetHeight());
 
     createTriangle(position, sprite->GetParent(), orientation, size, color, 0, transform, texCoords);
-}
-
-void Trinacria::DSL::Renderer::createTriangle(const Transform& transform, Texture* texture,
-                                              TriangleOrientation orientation, const glm::vec3& color, int materialIndex, const TriangleTexCoords& texCoords)
-{
-    createTriangle(-transform.Pivot, texture, orientation,
-                   glm::vec2(0.5f),color, 0, transform.GetMatrix(), texCoords);
-}
-
-void Trinacria::DSL::Renderer::createTriangle(const Transform& transform, Sprite* sprite,
-                                              TriangleOrientation orientation, const glm::vec3& color, int materialIndex)
-{
-    createTriangle(-transform.Pivot, sprite, orientation,
-                   glm::vec2(1.f), color, 0, transform.GetMatrix());
 }
 
 void Trinacria::DSL::Renderer::drawInScreen(Shader& screenShader)
@@ -355,7 +333,6 @@ void TRCN_CORE_NAMESPACE::Renderer::Draw(Shader& screenShader)
     Texture::ClearTextureSlots();
 
     drawInScreen(screenShader);
-
 }
 
 void TRCN_CORE_NAMESPACE::Renderer::FlushBuffers()
@@ -443,16 +420,19 @@ void Trinacria::DSL::Renderer::CreateQuad(const QuadData& quadData)
 {
     if (quadData.texture != nullptr)
     {
-        createQuad(quadData.transform, quadData.texture, quadData.Color, quadData.MaterialIndex, quadData.TexCoords);
+        createQuad(-quadData.transform.Pivot, quadData.texture, glm::vec2(1.f),
+            quadData.Color, quadData.MaterialIndex, quadData.transform.GetMatrix(), quadData.TexCoords);
     }
     else if (quadData.sprite != nullptr)
     {
-        createQuad(quadData.transform, quadData.sprite, quadData.Color, quadData.MaterialIndex);
+        createQuad(-quadData.transform.Pivot, quadData.sprite, glm::vec2(1.f),
+            quadData.Color, quadData.MaterialIndex, quadData.transform.GetMatrix());
     }
     // using plain color
     else
     {
-        createQuad(quadData.transform, Texture::NO_TEXTURE, quadData.Color, quadData.MaterialIndex);
+        createQuad(-quadData.transform.Pivot, Texture::NO_TEXTURE, glm::vec2(1.f),
+            quadData.Color, quadData.MaterialIndex, quadData.transform.GetMatrix());
     }
 }
 
