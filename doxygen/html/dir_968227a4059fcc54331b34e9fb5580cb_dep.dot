@@ -6,11 +6,11 @@ digraph "/home/bigbenji/Documenti/cpp/Trinacria-2D-Renderer/Trinacria/include"
   node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
   compound=true
   subgraph clusterdir_1d76fa5b0f5ada08132fc72b18254560 {
-    graph [ bgcolor="#f1f1f3", pencolor="grey25", label="Trinacria", fontname=Helvetica,fontsize=10 style="filled,dashed", URL="dir_1d76fa5b0f5ada08132fc72b18254560.html",tooltip=""]
+    graph [ bgcolor="#f3f1f1", pencolor="grey25", label="Trinacria", fontname=Helvetica,fontsize=10 style="filled,dashed", URL="dir_1d76fa5b0f5ada08132fc72b18254560.html",tooltip=""]
   subgraph clusterdir_968227a4059fcc54331b34e9fb5580cb {
-    graph [ bgcolor="#f1f1f3", pencolor="grey25", label="", fontname=Helvetica,fontsize=10 style="filled,bold", URL="dir_968227a4059fcc54331b34e9fb5580cb.html",tooltip=""]
+    graph [ bgcolor="#f3f1f1", pencolor="grey25", label="", fontname=Helvetica,fontsize=10 style="filled,bold", URL="dir_968227a4059fcc54331b34e9fb5580cb.html",tooltip=""]
     dir_968227a4059fcc54331b34e9fb5580cb [shape=plaintext, label="include"];
-  dir_d29449d5c6b443dc20ec159942ceee72 [label="Trinacria", fillcolor="#b7bac1", color="grey25", style="filled", URL="dir_d29449d5c6b443dc20ec159942ceee72.html",tooltip=""];
+  dir_d29449d5c6b443dc20ec159942ceee72 [label="Trinacria", fillcolor="#c1b7b7", color="grey25", style="filled", URL="dir_d29449d5c6b443dc20ec159942ceee72.html",tooltip=""];
   }
   }
 }
