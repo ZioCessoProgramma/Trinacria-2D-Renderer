@@ -14,6 +14,8 @@ Trinacria Diesel (Trinacria::DSL) is a simple batch renderer made for flexibilit
 
 - **Math Library:** [glm](https://github.com/g-truc/glm)
 
+- **documentation library:** [doxygen](https://github.com/doxygen/doxygen)
+
 ## Theory
 
 Trinacria Diesel is a system standing using 2 major static classes:
@@ -63,11 +65,11 @@ Unlike the renderer the `Init` function should be called every frame before addi
 
 To make every thing to draw correctly the user should call `Trinacria::DSL::Renderer::AddMaterial(Trinacria::DSL::SOLID_OPAQUE);`
 
-to create your own material or to understand more deeply how the Material system works in Trinacria Diesel check the incoming in-code documentation.
+to create your own material or to understand more deeply how the Material system works in Trinacria Diesel check the incoming documentation.
 
 ### Event System
 
-check the incoming in-code documentation.
+check the incoming documentation.
 
 ### Example of a RendererLayer using Trinacria Diesel
 
@@ -84,7 +86,7 @@ void RendererLayer::OnAttach()
 
     Trinacria::DSL::Renderer::ShaderProgram.LoadShader(
     "path/to/vertex.vert", "path/to/fragment.frag");
-    
+
     screenShader.LoadShader("path/to/vertex.vert",
      "path/to/fragment.frag");
 }
@@ -109,11 +111,11 @@ void RendererLayer::OnUpdate()
 
     Trinacria::DSL::PointLightData pointLight(glm::vec3(1.f, 1.f, 1.f),
         glm::vec2(6.f, 7.f);
-        
+
     Trinacria::DSL::LightSystem::Done();
-    
+
     Trinacria::DSL::Renderer::Draw(screenShader);
-    
+
     Trinacria::DSL::Renderer::FlushBuffers();
 }
 

@@ -15,11 +15,32 @@
 
 namespace TRCN_CORE_NAMESPACE
 {
+	/**
+	 * @brief struct representing the tex coordinates of a quad
+	 * @note the coordinates should be used by absolute value in 0 to width range for x and 0 to height range for y
+	 */
+
 	struct QuadTexCoords
 	{
+		/**
+		 * @brief coordinates for the first vertex
+		 */
+
 		glm::vec2 Coord0;
+
+		/**
+		 * @brief coordinates for the second vertex
+		*/
 		glm::vec2 Coord1;
+
+		/**
+		 * @brief coordinates for the third vertex
+		*/
 		glm::vec2 Coord2;
+
+		/**
+		 * @brief coordinates for the fourth vertex
+		*/
 		glm::vec2 Coord3;
 
 		QuadTexCoords(float f) : Coord0(f), Coord1(f), Coord2(f), Coord3(f) { }
@@ -27,13 +48,35 @@ namespace TRCN_CORE_NAMESPACE
 		QuadTexCoords(const glm::vec2& coord0, const glm::vec2& coord1, const glm::vec2& coord2, const glm::vec2& coord3) :
 			Coord0(coord0), Coord1(coord1), Coord2(coord2), Coord3(coord3) { }
 
+		/**
+		 * @brief normalize the coordinates in device coordinates 0 to 1
+		 * @param texWidth texture's width
+		 * @param texHeight texture's height
+		 */
+
 		void Normalize(uint32_t texWidth, uint32_t texHeight);
 	};
 
+	/**
+	 * @brief struct representing the tex coordinates of a triangle
+	 * @note the coordinates should be used by absolute value in 0 to width range for x and 0 to height range for y
+	 */
 	struct TriangleTexCoords
 	{
+		/**
+		 * @brief coordinates for the first vertex
+		 */
+
 		glm::vec2 Coord0;
+
+		/**
+		 * @brief coordinates for the second vertex
+		*/
 		glm::vec2 Coord1;
+
+		/**
+		 * @brief coordinates for the third vertex
+		 */
 		glm::vec2 Coord2;
 
 		TriangleTexCoords(float f) : Coord0(f), Coord1(f), Coord2(f) { }
@@ -41,9 +84,17 @@ namespace TRCN_CORE_NAMESPACE
 		TriangleTexCoords(const glm::vec2& coord0, const glm::vec2& coord1, const glm::vec2& coord2) :
 			Coord0(coord0), Coord1(coord1), Coord2(coord2) { }
 
+		/**
+		 * @brief normalize in device coordinates [0->1] [0->1]
+		 * @param texWidth texture's width
+		 * @param texHeight texture's height
+		 */
 		void Normalize(uint32_t texWidth, uint32_t texHeight);
 	};
 
+	/**
+	 * @brief a struct representing the data per openGL vertex
+	 */
 	struct Vertex
 	{
 		glm::vec2 Position;
@@ -55,6 +106,10 @@ namespace TRCN_CORE_NAMESPACE
 		Vertex(const glm::vec2& pos, float textureIndex, const glm::vec2& texCoords, const glm::vec3& color, int materialIndex)
 		: Position(pos), TextureIndex(textureIndex), TexCoords(texCoords), Color(color), MaterialIndex(materialIndex) { }
 	};
+
+	/**
+	 * @brief Describes the orientation of a triangle
+	 */
 
 	enum class TriangleOrientation
 	{

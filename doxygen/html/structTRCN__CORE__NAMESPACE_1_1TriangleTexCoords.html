@@ -91,6 +91,11 @@ $(function(){initNavTree('structTRCN__CORE__NAMESPACE_1_1TriangleTexCoords.html'
   <div class="headertitle"><div class="title">TRCN_CORE_NAMESPACE::TriangleTexCoords Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>struct representing the tex coordinates of a triangle  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="Renderer_8h_source.html">Renderer.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -98,18 +103,55 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><b>TriangleTexCoords</b> (float f)</td></tr>
 <tr class="memitem:afdd9d41694db8310bd29f2a838f6eb9a" id="r_afdd9d41694db8310bd29f2a838f6eb9a"><td class="memItemLeft" align="right" valign="top"><a id="afdd9d41694db8310bd29f2a838f6eb9a" name="afdd9d41694db8310bd29f2a838f6eb9a"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>TriangleTexCoords</b> (const glm::vec2 &amp;coord0, const glm::vec2 &amp;coord1, const glm::vec2 &amp;coord2)</td></tr>
-<tr class="memitem:a3a07971c779237627b48baa49c57d3a8" id="r_a3a07971c779237627b48baa49c57d3a8"><td class="memItemLeft" align="right" valign="top"><a id="a3a07971c779237627b48baa49c57d3a8" name="a3a07971c779237627b48baa49c57d3a8"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Normalize</b> (uint32_t texWidth, uint32_t texHeight)</td></tr>
+<tr class="memitem:a3a07971c779237627b48baa49c57d3a8" id="r_a3a07971c779237627b48baa49c57d3a8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a07971c779237627b48baa49c57d3a8">Normalize</a> (uint32_t texWidth, uint32_t texHeight)</td></tr>
+<tr class="memdesc:a3a07971c779237627b48baa49c57d3a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">normalize in device coordinates [0-&gt;1] [0-&gt;1]  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a52eba1197af2f718dbb729e7e96f756e" id="r_a52eba1197af2f718dbb729e7e96f756e"><td class="memItemLeft" align="right" valign="top"><a id="a52eba1197af2f718dbb729e7e96f756e" name="a52eba1197af2f718dbb729e7e96f756e"></a>
 glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><b>Coord0</b></td></tr>
+<tr class="memdesc:a52eba1197af2f718dbb729e7e96f756e"><td class="mdescLeft">&#160;</td><td class="mdescRight">coordinates for the first vertex <br /></td></tr>
 <tr class="memitem:a42d5b8a9a6c9cbb93e06d5cc6e0ac984" id="r_a42d5b8a9a6c9cbb93e06d5cc6e0ac984"><td class="memItemLeft" align="right" valign="top"><a id="a42d5b8a9a6c9cbb93e06d5cc6e0ac984" name="a42d5b8a9a6c9cbb93e06d5cc6e0ac984"></a>
 glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><b>Coord1</b></td></tr>
+<tr class="memdesc:a42d5b8a9a6c9cbb93e06d5cc6e0ac984"><td class="mdescLeft">&#160;</td><td class="mdescRight">coordinates for the second vertex <br /></td></tr>
 <tr class="memitem:ae1b9b82c601b27b5506cce93bb537eaa" id="r_ae1b9b82c601b27b5506cce93bb537eaa"><td class="memItemLeft" align="right" valign="top"><a id="ae1b9b82c601b27b5506cce93bb537eaa" name="ae1b9b82c601b27b5506cce93bb537eaa"></a>
 glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><b>Coord2</b></td></tr>
+<tr class="memdesc:ae1b9b82c601b27b5506cce93bb537eaa"><td class="mdescLeft">&#160;</td><td class="mdescRight">coordinates for the third vertex <br /></td></tr>
 </table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>struct representing the tex coordinates of a triangle </p>
+<dl class="section note"><dt>Note</dt><dd>the coordinates should be used by absolute value in 0 to width range for x and 0 to height range for y </dd></dl>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="a3a07971c779237627b48baa49c57d3a8" name="a3a07971c779237627b48baa49c57d3a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a07971c779237627b48baa49c57d3a8">&#9670;&#160;</a></span>Normalize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TRCN_CORE_NAMESPACE::TriangleTexCoords::Normalize </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>texWidth</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>texHeight</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>normalize in device coordinates [0-&gt;1] [0-&gt;1] </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">texWidth</td><td>texture's width </td></tr>
+    <tr><td class="paramname">texHeight</td><td>texture's height </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
 <li>/home/bigbenji/Documenti/cpp/Trinacria-2D-Renderer/Trinacria/include/Trinacria/<a class="el" href="Renderer_8h_source.html">Renderer.h</a></li>
 </ul>

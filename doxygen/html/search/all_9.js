@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['onresize_0',['OnResize',['../classTRCN__CORE__NAMESPACE_1_1Renderer.html#ac90bfd39da6861d183ffd13280ea3fee',1,'TRCN_CORE_NAMESPACE::Renderer']]]
+  ['normalize_0',['Normalize',['../structTRCN__CORE__NAMESPACE_1_1QuadTexCoords.html#ae286d9267007a88d69a42f56bb0c595b',1,'TRCN_CORE_NAMESPACE::QuadTexCoords::Normalize()'],['../structTRCN__CORE__NAMESPACE_1_1TriangleTexCoords.html#a3a07971c779237627b48baa49c57d3a8',1,'TRCN_CORE_NAMESPACE::TriangleTexCoords::Normalize()']]]
 ];

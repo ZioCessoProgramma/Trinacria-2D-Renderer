@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['searchmaterial_0',['SearchMaterial',['../classTRCN__CORE__NAMESPACE_1_1Renderer.html#afd7a23c381d48e5b44f20159cedcb2de',1,'TRCN_CORE_NAMESPACE::Renderer']]]
+  ['onresize_0',['OnResize',['../classTRCN__CORE__NAMESPACE_1_1Renderer.html#ac90bfd39da6861d183ffd13280ea3fee',1,'TRCN_CORE_NAMESPACE::Renderer']]]
 ];
