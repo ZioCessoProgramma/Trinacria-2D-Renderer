@@ -60,30 +60,95 @@ namespace TRCN_CORE_NAMESPACE
 	{
 		Orientation_RIGHT, Orientation_LEFT
 	};
-	
+
+	/**
+	 * @brief a static class deals with all the opengl and calculations
+	 */
 	class Renderer
 	{
 	public:
+		/**
+		 * @brief a function that initializes the renderer
+		 * @param windowDimensions window dimensions
+		 * @param window glfw window
+		 */
 		static void Init(const glm::vec2& windowDimensions, GLFWwindow* window);
+
+		/**
+		 * @brief clears the color buffer
+		 * @note to call at the start of the frame
+		 * @param color the color to put in the background
+		 */
 
 		static void ClearColorBuffer(const glm::vec3& color = { 0.1f, 0.1f, 0.1f });
 
+		/**
+		 * @brief it queues a quad to be drawn
+		 * @param quadData data to create a quad
+		 */
+
 		static void CreateQuad(const struct QuadData& quadData);
+
+		/**
+		 * @brief it queues a triangle to be drawn
+		 * @param triangleData data to create a triangle
+		 */
 
 		static void CreateTriangle(const struct TriangleData& triangleData);
 
+		/**
+		 * @brief deals with openGL buffers
+		 * @note to call when you finished the scene
+		 */
+
 		static void EndScene();
+
+		/**
+		 * @brief the function that draws all the quads and triangles queued
+		 * @param screenShader the shader used to process the final texture
+		 */
+
 		static void Draw(Shader& screenShader);
 
+		/**
+		 * @brief the function that delete all the openGL objects
+		 * @note to call at the end of the application
+		 */
 		static void Cleanup();
 
+		/**
+		 * @brief the function that clears all buffers
+		 * @note to call at the end of the frame after EndScene()
+		 */
 		static void FlushBuffers();
 
+		/**
+		 * @brief a function that adds a material to be used in the scene
+		 * @param material the material to add to the scene
+		 */
+
 		static void AddMaterial(const Material& material);
+
+		/**
+		 * @brief a function that searches the material
+		 * @param material the material to search
+		 * @return the index of the material
+		 */
+
 		static int SearchMaterial(const Material& material);
+
+		/**
+		 * @brief a function that deals with the resizing
+		 * @note to call when the window resizes
+		 * @param windowDimensions the new window dimensions
+		 */
 
 		static void OnResize(const glm::vec2& windowDimensions);
 
+		/**
+		 * @brief the shader's <<manager>>
+		 */
+		
 		static Shader ShaderProgram;
 
 		static constexpr size_t MaxQuads = 1000;

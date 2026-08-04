@@ -1,0 +1,82 @@
+\doxysection{TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::Texture Class Reference}
+\hypertarget{classTRCN__CORE__NAMESPACE_1_1Texture}{}\label{classTRCN__CORE__NAMESPACE_1_1Texture}\index{TRCN\_CORE\_NAMESPACE::Texture@{TRCN\_CORE\_NAMESPACE::Texture}}
+
+
+Inheritance diagram for TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::Texture\+:
+% FIG 0
+
+
+Collaboration diagram for TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::Texture\+:
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1Texture_a68bf51dc04eb164e87ae0e2f4f462953}\label{classTRCN__CORE__NAMESPACE_1_1Texture_a68bf51dc04eb164e87ae0e2f4f462953} 
+{\bfseries Texture} (uint32\+\_\+t id, int width, int height, int channels)
+\item 
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1Texture_aedc8fbdf28e50493d32ecbc488c74f45}\label{classTRCN__CORE__NAMESPACE_1_1Texture_aedc8fbdf28e50493d32ecbc488c74f45} 
+virtual int {\bfseries Get\+Id} ()
+\item 
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1Texture_ae9b7027f6466017074d4c35d82e217c9}\label{classTRCN__CORE__NAMESPACE_1_1Texture_ae9b7027f6466017074d4c35d82e217c9} 
+virtual int {\bfseries Get\+Width} ()
+\item 
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1Texture_a487c212d81917a78a0a9084c4abdb3d9}\label{classTRCN__CORE__NAMESPACE_1_1Texture_a487c212d81917a78a0a9084c4abdb3d9} 
+virtual int {\bfseries Get\+Height} ()
+\item 
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1Texture_afb6b5823da8d46a05d52b3c82c79a187}\label{classTRCN__CORE__NAMESPACE_1_1Texture_afb6b5823da8d46a05d52b3c82c79a187} 
+virtual int {\bfseries Get\+Channels} ()
+\item 
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1Texture_aa40efbd5ef21d12a7a446e5081b3a402}\label{classTRCN__CORE__NAMESPACE_1_1Texture_aa40efbd5ef21d12a7a446e5081b3a402} 
+virtual void {\bfseries Load\+Texture} (const std\+::string \&path, uint32\+\_\+t filter=GL\+\_\+\+LINEAR)
+\item 
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1Texture_ad22e7eabae9c3a723ec53143d96179e7}\label{classTRCN__CORE__NAMESPACE_1_1Texture_ad22e7eabae9c3a723ec53143d96179e7} 
+virtual void {\bfseries Generate\+Texture} ()
+\item 
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1Texture_a8ee48d1276813287e479155078e10731}\label{classTRCN__CORE__NAMESPACE_1_1Texture_a8ee48d1276813287e479155078e10731} 
+void {\bfseries Bound\+Tex\+Image} (uint32\+\_\+t internal\+Format, uint32\+\_\+t format, uint32\+\_\+t width, uint32\+\_\+t height, uint32\+\_\+t type, void \texorpdfstring{$\ast$}{*}data, uint32\+\_\+t filter)
+\item 
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1Texture_af64f6dba505f3dfbbbafd2a93a75dea0}\label{classTRCN__CORE__NAMESPACE_1_1Texture_af64f6dba505f3dfbbbafd2a93a75dea0} 
+void {\bfseries Bound\+Sub\+Image} (uint32\+\_\+t format, uint32\+\_\+t width, uint32\+\_\+t height, uint32\+\_\+t type, void \texorpdfstring{$\ast$}{*}data)
+\item 
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1Texture_a0cf1fc54e18f69d47631a77905933f64}\label{classTRCN__CORE__NAMESPACE_1_1Texture_a0cf1fc54e18f69d47631a77905933f64} 
+virtual void {\bfseries Bind} (uint32\+\_\+t texture\+Slot)
+\item 
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1Texture_a87f94f1389bee935dbe218c317e9020d}\label{classTRCN__CORE__NAMESPACE_1_1Texture_a87f94f1389bee935dbe218c317e9020d} 
+virtual void {\bfseries Bind} ()
+\item 
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1Texture_a885a7047dca74e5bb8b927fac11d2add}\label{classTRCN__CORE__NAMESPACE_1_1Texture_a885a7047dca74e5bb8b927fac11d2add} 
+virtual void {\bfseries Cleanup} ()
+\item 
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1Texture_a47447853a2672a493593610dfef66131}\label{classTRCN__CORE__NAMESPACE_1_1Texture_a47447853a2672a493593610dfef66131} 
+virtual void {\bfseries Unbind} ()
+\item 
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1Texture_a5aa6dba3501f3affebc818c4514f39e2}\label{classTRCN__CORE__NAMESPACE_1_1Texture_a5aa6dba3501f3affebc818c4514f39e2} 
+uint32\+\_\+t {\bfseries Get\+Texture\+Chosen\+Slot} () const
+\item 
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1Texture_a7bc485b990dc20197af15e7a84d54461}\label{classTRCN__CORE__NAMESPACE_1_1Texture_a7bc485b990dc20197af15e7a84d54461} 
+void {\bfseries Init} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1Texture_a4223cd93495c7166ab628b5e2476490e}\label{classTRCN__CORE__NAMESPACE_1_1Texture_a4223cd93495c7166ab628b5e2476490e} 
+static void {\bfseries Tex\+Image} (uint32\+\_\+t internal\+Format, uint32\+\_\+t format, uint32\+\_\+t width, uint32\+\_\+t height, uint32\+\_\+t type, void \texorpdfstring{$\ast$}{*}data, uint32\+\_\+t filter)
+\item 
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1Texture_ae3c489e97ac0d7795a66a1816a45d47a}\label{classTRCN__CORE__NAMESPACE_1_1Texture_ae3c489e97ac0d7795a66a1816a45d47a} 
+static void {\bfseries Sub\+Image} (uint32\+\_\+t format, uint32\+\_\+t width, uint32\+\_\+t height, uint32\+\_\+t type, void \texorpdfstring{$\ast$}{*}data)
+\item 
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1Texture_af81a570e083612990c0f1ff6802a1c12}\label{classTRCN__CORE__NAMESPACE_1_1Texture_af81a570e083612990c0f1ff6802a1c12} 
+static void {\bfseries Clear\+Texture\+Slots} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1Texture_a73bebad1a7e0dbade4eab53893807320}\label{classTRCN__CORE__NAMESPACE_1_1Texture_a73bebad1a7e0dbade4eab53893807320} 
+static constexpr Texture \texorpdfstring{$\ast$}{*} {\bfseries NO\+\_\+\+TEXTURE} = nullptr
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/bigbenji/\+Documenti/cpp/\+Trinacria-\/2\+D-\/\+Renderer/\+Trinacria/include/\+Trinacria/Texture.\+h\item 
+/home/bigbenji/\+Documenti/cpp/\+Trinacria-\/2\+D-\/\+Renderer/\+Trinacria/src/Texture.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,71 @@
+\doxysection{Shapes\+Data.\+h}
+\hypertarget{ShapesData_8h_source}{}\label{ShapesData_8h_source}\index{/home/bigbenji/Documenti/cpp/Trinacria-\/2D-\/Renderer/Trinacria/include/Trinacria/ShapesData.h@{/home/bigbenji/Documenti/cpp/Trinacria-\/2D-\/Renderer/Trinacria/include/Trinacria/ShapesData.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}Macros.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}Sprite.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}Texture.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}Transform.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}Renderer.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}Materials.h"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{namespace\ }TRCN\_CORE\_NAMESPACE}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{struct\ }QuadData}
+\DoxyCodeLine{00013\ \ \ \ \ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ QuadData(\textcolor{keyword}{const}\ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Transform}{Transform}}\&\ transform,\ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Texture}{Texture}}*\ texture,\ \textcolor{keywordtype}{int}\ materialIndex\ =\ 0,\ \textcolor{keyword}{const}\ glm::vec3\&\ color\ =\ glm::vec3(1.f))\ :}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \ \ \ \ transform(transform),\ texture(texture),\ Color(color),\ MaterialIndex(materialIndex)\{\ \}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ QuadData(\textcolor{keyword}{const}\ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Transform}{Transform}}\&\ transform,\ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Sprite}{Sprite}}*\ sprite,\ \textcolor{keywordtype}{int}\ materialIndex\ =\ 0,\ \textcolor{keyword}{const}\ glm::vec3\&\ color\ =\ glm::vec3(1.f))\ :}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ transform(transform),\ sprite(sprite),\ Color(color),\ MaterialIndex(materialIndex)\ \{\ \}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ QuadData(\textcolor{keyword}{const}\ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Transform}{Transform}}\&\ transform,\ \textcolor{keyword}{const}\ glm::vec3\&\ color\ =\ glm::vec3(1.f),\ \textcolor{keywordtype}{int}\ materialIndex\ =\ 0)\ :}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ transform(transform),\ Color(color),\ MaterialIndex(materialIndex)\ \{\ \}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Transform}{Transform}}\ transform;}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Texture}{Texture}}*\ texture\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Sprite}{Sprite}}*\ sprite\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ glm::vec3\ Color;}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ MaterialIndex;}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1QuadTexCoords}{QuadTexCoords}}\ TexCoords\ =\ \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1QuadTexCoords}{QuadTexCoords}}(glm::vec2(0.f),\ glm::vec2(1.f,\ 0.f),}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec2(1.f),\ glm::vec2(0.f,\ 1.f));}
+\DoxyCodeLine{00032\ \ \ \ \ \};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{struct\ }TriangleData}
+\DoxyCodeLine{00035\ \ \ \ \ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ TriangleData(\textcolor{keyword}{const}\ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Transform}{Transform}}\&\ transform,\ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Texture}{Texture}}*\ texture,}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ materialIndex\ =\ 0,}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ TriangleOrientation\ orientation\ =\ TriangleOrientation::Orientation\_RIGHT,}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec3\&\ color\ =\ glm::vec3(1.f))\ :}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ transform(transform),\ texture(texture),\ Orientation(orientation),\ Color(color),\ MaterialIndex(materialIndex)\ \{\ \}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ TriangleData(\textcolor{keyword}{const}\ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Transform}{Transform}}\&\ transform,}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Sprite}{Sprite}}*\ sprite,\ \textcolor{keywordtype}{int}\ materialIndex\ =\ 0,}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ TriangleOrientation\ orientation\ =\ TriangleOrientation::Orientation\_RIGHT,}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec3\&\ color\ =\ glm::vec3(1.f))\ :}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ transform(transform),\ sprite(sprite),\ Orientation(orientation),\ Color(color),\ MaterialIndex(materialIndex)\ \{\ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ TriangleData(\textcolor{keyword}{const}\ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Transform}{Transform}}\&\ transform,}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ materialIndex\ =\ 0,}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ TriangleOrientation\ orientation\ =\ TriangleOrientation::Orientation\_RIGHT,}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec3\&\ color\ =\ glm::vec3(1.f))\ :}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ transform(transform),\ Orientation(orientation),\ Color(color),\ MaterialIndex(materialIndex)\ \{\ \}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Transform}{Transform}}\ transform;}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Texture}{Texture}}*\ texture\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Sprite}{Sprite}}*\ sprite\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ glm::vec3\ Color;}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ MaterialIndex\ =\ 0;}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ TriangleOrientation\ Orientation;}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1TriangleTexCoords}{TriangleTexCoords}}\ TexCoords\ =\ \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1TriangleTexCoords}{TriangleTexCoords}}(glm::vec2(0.f),\ glm::vec2(1.f,\ 0.f),}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec2(0.f,\ 1.f));}
+\DoxyCodeLine{00064\ \ \ \ \ \};}
+\DoxyCodeLine{00065\ \}}
+
+\end{DoxyCode}

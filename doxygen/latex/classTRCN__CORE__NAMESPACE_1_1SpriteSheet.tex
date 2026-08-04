@@ -1,0 +1,82 @@
+\doxysection{TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::Sprite\+Sheet Class Reference}
+\hypertarget{classTRCN__CORE__NAMESPACE_1_1SpriteSheet}{}\label{classTRCN__CORE__NAMESPACE_1_1SpriteSheet}\index{TRCN\_CORE\_NAMESPACE::SpriteSheet@{TRCN\_CORE\_NAMESPACE::SpriteSheet}}
+
+
+Inheritance diagram for TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::Sprite\+Sheet\+:
+% FIG 0
+
+
+Collaboration diagram for TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::Sprite\+Sheet\+:
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1SpriteSheet_ac5cb152af3e95997c14ec37c8279dfd1}\label{classTRCN__CORE__NAMESPACE_1_1SpriteSheet_ac5cb152af3e95997c14ec37c8279dfd1} 
+{\bfseries Sprite\+Sheet} (float cell\+Width, float cell\+Height)
+\item 
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1SpriteSheet_a37d182124cd7555567b9d66c343c343c}\label{classTRCN__CORE__NAMESPACE_1_1SpriteSheet_a37d182124cd7555567b9d66c343c343c} 
+\mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1QuadTexCoords}{Quad\+Tex\+Coords}} {\bfseries Get\+Cell} (uint32\+\_\+t x\+Index, uint32\+\_\+t y\+Index)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Texture}{TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::\+Texture}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Texture} (uint32\+\_\+t id, int width, int height, int channels)
+\item 
+virtual int {\bfseries Get\+Id} ()
+\item 
+virtual int {\bfseries Get\+Width} ()
+\item 
+virtual int {\bfseries Get\+Height} ()
+\item 
+virtual int {\bfseries Get\+Channels} ()
+\item 
+virtual void {\bfseries Load\+Texture} (const std\+::string \&path, uint32\+\_\+t filter=GL\+\_\+\+LINEAR)
+\item 
+virtual void {\bfseries Generate\+Texture} ()
+\item 
+void {\bfseries Bound\+Tex\+Image} (uint32\+\_\+t internal\+Format, uint32\+\_\+t format, uint32\+\_\+t width, uint32\+\_\+t height, uint32\+\_\+t type, void \texorpdfstring{$\ast$}{*}data, uint32\+\_\+t filter)
+\item 
+void {\bfseries Bound\+Sub\+Image} (uint32\+\_\+t format, uint32\+\_\+t width, uint32\+\_\+t height, uint32\+\_\+t type, void \texorpdfstring{$\ast$}{*}data)
+\item 
+virtual void {\bfseries Bind} (uint32\+\_\+t texture\+Slot)
+\item 
+virtual void {\bfseries Bind} ()
+\item 
+virtual void {\bfseries Cleanup} ()
+\item 
+virtual void {\bfseries Unbind} ()
+\item 
+uint32\+\_\+t {\bfseries Get\+Texture\+Chosen\+Slot} () const
+\item 
+void {\bfseries Init} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1SpriteSheet_aef3d3dcbc3863831cb4bfdf2430c15a8}\label{classTRCN__CORE__NAMESPACE_1_1SpriteSheet_aef3d3dcbc3863831cb4bfdf2430c15a8} 
+float {\bfseries Cell\+Width}
+\item 
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1SpriteSheet_ae2073717f9af9f596c4c5cedd938b490}\label{classTRCN__CORE__NAMESPACE_1_1SpriteSheet_ae2073717f9af9f596c4c5cedd938b490} 
+float {\bfseries Cell\+Height}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Texture}{TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::\+Texture}}}
+\begin{DoxyCompactItemize}
+\item 
+static void {\bfseries Tex\+Image} (uint32\+\_\+t internal\+Format, uint32\+\_\+t format, uint32\+\_\+t width, uint32\+\_\+t height, uint32\+\_\+t type, void \texorpdfstring{$\ast$}{*}data, uint32\+\_\+t filter)
+\item 
+static void {\bfseries Sub\+Image} (uint32\+\_\+t format, uint32\+\_\+t width, uint32\+\_\+t height, uint32\+\_\+t type, void \texorpdfstring{$\ast$}{*}data)
+\item 
+static void {\bfseries Clear\+Texture\+Slots} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes inherited from \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Texture}{TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::\+Texture}}}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr Texture \texorpdfstring{$\ast$}{*} {\bfseries NO\+\_\+\+TEXTURE} = nullptr
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/bigbenji/\+Documenti/cpp/\+Trinacria-\/2\+D-\/\+Renderer/\+Trinacria/include/\+Trinacria/Sprite.\+h\item 
+/home/bigbenji/\+Documenti/cpp/\+Trinacria-\/2\+D-\/\+Renderer/\+Trinacria/src/Sprite.\+cpp\end{DoxyCompactItemize}

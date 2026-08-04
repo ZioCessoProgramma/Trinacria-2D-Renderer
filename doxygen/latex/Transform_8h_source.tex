@@ -1,0 +1,55 @@
+\doxysection{Transform.\+h}
+\hypertarget{Transform_8h_source}{}\label{Transform_8h_source}\index{/home/bigbenji/Documenti/cpp/Trinacria-\/2D-\/Renderer/Trinacria/include/Trinacria/Transform.h@{/home/bigbenji/Documenti/cpp/Trinacria-\/2D-\/Renderer/Trinacria/include/Trinacria/Transform.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}Macros.h"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <glm/glm.hpp>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}glm/ext/matrix\_transform.hpp"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}glm/gtc/quaternion.hpp"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{namespace\ }TRCN\_CORE\_NAMESPACE}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{class\ }Transform}
+\DoxyCodeLine{00012\ \ \ \ \ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ Transform()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ Transform(glm::vec2\ position,}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ glm::vec2\ scale\ =\ glm::vec2(0.5f),}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ yawDegreesRotation\ =\ 0.f,}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec2\&\ pivot\ =\ glm::vec2(0.5f)}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ :\ Position(position),\ Scale(scale),\ YawDegreesRotation(yawDegreesRotation),\ Pivot(pivot)\ \{\}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ glm::mat4\ GetMatrix()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00024\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ glm::mat4\ transform\ =\ glm::mat4(1.0f);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ transform\ =\ glm::translate(transform,\ glm::vec3(Position,\ 0.f));}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ rotate\ only\ z\ axis\ because\ we're\ in\ 2d.\ Why\ would\ you\ even\ rotate\ in\ other\ axis?!}}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ transform\ =\ glm::rotate(transform,\ glm::radians(YawDegreesRotation),\ glm::vec3(0.f,\ 0.f,\ 1.f));}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ transform\ =\ glm::scale(transform,\ glm::vec3(Scale,\ 1.f));}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ the\ order\ is\ right\ T\ *\ R\ *\ S\ -\/>\ first\ S\ then\ R\ then\ T}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ transform;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ glm::vec2\ Position\ =\ glm::vec2(0.f);}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ glm::vec2\ Scale\ =\ glm::vec2(0.5f);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ YawDegreesRotation\ =\ 0.f;}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Are\ normalized}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ glm::vec2\ Pivot\ =\ glm::vec2(0.f);}
+\DoxyCodeLine{00048\ \ \ \ \ \};}
+\DoxyCodeLine{00049\ \}}
+
+\end{DoxyCode}

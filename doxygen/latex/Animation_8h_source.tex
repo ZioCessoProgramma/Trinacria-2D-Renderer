@@ -1,0 +1,74 @@
+\doxysection{Animation.\+h}
+\hypertarget{Animation_8h_source}{}\label{Animation_8h_source}\index{/home/bigbenji/Documenti/cpp/Trinacria-\/2D-\/Renderer/Trinacria/include/Trinacria/Animation.h@{/home/bigbenji/Documenti/cpp/Trinacria-\/2D-\/Renderer/Trinacria/include/Trinacria/Animation.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}Sprite.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}Assert.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}Renderer.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}ShapesData.h"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}Trinacria/Macros.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <cstring>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{namespace\ }TRCN\_CORE\_NAMESPACE}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keywordtype}{size\_t}\ SpriteNum>}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Animation}{Animation}}}
+\DoxyCodeLine{00015\ \ \ \ \ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ Play(\textcolor{keywordtype}{float}\ deltaTime,\ \textcolor{keyword}{const}\ glm::vec2\&\ position,\ \textcolor{keyword}{const}\ glm::vec3\&\ color\ =\ 1.f,\ \textcolor{keywordtype}{int}\ materialIndex\ =\ 0)}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ \_accumulatedDeltaTime\ +=\ deltaTime;}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_accumulatedDeltaTime\ >=\ 1.f\ /\ Fps)}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_currentSpriteIndex++;}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_currentSpriteIndex\ >\ SpriteNum\ -\/\ 1)}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_currentSpriteIndex\ =\ 0;}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_accumulatedDeltaTime\ =\ 0.f;}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Transform}{Transform}}\ transform(position,\ glm::vec2(0.5f));}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1QuadData}{QuadData}}\ data(transform,\ \&\_sprites[\_currentSpriteIndex],\ materialIndex,\ color);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Renderer_acd70e60944ef6db940d4c1697ab4354c}{Renderer::CreateQuad}}(data);}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ Init(\mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Sprite}{Sprite}}*\ array,\ \textcolor{keywordtype}{size\_t}\ count,\ uint32\_t\ fps)}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\_initialized)}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ memcpy(\_sprites,\ array,\ count\ *\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Sprite}{Sprite}}));}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Fps\ =\ fps;}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_initialized\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TRCN\_ASSERT(\textcolor{keyword}{false},\ \textcolor{stringliteral}{"{}You\ cannot\ initialize\ an\ asset\ more\ than\ one\ time"{}});}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ uint32\_t\ Fps\ =\ 0;}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Sprite}{Sprite}}\ \_sprites[SpriteNum];}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \_initialized\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \_accumulatedDeltaTime\ =\ 0.f;}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ uint32\_t\ \_currentSpriteIndex\ =\ 0;}
+\DoxyCodeLine{00065\ \ \ \ \ \};}
+\DoxyCodeLine{00066\ \}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ }
+
+\end{DoxyCode}

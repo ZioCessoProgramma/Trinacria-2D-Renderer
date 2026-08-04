@@ -1,0 +1,72 @@
+\doxysection{TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::Input\+Poller\+Layer Class Reference}
+\hypertarget{classTRCN__CORE__NAMESPACE_1_1InputPollerLayer}{}\label{classTRCN__CORE__NAMESPACE_1_1InputPollerLayer}\index{TRCN\_CORE\_NAMESPACE::InputPollerLayer@{TRCN\_CORE\_NAMESPACE::InputPollerLayer}}
+
+
+Inheritance diagram for TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::Input\+Poller\+Layer\+:
+% FIG 0
+
+
+Collaboration diagram for TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::Input\+Poller\+Layer\+:
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1InputPollerLayer_ad59c3f957298fc24b411a7a018ef1db4}{On\+Update}} (float delta\+Time) override
+\item 
+virtual void \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1InputPollerLayer_a5563311800c8af919f86f82da3539926}{On\+Attach}} () override
+\item 
+virtual void \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1InputPollerLayer_a286943b5523a2ca7e1d62e200b5c2e88}{On\+Detach}} () override
+\item 
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1InputPollerLayer_a8f1c68fe396833c41509b2b2c226a49f}\label{classTRCN__CORE__NAMESPACE_1_1InputPollerLayer_a8f1c68fe396833c41509b2b2c226a49f} 
+void {\bfseries Set\+Window} (GLFWwindow \texorpdfstring{$\ast$}{*}window)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1InputPollerLayer_a899618ee2dd2eff05839789e37055042}\label{classTRCN__CORE__NAMESPACE_1_1InputPollerLayer_a899618ee2dd2eff05839789e37055042} 
+\mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1EventDispatcher}{Event\+Dispatcher}}$<$ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1KeyboardEvent}{Keyboard\+Event}} $>$ {\bfseries Key\+Board\+Dispatcher}
+\item 
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1InputPollerLayer_a5e40b9077514155e4237c16432726b0d}\label{classTRCN__CORE__NAMESPACE_1_1InputPollerLayer_a5e40b9077514155e4237c16432726b0d} 
+\mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1EventDispatcher}{Event\+Dispatcher}}$<$ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1MouseKeyEvent}{Mouse\+Key\+Event}} $>$ {\bfseries Mouse\+Dispatcher}
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1InputPollerLayer_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1InputPollerLayer_a5563311800c8af919f86f82da3539926}\index{TRCN\_CORE\_NAMESPACE::InputPollerLayer@{TRCN\_CORE\_NAMESPACE::InputPollerLayer}!OnAttach@{OnAttach}}
+\index{OnAttach@{OnAttach}!TRCN\_CORE\_NAMESPACE::InputPollerLayer@{TRCN\_CORE\_NAMESPACE::InputPollerLayer}}
+\doxysubsubsection{\texorpdfstring{OnAttach()}{OnAttach()}}
+{\footnotesize\ttfamily \label{classTRCN__CORE__NAMESPACE_1_1InputPollerLayer_a5563311800c8af919f86f82da3539926} 
+void TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::\+Input\+Poller\+Layer\+::\+On\+Attach (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Layer}{TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::\+Layer}}.
+
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1InputPollerLayer_a286943b5523a2ca7e1d62e200b5c2e88}\index{TRCN\_CORE\_NAMESPACE::InputPollerLayer@{TRCN\_CORE\_NAMESPACE::InputPollerLayer}!OnDetach@{OnDetach}}
+\index{OnDetach@{OnDetach}!TRCN\_CORE\_NAMESPACE::InputPollerLayer@{TRCN\_CORE\_NAMESPACE::InputPollerLayer}}
+\doxysubsubsection{\texorpdfstring{OnDetach()}{OnDetach()}}
+{\footnotesize\ttfamily \label{classTRCN__CORE__NAMESPACE_1_1InputPollerLayer_a286943b5523a2ca7e1d62e200b5c2e88} 
+virtual void TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::\+Input\+Poller\+Layer\+::\+On\+Detach (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Layer}{TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::\+Layer}}.
+
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1InputPollerLayer_ad59c3f957298fc24b411a7a018ef1db4}\index{TRCN\_CORE\_NAMESPACE::InputPollerLayer@{TRCN\_CORE\_NAMESPACE::InputPollerLayer}!OnUpdate@{OnUpdate}}
+\index{OnUpdate@{OnUpdate}!TRCN\_CORE\_NAMESPACE::InputPollerLayer@{TRCN\_CORE\_NAMESPACE::InputPollerLayer}}
+\doxysubsubsection{\texorpdfstring{OnUpdate()}{OnUpdate()}}
+{\footnotesize\ttfamily \label{classTRCN__CORE__NAMESPACE_1_1InputPollerLayer_ad59c3f957298fc24b411a7a018ef1db4} 
+void TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::\+Input\+Poller\+Layer\+::\+On\+Update (\begin{DoxyParamCaption}\item[{float}]{delta\+Time}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Layer}{TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::\+Layer}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/bigbenji/\+Documenti/cpp/\+Trinacria-\/2\+D-\/\+Renderer/\+Trinacria/include/\+Trinacria/Input\+Events.\+h\item 
+/home/bigbenji/\+Documenti/cpp/\+Trinacria-\/2\+D-\/\+Renderer/\+Trinacria/src/Input\+Events.\+cpp\end{DoxyCompactItemize}

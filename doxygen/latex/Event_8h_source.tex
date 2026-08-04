@@ -1,0 +1,69 @@
+\doxysection{Event.\+h}
+\hypertarget{Event_8h_source}{}\label{Event_8h_source}\index{/home/bigbenji/Documenti/cpp/Trinacria-\/2D-\/Renderer/Trinacria/include/Trinacria/Event.h@{/home/bigbenji/Documenti/cpp/Trinacria-\/2D-\/Renderer/Trinacria/include/Trinacria/Event.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}Trinacria/Macros.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}Log.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}Layer.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{namespace\ }TRCN\_CORE\_NAMESPACE}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Category>}
+\DoxyCodeLine{00012\ \ \ \ \ TRCN\_ABSTRACT\ \textcolor{keyword}{class\ }Event}
+\DoxyCodeLine{00013\ \ \ \ \ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ Event(Category\ type)\ :\ \_type(type)\ \{\ \}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ Category\ GetType()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \_type;\ \}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ Category\ \_type;}
+\DoxyCodeLine{00021\ \ \ \ \ \};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ EventType>}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1EventDispatcher}{EventDispatcher}}}
+\DoxyCodeLine{00025\ \ \ \ \ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }CallbackType\ =\ std::function<void(\textcolor{keyword}{const}\ EventType\&\ event)>;}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ RegistCallback(CallbackType\ callBack)}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \_callBacks.push\_back(callBack);}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ SetOwner(\mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Layer}{Layer}}*\ owner)}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\_hasOwnerBeenSet)}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_owner\ =\ owner;}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_hasOwnerBeenSet\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TRCN\_LOG(\textcolor{stringliteral}{"{}Owner\ of\ this\ event\ has\ been\ set\ already"{}});}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ Submit(\mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Layer}{Layer}}*\ context,\ \textcolor{keyword}{const}\ EventType\&\ event)}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (context\ !=\ \_owner)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (CallbackType\&\ callBack\ :\ \_callBacks)}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ callBack(event);}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ std::vector<CallbackType>\ \_callBacks;}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Layer}{Layer}}*\ \_owner\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \_hasOwnerBeenSet\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00062\ \ \ \ \ \};}
+\DoxyCodeLine{00063\ \}}
+
+\end{DoxyCode}

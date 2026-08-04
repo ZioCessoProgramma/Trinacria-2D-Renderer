@@ -1,0 +1,64 @@
+\doxysection{Texture.\+h}
+\hypertarget{Texture_8h_source}{}\label{Texture_8h_source}\index{/home/bigbenji/Documenti/cpp/Trinacria-\/2D-\/Renderer/Trinacria/include/Trinacria/Texture.h@{/home/bigbenji/Documenti/cpp/Trinacria-\/2D-\/Renderer/Trinacria/include/Trinacria/Texture.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <glad/glad.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}Trinacria/Macros.h"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{namespace\ }TRCN\_CORE\_NAMESPACE}
+\DoxyCodeLine{00010\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{class\ }Texture}
+\DoxyCodeLine{00012\ \ \ \ \ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ Texture(uint32\_t\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height,\ \textcolor{keywordtype}{int}\ channels);}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ Texture()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \string~Texture()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{int}\ GetId()\ \{\ \textcolor{keywordflow}{return}\ \_id;\ \}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{int}\ GetWidth()\ \{\ \textcolor{keywordflow}{return}\ \_width;\ \}}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{int}\ GetHeight()\ \{\ \textcolor{keywordflow}{return}\ \_height;\ \}}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{int}\ GetChannels()\ \{\ \textcolor{keywordflow}{return}\ \_channels;\ \}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ LoadTexture(\textcolor{keyword}{const}\ std::string\&\ path,\ uint32\_t\ filter\ =\ GL\_LINEAR);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ GenerateTexture();}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ TexImage(uint32\_t\ internalFormat,\ uint32\_t\ format,\ uint32\_t\ width,\ uint32\_t\ height,\ uint32\_t\ type,\ \textcolor{keywordtype}{void}*\ data,\ uint32\_t\ filter);}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ BoundTexImage(uint32\_t}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ internalFormat,\ uint32\_t\ format,\ uint32\_t\ width,\ uint32\_t\ height,\ uint32\_t\ type,\ \textcolor{keywordtype}{void}*\ data,\ uint32\_t\ filter);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ SubImage(uint32\_t\ format,\ uint32\_t\ width,\ uint32\_t\ height,\ uint32\_t\ type,\ \textcolor{keywordtype}{void}*\ data);}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ BoundSubImage(uint32\_t\ format,\ uint32\_t\ width,\ uint32\_t\ height,\ uint32\_t\ type,\ \textcolor{keywordtype}{void}*\ data);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Bind(uint32\_t\ textureSlot);}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Bind();\ \textcolor{comment}{//\ to\ first\ available\ texture\ slot}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Cleanup();}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Unbind();}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ ClearTextureSlots();}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ uint32\_t\ GetTextureChosenSlot()\textcolor{keyword}{\ const\ }\{\textcolor{keywordflow}{return}\ \_textureSlotChosenIndex;\}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ Init();}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ Texture*\ NO\_TEXTURE\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ uint32\_t\ \_id;}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \_width,\ \_height;}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \_channels;}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ uint32\_t\ \_textureSlotChosenIndex\ =\ -\/1;\ \textcolor{comment}{//\ value\ for\ not\ choosing\ any}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \_isTextureSlotOccupied[32];}
+\DoxyCodeLine{00057\ \ \ \ \ \};}
+\DoxyCodeLine{00058\ \}}
+
+\end{DoxyCode}
