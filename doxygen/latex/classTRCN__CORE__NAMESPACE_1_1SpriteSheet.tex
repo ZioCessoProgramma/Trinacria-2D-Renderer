@@ -2,6 +2,15 @@
 \hypertarget{classTRCN__CORE__NAMESPACE_1_1SpriteSheet}{}\label{classTRCN__CORE__NAMESPACE_1_1SpriteSheet}\index{TRCN\_CORE\_NAMESPACE::SpriteSheet@{TRCN\_CORE\_NAMESPACE::SpriteSheet}}
 
 
+polymorphic child class of \doxylink{classTRCN__CORE__NAMESPACE_1_1Texture}{Texture}, it represents a spritesheet  
+
+
+
+
+{\ttfamily \#include $<$Sprite.\+h$>$}
+
+
+
 Inheritance diagram for TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::Sprite\+Sheet\+:
 % FIG 0
 
@@ -11,11 +20,9 @@ Collaboration diagram for TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::Sprite\+Sheet\+:
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classTRCN__CORE__NAMESPACE_1_1SpriteSheet_ac5cb152af3e95997c14ec37c8279dfd1}\label{classTRCN__CORE__NAMESPACE_1_1SpriteSheet_ac5cb152af3e95997c14ec37c8279dfd1} 
-{\bfseries Sprite\+Sheet} (float cell\+Width, float cell\+Height)
-\item 
-\Hypertarget{classTRCN__CORE__NAMESPACE_1_1SpriteSheet_a37d182124cd7555567b9d66c343c343c}\label{classTRCN__CORE__NAMESPACE_1_1SpriteSheet_a37d182124cd7555567b9d66c343c343c} 
-\mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1QuadTexCoords}{Quad\+Tex\+Coords}} {\bfseries Get\+Cell} (uint32\+\_\+t x\+Index, uint32\+\_\+t y\+Index)
+\mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1SpriteSheet_ac5cb152af3e95997c14ec37c8279dfd1}{Sprite\+Sheet}} (float cell\+Width, float cell\+Height)
+\begin{DoxyCompactList}\small\item\em constructor of the spritesheet \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1QuadTexCoords}{Quad\+Tex\+Coords}} \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1SpriteSheet_a37d182124cd7555567b9d66c343c343c}{Get\+Cell}} (uint32\+\_\+t x\+Index, uint32\+\_\+t y\+Index)
 \end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Texture}{TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::\+Texture}}}
 \begin{DoxyCompactItemize}
@@ -55,10 +62,10 @@ void {\bfseries Init} ()
 \item 
 \Hypertarget{classTRCN__CORE__NAMESPACE_1_1SpriteSheet_aef3d3dcbc3863831cb4bfdf2430c15a8}\label{classTRCN__CORE__NAMESPACE_1_1SpriteSheet_aef3d3dcbc3863831cb4bfdf2430c15a8} 
 float {\bfseries Cell\+Width}
-\item 
+\begin{DoxyCompactList}\small\item\em the width of the cell in range 0 to width \end{DoxyCompactList}\item 
 \Hypertarget{classTRCN__CORE__NAMESPACE_1_1SpriteSheet_ae2073717f9af9f596c4c5cedd938b490}\label{classTRCN__CORE__NAMESPACE_1_1SpriteSheet_ae2073717f9af9f596c4c5cedd938b490} 
 float {\bfseries Cell\+Height}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em the height of the cell in range 0 to height \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
 \doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Texture}{TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::\+Texture}}}
 \begin{DoxyCompactItemize}
@@ -74,6 +81,57 @@ static void {\bfseries Clear\+Texture\+Slots} ()
 \item 
 static constexpr Texture \texorpdfstring{$\ast$}{*} {\bfseries NO\+\_\+\+TEXTURE} = nullptr
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+polymorphic child class of \doxylink{classTRCN__CORE__NAMESPACE_1_1Texture}{Texture}, it represents a spritesheet 
+
+\begin{DoxyNote}{Note}
+use this when dealing with Tiles, and obviously with spritesheets 
+\end{DoxyNote}
+
+
+\label{doc-constructors}
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1SpriteSheet_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1SpriteSheet_ac5cb152af3e95997c14ec37c8279dfd1}\index{TRCN\_CORE\_NAMESPACE::SpriteSheet@{TRCN\_CORE\_NAMESPACE::SpriteSheet}!SpriteSheet@{SpriteSheet}}
+\index{SpriteSheet@{SpriteSheet}!TRCN\_CORE\_NAMESPACE::SpriteSheet@{TRCN\_CORE\_NAMESPACE::SpriteSheet}}
+\doxysubsubsection{\texorpdfstring{SpriteSheet()}{SpriteSheet()}}
+{\footnotesize\ttfamily \label{classTRCN__CORE__NAMESPACE_1_1SpriteSheet_ac5cb152af3e95997c14ec37c8279dfd1} 
+TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::\+Sprite\+Sheet\+::\+Sprite\+Sheet (\begin{DoxyParamCaption}\item[{float}]{cell\+Width}{, }\item[{float}]{cell\+Height}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+constructor of the spritesheet 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cell\+Width} & width of the cell in range 0 to width \\
+\hline
+{\em cell\+Height} & height of the cell in range 0 to height \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1SpriteSheet_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1SpriteSheet_a37d182124cd7555567b9d66c343c343c}\index{TRCN\_CORE\_NAMESPACE::SpriteSheet@{TRCN\_CORE\_NAMESPACE::SpriteSheet}!GetCell@{GetCell}}
+\index{GetCell@{GetCell}!TRCN\_CORE\_NAMESPACE::SpriteSheet@{TRCN\_CORE\_NAMESPACE::SpriteSheet}}
+\doxysubsubsection{\texorpdfstring{GetCell()}{GetCell()}}
+{\footnotesize\ttfamily \label{classTRCN__CORE__NAMESPACE_1_1SpriteSheet_a37d182124cd7555567b9d66c343c343c} 
+\mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1QuadTexCoords}{TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::\+Quad\+Tex\+Coords}} TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::\+Sprite\+Sheet\+::\+Get\+Cell (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{x\+Index}{, }\item[{uint32\+\_\+t}]{y\+Index}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em x\+Index} & the index in x coordinate in the grid \\
+\hline
+{\em y\+Index} & the index in y coordinate in the grid \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+returns the tex coords of the cell 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

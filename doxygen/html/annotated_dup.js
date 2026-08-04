@@ -18,11 +18,11 @@ var annotated_dup =
       [ "TriangleTexCoords", "structTRCN__CORE__NAMESPACE_1_1TriangleTexCoords.html", "structTRCN__CORE__NAMESPACE_1_1TriangleTexCoords" ],
       [ "Vertex", "structTRCN__CORE__NAMESPACE_1_1Vertex.html", null ],
       [ "Renderer", "classTRCN__CORE__NAMESPACE_1_1Renderer.html", null ],
-      [ "Shader", "classTRCN__CORE__NAMESPACE_1_1Shader.html", null ],
+      [ "Shader", "classTRCN__CORE__NAMESPACE_1_1Shader.html", "classTRCN__CORE__NAMESPACE_1_1Shader" ],
       [ "QuadData", "structTRCN__CORE__NAMESPACE_1_1QuadData.html", "structTRCN__CORE__NAMESPACE_1_1QuadData" ],
       [ "TriangleData", "structTRCN__CORE__NAMESPACE_1_1TriangleData.html", "structTRCN__CORE__NAMESPACE_1_1TriangleData" ],
-      [ "SpriteSheet", "classTRCN__CORE__NAMESPACE_1_1SpriteSheet.html", null ],
-      [ "Sprite", "classTRCN__CORE__NAMESPACE_1_1Sprite.html", null ],
+      [ "SpriteSheet", "classTRCN__CORE__NAMESPACE_1_1SpriteSheet.html", "classTRCN__CORE__NAMESPACE_1_1SpriteSheet" ],
+      [ "Sprite", "classTRCN__CORE__NAMESPACE_1_1Sprite.html", "classTRCN__CORE__NAMESPACE_1_1Sprite" ],
       [ "Texture", "classTRCN__CORE__NAMESPACE_1_1Texture.html", null ],
       [ "Transform", "classTRCN__CORE__NAMESPACE_1_1Transform.html", null ]
     ] ]

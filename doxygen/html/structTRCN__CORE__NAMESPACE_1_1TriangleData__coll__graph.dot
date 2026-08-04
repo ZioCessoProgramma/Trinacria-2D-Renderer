@@ -16,7 +16,7 @@ digraph "TRCN_CORE_NAMESPACE::TriangleData"
 </TABLE>> ,fontcolor="grey" ];
   Node4 -> Node1 [id="edge4_Node000001_Node000004",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=<<TABLE CELLBORDER="0" BORDER="0"><TR><TD VALIGN="top" ALIGN="LEFT" CELLPADDING="1" CELLSPACING="0">sprite</TD></TR>
 </TABLE>> ,fontcolor="grey" ];
-  Node4 [id="Node000004",label="TRCN_CORE_NAMESPACE\l::Sprite",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",URL="$classTRCN__CORE__NAMESPACE_1_1Sprite.html",tooltip=" "];
+  Node4 [id="Node000004",label="TRCN_CORE_NAMESPACE\l::Sprite",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$classTRCN__CORE__NAMESPACE_1_1Sprite.html",tooltip="class representing a sprite"];
   Node5 -> Node1 [id="edge5_Node000001_Node000005",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=<<TABLE CELLBORDER="0" BORDER="0"><TR><TD VALIGN="top" ALIGN="LEFT" CELLPADDING="1" CELLSPACING="0">TexCoords</TD></TR>
 </TABLE>> ,fontcolor="grey" ];
   Node5 [id="Node000005",label="TRCN_CORE_NAMESPACE\l::TriangleTexCoords",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$structTRCN__CORE__NAMESPACE_1_1TriangleTexCoords.html",tooltip="struct representing the tex coordinates of a triangle"];

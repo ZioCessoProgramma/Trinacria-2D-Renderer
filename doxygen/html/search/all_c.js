@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['quaddata_0',['QuadData',['../structTRCN__CORE__NAMESPACE_1_1QuadData.html',1,'TRCN_CORE_NAMESPACE::QuadData'],['../structTRCN__CORE__NAMESPACE_1_1QuadData.html#ab35c4581d82d1a189b3e1927edfb58c0',1,'TRCN_CORE_NAMESPACE::QuadData::QuadData(const Transform &amp;transform, Texture *texture, int materialIndex=0, const glm::vec3 &amp;color=glm::vec3(1.f))'],['../structTRCN__CORE__NAMESPACE_1_1QuadData.html#a1b3f1c823a63ecbef38ef94a5b43fc3f',1,'TRCN_CORE_NAMESPACE::QuadData::QuadData(const Transform &amp;transform, Sprite *sprite, int materialIndex=0, const glm::vec3 &amp;color=glm::vec3(1.f))'],['../structTRCN__CORE__NAMESPACE_1_1QuadData.html#aa92634c56fcfae280f8285892b7b5ad5',1,'TRCN_CORE_NAMESPACE::QuadData::QuadData(const Transform &amp;transform, const glm::vec3 &amp;color=glm::vec3(1.f), int materialIndex=0)']]],
-  ['quadtexcoords_1',['QuadTexCoords',['../structTRCN__CORE__NAMESPACE_1_1QuadTexCoords.html',1,'TRCN_CORE_NAMESPACE']]]
+  ['onresize_0',['OnResize',['../classTRCN__CORE__NAMESPACE_1_1Renderer.html#ac90bfd39da6861d183ffd13280ea3fee',1,'TRCN_CORE_NAMESPACE::Renderer']]],
+  ['orientation_1',['Orientation',['../structTRCN__CORE__NAMESPACE_1_1TriangleData.html#a4f275596cb8019e63a11f35dbd82c2ea',1,'TRCN_CORE_NAMESPACE::TriangleData']]]
 ];

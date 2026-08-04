@@ -84,7 +84,7 @@ namespace TRCN_CORE_NAMESPACE
          */
 
         void SetUniformVec4(const char* name, const glm::vec4& value);
-    
+
     private:
         uint32_t _shaderProgram;
     };
