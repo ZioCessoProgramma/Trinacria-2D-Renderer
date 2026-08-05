@@ -91,25 +91,116 @@ $(function(){initNavTree('classTRCN__CORE__NAMESPACE_1_1Transform.html','','clas
   <div class="headertitle"><div class="title">TRCN_CORE_NAMESPACE::Transform Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>class containing all a model matrix could have: position, scale etc...  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="Transform_8h_source.html">Transform.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a419c8406b9a4edb182feed958db365e2" id="r_a419c8406b9a4edb182feed958db365e2"><td class="memItemLeft" align="right" valign="top"><a id="a419c8406b9a4edb182feed958db365e2" name="a419c8406b9a4edb182feed958db365e2"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Transform</b> (glm::vec2 position, glm::vec2 scale=glm::vec2(0.5f), float yawDegreesRotation=0.f, const glm::vec2 &amp;pivot=glm::vec2(0.5f))</td></tr>
-<tr class="memitem:a74cc2963db4985fcd420fd73d034a1e4" id="r_a74cc2963db4985fcd420fd73d034a1e4"><td class="memItemLeft" align="right" valign="top"><a id="a74cc2963db4985fcd420fd73d034a1e4" name="a74cc2963db4985fcd420fd73d034a1e4"></a>
-glm::mat4&#160;</td><td class="memItemRight" valign="bottom"><b>GetMatrix</b> () const</td></tr>
+<tr class="memitem:a419c8406b9a4edb182feed958db365e2" id="r_a419c8406b9a4edb182feed958db365e2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a419c8406b9a4edb182feed958db365e2">Transform</a> (glm::vec2 position, glm::vec2 scale=glm::vec2(0.5f), float yawDegreesRotation=0.f, const glm::vec2 &amp;pivot=glm::vec2(0.5f))</td></tr>
+<tr class="memdesc:a419c8406b9a4edb182feed958db365e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">constructor  <br /></td></tr>
+<tr class="memitem:a74cc2963db4985fcd420fd73d034a1e4" id="r_a74cc2963db4985fcd420fd73d034a1e4"><td class="memItemLeft" align="right" valign="top">glm::mat4&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a74cc2963db4985fcd420fd73d034a1e4">GetMatrix</a> () const</td></tr>
+<tr class="memdesc:a74cc2963db4985fcd420fd73d034a1e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the raw glm 4x4 matrix  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:aad53c8af56c663aaf43641603981ae66" id="r_aad53c8af56c663aaf43641603981ae66"><td class="memItemLeft" align="right" valign="top"><a id="aad53c8af56c663aaf43641603981ae66" name="aad53c8af56c663aaf43641603981ae66"></a>
 glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><b>Position</b> = glm::vec2(0.f)</td></tr>
+<tr class="memdesc:aad53c8af56c663aaf43641603981ae66"><td class="mdescLeft">&#160;</td><td class="mdescRight">the position of the object <br /></td></tr>
 <tr class="memitem:a04c2956ef0d63fc67056e945361d2df4" id="r_a04c2956ef0d63fc67056e945361d2df4"><td class="memItemLeft" align="right" valign="top"><a id="a04c2956ef0d63fc67056e945361d2df4" name="a04c2956ef0d63fc67056e945361d2df4"></a>
 glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><b>Scale</b> = glm::vec2(0.5f)</td></tr>
+<tr class="memdesc:a04c2956ef0d63fc67056e945361d2df4"><td class="mdescLeft">&#160;</td><td class="mdescRight">the scale of the object <br /></td></tr>
 <tr class="memitem:a93bc7587c96735d2121238fcd8f69daf" id="r_a93bc7587c96735d2121238fcd8f69daf"><td class="memItemLeft" align="right" valign="top"><a id="a93bc7587c96735d2121238fcd8f69daf" name="a93bc7587c96735d2121238fcd8f69daf"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>YawDegreesRotation</b> = 0.f</td></tr>
+<tr class="memdesc:a93bc7587c96735d2121238fcd8f69daf"><td class="mdescLeft">&#160;</td><td class="mdescRight">the rotation in the yaw axis of the object <br /></td></tr>
 <tr class="memitem:a495b2939a2d3298aa9528c81b67ec0a3" id="r_a495b2939a2d3298aa9528c81b67ec0a3"><td class="memItemLeft" align="right" valign="top"><a id="a495b2939a2d3298aa9528c81b67ec0a3" name="a495b2939a2d3298aa9528c81b67ec0a3"></a>
 glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><b>Pivot</b> = glm::vec2(0.f)</td></tr>
+<tr class="memdesc:a495b2939a2d3298aa9528c81b67ec0a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">the center for all transformation (in the center of the object is vec2(0.5f) in bottom-left is vec2(0.f), etc... <br /></td></tr>
 </table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>class containing all a model matrix could have: position, scale etc... </p>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a419c8406b9a4edb182feed958db365e2" name="a419c8406b9a4edb182feed958db365e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a419c8406b9a4edb182feed958db365e2">&#9670;&#160;</a></span>Transform()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">TRCN_CORE_NAMESPACE::Transform::Transform </td>
+          <td>(</td>
+          <td class="paramtype">glm::vec2</td>          <td class="paramname"><span class="paramname"><em>position</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">glm::vec2</td>          <td class="paramname"><span class="paramname"><em>scale</em></span><span class="paramdefsep"> = </span><span class="paramdefval">glm::vec2(0.5f)</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>yawDegreesRotation</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0.f</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const glm::vec2 &amp;</td>          <td class="paramname"><span class="paramname"><em>pivot</em></span><span class="paramdefsep"> = </span><span class="paramdefval">glm::vec2(0.5f)</span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>constructor </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">position</td><td>the position of the object </td></tr>
+    <tr><td class="paramname">scale</td><td>the scale of the object </td></tr>
+    <tr><td class="paramname">yawDegreesRotation</td><td>the yaw rotation in degrees </td></tr>
+    <tr><td class="paramname">pivot</td><td>the center for all transformation (in the center of the object is vec2(0.5f) in bottom-left is vec2(0.f), etc... </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="a74cc2963db4985fcd420fd73d034a1e4" name="a74cc2963db4985fcd420fd73d034a1e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74cc2963db4985fcd420fd73d034a1e4">&#9670;&#160;</a></span>GetMatrix()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::mat4 TRCN_CORE_NAMESPACE::Transform::GetMatrix </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>returns the raw glm 4x4 matrix </p>
+<dl class="section return"><dt>Returns</dt><dd>returns the raw glm 4x4 matrix </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>/home/bigbenji/Documenti/cpp/Trinacria-2D-Renderer/Trinacria/include/Trinacria/<a class="el" href="Transform_8h_source.html">Transform.h</a></li>
 </ul>

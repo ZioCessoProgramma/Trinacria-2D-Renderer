@@ -101,47 +101,58 @@ $(function(){initNavTree('Transform_8h_source.html','',''); });
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">namespace </span>TRCN_CORE_NAMESPACE</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>{</div>
-<div class="foldopen" id="foldopen00011" data-start="{" data-end="};">
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="classTRCN__CORE__NAMESPACE_1_1Transform.html">   11</a></span>    <span class="keyword">class </span>Transform</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    {</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        Transform() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        Transform(glm::vec2 position,</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>            glm::vec2 scale = glm::vec2(0.5f),</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>            <span class="keywordtype">float</span> yawDegreesRotation = 0.f,</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>            <span class="keyword">const</span> glm::vec2&amp; pivot = glm::vec2(0.5f)</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        )</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>            : Position(position), Scale(scale), YawDegreesRotation(yawDegreesRotation), Pivot(pivot) {}</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        glm::mat4 GetMatrix()<span class="keyword"> const</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">        </span>{</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>            glm::mat4 transform = glm::mat4(1.0f);</div>
+<div class="foldopen" id="foldopen00014" data-start="{" data-end="};">
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="classTRCN__CORE__NAMESPACE_1_1Transform.html">   14</a></span>    <span class="keyword">class </span>Transform</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    {</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        Transform() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span></div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>            transform = glm::translate(transform, glm::vec3(Position, 0.f));</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>            <span class="comment">// rotate only z axis because we&#39;re in 2d. Why would you even rotate in other axis?!</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>            transform = glm::rotate(transform, glm::radians(YawDegreesRotation), glm::vec3(0.f, 0.f, 1.f));</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>            transform = glm::scale(transform, glm::vec3(Scale, 1.f));</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>            <span class="comment">// the order is right T * R * S -&gt; first S then R then T</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>            <span class="keywordflow">return</span> transform;</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        }</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        glm::vec2 Position = glm::vec2(0.f);</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        glm::vec2 Scale = glm::vec2(0.5f);</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="keywordtype">float</span> YawDegreesRotation = 0.f;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="comment">// Are normalized</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        glm::vec2 Pivot = glm::vec2(0.f);</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    };</div>
+<div class="foldopen" id="foldopen00027" data-start="{" data-end="}">
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="classTRCN__CORE__NAMESPACE_1_1Transform.html#a419c8406b9a4edb182feed958db365e2">   27</a></span>        <a class="code hl_function" href="classTRCN__CORE__NAMESPACE_1_1Transform.html#a419c8406b9a4edb182feed958db365e2">Transform</a>(glm::vec2 position,</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>                  glm::vec2 scale = glm::vec2(0.5f),</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>                  <span class="keywordtype">float</span> yawDegreesRotation = 0.f,</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>                  <span class="keyword">const</span> glm::vec2&amp; pivot = glm::vec2(0.5f)</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        )</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>            : <a class="code hl_variable" href="classTRCN__CORE__NAMESPACE_1_1Transform.html#aad53c8af56c663aaf43641603981ae66">Position</a>(position), <a class="code hl_variable" href="classTRCN__CORE__NAMESPACE_1_1Transform.html#a04c2956ef0d63fc67056e945361d2df4">Scale</a>(scale), <a class="code hl_variable" href="classTRCN__CORE__NAMESPACE_1_1Transform.html#a93bc7587c96735d2121238fcd8f69daf">YawDegreesRotation</a>(yawDegreesRotation), <a class="code hl_variable" href="classTRCN__CORE__NAMESPACE_1_1Transform.html#a495b2939a2d3298aa9528c81b67ec0a3">Pivot</a>(pivot) {}</div>
 </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>}</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span></div>
+<div class="foldopen" id="foldopen00038" data-start="{" data-end="}">
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="classTRCN__CORE__NAMESPACE_1_1Transform.html#a74cc2963db4985fcd420fd73d034a1e4">   38</a></span>        glm::mat4 <a class="code hl_function" href="classTRCN__CORE__NAMESPACE_1_1Transform.html#a74cc2963db4985fcd420fd73d034a1e4">GetMatrix</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keyword">        </span>{</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            glm::mat4 transform = glm::mat4(1.0f);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            transform = glm::translate(transform, glm::vec3(<a class="code hl_variable" href="classTRCN__CORE__NAMESPACE_1_1Transform.html#aad53c8af56c663aaf43641603981ae66">Position</a>, 0.f));</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            <span class="comment">// rotate only z axis because we&#39;re in 2d. Why would you even rotate in other axis?!</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>            transform = glm::rotate(transform, glm::radians(<a class="code hl_variable" href="classTRCN__CORE__NAMESPACE_1_1Transform.html#a93bc7587c96735d2121238fcd8f69daf">YawDegreesRotation</a>), glm::vec3(0.f, 0.f, 1.f));</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            transform = glm::scale(transform, glm::vec3(<a class="code hl_variable" href="classTRCN__CORE__NAMESPACE_1_1Transform.html#a04c2956ef0d63fc67056e945361d2df4">Scale</a>, 1.f));</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            <span class="comment">// the order is right T * R * S -&gt; first S then R then T</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            <span class="keywordflow">return</span> transform;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        }</div>
+</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="classTRCN__CORE__NAMESPACE_1_1Transform.html#aad53c8af56c663aaf43641603981ae66">   58</a></span>        glm::vec2 <a class="code hl_variable" href="classTRCN__CORE__NAMESPACE_1_1Transform.html#aad53c8af56c663aaf43641603981ae66">Position</a> = glm::vec2(0.f);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="classTRCN__CORE__NAMESPACE_1_1Transform.html#a04c2956ef0d63fc67056e945361d2df4">   64</a></span>        glm::vec2 <a class="code hl_variable" href="classTRCN__CORE__NAMESPACE_1_1Transform.html#a04c2956ef0d63fc67056e945361d2df4">Scale</a> = glm::vec2(0.5f);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="classTRCN__CORE__NAMESPACE_1_1Transform.html#a93bc7587c96735d2121238fcd8f69daf">   69</a></span>        <span class="keywordtype">float</span> <a class="code hl_variable" href="classTRCN__CORE__NAMESPACE_1_1Transform.html#a93bc7587c96735d2121238fcd8f69daf">YawDegreesRotation</a> = 0.f;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="classTRCN__CORE__NAMESPACE_1_1Transform.html#a495b2939a2d3298aa9528c81b67ec0a3">   74</a></span>        glm::vec2 <a class="code hl_variable" href="classTRCN__CORE__NAMESPACE_1_1Transform.html#a495b2939a2d3298aa9528c81b67ec0a3">Pivot</a> = glm::vec2(0.f);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    };</div>
+</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>}</div>
+<div class="ttc" id="aclassTRCN__CORE__NAMESPACE_1_1Transform_html_a04c2956ef0d63fc67056e945361d2df4"><div class="ttname"><a href="classTRCN__CORE__NAMESPACE_1_1Transform.html#a04c2956ef0d63fc67056e945361d2df4">TRCN_CORE_NAMESPACE::Transform::Scale</a></div><div class="ttdeci">glm::vec2 Scale</div><div class="ttdoc">the scale of the object</div><div class="ttdef"><b>Definition</b> Transform.h:64</div></div>
+<div class="ttc" id="aclassTRCN__CORE__NAMESPACE_1_1Transform_html_a419c8406b9a4edb182feed958db365e2"><div class="ttname"><a href="classTRCN__CORE__NAMESPACE_1_1Transform.html#a419c8406b9a4edb182feed958db365e2">TRCN_CORE_NAMESPACE::Transform::Transform</a></div><div class="ttdeci">Transform(glm::vec2 position, glm::vec2 scale=glm::vec2(0.5f), float yawDegreesRotation=0.f, const glm::vec2 &amp;pivot=glm::vec2(0.5f))</div><div class="ttdoc">constructor</div><div class="ttdef"><b>Definition</b> Transform.h:27</div></div>
+<div class="ttc" id="aclassTRCN__CORE__NAMESPACE_1_1Transform_html_a495b2939a2d3298aa9528c81b67ec0a3"><div class="ttname"><a href="classTRCN__CORE__NAMESPACE_1_1Transform.html#a495b2939a2d3298aa9528c81b67ec0a3">TRCN_CORE_NAMESPACE::Transform::Pivot</a></div><div class="ttdeci">glm::vec2 Pivot</div><div class="ttdoc">the center for all transformation (in the center of the object is vec2(0.5f) in bottom-left is vec2(0...</div><div class="ttdef"><b>Definition</b> Transform.h:74</div></div>
+<div class="ttc" id="aclassTRCN__CORE__NAMESPACE_1_1Transform_html_a74cc2963db4985fcd420fd73d034a1e4"><div class="ttname"><a href="classTRCN__CORE__NAMESPACE_1_1Transform.html#a74cc2963db4985fcd420fd73d034a1e4">TRCN_CORE_NAMESPACE::Transform::GetMatrix</a></div><div class="ttdeci">glm::mat4 GetMatrix() const</div><div class="ttdoc">returns the raw glm 4x4 matrix</div><div class="ttdef"><b>Definition</b> Transform.h:38</div></div>
+<div class="ttc" id="aclassTRCN__CORE__NAMESPACE_1_1Transform_html_a93bc7587c96735d2121238fcd8f69daf"><div class="ttname"><a href="classTRCN__CORE__NAMESPACE_1_1Transform.html#a93bc7587c96735d2121238fcd8f69daf">TRCN_CORE_NAMESPACE::Transform::YawDegreesRotation</a></div><div class="ttdeci">float YawDegreesRotation</div><div class="ttdoc">the rotation in the yaw axis of the object</div><div class="ttdef"><b>Definition</b> Transform.h:69</div></div>
+<div class="ttc" id="aclassTRCN__CORE__NAMESPACE_1_1Transform_html_aad53c8af56c663aaf43641603981ae66"><div class="ttname"><a href="classTRCN__CORE__NAMESPACE_1_1Transform.html#aad53c8af56c663aaf43641603981ae66">TRCN_CORE_NAMESPACE::Transform::Position</a></div><div class="ttdeci">glm::vec2 Position</div><div class="ttdoc">the position of the object</div><div class="ttdef"><b>Definition</b> Transform.h:58</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

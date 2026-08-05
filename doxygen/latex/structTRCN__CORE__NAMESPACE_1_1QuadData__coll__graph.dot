@@ -8,7 +8,7 @@ digraph "TRCN_CORE_NAMESPACE::QuadData"
   Node1 [id="Node000001",label="TRCN_CORE_NAMESPACE\l::QuadData",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="struct for representing quads"];
   Node2 -> Node1 [id="edge6_Node000001_Node000002",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=<<TABLE CELLBORDER="0" BORDER="0"><TR><TD VALIGN="top" ALIGN="LEFT" CELLPADDING="1" CELLSPACING="0">transform</TD></TR>
 </TABLE>> ,fontcolor="grey" ];
-  Node2 [id="Node000002",label="TRCN_CORE_NAMESPACE\l::Transform",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",URL="$classTRCN__CORE__NAMESPACE_1_1Transform.html",tooltip=" "];
+  Node2 [id="Node000002",label="TRCN_CORE_NAMESPACE\l::Transform",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$classTRCN__CORE__NAMESPACE_1_1Transform.html",tooltip="class containing all a model matrix could have: position, scale etc..."];
   Node3 -> Node1 [id="edge7_Node000001_Node000003",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=<<TABLE CELLBORDER="0" BORDER="0"><TR><TD VALIGN="top" ALIGN="LEFT" CELLPADDING="1" CELLSPACING="0">texture</TD></TR>
 </TABLE>> ,fontcolor="grey" ];
   Node3 [id="Node000003",label="TRCN_CORE_NAMESPACE\l::Texture",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$classTRCN__CORE__NAMESPACE_1_1Texture.html",tooltip="class representing a texture"];

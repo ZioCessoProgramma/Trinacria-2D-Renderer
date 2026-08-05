@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['shaderprogram_0',['ShaderProgram',['../classTRCN__CORE__NAMESPACE_1_1Renderer.html#a1d545d8c44ce53a50a0cbeb6ad2367a3',1,'TRCN_CORE_NAMESPACE::Renderer']]],
-  ['sprite_1',['sprite',['../structTRCN__CORE__NAMESPACE_1_1QuadData.html#a1f1356d6eda96487eb21fad20b41f68a',1,'TRCN_CORE_NAMESPACE::QuadData::sprite'],['../structTRCN__CORE__NAMESPACE_1_1TriangleData.html#a8e5554a53bbf2ad7861408a531d67bfa',1,'TRCN_CORE_NAMESPACE::TriangleData::sprite']]]
+  ['pivot_0',['Pivot',['../classTRCN__CORE__NAMESPACE_1_1Transform.html#a495b2939a2d3298aa9528c81b67ec0a3',1,'TRCN_CORE_NAMESPACE::Transform']]],
+  ['position_1',['Position',['../classTRCN__CORE__NAMESPACE_1_1Transform.html#aad53c8af56c663aaf43641603981ae66',1,'TRCN_CORE_NAMESPACE::Transform']]]
 ];
