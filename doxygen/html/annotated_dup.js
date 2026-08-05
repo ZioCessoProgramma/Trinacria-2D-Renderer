@@ -23,7 +23,7 @@ var annotated_dup =
       [ "TriangleData", "structTRCN__CORE__NAMESPACE_1_1TriangleData.html", "structTRCN__CORE__NAMESPACE_1_1TriangleData" ],
       [ "SpriteSheet", "classTRCN__CORE__NAMESPACE_1_1SpriteSheet.html", "classTRCN__CORE__NAMESPACE_1_1SpriteSheet" ],
       [ "Sprite", "classTRCN__CORE__NAMESPACE_1_1Sprite.html", "classTRCN__CORE__NAMESPACE_1_1Sprite" ],
-      [ "Texture", "classTRCN__CORE__NAMESPACE_1_1Texture.html", null ],
+      [ "Texture", "classTRCN__CORE__NAMESPACE_1_1Texture.html", "classTRCN__CORE__NAMESPACE_1_1Texture" ],
       [ "Transform", "classTRCN__CORE__NAMESPACE_1_1Transform.html", null ]
     ] ]
 ];

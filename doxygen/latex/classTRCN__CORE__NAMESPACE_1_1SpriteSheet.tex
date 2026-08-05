@@ -27,36 +27,34 @@ Collaboration diagram for TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::Sprite\+Sheet\+:
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Texture}{TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::\+Texture}}}
 \begin{DoxyCompactItemize}
 \item 
-{\bfseries Texture} (uint32\+\_\+t id, int width, int height, int channels)
-\item 
-virtual int {\bfseries Get\+Id} ()
-\item 
-virtual int {\bfseries Get\+Width} ()
-\item 
-virtual int {\bfseries Get\+Height} ()
-\item 
-virtual int {\bfseries Get\+Channels} ()
-\item 
-virtual void {\bfseries Load\+Texture} (const std\+::string \&path, uint32\+\_\+t filter=GL\+\_\+\+LINEAR)
-\item 
-virtual void {\bfseries Generate\+Texture} ()
-\item 
-void {\bfseries Bound\+Tex\+Image} (uint32\+\_\+t internal\+Format, uint32\+\_\+t format, uint32\+\_\+t width, uint32\+\_\+t height, uint32\+\_\+t type, void \texorpdfstring{$\ast$}{*}data, uint32\+\_\+t filter)
-\item 
-void {\bfseries Bound\+Sub\+Image} (uint32\+\_\+t format, uint32\+\_\+t width, uint32\+\_\+t height, uint32\+\_\+t type, void \texorpdfstring{$\ast$}{*}data)
-\item 
-virtual void {\bfseries Bind} (uint32\+\_\+t texture\+Slot)
-\item 
+\mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Texture_a68bf51dc04eb164e87ae0e2f4f462953}{Texture}} (uint32\+\_\+t id, int width, int height, int channels)
+\begin{DoxyCompactList}\small\item\em constructor for client initialization \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Texture_aedc8fbdf28e50493d32ecbc488c74f45}{Get\+Id}} ()
+\begin{DoxyCompactList}\small\item\em returns the open\+GL id of the texture \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Texture_ae9b7027f6466017074d4c35d82e217c9}{Get\+Width}} ()
+\begin{DoxyCompactList}\small\item\em returns the width of the texture \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Texture_a487c212d81917a78a0a9084c4abdb3d9}{Get\+Height}} ()
+\begin{DoxyCompactList}\small\item\em returns the height of the texture \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Texture_afb6b5823da8d46a05d52b3c82c79a187}{Get\+Channels}} ()
+\begin{DoxyCompactList}\small\item\em returns the channels of the texture \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Texture_aa40efbd5ef21d12a7a446e5081b3a402}{Load\+Texture}} (const std\+::string \&path, uint32\+\_\+t filter=GL\+\_\+\+LINEAR)
+\begin{DoxyCompactList}\small\item\em it loads the texture from a specified path \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Texture_ad22e7eabae9c3a723ec53143d96179e7}{Generate\+Texture}} ()
+\begin{DoxyCompactList}\small\item\em it generates the open\+GL texture \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Texture_a8ee48d1276813287e479155078e10731}{Bound\+Tex\+Image}} (uint32\+\_\+t internal\+Format, uint32\+\_\+t format, uint32\+\_\+t width, uint32\+\_\+t height, uint32\+\_\+t type, void \texorpdfstring{$\ast$}{*}data, uint32\+\_\+t filter)
+\begin{DoxyCompactList}\small\item\em static function that allocates the data of the texture \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Texture_af64f6dba505f3dfbbbafd2a93a75dea0}{Bound\+Sub\+Image}} (uint32\+\_\+t format, uint32\+\_\+t width, uint32\+\_\+t height, uint32\+\_\+t type, void \texorpdfstring{$\ast$}{*}data)
+\begin{DoxyCompactList}\small\item\em static function that changes the data of the texture \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Texture_a0cf1fc54e18f69d47631a77905933f64}{Bind}} (uint32\+\_\+t texture\+Slot)
+\begin{DoxyCompactList}\small\item\em binds the texture \end{DoxyCompactList}\item 
 virtual void {\bfseries Bind} ()
-\item 
+\begin{DoxyCompactList}\small\item\em binds the texture to first available texture slot \end{DoxyCompactList}\item 
 virtual void {\bfseries Cleanup} ()
-\item 
-virtual void {\bfseries Unbind} ()
-\item 
-uint32\+\_\+t {\bfseries Get\+Texture\+Chosen\+Slot} () const
-\item 
-void {\bfseries Init} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em clean up the texture \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Texture_a47447853a2672a493593610dfef66131}{Unbind}} ()
+\begin{DoxyCompactList}\small\item\em unbinds the texture \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Texture_a5aa6dba3501f3affebc818c4514f39e2}{Get\+Texture\+Chosen\+Slot}} () const
+\begin{DoxyCompactList}\small\item\em the chosen slot by the texture is the slot it will bind to when the texture slot is not specified \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -70,17 +68,17 @@ float {\bfseries Cell\+Height}
 \doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Texture}{TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::\+Texture}}}
 \begin{DoxyCompactItemize}
 \item 
-static void {\bfseries Tex\+Image} (uint32\+\_\+t internal\+Format, uint32\+\_\+t format, uint32\+\_\+t width, uint32\+\_\+t height, uint32\+\_\+t type, void \texorpdfstring{$\ast$}{*}data, uint32\+\_\+t filter)
-\item 
-static void {\bfseries Sub\+Image} (uint32\+\_\+t format, uint32\+\_\+t width, uint32\+\_\+t height, uint32\+\_\+t type, void \texorpdfstring{$\ast$}{*}data)
-\item 
+static void \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Texture_a4223cd93495c7166ab628b5e2476490e}{Tex\+Image}} (uint32\+\_\+t internal\+Format, uint32\+\_\+t format, uint32\+\_\+t width, uint32\+\_\+t height, uint32\+\_\+t type, void \texorpdfstring{$\ast$}{*}data, uint32\+\_\+t filter)
+\begin{DoxyCompactList}\small\item\em static function that allocates the data of the texture \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Texture_ae3c489e97ac0d7795a66a1816a45d47a}{Sub\+Image}} (uint32\+\_\+t format, uint32\+\_\+t width, uint32\+\_\+t height, uint32\+\_\+t type, void \texorpdfstring{$\ast$}{*}data)
+\begin{DoxyCompactList}\small\item\em static function that changes the data of the texture \end{DoxyCompactList}\item 
 static void {\bfseries Clear\+Texture\+Slots} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em static function that refresh the texture slots \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Attributes inherited from \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Texture}{TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::\+Texture}}}
 \begin{DoxyCompactItemize}
 \item 
-static constexpr Texture \texorpdfstring{$\ast$}{*} {\bfseries NO\+\_\+\+TEXTURE} = nullptr
-\end{DoxyCompactItemize}
+static constexpr \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Texture_a68bf51dc04eb164e87ae0e2f4f462953}{Texture}} \texorpdfstring{$\ast$}{*} {\bfseries NO\+\_\+\+TEXTURE} = nullptr
+\begin{DoxyCompactList}\small\item\em a pointer representing no texture \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}

@@ -96,7 +96,7 @@ void Trinacria::DSL::LightSystem::Done()
         glDeleteTextures(1, &id);
     }
 
-    _pointTexture.Init();
+    _pointTexture.GenerateTexture();
 
     _pointTexture.BoundTexImage(GL_RGBA32F, GL_RGBA, MAX_POINT_LIGHTS * 2, 1,
                                 GL_FLOAT, _pointLights.data(), GL_NEAREST);
@@ -114,7 +114,7 @@ void Trinacria::DSL::LightSystem::Done()
         glDeleteTextures(1, &id);
     }
 
-    _spotTexture.Init();
+    _spotTexture.GenerateTexture();
 
     _spotTexture.BoundTexImage(GL_RGBA32F, GL_RGBA, MAX_SPOT_LIGHTS * 3, 1,
                                 GL_FLOAT, _spotLights.data(), GL_NEAREST);
@@ -131,7 +131,7 @@ void Trinacria::DSL::LightSystem::Done()
         glDeleteTextures(1, &id);
     }
 
-    _directionalTexture.Init();
+    _directionalTexture.GenerateTexture();
 
     _directionalTexture.BoundTexImage(GL_RGBA32F, GL_RGBA, MAX_DIRECTIONAL_LIGHTS * 2, 1,
                                 GL_FLOAT, _dirLights.data(), GL_NEAREST);

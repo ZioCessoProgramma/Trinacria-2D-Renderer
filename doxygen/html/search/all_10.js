@@ -12,5 +12,6 @@ var searchData=
   ['spotlightdata_9',['SpotLightData',['../structTRCN__CORE__NAMESPACE_1_1SpotLightData.html',1,'TRCN_CORE_NAMESPACE']]],
   ['sprite_10',['Sprite',['../classTRCN__CORE__NAMESPACE_1_1Sprite.html',1,'TRCN_CORE_NAMESPACE::Sprite'],['../classTRCN__CORE__NAMESPACE_1_1Sprite.html#a3ff258f65843cd5eb9fa55c349d592c8',1,'TRCN_CORE_NAMESPACE::Sprite::Sprite()']]],
   ['sprite_11',['sprite',['../structTRCN__CORE__NAMESPACE_1_1QuadData.html#a1f1356d6eda96487eb21fad20b41f68a',1,'TRCN_CORE_NAMESPACE::QuadData::sprite'],['../structTRCN__CORE__NAMESPACE_1_1TriangleData.html#a8e5554a53bbf2ad7861408a531d67bfa',1,'TRCN_CORE_NAMESPACE::TriangleData::sprite']]],
-  ['spritesheet_12',['SpriteSheet',['../classTRCN__CORE__NAMESPACE_1_1SpriteSheet.html',1,'TRCN_CORE_NAMESPACE::SpriteSheet'],['../classTRCN__CORE__NAMESPACE_1_1SpriteSheet.html#ac5cb152af3e95997c14ec37c8279dfd1',1,'TRCN_CORE_NAMESPACE::SpriteSheet::SpriteSheet()']]]
+  ['spritesheet_12',['SpriteSheet',['../classTRCN__CORE__NAMESPACE_1_1SpriteSheet.html',1,'TRCN_CORE_NAMESPACE::SpriteSheet'],['../classTRCN__CORE__NAMESPACE_1_1SpriteSheet.html#ac5cb152af3e95997c14ec37c8279dfd1',1,'TRCN_CORE_NAMESPACE::SpriteSheet::SpriteSheet()']]],
+  ['subimage_13',['SubImage',['../classTRCN__CORE__NAMESPACE_1_1Texture.html#ae3c489e97ac0d7795a66a1816a45d47a',1,'TRCN_CORE_NAMESPACE::Texture']]]
 ];

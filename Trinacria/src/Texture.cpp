@@ -144,8 +144,3 @@ void Trinacria::DSL::Texture::ClearTextureSlots()
 		_isTextureSlotOccupied[i] = false;
 	}
 }
-
-void Trinacria::DSL::Texture::Init()
-{
-	glGenTextures(1, &_id);
-}

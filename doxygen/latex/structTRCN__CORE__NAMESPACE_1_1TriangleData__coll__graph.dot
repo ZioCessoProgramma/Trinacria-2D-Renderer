@@ -11,7 +11,7 @@ digraph "TRCN_CORE_NAMESPACE::TriangleData"
   Node2 [id="Node000002",label="TRCN_CORE_NAMESPACE\l::Transform",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",URL="$classTRCN__CORE__NAMESPACE_1_1Transform.html",tooltip=" "];
   Node3 -> Node1 [id="edge7_Node000001_Node000003",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=<<TABLE CELLBORDER="0" BORDER="0"><TR><TD VALIGN="top" ALIGN="LEFT" CELLPADDING="1" CELLSPACING="0">texture</TD></TR>
 </TABLE>> ,fontcolor="grey" ];
-  Node3 [id="Node000003",label="TRCN_CORE_NAMESPACE\l::Texture",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",URL="$classTRCN__CORE__NAMESPACE_1_1Texture.html",tooltip=" "];
+  Node3 [id="Node000003",label="TRCN_CORE_NAMESPACE\l::Texture",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$classTRCN__CORE__NAMESPACE_1_1Texture.html",tooltip="class representing a texture"];
   Node3 -> Node3 [id="edge8_Node000003_Node000003",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=<<TABLE CELLBORDER="0" BORDER="0"><TR><TD VALIGN="top" ALIGN="LEFT" CELLPADDING="1" CELLSPACING="0">NO_TEXTURE</TD></TR>
 </TABLE>> ,fontcolor="grey" ];
   Node4 -> Node1 [id="edge9_Node000001_Node000004",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=<<TABLE CELLBORDER="0" BORDER="0"><TR><TD VALIGN="top" ALIGN="LEFT" CELLPADDING="1" CELLSPACING="0">sprite</TD></TR>

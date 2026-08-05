@@ -8,5 +8,6 @@ var searchData=
   ['setuniformvec3_5',['SetUniformVec3',['../classTRCN__CORE__NAMESPACE_1_1Shader.html#a090a31c78cd7d102970f96134b8ad07e',1,'TRCN_CORE_NAMESPACE::Shader']]],
   ['setuniformvec4_6',['SetUniformVec4',['../classTRCN__CORE__NAMESPACE_1_1Shader.html#a14737e4dd48ba63ab9a8ac05afd3cf13',1,'TRCN_CORE_NAMESPACE::Shader']]],
   ['sprite_7',['Sprite',['../classTRCN__CORE__NAMESPACE_1_1Sprite.html#a3ff258f65843cd5eb9fa55c349d592c8',1,'TRCN_CORE_NAMESPACE::Sprite']]],
-  ['spritesheet_8',['SpriteSheet',['../classTRCN__CORE__NAMESPACE_1_1SpriteSheet.html#ac5cb152af3e95997c14ec37c8279dfd1',1,'TRCN_CORE_NAMESPACE::SpriteSheet']]]
+  ['spritesheet_8',['SpriteSheet',['../classTRCN__CORE__NAMESPACE_1_1SpriteSheet.html#ac5cb152af3e95997c14ec37c8279dfd1',1,'TRCN_CORE_NAMESPACE::SpriteSheet']]],
+  ['subimage_9',['SubImage',['../classTRCN__CORE__NAMESPACE_1_1Texture.html#ae3c489e97ac0d7795a66a1816a45d47a',1,'TRCN_CORE_NAMESPACE::Texture']]]
 ];
