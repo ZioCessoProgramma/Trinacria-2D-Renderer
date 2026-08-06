@@ -91,25 +91,62 @@ $(function(){initNavTree('classTRCN__CORE__NAMESPACE_1_1Material.html','','class
   <div class="headertitle"><div class="title">TRCN_CORE_NAMESPACE::Material Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>class representing materials  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="Materials_8h_source.html">Materials.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ac4cd8d95a6341ba812847c02cb407a9a" id="r_ac4cd8d95a6341ba812847c02cb407a9a"><td class="memItemLeft" align="right" valign="top"><a id="ac4cd8d95a6341ba812847c02cb407a9a" name="ac4cd8d95a6341ba812847c02cb407a9a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetUniforms</b> (int materialIndex) const</td></tr>
+<tr class="memitem:ac4cd8d95a6341ba812847c02cb407a9a" id="r_ac4cd8d95a6341ba812847c02cb407a9a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac4cd8d95a6341ba812847c02cb407a9a">SetUniforms</a> (int materialIndex) const</td></tr>
+<tr class="memdesc:ac4cd8d95a6341ba812847c02cb407a9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">it implements the material in the shader's array  <br /></td></tr>
 <tr class="memitem:a2a8da1532eb8356121aba1c57633bd5d" id="r_a2a8da1532eb8356121aba1c57633bd5d"><td class="memItemLeft" align="right" valign="top"><a id="a2a8da1532eb8356121aba1c57633bd5d" name="a2a8da1532eb8356121aba1c57633bd5d"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b> (const <a class="el" href="classTRCN__CORE__NAMESPACE_1_1Material.html">Material</a> &amp;material) const</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a21b6487365aa665109400b27f35d416f" id="r_a21b6487365aa665109400b27f35d416f"><td class="memItemLeft" align="right" valign="top"><a id="a21b6487365aa665109400b27f35d416f" name="a21b6487365aa665109400b27f35d416f"></a>
-glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>ambient</b></td></tr>
-<tr class="memitem:a3b8710a2483359385be752d7ca0e8d4d" id="r_a3b8710a2483359385be752d7ca0e8d4d"><td class="memItemLeft" align="right" valign="top"><a id="a3b8710a2483359385be752d7ca0e8d4d" name="a3b8710a2483359385be752d7ca0e8d4d"></a>
-glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>diffuse</b></td></tr>
-<tr class="memitem:affb941c2790458f53855f2ddc3d6229a" id="r_affb941c2790458f53855f2ddc3d6229a"><td class="memItemLeft" align="right" valign="top"><a id="affb941c2790458f53855f2ddc3d6229a" name="affb941c2790458f53855f2ddc3d6229a"></a>
-glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>specular</b></td></tr>
-<tr class="memitem:ab6e6214445395e16faa88bd295b7ee21" id="r_ab6e6214445395e16faa88bd295b7ee21"><td class="memItemLeft" align="right" valign="top"><a id="ab6e6214445395e16faa88bd295b7ee21" name="ab6e6214445395e16faa88bd295b7ee21"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>shininess</b></td></tr>
+<tr class="memitem:a3f9ff1c601ff963b9f623b824addba18" id="r_a3f9ff1c601ff963b9f623b824addba18"><td class="memItemLeft" align="right" valign="top"><a id="a3f9ff1c601ff963b9f623b824addba18" name="a3f9ff1c601ff963b9f623b824addba18"></a>
+glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>Ambient</b></td></tr>
+<tr class="memdesc:a3f9ff1c601ff963b9f623b824addba18"><td class="mdescLeft">&#160;</td><td class="mdescRight">the color the object has &lt;&lt;by default&gt;&gt; when there's no light <br /></td></tr>
+<tr class="memitem:aaa2137f29ccee0ab17b40d80c001c4c1" id="r_aaa2137f29ccee0ab17b40d80c001c4c1"><td class="memItemLeft" align="right" valign="top"><a id="aaa2137f29ccee0ab17b40d80c001c4c1" name="aaa2137f29ccee0ab17b40d80c001c4c1"></a>
+glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>Diffuse</b></td></tr>
+<tr class="memdesc:aaa2137f29ccee0ab17b40d80c001c4c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">the color the object has when light is hitting it <br /></td></tr>
+<tr class="memitem:a71119ec08761f1cce3b74a031f1f29a8" id="r_a71119ec08761f1cce3b74a031f1f29a8"><td class="memItemLeft" align="right" valign="top"><a id="a71119ec08761f1cce3b74a031f1f29a8" name="a71119ec08761f1cce3b74a031f1f29a8"></a>
+glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>Specular</b></td></tr>
+<tr class="memdesc:a71119ec08761f1cce3b74a031f1f29a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">the color the object reflects <br /></td></tr>
+<tr class="memitem:a988a61488931ab75e49a34bfdfda8644" id="r_a988a61488931ab75e49a34bfdfda8644"><td class="memItemLeft" align="right" valign="top"><a id="a988a61488931ab75e49a34bfdfda8644" name="a988a61488931ab75e49a34bfdfda8644"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>Shininess</b></td></tr>
+<tr class="memdesc:a988a61488931ab75e49a34bfdfda8644"><td class="mdescLeft">&#160;</td><td class="mdescRight">the higher this number the sharper the reflection <br /></td></tr>
 </table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>class representing materials </p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="ac4cd8d95a6341ba812847c02cb407a9a" name="ac4cd8d95a6341ba812847c02cb407a9a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4cd8d95a6341ba812847c02cb407a9a">&#9670;&#160;</a></span>SetUniforms()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TRCN_CORE_NAMESPACE::Material::SetUniforms </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>materialIndex</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>it implements the material in the shader's array </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">materialIndex</td><td>the index where to put the material in the array </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/bigbenji/Documenti/cpp/Trinacria-2D-Renderer/Trinacria/include/Trinacria/<a class="el" href="Materials_8h_source.html">Materials.h</a></li>
 <li>/home/bigbenji/Documenti/cpp/Trinacria-2D-Renderer/Trinacria/src/<b>Materials.cpp</b></li>

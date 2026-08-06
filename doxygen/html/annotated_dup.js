@@ -13,7 +13,7 @@ var annotated_dup =
       [ "SpotLightData", "structTRCN__CORE__NAMESPACE_1_1SpotLightData.html", null ],
       [ "DirectionalLightData", "structTRCN__CORE__NAMESPACE_1_1DirectionalLightData.html", null ],
       [ "LightSystem", "classTRCN__CORE__NAMESPACE_1_1LightSystem.html", null ],
-      [ "Material", "classTRCN__CORE__NAMESPACE_1_1Material.html", null ],
+      [ "Material", "classTRCN__CORE__NAMESPACE_1_1Material.html", "classTRCN__CORE__NAMESPACE_1_1Material" ],
       [ "QuadTexCoords", "structTRCN__CORE__NAMESPACE_1_1QuadTexCoords.html", "structTRCN__CORE__NAMESPACE_1_1QuadTexCoords" ],
       [ "TriangleTexCoords", "structTRCN__CORE__NAMESPACE_1_1TriangleTexCoords.html", "structTRCN__CORE__NAMESPACE_1_1TriangleTexCoords" ],
       [ "Vertex", "structTRCN__CORE__NAMESPACE_1_1Vertex.html", null ],
