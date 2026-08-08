@@ -1,26 +1,30 @@
 \doxysection{TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::Light\+System Class Reference}
 \hypertarget{classTRCN__CORE__NAMESPACE_1_1LightSystem}{}\label{classTRCN__CORE__NAMESPACE_1_1LightSystem}\index{TRCN\_CORE\_NAMESPACE::LightSystem@{TRCN\_CORE\_NAMESPACE::LightSystem}}
+
+
+static class dealing with light  
+
+
+
+
+{\ttfamily \#include $<$Light\+System.\+h$>$}
+
 \doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classTRCN__CORE__NAMESPACE_1_1LightSystem_a60969f1b8c36bff43b294d855818b6d4}\label{classTRCN__CORE__NAMESPACE_1_1LightSystem_a60969f1b8c36bff43b294d855818b6d4} 
-static void {\bfseries Init} (float strength)
-\item 
-\Hypertarget{classTRCN__CORE__NAMESPACE_1_1LightSystem_ae2356e6dab6d0d97cacd2419f96d62dd}\label{classTRCN__CORE__NAMESPACE_1_1LightSystem_ae2356e6dab6d0d97cacd2419f96d62dd} 
-static void {\bfseries Set\+View\+Pos} (glm\+::vec2 view\+Pos)
-\item 
-\Hypertarget{classTRCN__CORE__NAMESPACE_1_1LightSystem_a5557ee0c49c627e8d5fb3feae3ef6edf}\label{classTRCN__CORE__NAMESPACE_1_1LightSystem_a5557ee0c49c627e8d5fb3feae3ef6edf} 
-static void {\bfseries Setup\+Light} (const \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1PointLightData}{Point\+Light\+Data}} \&light\+Data)
-\item 
-\Hypertarget{classTRCN__CORE__NAMESPACE_1_1LightSystem_a97b3556e1102df81cd69a58bb28b6f01}\label{classTRCN__CORE__NAMESPACE_1_1LightSystem_a97b3556e1102df81cd69a58bb28b6f01} 
-static void {\bfseries Setup\+Light} (const \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1SpotLightData}{Spot\+Light\+Data}} \&light\+Data)
-\item 
-\Hypertarget{classTRCN__CORE__NAMESPACE_1_1LightSystem_ab589b199202e4d558f7cc424e680753e}\label{classTRCN__CORE__NAMESPACE_1_1LightSystem_ab589b199202e4d558f7cc424e680753e} 
-static void {\bfseries Setup\+Light} (const \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1DirectionalLightData}{Directional\+Light\+Data}} \&light\+Data)
-\item 
+static void \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1LightSystem_a60969f1b8c36bff43b294d855818b6d4}{Init}} (float strength)
+\begin{DoxyCompactList}\small\item\em Inits the light system, needs to be done every frame. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1LightSystem_ae2356e6dab6d0d97cacd2419f96d62dd}{Set\+View\+Pos}} (glm\+::vec2 view\+Pos)
+\begin{DoxyCompactList}\small\item\em Sets the view pos. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1LightSystem_a5557ee0c49c627e8d5fb3feae3ef6edf}{Setup\+Light}} (const \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1PointLightData}{Point\+Light\+Data}} \&light\+Data)
+\begin{DoxyCompactList}\small\item\em Adds a light to the scene. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1LightSystem_a97b3556e1102df81cd69a58bb28b6f01}{Setup\+Light}} (const \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1SpotLightData}{Spot\+Light\+Data}} \&light\+Data)
+\begin{DoxyCompactList}\small\item\em Adds a light to the scene. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1LightSystem_ab589b199202e4d558f7cc424e680753e}{Setup\+Light}} (const \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1DirectionalLightData}{Directional\+Light\+Data}} \&light\+Data)
+\begin{DoxyCompactList}\small\item\em Adds a light to the scene. \end{DoxyCompactList}\item 
 \Hypertarget{classTRCN__CORE__NAMESPACE_1_1LightSystem_a8c2f7ed728589ee5a16ee2a034dd809c}\label{classTRCN__CORE__NAMESPACE_1_1LightSystem_a8c2f7ed728589ee5a16ee2a034dd809c} 
 static void {\bfseries Done} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em use it when you finished adding lights, needs to be done at the end of every frame \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Static Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -53,7 +57,90 @@ static constexpr uint32\+\_\+t {\bfseries MAX\+\_\+\+DIRECTIONAL\+\_\+\+LIGHTS} 
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+static class dealing with light 
+
+\label{doc-func-members}
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1LightSystem_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1LightSystem_a60969f1b8c36bff43b294d855818b6d4}\index{TRCN\_CORE\_NAMESPACE::LightSystem@{TRCN\_CORE\_NAMESPACE::LightSystem}!Init@{Init}}
+\index{Init@{Init}!TRCN\_CORE\_NAMESPACE::LightSystem@{TRCN\_CORE\_NAMESPACE::LightSystem}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{classTRCN__CORE__NAMESPACE_1_1LightSystem_a60969f1b8c36bff43b294d855818b6d4} 
+void TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::\+Light\+System\+::\+Init (\begin{DoxyParamCaption}\item[{float}]{strength}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Inits the light system, needs to be done every frame. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em strength} & ambient strength, use the default values \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1LightSystem_ab589b199202e4d558f7cc424e680753e}\index{TRCN\_CORE\_NAMESPACE::LightSystem@{TRCN\_CORE\_NAMESPACE::LightSystem}!SetupLight@{SetupLight}}
+\index{SetupLight@{SetupLight}!TRCN\_CORE\_NAMESPACE::LightSystem@{TRCN\_CORE\_NAMESPACE::LightSystem}}
+\doxysubsubsection{\texorpdfstring{SetupLight()}{SetupLight()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{classTRCN__CORE__NAMESPACE_1_1LightSystem_ab589b199202e4d558f7cc424e680753e} 
+void TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::\+Light\+System\+::\+Setup\+Light (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1DirectionalLightData}{Directional\+Light\+Data}} \&}]{light\+Data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Adds a light to the scene. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em light\+Data} & the data of the light you wanna add \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1LightSystem_a5557ee0c49c627e8d5fb3feae3ef6edf}\index{TRCN\_CORE\_NAMESPACE::LightSystem@{TRCN\_CORE\_NAMESPACE::LightSystem}!SetupLight@{SetupLight}}
+\index{SetupLight@{SetupLight}!TRCN\_CORE\_NAMESPACE::LightSystem@{TRCN\_CORE\_NAMESPACE::LightSystem}}
+\doxysubsubsection{\texorpdfstring{SetupLight()}{SetupLight()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{classTRCN__CORE__NAMESPACE_1_1LightSystem_a5557ee0c49c627e8d5fb3feae3ef6edf} 
+void TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::\+Light\+System\+::\+Setup\+Light (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1PointLightData}{Point\+Light\+Data}} \&}]{light\+Data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Adds a light to the scene. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em light\+Data} & the data of the light you wanna add \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1LightSystem_a97b3556e1102df81cd69a58bb28b6f01}\index{TRCN\_CORE\_NAMESPACE::LightSystem@{TRCN\_CORE\_NAMESPACE::LightSystem}!SetupLight@{SetupLight}}
+\index{SetupLight@{SetupLight}!TRCN\_CORE\_NAMESPACE::LightSystem@{TRCN\_CORE\_NAMESPACE::LightSystem}}
+\doxysubsubsection{\texorpdfstring{SetupLight()}{SetupLight()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{classTRCN__CORE__NAMESPACE_1_1LightSystem_a97b3556e1102df81cd69a58bb28b6f01} 
+void TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::\+Light\+System\+::\+Setup\+Light (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1SpotLightData}{Spot\+Light\+Data}} \&}]{light\+Data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Adds a light to the scene. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em light\+Data} & the data of the light you wanna add \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1LightSystem_ae2356e6dab6d0d97cacd2419f96d62dd}\index{TRCN\_CORE\_NAMESPACE::LightSystem@{TRCN\_CORE\_NAMESPACE::LightSystem}!SetViewPos@{SetViewPos}}
+\index{SetViewPos@{SetViewPos}!TRCN\_CORE\_NAMESPACE::LightSystem@{TRCN\_CORE\_NAMESPACE::LightSystem}}
+\doxysubsubsection{\texorpdfstring{SetViewPos()}{SetViewPos()}}
+{\footnotesize\ttfamily \label{classTRCN__CORE__NAMESPACE_1_1LightSystem_ae2356e6dab6d0d97cacd2419f96d62dd} 
+void TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::\+Light\+System\+::\+Set\+View\+Pos (\begin{DoxyParamCaption}\item[{glm\+::vec2}]{view\+Pos}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Sets the view pos. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em view\+Pos} & the position from where you\textquotesingle{}re viewing, like a camera position \\
+\hline
+\end{DoxyParams}
+
+
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/home/bigbenji/\+Documenti/cpp/\+Trinacria-\/2\+D-\/\+Renderer/\+Trinacria/include/\+Trinacria/Light\+System.\+h\item 
-/home/bigbenji/\+Documenti/cpp/\+Trinacria-\/2\+D-\/\+Renderer/\+Trinacria/src/Light\+System.\+cpp\end{DoxyCompactItemize}
+/home/bigbenji/\+Documenti/cpp/trinacria-\/diesel/\+Trinacria/include/\+Trinacria/Light\+System.\+h\item 
+/home/bigbenji/\+Documenti/cpp/trinacria-\/diesel/\+Trinacria/src/Light\+System.\+cpp\end{DoxyCompactItemize}

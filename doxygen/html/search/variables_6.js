@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['pivot_0',['Pivot',['../classTRCN__CORE__NAMESPACE_1_1Transform.html#a495b2939a2d3298aa9528c81b67ec0a3',1,'TRCN_CORE_NAMESPACE::Transform']]],
-  ['position_1',['Position',['../classTRCN__CORE__NAMESPACE_1_1Transform.html#aad53c8af56c663aaf43641603981ae66',1,'TRCN_CORE_NAMESPACE::Transform']]]
+  ['no_5ftexture_0',['NO_TEXTURE',['../classTRCN__CORE__NAMESPACE_1_1Texture.html#a73bebad1a7e0dbade4eab53893807320',1,'TRCN_CORE_NAMESPACE::Texture']]]
 ];
