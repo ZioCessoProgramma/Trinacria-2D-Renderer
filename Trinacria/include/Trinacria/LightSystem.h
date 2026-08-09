@@ -79,6 +79,9 @@ namespace TRCN_CORE_NAMESPACE
         glm::vec2 LightDirection;
     }; // 5 float ---> 2 texel
 
+    /**
+     * @brief static class dealing with light
+     */
     class LightSystem
     {
     public:
