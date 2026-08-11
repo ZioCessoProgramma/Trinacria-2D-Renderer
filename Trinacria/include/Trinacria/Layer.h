@@ -4,6 +4,9 @@
 
 namespace TRCN_CORE_NAMESPACE
 {
+	/**
+	 * @brief tiny piece of logic of your game/app
+	 */
 	TRCN_ABSTRACT class Layer
 	{
 	public:
@@ -12,7 +15,7 @@ namespace TRCN_CORE_NAMESPACE
 		 * @note should be called every frame
 		 * @param deltaTime the time that passes between frame in seconds
 		 */
-		
+
 		virtual void OnUpdate(float deltaTime) = 0;
 
 		/**
