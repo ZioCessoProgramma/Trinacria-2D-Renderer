@@ -12,5 +12,6 @@ var searchData=
   ['gettexcoords_9',['GetTexCoords',['../classTRCN__CORE__NAMESPACE_1_1Sprite.html#a92edbf7a4f2a97977e9391ce4d1686dc',1,'TRCN_CORE_NAMESPACE::Sprite']]],
   ['gettexturechosenslot_10',['GetTextureChosenSlot',['../classTRCN__CORE__NAMESPACE_1_1Texture.html#a5aa6dba3501f3affebc818c4514f39e2',1,'TRCN_CORE_NAMESPACE::Texture']]],
   ['gettriangletexcoords_11',['GetTriangleTexCoords',['../classTRCN__CORE__NAMESPACE_1_1Sprite.html#aac03c86c4aa1c46d52d34c86c30daa58',1,'TRCN_CORE_NAMESPACE::Sprite']]],
-  ['getwidth_12',['GetWidth',['../classTRCN__CORE__NAMESPACE_1_1Texture.html#ae9b7027f6466017074d4c35d82e217c9',1,'TRCN_CORE_NAMESPACE::Texture']]]
+  ['gettype_12',['GetType',['../classTRCN__CORE__NAMESPACE_1_1Event.html#ab9a57149e2e33c299251441c83f62a79',1,'TRCN_CORE_NAMESPACE::Event']]],
+  ['getwidth_13',['GetWidth',['../classTRCN__CORE__NAMESPACE_1_1Texture.html#ae9b7027f6466017074d4c35d82e217c9',1,'TRCN_CORE_NAMESPACE::Texture']]]
 ];

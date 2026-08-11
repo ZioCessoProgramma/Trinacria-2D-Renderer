@@ -137,10 +137,10 @@ $(function(){initNavTree('InputEvents_8h_source.html','',''); });
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    };</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
 <div class="foldopen" id="foldopen00046" data-start="{" data-end="};">
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="classTRCN__CORE__NAMESPACE_1_1KeyboardEvent.html">   46</a></span>    <span class="keyword">class </span>KeyboardEvent : <span class="keyword">public</span> Event&lt;InputEventType&gt;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="classTRCN__CORE__NAMESPACE_1_1KeyboardEvent.html">   46</a></span>    <span class="keyword">class </span>KeyboardEvent : <span class="keyword">public</span> <a class="code hl_function" href="classTRCN__CORE__NAMESPACE_1_1Event.html#a00ea9aeb5b27428bdc29480b7dd405b5">Event</a>&lt;InputEventType&gt;</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    {</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        KeyboardEvent(KeyValue key, InputEventType type) : Event(type), _key(key) {}</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        KeyboardEvent(KeyValue key, InputEventType type) : <a class="code hl_function" href="classTRCN__CORE__NAMESPACE_1_1Event.html#a00ea9aeb5b27428bdc29480b7dd405b5">Event</a>(type), _key(key) {}</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        KeyValue GetKey()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _key; }</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
@@ -157,10 +157,10 @@ $(function(){initNavTree('InputEvents_8h_source.html','',''); });
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    };</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
 <div class="foldopen" id="foldopen00064" data-start="{" data-end="};">
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="classTRCN__CORE__NAMESPACE_1_1MouseKeyEvent.html">   64</a></span>    <span class="keyword">class </span>MouseKeyEvent : <span class="keyword">public</span> Event&lt;InputEventType&gt;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="classTRCN__CORE__NAMESPACE_1_1MouseKeyEvent.html">   64</a></span>    <span class="keyword">class </span>MouseKeyEvent : <span class="keyword">public</span> <a class="code hl_function" href="classTRCN__CORE__NAMESPACE_1_1Event.html#a00ea9aeb5b27428bdc29480b7dd405b5">Event</a>&lt;InputEventType&gt;</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    {</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        MouseKeyEvent(MouseValue mouseKey, InputEventType type) : Event(type), _mouseKey(mouseKey) {}</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        MouseKeyEvent(MouseValue mouseKey, InputEventType type) : <a class="code hl_function" href="classTRCN__CORE__NAMESPACE_1_1Event.html#a00ea9aeb5b27428bdc29480b7dd405b5">Event</a>(type), _mouseKey(mouseKey) {}</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        MouseValue GetKey()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _mouseKey; }</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
@@ -232,7 +232,8 @@ $(function(){initNavTree('InputEvents_8h_source.html','',''); });
 <div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    };</div>
 </div>
 <div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>}</div>
-<div class="ttc" id="aclassTRCN__CORE__NAMESPACE_1_1EventDispatcher_html"><div class="ttname"><a href="classTRCN__CORE__NAMESPACE_1_1EventDispatcher.html">TRCN_CORE_NAMESPACE::EventDispatcher</a></div><div class="ttdef"><b>Definition</b> Event.h:25</div></div>
+<div class="ttc" id="aclassTRCN__CORE__NAMESPACE_1_1EventDispatcher_html"><div class="ttname"><a href="classTRCN__CORE__NAMESPACE_1_1EventDispatcher.html">TRCN_CORE_NAMESPACE::EventDispatcher</a></div><div class="ttdoc">dispatches events of a given type to all registered callbacks</div><div class="ttdef"><b>Definition</b> Event.h:45</div></div>
+<div class="ttc" id="aclassTRCN__CORE__NAMESPACE_1_1Event_html_a00ea9aeb5b27428bdc29480b7dd405b5"><div class="ttname"><a href="classTRCN__CORE__NAMESPACE_1_1Event.html#a00ea9aeb5b27428bdc29480b7dd405b5">TRCN_CORE_NAMESPACE::Event&lt; InputEventType &gt;::Event</a></div><div class="ttdeci">Event(InputEventType type)</div><div class="ttdef"><b>Definition</b> Event.h:25</div></div>
 <div class="ttc" id="aclassTRCN__CORE__NAMESPACE_1_1InputPollerLayer_html"><div class="ttname"><a href="classTRCN__CORE__NAMESPACE_1_1InputPollerLayer.html">TRCN_CORE_NAMESPACE::InputPollerLayer</a></div><div class="ttdef"><b>Definition</b> InputEvents.h:105</div></div>
 <div class="ttc" id="aclassTRCN__CORE__NAMESPACE_1_1Layer_html"><div class="ttname"><a href="classTRCN__CORE__NAMESPACE_1_1Layer.html">TRCN_CORE_NAMESPACE::Layer</a></div><div class="ttdef"><b>Definition</b> Layer.h:8</div></div>
 </div><!-- fragment --></div><!-- contents -->

@@ -10,8 +10,8 @@ digraph "TRCN_CORE_NAMESPACE::InputPollerLayer"
   Node2 [id="Node000002",label="TRCN_CORE_NAMESPACE\l::Layer",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",URL="$classTRCN__CORE__NAMESPACE_1_1Layer.html",tooltip=" "];
   Node3 -> Node1 [id="edge2_Node000001_Node000003",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=<<TABLE CELLBORDER="0" BORDER="0"><TR><TD VALIGN="top" ALIGN="LEFT" CELLPADDING="1" CELLSPACING="0">KeyBoardDispatcher</TD></TR>
 </TABLE>> ,fontcolor="grey" ];
-  Node3 [id="Node000003",label="TRCN_CORE_NAMESPACE\l::EventDispatcher\< TRCN\l_CORE_NAMESPACE::KeyboardEvent \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",URL="$classTRCN__CORE__NAMESPACE_1_1EventDispatcher.html",tooltip=" "];
+  Node3 [id="Node000003",label="TRCN_CORE_NAMESPACE\l::EventDispatcher\< TRCN\l_CORE_NAMESPACE::KeyboardEvent \>",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$classTRCN__CORE__NAMESPACE_1_1EventDispatcher.html",tooltip=" "];
   Node4 -> Node1 [id="edge3_Node000001_Node000004",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=<<TABLE CELLBORDER="0" BORDER="0"><TR><TD VALIGN="top" ALIGN="LEFT" CELLPADDING="1" CELLSPACING="0">MouseDispatcher</TD></TR>
 </TABLE>> ,fontcolor="grey" ];
-  Node4 [id="Node000004",label="TRCN_CORE_NAMESPACE\l::EventDispatcher\< TRCN\l_CORE_NAMESPACE::MouseKeyEvent \>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",URL="$classTRCN__CORE__NAMESPACE_1_1EventDispatcher.html",tooltip=" "];
+  Node4 [id="Node000004",label="TRCN_CORE_NAMESPACE\l::EventDispatcher\< TRCN\l_CORE_NAMESPACE::MouseKeyEvent \>",height=0.2,width=0.4,color="gray40", fillcolor="white", style="filled",URL="$classTRCN__CORE__NAMESPACE_1_1EventDispatcher.html",tooltip=" "];
 }
