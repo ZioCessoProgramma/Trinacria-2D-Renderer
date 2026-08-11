@@ -4,7 +4,7 @@ var annotated_dup =
       [ "Animation", "classTRCN__CORE__NAMESPACE_1_1Animation.html", null ],
       [ "Event", "classTRCN__CORE__NAMESPACE_1_1Event.html", null ],
       [ "EventDispatcher", "classTRCN__CORE__NAMESPACE_1_1EventDispatcher.html", null ],
-      [ "FrameBuffer", "classTRCN__CORE__NAMESPACE_1_1FrameBuffer.html", null ],
+      [ "FrameBuffer", "classTRCN__CORE__NAMESPACE_1_1FrameBuffer.html", "classTRCN__CORE__NAMESPACE_1_1FrameBuffer" ],
       [ "KeyboardEvent", "classTRCN__CORE__NAMESPACE_1_1KeyboardEvent.html", null ],
       [ "MouseKeyEvent", "classTRCN__CORE__NAMESPACE_1_1MouseKeyEvent.html", null ],
       [ "InputPollerLayer", "classTRCN__CORE__NAMESPACE_1_1InputPollerLayer.html", null ],
