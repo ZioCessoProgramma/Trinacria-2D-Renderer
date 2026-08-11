@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['teximage_0',['TexImage',['../classTRCN__CORE__NAMESPACE_1_1Texture.html#a4223cd93495c7166ab628b5e2476490e',1,'TRCN_CORE_NAMESPACE::Texture']]],
-  ['texture_1',['Texture',['../classTRCN__CORE__NAMESPACE_1_1Texture.html#a68bf51dc04eb164e87ae0e2f4f462953',1,'TRCN_CORE_NAMESPACE::Texture']]],
-  ['transform_2',['Transform',['../classTRCN__CORE__NAMESPACE_1_1Transform.html#a419c8406b9a4edb182feed958db365e2',1,'TRCN_CORE_NAMESPACE::Transform']]],
-  ['triangledata_3',['TriangleData',['../structTRCN__CORE__NAMESPACE_1_1TriangleData.html#a0801592afc1cad931c1d0dfe392280a2',1,'TRCN_CORE_NAMESPACE::TriangleData::TriangleData(const Transform &amp;transform, Texture *texture, int materialIndex=0, TriangleOrientation orientation=TriangleOrientation::Orientation_RIGHT, const glm::vec3 &amp;color=glm::vec3(1.f))'],['../structTRCN__CORE__NAMESPACE_1_1TriangleData.html#ab53f009c03abeed289ee767d2e7aae6f',1,'TRCN_CORE_NAMESPACE::TriangleData::TriangleData(const Transform &amp;transform, Sprite *sprite, int materialIndex=0, TriangleOrientation orientation=TriangleOrientation::Orientation_RIGHT, const glm::vec3 &amp;color=glm::vec3(1.f))'],['../structTRCN__CORE__NAMESPACE_1_1TriangleData.html#ae72236b2ae30191017e397dabcb837c9',1,'TRCN_CORE_NAMESPACE::TriangleData::TriangleData(const Transform &amp;transform, int materialIndex=0, TriangleOrientation orientation=TriangleOrientation::Orientation_RIGHT, const glm::vec3 &amp;color=glm::vec3(1.f))']]]
+  ['registcallback_0',['RegistCallback',['../classTRCN__CORE__NAMESPACE_1_1EventDispatcher.html#a84c032498d27c38ddbc1fc9dfbc8714b',1,'TRCN_CORE_NAMESPACE::EventDispatcher']]]
 ];

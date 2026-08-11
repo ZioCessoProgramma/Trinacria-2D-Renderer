@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['normalize_0',['Normalize',['../structTRCN__CORE__NAMESPACE_1_1QuadTexCoords.html#ae286d9267007a88d69a42f56bb0c595b',1,'TRCN_CORE_NAMESPACE::QuadTexCoords::Normalize()'],['../structTRCN__CORE__NAMESPACE_1_1TriangleTexCoords.html#a3a07971c779237627b48baa49c57d3a8',1,'TRCN_CORE_NAMESPACE::TriangleTexCoords::Normalize()']]]
+  ['loadshader_0',['LoadShader',['../classTRCN__CORE__NAMESPACE_1_1Shader.html#a26fc1069d35b6da2b2c75f7e900d7225',1,'TRCN_CORE_NAMESPACE::Shader']]],
+  ['loadtexture_1',['LoadTexture',['../classTRCN__CORE__NAMESPACE_1_1Texture.html#aa40efbd5ef21d12a7a446e5081b3a402',1,'TRCN_CORE_NAMESPACE::Texture']]]
 ];

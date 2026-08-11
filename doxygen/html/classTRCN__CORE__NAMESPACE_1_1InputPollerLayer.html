@@ -91,6 +91,11 @@ $(function(){initNavTree('classTRCN__CORE__NAMESPACE_1_1InputPollerLayer.html','
   <div class="headertitle"><div class="title">TRCN_CORE_NAMESPACE::InputPollerLayer Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>layer that polls keyboard and mouse state and dispatches the resulting events  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="InputEvents_8h_source.html">InputEvents.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for TRCN_CORE_NAMESPACE::InputPollerLayer:</div>
 <div class="dyncontent">
@@ -105,19 +110,26 @@ Collaboration diagram for TRCN_CORE_NAMESPACE::InputPollerLayer:</div>
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ad59c3f957298fc24b411a7a018ef1db4" id="r_ad59c3f957298fc24b411a7a018ef1db4"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad59c3f957298fc24b411a7a018ef1db4">OnUpdate</a> (float deltaTime) override</td></tr>
+<tr class="memdesc:ad59c3f957298fc24b411a7a018ef1db4"><td class="mdescLeft">&#160;</td><td class="mdescRight">polls input state each frame and submits keyboard/mouse events  <br /></td></tr>
 <tr class="memitem:a5563311800c8af919f86f82da3539926" id="r_a5563311800c8af919f86f82da3539926"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5563311800c8af919f86f82da3539926">OnAttach</a> () override</td></tr>
+<tr class="memdesc:a5563311800c8af919f86f82da3539926"><td class="mdescLeft">&#160;</td><td class="mdescRight">called when the layer is attached to the application  <br /></td></tr>
 <tr class="memitem:a286943b5523a2ca7e1d62e200b5c2e88" id="r_a286943b5523a2ca7e1d62e200b5c2e88"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a286943b5523a2ca7e1d62e200b5c2e88">OnDetach</a> () override</td></tr>
-<tr class="memitem:a8f1c68fe396833c41509b2b2c226a49f" id="r_a8f1c68fe396833c41509b2b2c226a49f"><td class="memItemLeft" align="right" valign="top"><a id="a8f1c68fe396833c41509b2b2c226a49f" name="a8f1c68fe396833c41509b2b2c226a49f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SetWindow</b> (GLFWwindow *window)</td></tr>
+<tr class="memdesc:a286943b5523a2ca7e1d62e200b5c2e88"><td class="mdescLeft">&#160;</td><td class="mdescRight">called when the layer is detached from the application  <br /></td></tr>
+<tr class="memitem:a8f1c68fe396833c41509b2b2c226a49f" id="r_a8f1c68fe396833c41509b2b2c226a49f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8f1c68fe396833c41509b2b2c226a49f">SetWindow</a> (GLFWwindow *window)</td></tr>
+<tr class="memdesc:a8f1c68fe396833c41509b2b2c226a49f"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets the window used to poll input state  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a899618ee2dd2eff05839789e37055042" id="r_a899618ee2dd2eff05839789e37055042"><td class="memItemLeft" align="right" valign="top"><a id="a899618ee2dd2eff05839789e37055042" name="a899618ee2dd2eff05839789e37055042"></a>
 <a class="el" href="classTRCN__CORE__NAMESPACE_1_1EventDispatcher.html">EventDispatcher</a>&lt; <a class="el" href="classTRCN__CORE__NAMESPACE_1_1KeyboardEvent.html">KeyboardEvent</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>KeyBoardDispatcher</b></td></tr>
+<tr class="memdesc:a899618ee2dd2eff05839789e37055042"><td class="mdescLeft">&#160;</td><td class="mdescRight">dispatcher of keyboard events <br /></td></tr>
 <tr class="memitem:a5e40b9077514155e4237c16432726b0d" id="r_a5e40b9077514155e4237c16432726b0d"><td class="memItemLeft" align="right" valign="top"><a id="a5e40b9077514155e4237c16432726b0d" name="a5e40b9077514155e4237c16432726b0d"></a>
 <a class="el" href="classTRCN__CORE__NAMESPACE_1_1EventDispatcher.html">EventDispatcher</a>&lt; <a class="el" href="classTRCN__CORE__NAMESPACE_1_1MouseKeyEvent.html">MouseKeyEvent</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>MouseDispatcher</b></td></tr>
+<tr class="memdesc:a5e40b9077514155e4237c16432726b0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">dispatcher of mouse button events <br /></td></tr>
 </table>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>layer that polls keyboard and mouse state and dispatches the resulting events </p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
 <a id="a5563311800c8af919f86f82da3539926" name="a5563311800c8af919f86f82da3539926"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5563311800c8af919f86f82da3539926">&#9670;&#160;</a></span>OnAttach()</h2>
 
@@ -140,6 +152,8 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>called when the layer is attached to the application </p>
 
 <p>Implements <a class="el" href="classTRCN__CORE__NAMESPACE_1_1Layer.html">TRCN_CORE_NAMESPACE::Layer</a>.</p>
 
@@ -168,6 +182,8 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>called when the layer is detached from the application </p>
+
 <p>Implements <a class="el" href="classTRCN__CORE__NAMESPACE_1_1Layer.html">TRCN_CORE_NAMESPACE::Layer</a>.</p>
 
 </div>
@@ -195,7 +211,48 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>polls input state each frame and submits keyboard/mouse events </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">deltaTime</td><td>time elapsed since the last frame </td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p>Implements <a class="el" href="classTRCN__CORE__NAMESPACE_1_1Layer.html">TRCN_CORE_NAMESPACE::Layer</a>.</p>
+
+</div>
+</div>
+<a id="a8f1c68fe396833c41509b2b2c226a49f" name="a8f1c68fe396833c41509b2b2c226a49f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f1c68fe396833c41509b2b2c226a49f">&#9670;&#160;</a></span>SetWindow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TRCN_CORE_NAMESPACE::InputPollerLayer::SetWindow </td>
+          <td>(</td>
+          <td class="paramtype">GLFWwindow *</td>          <td class="paramname"><span class="paramname"><em>window</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>sets the window used to poll input state </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">window</td><td>the GLFW window </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
