@@ -91,19 +91,133 @@ $(function(){initNavTree('classTRCN__CORE__NAMESPACE_1_1Animation.html','','clas
   <div class="headertitle"><div class="title">TRCN_CORE_NAMESPACE::Animation&lt; SpriteNum &gt; Class Template Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>plays an animation made of a fixed number of sprites  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="Animation_8h_source.html">Animation.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a68fb8659c874226f002ed4729131000f" id="r_a68fb8659c874226f002ed4729131000f"><td class="memItemLeft" align="right" valign="top"><a id="a68fb8659c874226f002ed4729131000f" name="a68fb8659c874226f002ed4729131000f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Play</b> (float deltaTime, const glm::vec2 &amp;position, const glm::vec3 &amp;color=1.f, int materialIndex=0)</td></tr>
-<tr class="memitem:adf6e328fe4776cb8eb9d1105c799765f" id="r_adf6e328fe4776cb8eb9d1105c799765f"><td class="memItemLeft" align="right" valign="top"><a id="adf6e328fe4776cb8eb9d1105c799765f" name="adf6e328fe4776cb8eb9d1105c799765f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Init</b> (<a class="el" href="classTRCN__CORE__NAMESPACE_1_1Sprite.html">Sprite</a> *array, size_t count, uint32_t fps)</td></tr>
+<tr class="memitem:a68fb8659c874226f002ed4729131000f" id="r_a68fb8659c874226f002ed4729131000f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a68fb8659c874226f002ed4729131000f">Play</a> (float deltaTime, const glm::vec2 &amp;position, const glm::vec3 &amp;color=1.f, int materialIndex=0)</td></tr>
+<tr class="memdesc:a68fb8659c874226f002ed4729131000f"><td class="mdescLeft">&#160;</td><td class="mdescRight">advances the animation and draws the current frame  <br /></td></tr>
+<tr class="memitem:adf6e328fe4776cb8eb9d1105c799765f" id="r_adf6e328fe4776cb8eb9d1105c799765f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adf6e328fe4776cb8eb9d1105c799765f">Init</a> (<a class="el" href="classTRCN__CORE__NAMESPACE_1_1Sprite.html">Sprite</a> *array, size_t count, uint32_t fps)</td></tr>
+<tr class="memdesc:adf6e328fe4776cb8eb9d1105c799765f"><td class="mdescLeft">&#160;</td><td class="mdescRight">initializes the animation, can only be called once  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:ac39562f6d066347be08e8591dd6fddc8" id="r_ac39562f6d066347be08e8591dd6fddc8"><td class="memItemLeft" align="right" valign="top"><a id="ac39562f6d066347be08e8591dd6fddc8" name="ac39562f6d066347be08e8591dd6fddc8"></a>
 uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>Fps</b> = 0</td></tr>
+<tr class="memdesc:ac39562f6d066347be08e8591dd6fddc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">frames per second of the animation <br /></td></tr>
 </table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;size_t SpriteNum&gt;<br />
+class TRCN_CORE_NAMESPACE::Animation&lt; SpriteNum &gt;</div><p>plays an animation made of a fixed number of sprites </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">SpriteNum</td><td>the number of frames of the animation </td></tr>
+  </table>
+  </dd>
+</dl>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="adf6e328fe4776cb8eb9d1105c799765f" name="adf6e328fe4776cb8eb9d1105c799765f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf6e328fe4776cb8eb9d1105c799765f">&#9670;&#160;</a></span>Init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t SpriteNum&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classTRCN__CORE__NAMESPACE_1_1Animation.html">TRCN_CORE_NAMESPACE::Animation</a>&lt; SpriteNum &gt;::Init </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classTRCN__CORE__NAMESPACE_1_1Sprite.html">Sprite</a> *</td>          <td class="paramname"><span class="paramname"><em>array</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>count</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>fps</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>initializes the animation, can only be called once </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">array</td><td>the array of sprites (frames) of the animation </td></tr>
+    <tr><td class="paramname">count</td><td>number of sprites in the array </td></tr>
+    <tr><td class="paramname">fps</td><td>frames per second of the animation </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a68fb8659c874226f002ed4729131000f" name="a68fb8659c874226f002ed4729131000f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68fb8659c874226f002ed4729131000f">&#9670;&#160;</a></span>Play()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;size_t SpriteNum&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classTRCN__CORE__NAMESPACE_1_1Animation.html">TRCN_CORE_NAMESPACE::Animation</a>&lt; SpriteNum &gt;::Play </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>deltaTime</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const glm::vec2 &amp;</td>          <td class="paramname"><span class="paramname"><em>position</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const glm::vec3 &amp;</td>          <td class="paramname"><span class="paramname"><em>color</em></span><span class="paramdefsep"> = </span><span class="paramdefval">1.f</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>materialIndex</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>advances the animation and draws the current frame </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">deltaTime</td><td>time elapsed since the last call </td></tr>
+    <tr><td class="paramname">position</td><td>where to draw the animation </td></tr>
+    <tr><td class="paramname">color</td><td>tint of the animation, defaults to white </td></tr>
+    <tr><td class="paramname">materialIndex</td><td>the material's index to use, defaults to 0 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>/home/bigbenji/Documenti/cpp/trinacria-diesel/Trinacria/include/Trinacria/<a class="el" href="Animation_8h_source.html">Animation.h</a></li>
 </ul>

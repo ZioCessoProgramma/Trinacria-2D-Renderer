@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['innerangleindegrees_0',['InnerAngleInDegrees',['../structTRCN__CORE__NAMESPACE_1_1SpotLightData.html#ae3cc45290954583be326f8720c6014b1',1,'TRCN_CORE_NAMESPACE::SpotLightData']]]
+  ['fps_0',['Fps',['../classTRCN__CORE__NAMESPACE_1_1Animation.html#ac39562f6d066347be08e8591dd6fddc8',1,'TRCN_CORE_NAMESPACE::Animation']]]
 ];

@@ -1,7 +1,7 @@
 var annotated_dup =
 [
     [ "TRCN_CORE_NAMESPACE", null, [
-      [ "Animation", "classTRCN__CORE__NAMESPACE_1_1Animation.html", null ],
+      [ "Animation", "classTRCN__CORE__NAMESPACE_1_1Animation.html", "classTRCN__CORE__NAMESPACE_1_1Animation" ],
       [ "Event", "classTRCN__CORE__NAMESPACE_1_1Event.html", "classTRCN__CORE__NAMESPACE_1_1Event" ],
       [ "EventDispatcher", "classTRCN__CORE__NAMESPACE_1_1EventDispatcher.html", "classTRCN__CORE__NAMESPACE_1_1EventDispatcher" ],
       [ "FrameBuffer", "classTRCN__CORE__NAMESPACE_1_1FrameBuffer.html", "classTRCN__CORE__NAMESPACE_1_1FrameBuffer" ],
