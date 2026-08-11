@@ -8,7 +8,7 @@ var annotated_dup =
       [ "KeyboardEvent", "classTRCN__CORE__NAMESPACE_1_1KeyboardEvent.html", "classTRCN__CORE__NAMESPACE_1_1KeyboardEvent" ],
       [ "MouseKeyEvent", "classTRCN__CORE__NAMESPACE_1_1MouseKeyEvent.html", "classTRCN__CORE__NAMESPACE_1_1MouseKeyEvent" ],
       [ "InputPollerLayer", "classTRCN__CORE__NAMESPACE_1_1InputPollerLayer.html", "classTRCN__CORE__NAMESPACE_1_1InputPollerLayer" ],
-      [ "Layer", "classTRCN__CORE__NAMESPACE_1_1Layer.html", null ],
+      [ "Layer", "classTRCN__CORE__NAMESPACE_1_1Layer.html", "classTRCN__CORE__NAMESPACE_1_1Layer" ],
       [ "PointLightData", "structTRCN__CORE__NAMESPACE_1_1PointLightData.html", "structTRCN__CORE__NAMESPACE_1_1PointLightData" ],
       [ "SpotLightData", "structTRCN__CORE__NAMESPACE_1_1SpotLightData.html", "structTRCN__CORE__NAMESPACE_1_1SpotLightData" ],
       [ "DirectionalLightData", "structTRCN__CORE__NAMESPACE_1_1DirectionalLightData.html", "structTRCN__CORE__NAMESPACE_1_1DirectionalLightData" ],
