@@ -28,7 +28,9 @@ float {\bfseries Inner\+Angle\+In\+Degrees}
 \begin{DoxyCompactList}\small\item\em the angle where the light is at its max illumination \end{DoxyCompactList}\item 
 \Hypertarget{structTRCN__CORE__NAMESPACE_1_1SpotLightData_ab26e74c6f84184a3e6938dc095da72ef}\label{structTRCN__CORE__NAMESPACE_1_1SpotLightData_ab26e74c6f84184a3e6938dc095da72ef} 
 float {\bfseries Outer\+Angle\+In\+Degrees}
-\begin{DoxyCompactList}\small\item\em the angle from where the light starts to fade \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em the angle from where the light starts to fade \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1SpotLightData_a20dcfcf2caaa17f9c473c4577babe262}{Light\+Height}} = 1.f
+\begin{DoxyCompactList}\small\item\em it\textquotesingle{}s the hidden z position of the light \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -54,6 +56,19 @@ attenuation
 
 \begin{DoxyNote}{Note}
 less than 1 the light is brighter, more than 1 the light darker 
+\end{DoxyNote}
+\Hypertarget{structTRCN__CORE__NAMESPACE_1_1SpotLightData_a20dcfcf2caaa17f9c473c4577babe262}\index{TRCN\_CORE\_NAMESPACE::SpotLightData@{TRCN\_CORE\_NAMESPACE::SpotLightData}!LightHeight@{LightHeight}}
+\index{LightHeight@{LightHeight}!TRCN\_CORE\_NAMESPACE::SpotLightData@{TRCN\_CORE\_NAMESPACE::SpotLightData}}
+\doxysubsubsection{\texorpdfstring{LightHeight}{LightHeight}}
+{\footnotesize\ttfamily \label{structTRCN__CORE__NAMESPACE_1_1SpotLightData_a20dcfcf2caaa17f9c473c4577babe262} 
+float TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::\+Spot\+Light\+Data\+::\+Light\+Height = 1.f}
+
+
+
+it\textquotesingle{}s the hidden z position of the light 
+
+\begin{DoxyNote}{Note}
+higher it is more the x and y will be affected (not intended but inevitable) 
 \end{DoxyNote}
 
 

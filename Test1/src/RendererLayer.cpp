@@ -19,10 +19,11 @@ void RendererLayer::OnUpdate(float deltaTime)
 {
 	Trinacria::DSL::Renderer::ClearColorBuffer();
 
+
 	// Ground
 
 	Trinacria::DSL::Transform ground(glm::vec2(0.f), glm::vec2(100.f));
-	Trinacria::DSL::QuadData groundData(ground);
+	Trinacria::DSL::QuadData groundData(ground, glm::vec3(1.f), 2);
 
 	Trinacria::DSL::Renderer::CreateQuad(groundData);
 
@@ -156,6 +157,10 @@ void RendererLayer::OnUpdate(float deltaTime)
 
 	Trinacria::DSL::Renderer::AddMaterial(Trinacria::DSL::SOLID_OPAQUE);
 	Trinacria::DSL::Renderer::AddMaterial(Trinacria::DSL::METAL);
+
+	Trinacria::DSL::Material groundMaterial(glm::vec3(1.f), glm::vec3(1.f), glm::vec3(0.4f), 8.f);
+
+	Trinacria::DSL::Renderer::AddMaterial(groundMaterial);
 
 	Trinacria::DSL::LightSystem::Done();
 

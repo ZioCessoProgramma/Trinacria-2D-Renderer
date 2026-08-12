@@ -105,13 +105,13 @@ void main()
 vec3 CalculateLight(vec2 lightPos, float attenuation, vec3 lightColor,
 					float diffuseStrength, float specularStrength, vec2 viewPos, vec3 color)
 {
-	vec3 lightDir = normalize(vec3(lightPos, 0.f) - vec3(FragPos, 0.f));
+	vec3 lightDir = normalize(vec3(lightPos, 2.f) - vec3(FragPos, 0.f));
 
 	float dist = length(lightPos - FragPos);
 	float diff = 1.0 / (1.0 + attenuation * dist * dist);
 	vec3 diffuse = diff * lightColor * diffuseStrength * u_Materials[MaterialIndex].diffuse;
 
-	vec3 viewDir = normalize(vec3(viewPos, 0.f) - vec3(FragPos, 0.f));
+	vec3 viewDir = normalize(vec3(viewPos, 6.f) - vec3(FragPos, 0.f));;
 	vec3 reflectDir = reflect(-lightDir, vec3(0.f, 0.f, 1.f));
 
 	vec3 halfDir = normalize(lightDir + viewDir);

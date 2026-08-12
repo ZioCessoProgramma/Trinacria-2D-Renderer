@@ -19,7 +19,9 @@ glm\+::vec3 {\bfseries Light\+Color}
 glm\+::vec2 {\bfseries Light\+Position}
 \begin{DoxyCompactList}\small\item\em light\textquotesingle{}s position \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1PointLightData_a0c7d10f43e2763f9eae1df3a3b4295d4}{Attenuation}}
-\begin{DoxyCompactList}\small\item\em attenuation \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em attenuation \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1PointLightData_a1b1a60f7ec95a1670e3d233394e72018}{Light\+Height}} = 2.f
+\begin{DoxyCompactList}\small\item\em it\textquotesingle{}s the hidden z position of the light \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -45,6 +47,19 @@ attenuation
 
 \begin{DoxyNote}{Note}
 less than 1 the light is brighter, more than 1 the light darker 
+\end{DoxyNote}
+\Hypertarget{structTRCN__CORE__NAMESPACE_1_1PointLightData_a1b1a60f7ec95a1670e3d233394e72018}\index{TRCN\_CORE\_NAMESPACE::PointLightData@{TRCN\_CORE\_NAMESPACE::PointLightData}!LightHeight@{LightHeight}}
+\index{LightHeight@{LightHeight}!TRCN\_CORE\_NAMESPACE::PointLightData@{TRCN\_CORE\_NAMESPACE::PointLightData}}
+\doxysubsubsection{\texorpdfstring{LightHeight}{LightHeight}}
+{\footnotesize\ttfamily \label{structTRCN__CORE__NAMESPACE_1_1PointLightData_a1b1a60f7ec95a1670e3d233394e72018} 
+float TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::\+Point\+Light\+Data\+::\+Light\+Height = 2.f}
+
+
+
+it\textquotesingle{}s the hidden z position of the light 
+
+\begin{DoxyNote}{Note}
+higher it is more the x and y will be affected (not intended but inevitable) 
 \end{DoxyNote}
 
 
