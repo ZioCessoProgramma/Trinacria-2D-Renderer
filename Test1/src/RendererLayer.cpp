@@ -10,7 +10,6 @@
 #include "Trinacria/LightSystem.h"
 #include "Trinacria/Materials.h"
 
-
 #define ANIMATION_FPS 12
 
 static glm::vec3 color{ 1.f };
@@ -104,7 +103,7 @@ void RendererLayer::OnUpdate(float deltaTime)
 	Trinacria::DSL::Transform spotLightTransform(glm::vec2(-7.f, -3.f), glm::vec2(0.5f), 0,
 		glm::vec2(1.f, 0.f));
 
-	Trinacria::DSL::Transform spotLightTransform1(glm::vec2(15.f, -3.f), glm::vec2(0.5f), 0,
+	Trinacria::DSL::Transform spotLightTransform1(glm::vec2(7.f, -3.f), glm::vec2(0.5f), 0,
 	glm::vec2(1.f, 0.f));
 
 	Trinacria::DSL::QuadData data(spotLightTransform);
@@ -135,7 +134,7 @@ void RendererLayer::OnUpdate(float deltaTime)
 		pointLightTransform.Position, 1.f);
 
 	Trinacria::DSL::PointLightData pointLight1( glm::vec3(1.f, 1.f, 1.f),
-	pointLightTransform1.Position, 10.f);
+	pointLightTransform1.Position, 1.f);
 
 	Trinacria::DSL::SpotLightData spotLight(glm::vec3(1.f), spotLightTransform.Position,
 		glm::vec2(-1.f, 1.f), 1.f,

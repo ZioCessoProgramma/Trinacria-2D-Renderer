@@ -47,8 +47,8 @@ void Trinacria::DSL::LightSystem::SetupLight(const PointLightData& lightData)
     _pointLights[_pointLightIndex + 2] = lightData.LightColor.b;
     _pointLights[_pointLightIndex + 3] = lightData.LightPosition.x;
     _pointLights[_pointLightIndex + 4] = lightData.LightPosition.y;
-    _pointLights[_pointLightIndex + 5] = lightData.Attenuation;
-    _pointLights[_pointLightIndex + 6] = 0.f;
+    _pointLights[_pointLightIndex + 5] = lightData.LightHeight;
+    _pointLights[_pointLightIndex + 6] = lightData.Attenuation;
     _pointLights[_pointLightIndex + 7] = 0.f;
     _pointLightIndex += 8;
 }
@@ -66,8 +66,8 @@ void Trinacria::DSL::LightSystem::SetupLight(const SpotLightData& lightData)
     _spotLights[_spotLightIndex + 6] = lightData.LightDirection.y;
     _spotLights[_spotLightIndex + 7] = lightData.Attenuation;
     _spotLights[_spotLightIndex + 8] = glm::cos(glm::radians(lightData.InnerAngleInDegrees));
-    _spotLights[_spotLightIndex + 0] = glm::cos(glm::radians(lightData.OuterAngleInDegrees));
-    _spotLights[_spotLightIndex + 10] = 0.f;
+    _spotLights[_spotLightIndex + 9] = glm::cos(glm::radians(lightData.OuterAngleInDegrees));
+    _spotLights[_spotLightIndex + 10] = lightData.LightHeight;
     _spotLights[_spotLightIndex + 11] = 0.f;
 
     _spotLightIndex += 12;

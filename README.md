@@ -31,7 +31,7 @@ Trinacria Diesel is a system standing using 2 major static classes:
 ```bash
 git clone https://github.com/ZioCessoProgramma/Trinacria-2D-Renderer.git --recursive
 cd Trinacria-2D-Renderer
-cmake -G Ninja -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=ninja -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ -B build
+cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_MAKE_PROGRAM=ninja -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ -B build
 cd build
 ninja
 ```

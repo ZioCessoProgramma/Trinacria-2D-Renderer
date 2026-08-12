@@ -28,7 +28,13 @@ namespace TRCN_CORE_NAMESPACE
          * @note less than 1 the light is brighter, more than 1 the light darker
          */
         float Attenuation;
-    }; // 6 float ---> 2 texel
+
+        /**
+         * @brief it's the hidden z position of the light
+         * @note higher it is more the x and y will be affected (not intended but inevitable)
+         */
+        float LightHeight = 2.f;
+    }; // 7 float ---> 2 texel
 
     /**
      * @brief the struct having all a spotlight needs
@@ -61,7 +67,13 @@ namespace TRCN_CORE_NAMESPACE
          * @brief the angle from where the light starts to fade
          */
         float OuterAngleInDegrees;
-    }; // 10 float --> 3 texel
+
+        /**
+         * @brief it's the hidden z position of the light
+         * @note higher it is more the x and y will be affected (not intended but inevitable)
+         */
+        float LightHeight = 1.f;
+    }; // 11 float --> 3 texel
 
     /**
      * @brief struct representing the directional light

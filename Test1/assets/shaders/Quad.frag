@@ -12,13 +12,13 @@ uniform sampler2D u_Textures[32]; // no tex, tex1, tex...
 struct PointLight
 {
 	vec3 LightColor;
-	vec2 LightPos;
+	vec3 LightPos;
 	float Attenuation;
 };
 
 struct SpotLight
 {
-	vec2 LightPos;
+	vec3 LightPos;
 	vec3 LightColor;
 	float Attenuation;
 	vec2 LightDirection;
@@ -50,7 +50,7 @@ uniform sampler2D u_PointLights;
 uniform sampler2D u_SpotLights;
 uniform sampler2D u_DirLights;
 
-vec3 CalculateLight(vec2 lightPos, float attenuation, vec3 lightColor,
+vec3 CalculateLight(vec3 lightPos, float attenuation, vec3 lightColor,
 					float diffuseStrength, float specularStrength, vec2 viewPos, vec3 color);
 
 vec3 CalculateDirectionalLight(vec2 lightDir, vec2 viewPos, vec3 lightColor,
@@ -102,12 +102,12 @@ void main()
 
 }
 
-vec3 CalculateLight(vec2 lightPos, float attenuation, vec3 lightColor,
+vec3 CalculateLight(vec3 lightPos, float attenuation, vec3 lightColor,
 					float diffuseStrength, float specularStrength, vec2 viewPos, vec3 color)
 {
-	vec3 lightDir = normalize(vec3(lightPos, 2.f) - vec3(FragPos, 0.f));
+	vec3 lightDir = normalize(lightPos - vec3(FragPos, 0.f));
 
-	float dist = length(lightPos - FragPos);
+	float dist = length(lightPos - vec3(FragPos, 0.f));
 	float diff = 1.0 / (1.0 + attenuation * dist * dist);
 	vec3 diffuse = diff * lightColor * diffuseStrength * u_Materials[MaterialIndex].diffuse;
 
@@ -158,7 +158,7 @@ vec3 SumAllLights(vec3 baseColor)
 
 		vec2 spotLightDirection = normalize(spotLight.LightDirection);
 
-		vec2 lightDir = vec2(normalize(vec3(spotLight.LightPos, 0.f) - vec3(FragPos, 0.f)));
+		vec2 lightDir = vec2(normalize(spotLight.LightPos - vec3(FragPos, 0.f)));
 
 		float theta = dot(lightDir, normalize(-spotLightDirection));
 		float epsilon = spotLight.InnerCutOff - spotLight.OuterCutOff;
@@ -228,8 +228,8 @@ PointLight FetchPointLight(int index)
 	PointLight light;
 
 	light.LightColor = t0.rgb;
-	light.LightPos = vec2(t0.a, t1.r);
-	light.Attenuation = t1.g;
+	light.LightPos = vec3(t0.a, t1.r, t1.g);
+	light.Attenuation = t1.b;
 
 	return light;
 }
@@ -245,7 +245,7 @@ SpotLight FetchSpotLight(int index)
 	SpotLight light;
 
 	light.LightColor = t0.rgb;
-	light.LightPos = vec2(t0.a, t1.r);
+	light.LightPos = vec3(t0.a, t1.r, t2.b);
 	light.LightDirection = t1.gb;
 	light.Attenuation = t1.a;
 	light.InnerCutOff = t2.r;
