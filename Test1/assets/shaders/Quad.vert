@@ -1,4 +1,4 @@
-#version 330
+#version 330 core
 
 layout(location = 0) in vec2 a_Pos;
 layout(location = 1) in int a_TextureIndex;

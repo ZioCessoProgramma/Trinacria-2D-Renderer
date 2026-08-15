@@ -101,6 +101,8 @@ $(function(){initNavTree('classTRCN__CORE__NAMESPACE_1_1Shader.html','','classTR
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a26fc1069d35b6da2b2c75f7e900d7225" id="r_a26fc1069d35b6da2b2c75f7e900d7225"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a26fc1069d35b6da2b2c75f7e900d7225">LoadShader</a> (const std::string &amp;vert, const std::string &amp;frag)</td></tr>
 <tr class="memdesc:a26fc1069d35b6da2b2c75f7e900d7225"><td class="mdescLeft">&#160;</td><td class="mdescRight">load a shader from file path  <br /></td></tr>
+<tr class="memitem:a121606c645ab3010f59dd64a4f055f1a" id="r_a121606c645ab3010f59dd64a4f055f1a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a121606c645ab3010f59dd64a4f055f1a">LoadCoreShader</a> (const std::string &amp;vert, const std::string &amp;frag, uint32_t maxTextures)</td></tr>
+<tr class="memdesc:a121606c645ab3010f59dd64a4f055f1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">use it for loading the shader that handles textures  <br /></td></tr>
 <tr class="memitem:a85d1bb9e09e917a6f098d3e7479d7d06" id="r_a85d1bb9e09e917a6f098d3e7479d7d06"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a85d1bb9e09e917a6f098d3e7479d7d06">Bind</a> ()</td></tr>
 <tr class="memdesc:a85d1bb9e09e917a6f098d3e7479d7d06"><td class="mdescLeft">&#160;</td><td class="mdescRight">bind a shader  <br /></td></tr>
 <tr class="memitem:ad53d9b5c77b79abe866729c455f4b984" id="r_ad53d9b5c77b79abe866729c455f4b984"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad53d9b5c77b79abe866729c455f4b984">GetShaderProgram</a> ()</td></tr>
@@ -166,6 +168,42 @@ Public Member Functions</h2></td></tr>
 
 <p>get a shader program to use to your liking </p>
 <dl class="section return"><dt>Returns</dt><dd>returns the shader program's id </dd></dl>
+
+</div>
+</div>
+<a id="a121606c645ab3010f59dd64a4f055f1a" name="a121606c645ab3010f59dd64a4f055f1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a121606c645ab3010f59dd64a4f055f1a">&#9670;&#160;</a></span>LoadCoreShader()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TRCN_CORE_NAMESPACE::Shader::LoadCoreShader </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>vert</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>frag</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>maxTextures</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>use it for loading the shader that handles textures </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vert</td><td>the vertex shader's path </td></tr>
+    <tr><td class="paramname">frag</td><td>the fragment shader's path </td></tr>
+    <tr><td class="paramname">maxTextures</td><td>the maximum number of texture the driver can handle </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

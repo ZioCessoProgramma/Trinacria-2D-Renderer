@@ -2,6 +2,7 @@ var classTRCN__CORE__NAMESPACE_1_1Shader =
 [
     [ "Bind", "classTRCN__CORE__NAMESPACE_1_1Shader.html#a85d1bb9e09e917a6f098d3e7479d7d06", null ],
     [ "GetShaderProgram", "classTRCN__CORE__NAMESPACE_1_1Shader.html#ad53d9b5c77b79abe866729c455f4b984", null ],
+    [ "LoadCoreShader", "classTRCN__CORE__NAMESPACE_1_1Shader.html#a121606c645ab3010f59dd64a4f055f1a", null ],
     [ "LoadShader", "classTRCN__CORE__NAMESPACE_1_1Shader.html#a26fc1069d35b6da2b2c75f7e900d7225", null ],
     [ "SetUniformFloat", "classTRCN__CORE__NAMESPACE_1_1Shader.html#a80f346c07abfe2ae35c82d062cc16709", null ],
     [ "SetUniformInt", "classTRCN__CORE__NAMESPACE_1_1Shader.html#a616d70c81757a7daf180b980c6a8faea", null ],

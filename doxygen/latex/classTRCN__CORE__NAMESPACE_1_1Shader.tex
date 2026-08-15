@@ -14,6 +14,8 @@ class dealing with shader pipeline, uniforms, linking, etc..
 \item 
 void \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Shader_a26fc1069d35b6da2b2c75f7e900d7225}{Load\+Shader}} (const std\+::string \&vert, const std\+::string \&frag)
 \begin{DoxyCompactList}\small\item\em load a shader from file path \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Shader_a121606c645ab3010f59dd64a4f055f1a}{Load\+Core\+Shader}} (const std\+::string \&vert, const std\+::string \&frag, uint32\+\_\+t max\+Textures)
+\begin{DoxyCompactList}\small\item\em use it for loading the shader that handles textures \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Shader_a85d1bb9e09e917a6f098d3e7479d7d06}{Bind}} ()
 \begin{DoxyCompactList}\small\item\em bind a shader \end{DoxyCompactList}\item 
 uint32\+\_\+t \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Shader_ad53d9b5c77b79abe866729c455f4b984}{Get\+Shader\+Program}} ()
@@ -64,6 +66,25 @@ get a shader program to use to your liking
 \begin{DoxyReturn}{Returns}
 returns the shader program\textquotesingle{}s id 
 \end{DoxyReturn}
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1Shader_a121606c645ab3010f59dd64a4f055f1a}\index{TRCN\_CORE\_NAMESPACE::Shader@{TRCN\_CORE\_NAMESPACE::Shader}!LoadCoreShader@{LoadCoreShader}}
+\index{LoadCoreShader@{LoadCoreShader}!TRCN\_CORE\_NAMESPACE::Shader@{TRCN\_CORE\_NAMESPACE::Shader}}
+\doxysubsubsection{\texorpdfstring{LoadCoreShader()}{LoadCoreShader()}}
+{\footnotesize\ttfamily \label{classTRCN__CORE__NAMESPACE_1_1Shader_a121606c645ab3010f59dd64a4f055f1a} 
+void TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::\+Shader\+::\+Load\+Core\+Shader (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{vert}{, }\item[{const std\+::string \&}]{frag}{, }\item[{uint32\+\_\+t}]{max\+Textures}{}\end{DoxyParamCaption})}
+
+
+
+use it for loading the shader that handles textures 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vert} & the vertex shader\textquotesingle{}s path \\
+\hline
+{\em frag} & the fragment shader\textquotesingle{}s path \\
+\hline
+{\em max\+Textures} & the maximum number of texture the driver can handle \\
+\hline
+\end{DoxyParams}
 \Hypertarget{classTRCN__CORE__NAMESPACE_1_1Shader_a26fc1069d35b6da2b2c75f7e900d7225}\index{TRCN\_CORE\_NAMESPACE::Shader@{TRCN\_CORE\_NAMESPACE::Shader}!LoadShader@{LoadShader}}
 \index{LoadShader@{LoadShader}!TRCN\_CORE\_NAMESPACE::Shader@{TRCN\_CORE\_NAMESPACE::Shader}}
 \doxysubsubsection{\texorpdfstring{LoadShader()}{LoadShader()}}

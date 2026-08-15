@@ -6,6 +6,8 @@
 #include <fstream>
 #include <iostream>
 
+#include "Trinacria/Log.h"
+
 void TRCN_CORE_NAMESPACE::Shader::Bind()
 {
 	glUseProgram(_shaderProgram);
@@ -47,31 +49,28 @@ void TRCN_CORE_NAMESPACE::Shader::SetUniformVec4(const char* name, const glm::ve
 	glUniform4f(location, value.x, value.y, value.z, value.w);
 }
 
+std::string Trinacria::DSL::Shader::getStringFromFile(const std::string& path)
+{
+    std::stringstream streamFile;
+
+    std::ifstream file(path);
+
+    // TODO: handle with ifdefs
+    if (!file.good())
+    {
+        TRCN_LOG("Problem with shader's file!\n");
+        return "";
+    }
+
+    streamFile << file.rdbuf();
+
+    return streamFile.str();
+}
+
 void TRCN_CORE_NAMESPACE::Shader::LoadShader(const std::string& vert, const std::string& frag)
 {
-    std::stringstream vertexShaderStream;
-    std::stringstream fragmentShaderStream;
-
-    std::ifstream vertexFile(vert);
-    std::ifstream fragmentFile(frag);
-
-    if (!vertexFile.good())
-    {
-        std::cout << "Vertex file problems\n";
-        return;
-    }
-
-    if (!fragmentFile.good())
-    {
-        std::cout << "Fragment file problems\n";
-        return;
-    }
-
-    vertexShaderStream << vertexFile.rdbuf();
-    fragmentShaderStream << fragmentFile.rdbuf();
-
-    std::string vertexSource = vertexShaderStream.str();
-    std::string fragmentSource = fragmentShaderStream.str();
+    std::string vertexSource = getStringFromFile(vert);
+    std::string fragmentSource = getStringFromFile(frag);
 
     const char* vertexSource_ = vertexSource.c_str();
     const char* fragmentSource_ = fragmentSource.c_str();
@@ -115,6 +114,95 @@ void TRCN_CORE_NAMESPACE::Shader::LoadShader(const std::string& vert, const std:
     glAttachShader(out, fragmentID);
 
     glLinkProgram(out);
+
+    glGetProgramiv(out, GL_LINK_STATUS, &success);
+    if (!success)
+    {
+        char infoLog[512];
+        glGetProgramInfoLog(out, 512, nullptr, infoLog);
+        std::cout << "Program linking failed:\n" << infoLog;
+    }
+
+    glDeleteShader(fragmentID);
+    glDeleteShader(vertexID);
+
+    _shaderProgram = out;
+}
+
+void Trinacria::DSL::Shader::LoadCoreShader(const std::string& vert, const std::string& frag, uint32_t maxTextures)
+{
+    std::string vertexSource = getStringFromFile(vert);
+    std::string fragmentSource = getStringFromFile(frag);
+
+    size_t versionPos = fragmentSource.find("#version");
+    if (versionPos == std::string::npos)
+    {
+        TRCN_LOG("TRINACRIA_SHADER_ERROR: no #version directive found");
+        return;
+    }
+
+    size_t versionLineEnd = fragmentSource.find('\n', versionPos);
+
+    if (versionLineEnd == std::string::npos)
+    {
+        TRCN_LOG("TRINACRIA_SHADER_ERROR: unexpected end of file after #version");
+        return;
+    }
+
+    versionLineEnd++; // go forward of one character
+
+    fragmentSource.insert(versionLineEnd, std::format("\n#define MAX_TEXTURE_SLOTS {}\n", maxTextures));
+
+    const char* vertexSource_ = vertexSource.c_str();
+    const char* fragmentSource_ = fragmentSource.c_str();
+
+    uint32_t vertexID = glCreateShader(GL_VERTEX_SHADER);
+    uint32_t fragmentID = glCreateShader(GL_FRAGMENT_SHADER);
+
+    glShaderSource(vertexID, 1, &vertexSource_, nullptr);
+    glCompileShader(vertexID);
+
+
+    int success;
+    glGetShaderiv(vertexID, GL_COMPILE_STATUS, &success);
+
+    if (!success)
+    {
+        char infoLog[512];
+
+        glGetShaderInfoLog(vertexID, 512, nullptr, infoLog);
+
+        std::cout << "Vertex shader compilation failed:\n" << infoLog;
+    }
+
+    glShaderSource(fragmentID, 1, &fragmentSource_, nullptr);
+    glCompileShader(fragmentID);
+
+    glGetShaderiv(fragmentID, GL_COMPILE_STATUS, &success);
+
+    if (!success)
+    {
+        char infoLog[512];
+
+        glGetShaderInfoLog(fragmentID, 512, nullptr, infoLog);
+
+        std::cout << "Fragment shader compilation failed:\n" << infoLog;
+    }
+
+    uint32_t out = glCreateProgram();
+
+    glAttachShader(out, vertexID);
+    glAttachShader(out, fragmentID);
+
+    glLinkProgram(out);
+
+    glGetProgramiv(out, GL_LINK_STATUS, &success);
+    if (!success)
+    {
+        char infoLog[512];
+        glGetProgramInfoLog(out, 512, nullptr, infoLog);
+        std::cout << "Program linking failed:\n" << infoLog;
+    }
 
     glDeleteShader(fragmentID);
     glDeleteShader(vertexID);

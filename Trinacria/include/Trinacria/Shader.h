@@ -24,6 +24,15 @@ namespace TRCN_CORE_NAMESPACE
         void LoadShader(const std::string& vert, const std::string& frag);
 
         /**
+         * @brief use it for loading the shader that handles textures
+         * @param vert the vertex shader's path
+         * @param frag the fragment shader's path
+         * @param maxTextures the maximum number of texture the driver can handle
+         */
+
+        void LoadCoreShader(const std::string& vert, const std::string& frag, uint32_t maxTextures);
+
+        /**
          * @brief bind a shader
          * @note has to be done before setting uniforms
          */
@@ -87,5 +96,7 @@ namespace TRCN_CORE_NAMESPACE
 
     private:
         uint32_t _shaderProgram;
+
+        std::string getStringFromFile(const std::string& path);
     };
 }

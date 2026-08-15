@@ -6,6 +6,7 @@ var searchData=
   ['lightheight_3',['LightHeight',['../structTRCN__CORE__NAMESPACE_1_1PointLightData.html#a1b1a60f7ec95a1670e3d233394e72018',1,'TRCN_CORE_NAMESPACE::PointLightData::LightHeight'],['../structTRCN__CORE__NAMESPACE_1_1SpotLightData.html#a20dcfcf2caaa17f9c473c4577babe262',1,'TRCN_CORE_NAMESPACE::SpotLightData::LightHeight']]],
   ['lightposition_4',['LightPosition',['../structTRCN__CORE__NAMESPACE_1_1PointLightData.html#a2601b95e0a80949893ab6dfd1f6e1747',1,'TRCN_CORE_NAMESPACE::PointLightData::LightPosition'],['../structTRCN__CORE__NAMESPACE_1_1SpotLightData.html#a520e44f37c9279895e0f8c33271a4b17',1,'TRCN_CORE_NAMESPACE::SpotLightData::LightPosition']]],
   ['lightsystem_5',['LightSystem',['../classTRCN__CORE__NAMESPACE_1_1LightSystem.html',1,'TRCN_CORE_NAMESPACE']]],
-  ['loadshader_6',['LoadShader',['../classTRCN__CORE__NAMESPACE_1_1Shader.html#a26fc1069d35b6da2b2c75f7e900d7225',1,'TRCN_CORE_NAMESPACE::Shader']]],
-  ['loadtexture_7',['LoadTexture',['../classTRCN__CORE__NAMESPACE_1_1Texture.html#aa40efbd5ef21d12a7a446e5081b3a402',1,'TRCN_CORE_NAMESPACE::Texture']]]
+  ['loadcoreshader_6',['LoadCoreShader',['../classTRCN__CORE__NAMESPACE_1_1Shader.html#a121606c645ab3010f59dd64a4f055f1a',1,'TRCN_CORE_NAMESPACE::Shader']]],
+  ['loadshader_7',['LoadShader',['../classTRCN__CORE__NAMESPACE_1_1Shader.html#a26fc1069d35b6da2b2c75f7e900d7225',1,'TRCN_CORE_NAMESPACE::Shader']]],
+  ['loadtexture_8',['LoadTexture',['../classTRCN__CORE__NAMESPACE_1_1Texture.html#aa40efbd5ef21d12a7a446e5081b3a402',1,'TRCN_CORE_NAMESPACE::Texture']]]
 ];

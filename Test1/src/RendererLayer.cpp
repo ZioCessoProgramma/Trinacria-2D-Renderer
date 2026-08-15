@@ -197,7 +197,14 @@ void RendererLayer::OnAttach()
 	}
 
 	Trinacria::DSL::Renderer::Init(Application::Get()->GetWindowDimensions(), Application::Get()->GetWindow());
-	Trinacria::DSL::Renderer::ShaderProgram.LoadShader("assets/shaders/Quad.vert", "assets/shaders/Quad.frag");
+
+
+    int maxTextures;
+    glGetIntegerv(GL_MAX_TEXTURE_IMAGE_UNITS, &maxTextures);
+
+	Trinacria::DSL::Renderer::ShaderProgram.LoadCoreShader("assets/shaders/Quad.vert",
+	    "assets/shaders/Quad.frag", maxTextures);
+
 
 	screenShader.LoadShader("assets/shaders/Screen.vert", "assets/shaders/Screen.frag");
 }

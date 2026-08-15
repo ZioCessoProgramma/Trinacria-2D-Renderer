@@ -1,4 +1,4 @@
-#version 330
+#version 330 core
 
 in vec2 TexCoords;
 flat in int Index;
@@ -7,7 +7,7 @@ flat in int MaterialIndex;
 in vec2 FragPos;
 out vec4 FragColor;
 
-uniform sampler2D u_Textures[32]; // no tex, tex1, tex...
+uniform sampler2D u_Textures[MAX_TEXTURE_SLOTS]; // no tex, tex1, tex...
 
 struct PointLight
 {
