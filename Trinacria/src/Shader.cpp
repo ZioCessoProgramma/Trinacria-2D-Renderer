@@ -163,7 +163,7 @@ void Trinacria::DSL::Shader::LoadCoreShader(const std::string& vert, const std::
 
     for (int i = 0; i < maxTextures; i++)
     {
-        function.append(std::format("case {}: return texture(u_Textures[index], uv); break;", i));
+        function.append(std::format("case {}: return texture(u_Textures[{}], uv); break;", i, i));
     }
     function.append("}}\n");
 
