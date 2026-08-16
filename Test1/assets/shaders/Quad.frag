@@ -72,7 +72,8 @@ void main()
 
 	if(Index != 0)
 	{
-		vec4 color = texture(u_Textures[Index], vec2(TexCoords.x, 1 - TexCoords.y));
+        /*texture(u_Textures[Index], vec2(TexCoords.x, 1 - TexCoords.y))*/
+		vec4 color =  SampleTexture(Index, vec2(TexCoords.x, 1 - TexCoords.y));
 
 		if(color.a < 0.1f)
 		{
