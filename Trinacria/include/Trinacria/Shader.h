@@ -100,5 +100,7 @@ namespace TRCN_CORE_NAMESPACE
         std::string getStringFromFile(const std::string& path);
         uint32_t compileAndCreateShader(const char* source, uint32_t shaderType);
         uint32_t linkAndCreateProgram(uint32_t fragID, uint32_t vertID);
+
+        static int constexpr TEXTURES_USED_BY_SHADER_NOT_IN_DEFAULT_ARRAY = 3;
     };
 }
