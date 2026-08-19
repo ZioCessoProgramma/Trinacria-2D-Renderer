@@ -55,7 +55,6 @@ std::string Trinacria::DSL::Shader::getStringFromFile(const std::string& path)
 
     std::ifstream file(path);
 
-    // TODO: handle with ifdefs
     if (!file.good())
     {
         TRCN_LOG("Problem with shader's file!\n");
@@ -111,6 +110,21 @@ uint32_t Trinacria::DSL::Shader::linkAndCreateProgram(uint32_t fragID, uint32_t 
     return out;
 }
 
+uint32_t Trinacria::DSL::Shader::getSamplersInShader(const std::string& shader)
+{
+    uint32_t count = 0;
+    size_t lastPos = 0;
+
+    while ((lastPos = shader.find("uniform sampler2D", lastPos) + 1) != std::string::npos)
+    {
+        if (lastPos == 0) break;
+
+        count++;
+    }
+
+    return count;
+}
+
 void TRCN_CORE_NAMESPACE::Shader::LoadShader(const std::string& vert, const std::string& frag)
 {
     std::string vertexSource = getStringFromFile(vert);
@@ -132,8 +146,6 @@ void TRCN_CORE_NAMESPACE::Shader::LoadShader(const std::string& vert, const std:
 
 void Trinacria::DSL::Shader::LoadCoreShader(const std::string& vert, const std::string& frag, uint32_t maxTextures)
 {
-    maxTextures -= TEXTURES_USED_BY_SHADER_NOT_IN_DEFAULT_ARRAY; // 3 is the number of textures used in
-    
     std::string vertexSource = getStringFromFile(vert);
     std::string fragmentSource = getStringFromFile(frag);
 
@@ -153,6 +165,16 @@ void Trinacria::DSL::Shader::LoadCoreShader(const std::string& vert, const std::
     }
 
     versionLineEnd++; // go forward of one character
+
+    textureUsedInNonArrayUniforms = getSamplersInShader(fragmentSource) - 1;
+
+    if (textureUsedInNonArrayUniforms == -1)
+    {
+        TRCN_LOG("TRINACRIA_SHADER_ERROR: do not use LoadCoreShader for shaders without a uniform sampler2D array[]");
+        return;
+    }
+
+    maxTextures -= textureUsedInNonArrayUniforms;
 
     fragmentSource.insert(versionLineEnd, std::format("\n#define MAX_TEXTURE_SLOTS {}\n", maxTextures));
 

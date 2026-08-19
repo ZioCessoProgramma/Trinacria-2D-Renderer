@@ -97,10 +97,11 @@ namespace TRCN_CORE_NAMESPACE
     private:
         uint32_t _shaderProgram;
 
-        std::string getStringFromFile(const std::string& path);
-        uint32_t compileAndCreateShader(const char* source, uint32_t shaderType);
-        uint32_t linkAndCreateProgram(uint32_t fragID, uint32_t vertID);
+        static std::string getStringFromFile(const std::string& path);
+        static uint32_t compileAndCreateShader(const char* source, uint32_t shaderType);
+        static uint32_t linkAndCreateProgram(uint32_t fragID, uint32_t vertID);
+        static uint32_t getSamplersInShader(const std::string& shader);
 
-        static int constexpr TEXTURES_USED_BY_SHADER_NOT_IN_DEFAULT_ARRAY = 3;
+        inline static uint32_t textureUsedInNonArrayUniforms;
     };
 }
