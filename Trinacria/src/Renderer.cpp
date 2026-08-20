@@ -98,6 +98,8 @@ void TRCN_CORE_NAMESPACE::Renderer::Init(const glm::vec2& windowDimensions, GLFW
 
     _frameBuffer.GenFrameBuffer();
     _frameBuffer.BindAttachTexture(GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, _colorAttachment.GetId());
+
+    Shader::loadMaxTextures();
 }
 
 void TRCN_CORE_NAMESPACE::Renderer::createQuad(const glm::vec2& position, Texture* texture, const glm::vec2& size,

@@ -125,6 +125,11 @@ uint32_t Trinacria::DSL::Shader::getSamplersInShader(const std::string& shader)
     return count;
 }
 
+void Trinacria::DSL::Shader::loadMaxTextures()
+{
+    glGetIntegerv(GL_MAX_TEXTURE_IMAGE_UNITS, &maxTextures);
+}
+
 void TRCN_CORE_NAMESPACE::Shader::LoadShader(const std::string& vert, const std::string& frag)
 {
     std::string vertexSource = getStringFromFile(vert);
@@ -144,7 +149,7 @@ void TRCN_CORE_NAMESPACE::Shader::LoadShader(const std::string& vert, const std:
     _shaderProgram = out;
 }
 
-void Trinacria::DSL::Shader::LoadCoreShader(const std::string& vert, const std::string& frag, uint32_t maxTextures)
+void Trinacria::DSL::Shader::LoadCoreShader(const std::string& vert, const std::string& frag)
 {
     std::string vertexSource = getStringFromFile(vert);
     std::string fragmentSource = getStringFromFile(frag);

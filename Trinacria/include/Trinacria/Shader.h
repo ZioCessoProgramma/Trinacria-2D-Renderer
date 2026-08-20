@@ -27,10 +27,9 @@ namespace TRCN_CORE_NAMESPACE
          * @brief use it for loading the shader that handles textures
          * @param vert the vertex shader's path
          * @param frag the fragment shader's path
-         * @param maxTextures the maximum number of texture the driver can handle
          */
 
-        void LoadCoreShader(const std::string& vert, const std::string& frag, uint32_t maxTextures);
+        void LoadCoreShader(const std::string& vert, const std::string& frag);
 
         /**
          * @brief bind a shader
@@ -103,5 +102,11 @@ namespace TRCN_CORE_NAMESPACE
         static uint32_t getSamplersInShader(const std::string& shader);
 
         inline static uint32_t textureUsedInNonArrayUniforms;
+
+        inline static int maxTextures;
+
+        static void loadMaxTextures();
+
+        friend class Renderer;
     };
 }

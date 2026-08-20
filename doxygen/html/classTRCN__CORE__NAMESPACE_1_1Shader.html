@@ -101,8 +101,8 @@ $(function(){initNavTree('classTRCN__CORE__NAMESPACE_1_1Shader.html','','classTR
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a26fc1069d35b6da2b2c75f7e900d7225" id="r_a26fc1069d35b6da2b2c75f7e900d7225"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a26fc1069d35b6da2b2c75f7e900d7225">LoadShader</a> (const std::string &amp;vert, const std::string &amp;frag)</td></tr>
 <tr class="memdesc:a26fc1069d35b6da2b2c75f7e900d7225"><td class="mdescLeft">&#160;</td><td class="mdescRight">load a shader from file path  <br /></td></tr>
-<tr class="memitem:a121606c645ab3010f59dd64a4f055f1a" id="r_a121606c645ab3010f59dd64a4f055f1a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a121606c645ab3010f59dd64a4f055f1a">LoadCoreShader</a> (const std::string &amp;vert, const std::string &amp;frag, uint32_t maxTextures)</td></tr>
-<tr class="memdesc:a121606c645ab3010f59dd64a4f055f1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">use it for loading the shader that handles textures  <br /></td></tr>
+<tr class="memitem:a850bd6e4e80d8f183f7cd39f7ac5892a" id="r_a850bd6e4e80d8f183f7cd39f7ac5892a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a850bd6e4e80d8f183f7cd39f7ac5892a">LoadCoreShader</a> (const std::string &amp;vert, const std::string &amp;frag)</td></tr>
+<tr class="memdesc:a850bd6e4e80d8f183f7cd39f7ac5892a"><td class="mdescLeft">&#160;</td><td class="mdescRight">use it for loading the shader that handles textures  <br /></td></tr>
 <tr class="memitem:a85d1bb9e09e917a6f098d3e7479d7d06" id="r_a85d1bb9e09e917a6f098d3e7479d7d06"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a85d1bb9e09e917a6f098d3e7479d7d06">Bind</a> ()</td></tr>
 <tr class="memdesc:a85d1bb9e09e917a6f098d3e7479d7d06"><td class="mdescLeft">&#160;</td><td class="mdescRight">bind a shader  <br /></td></tr>
 <tr class="memitem:ad53d9b5c77b79abe866729c455f4b984" id="r_ad53d9b5c77b79abe866729c455f4b984"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad53d9b5c77b79abe866729c455f4b984">GetShaderProgram</a> ()</td></tr>
@@ -119,6 +119,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a090a31c78cd7d102970f96134b8ad07e"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets a vec3 uniform  <br /></td></tr>
 <tr class="memitem:a14737e4dd48ba63ab9a8ac05afd3cf13" id="r_a14737e4dd48ba63ab9a8ac05afd3cf13"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a14737e4dd48ba63ab9a8ac05afd3cf13">SetUniformVec4</a> (const char *name, const glm::vec4 &amp;value)</td></tr>
 <tr class="memdesc:a14737e4dd48ba63ab9a8ac05afd3cf13"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets a vec4 uniform  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-friends" class="groupheader"><a id="friends" name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:a70538530bc36e033e360880ef311df61" id="r_a70538530bc36e033e360880ef311df61"><td class="memItemLeft" align="right" valign="top"><a id="a70538530bc36e033e360880ef311df61" name="a70538530bc36e033e360880ef311df61"></a>
+class&#160;</td><td class="memItemRight" valign="bottom"><b>Renderer</b></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>class dealing with shader pipeline, uniforms, linking, etc.. </p>
@@ -171,8 +176,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a121606c645ab3010f59dd64a4f055f1a" name="a121606c645ab3010f59dd64a4f055f1a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a121606c645ab3010f59dd64a4f055f1a">&#9670;&#160;</a></span>LoadCoreShader()</h2>
+<a id="a850bd6e4e80d8f183f7cd39f7ac5892a" name="a850bd6e4e80d8f183f7cd39f7ac5892a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a850bd6e4e80d8f183f7cd39f7ac5892a">&#9670;&#160;</a></span>LoadCoreShader()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -185,12 +190,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>frag</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>maxTextures</em></span>&#160;)</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>frag</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -200,7 +200,6 @@ Public Member Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">vert</td><td>the vertex shader's path </td></tr>
     <tr><td class="paramname">frag</td><td>the fragment shader's path </td></tr>
-    <tr><td class="paramname">maxTextures</td><td>the maximum number of texture the driver can handle </td></tr>
   </table>
   </dd>
 </dl>

@@ -14,7 +14,7 @@ class dealing with shader pipeline, uniforms, linking, etc..
 \item 
 void \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Shader_a26fc1069d35b6da2b2c75f7e900d7225}{Load\+Shader}} (const std\+::string \&vert, const std\+::string \&frag)
 \begin{DoxyCompactList}\small\item\em load a shader from file path \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Shader_a121606c645ab3010f59dd64a4f055f1a}{Load\+Core\+Shader}} (const std\+::string \&vert, const std\+::string \&frag, uint32\+\_\+t max\+Textures)
+void \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Shader_a850bd6e4e80d8f183f7cd39f7ac5892a}{Load\+Core\+Shader}} (const std\+::string \&vert, const std\+::string \&frag)
 \begin{DoxyCompactList}\small\item\em use it for loading the shader that handles textures \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Shader_a85d1bb9e09e917a6f098d3e7479d7d06}{Bind}} ()
 \begin{DoxyCompactList}\small\item\em bind a shader \end{DoxyCompactList}\item 
@@ -32,6 +32,12 @@ void \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Shader_a090a31c78cd7d102970f
 \begin{DoxyCompactList}\small\item\em sets a vec3 uniform \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Shader_a14737e4dd48ba63ab9a8ac05afd3cf13}{Set\+Uniform\+Vec4}} (const char \texorpdfstring{$\ast$}{*}name, const glm\+::vec4 \&value)
 \begin{DoxyCompactList}\small\item\em sets a vec4 uniform \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1Shader_a70538530bc36e033e360880ef311df61}\label{classTRCN__CORE__NAMESPACE_1_1Shader_a70538530bc36e033e360880ef311df61} 
+class {\bfseries Renderer}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -66,11 +72,11 @@ get a shader program to use to your liking
 \begin{DoxyReturn}{Returns}
 returns the shader program\textquotesingle{}s id 
 \end{DoxyReturn}
-\Hypertarget{classTRCN__CORE__NAMESPACE_1_1Shader_a121606c645ab3010f59dd64a4f055f1a}\index{TRCN\_CORE\_NAMESPACE::Shader@{TRCN\_CORE\_NAMESPACE::Shader}!LoadCoreShader@{LoadCoreShader}}
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1Shader_a850bd6e4e80d8f183f7cd39f7ac5892a}\index{TRCN\_CORE\_NAMESPACE::Shader@{TRCN\_CORE\_NAMESPACE::Shader}!LoadCoreShader@{LoadCoreShader}}
 \index{LoadCoreShader@{LoadCoreShader}!TRCN\_CORE\_NAMESPACE::Shader@{TRCN\_CORE\_NAMESPACE::Shader}}
 \doxysubsubsection{\texorpdfstring{LoadCoreShader()}{LoadCoreShader()}}
-{\footnotesize\ttfamily \label{classTRCN__CORE__NAMESPACE_1_1Shader_a121606c645ab3010f59dd64a4f055f1a} 
-void TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::\+Shader\+::\+Load\+Core\+Shader (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{vert}{, }\item[{const std\+::string \&}]{frag}{, }\item[{uint32\+\_\+t}]{max\+Textures}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{classTRCN__CORE__NAMESPACE_1_1Shader_a850bd6e4e80d8f183f7cd39f7ac5892a} 
+void TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::\+Shader\+::\+Load\+Core\+Shader (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{vert}{, }\item[{const std\+::string \&}]{frag}{}\end{DoxyParamCaption})}
 
 
 
@@ -81,8 +87,6 @@ use it for loading the shader that handles textures
 {\em vert} & the vertex shader\textquotesingle{}s path \\
 \hline
 {\em frag} & the fragment shader\textquotesingle{}s path \\
-\hline
-{\em max\+Textures} & the maximum number of texture the driver can handle \\
 \hline
 \end{DoxyParams}
 \Hypertarget{classTRCN__CORE__NAMESPACE_1_1Shader_a26fc1069d35b6da2b2c75f7e900d7225}\index{TRCN\_CORE\_NAMESPACE::Shader@{TRCN\_CORE\_NAMESPACE::Shader}!LoadShader@{LoadShader}}
