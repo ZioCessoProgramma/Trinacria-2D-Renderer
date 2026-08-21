@@ -23,7 +23,7 @@ namespace TRCN_CORE_NAMESPACE
          * @note use this only when dealing with textured quads. If it is plain color omit the texture parameter, it has a special constructor
          */
 
-        QuadData(const Transform& transform, Texture* texture, int materialIndex = 0, const glm::vec3& color = glm::vec3(1.f)) :
+        QuadData(const Transform& transform, Texture* texture, int materialIndex = 0, const glm::vec4& color = glm::vec4(1.f)) :
             transform(transform), texture(texture), Color(color), MaterialIndex(materialIndex){ }
 
         /**
@@ -35,7 +35,7 @@ namespace TRCN_CORE_NAMESPACE
          * @note use this only when dealing with sprite quads. If it is plain color omit the sprite parameter, it has a special constructor
          */
 
-        QuadData(const Transform& transform, Sprite* sprite, int materialIndex = 0, const glm::vec3& color = glm::vec3(1.f)) :
+        QuadData(const Transform& transform, Sprite* sprite, int materialIndex = 0, const glm::vec4& color = glm::vec4(1.f)) :
             transform(transform), sprite(sprite), Color(color), MaterialIndex(materialIndex) { }
 
         /**
@@ -45,7 +45,7 @@ namespace TRCN_CORE_NAMESPACE
          * @param materialIndex the index of the desired material
          */
 
-        QuadData(const Transform& transform, const glm::vec3& color = glm::vec3(1.f), int materialIndex = 0) :
+        QuadData(const Transform& transform, const glm::vec4& color = glm::vec4(1.f), int materialIndex = 0) :
             transform(transform), Color(color), MaterialIndex(materialIndex) { }
 
         /**
@@ -72,7 +72,7 @@ namespace TRCN_CORE_NAMESPACE
          * @brief the color of the quad, it'll be multiplied with the sprite/texture color e.j. if the color is set to red the sprite/texture will appear red-ish
          */
 
-        glm::vec3 Color;
+        glm::vec4 Color;
 
         /**
          * @brief the index of the desired material
@@ -107,7 +107,7 @@ namespace TRCN_CORE_NAMESPACE
         TriangleData(const Transform& transform, Texture* texture,
             int materialIndex = 0,
             TriangleOrientation orientation = TriangleOrientation::Orientation_RIGHT,
-            const glm::vec3& color = glm::vec3(1.f)) :
+            const glm::vec4& color = glm::vec4(1.f)) :
                 transform(transform), texture(texture), Orientation(orientation), Color(color), MaterialIndex(materialIndex) { }
 
         /**
@@ -123,7 +123,7 @@ namespace TRCN_CORE_NAMESPACE
         TriangleData(const Transform& transform,
             Sprite* sprite, int materialIndex = 0,
             TriangleOrientation orientation = TriangleOrientation::Orientation_RIGHT,
-            const glm::vec3& color = glm::vec3(1.f)) :
+            const glm::vec4& color = glm::vec4(1.f)) :
                 transform(transform), sprite(sprite), Orientation(orientation), Color(color), MaterialIndex(materialIndex) { }
 
         /**
@@ -137,7 +137,7 @@ namespace TRCN_CORE_NAMESPACE
         TriangleData(const Transform& transform,
             int materialIndex = 0,
             TriangleOrientation orientation = TriangleOrientation::Orientation_RIGHT,
-            const glm::vec3& color = glm::vec3(1.f)) :
+            const glm::vec4& color = glm::vec4(1.f)) :
             transform(transform), Orientation(orientation), Color(color), MaterialIndex(materialIndex) { }
 
         /**
@@ -164,7 +164,7 @@ namespace TRCN_CORE_NAMESPACE
          * @brief color the color of the triangle, it'll be multiplied with the sprite/texture color e.j. if the color is set to red the sprite/texture will appear red-ish
          */
 
-        glm::vec3 Color;
+        glm::vec4 Color;
 
         /**
          * @brief the index of the desired material

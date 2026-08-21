@@ -27,7 +27,7 @@ namespace TRCN_CORE_NAMESPACE
 		 * @param materialIndex the material's index to use, defaults to 0
 		 */
 
-		void Play(float deltaTime, const glm::vec2& position, const glm::vec3& color = 1.f, int materialIndex = 0)
+		void Play(float deltaTime, const glm::vec2& position, const glm::vec4& color = glm::vec4(1.f), int materialIndex = 0)
 		{
 			_accumulatedDeltaTime += deltaTime;
 

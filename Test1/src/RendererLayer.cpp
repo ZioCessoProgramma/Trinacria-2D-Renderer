@@ -22,7 +22,7 @@ void RendererLayer::OnUpdate(float deltaTime)
 	// Ground
 
 	Trinacria::DSL::Transform ground(glm::vec2(0.f), glm::vec2(100.f));
-	Trinacria::DSL::QuadData groundData(ground, glm::vec3(1.f), 2);
+	Trinacria::DSL::QuadData groundData(ground, glm::vec4(1.f), 2);
 
 	Trinacria::DSL::Renderer::CreateQuad(groundData);
 
@@ -51,7 +51,7 @@ void RendererLayer::OnUpdate(float deltaTime)
 	Trinacria::DSL::Transform transform1(glm::vec2(0.5f), glm::vec2(4.f),
 		glfwGetTime() * 60);
 
-	Trinacria::DSL::QuadData grassData(transform1, glm::vec3(0.1f, 0.6f, 0.1f));
+	Trinacria::DSL::QuadData grassData(transform1, glm::vec4(0.1f, 0.6f, 0.1f, 1.f));
 
 	Trinacria::DSL::Renderer::CreateQuad(grassData);
 
@@ -68,14 +68,14 @@ void RendererLayer::OnUpdate(float deltaTime)
 
 	{
 		Trinacria::DSL::Transform transform(glm::vec2(3.f), glm::vec2(6.f), 0.f, glm::vec2(0.f));
-		Trinacria::DSL::QuadData data(transform, glm::vec3(0.7f, 0.2f, 0.2f), 1);
+		Trinacria::DSL::QuadData data(transform, glm::vec4(0.7f, 0.2f, 0.2f, 1.f), 1);
 
 		Trinacria::DSL::Renderer::CreateQuad(data);
 	}
 
 	// Player
 
-	_playerAnimation.Play(deltaTime, _playerPos, color);
+	_playerAnimation.Play(deltaTime, _playerPos, glm::vec4(color, 1.f));
 
 	// Triangle
 
@@ -83,7 +83,7 @@ void RendererLayer::OnUpdate(float deltaTime)
 		Trinacria::DSL::Transform transform(glm::vec2(-4.f), glm::vec2(4.f), sin(glfwGetTime()) * 20);
 
 		Trinacria::DSL::TriangleData data(transform, Trinacria::DSL::Texture::NO_TEXTURE,
-			0, Trinacria::DSL::TriangleOrientation::Orientation_RIGHT, glm::vec3(0.2f, 0.2f, 0.6f));
+			0, Trinacria::DSL::TriangleOrientation::Orientation_RIGHT, glm::vec4(0.2f, 0.2f, 0.6f, 1.f));
 
 		Trinacria::DSL::Renderer::CreateTriangle(data);
 	}
@@ -111,6 +111,14 @@ void RendererLayer::OnUpdate(float deltaTime)
 
 	Trinacria::DSL::Renderer::CreateQuad(data);
 	Trinacria::DSL::Renderer::CreateQuad(data1);
+
+	{
+	    Trinacria::DSL::Transform transform(glm::vec2(3.15f, 3.15f));
+	    Trinacria::DSL::TriangleData data_(transform, 0, Trinacria::DSL::TriangleOrientation::Orientation_RIGHT,
+	        glm::vec4(0.0f, 1.f, 0.0f, 0.6f));
+
+	    Trinacria::DSL::Renderer::CreateTriangle(data_);
+	}
 
 
 	Trinacria::DSL::Renderer::EndScene();

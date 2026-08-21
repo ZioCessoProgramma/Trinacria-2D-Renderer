@@ -100,10 +100,10 @@ namespace TRCN_CORE_NAMESPACE
 		glm::vec2 Position;
 		int TextureIndex;
 		glm::vec2 TexCoords;
-		glm::vec3 Color;
+		glm::vec4 Color;
 		int MaterialIndex;
 
-		Vertex(const glm::vec2& pos, float textureIndex, const glm::vec2& texCoords, const glm::vec3& color, int materialIndex)
+		Vertex(const glm::vec2& pos, float textureIndex, const glm::vec2& texCoords, const glm::vec4& color, int materialIndex)
 		: Position(pos), TextureIndex(textureIndex), TexCoords(texCoords), Color(color), MaterialIndex(materialIndex) { }
 	};
 
@@ -239,47 +239,47 @@ namespace TRCN_CORE_NAMESPACE
 		static bool findTextureIndex(uint32_t& out, const Texture* textureToFind);
 
 		static void createQuad(
-			const glm::vec2& position,
-			Texture* texture = nullptr,
-			const glm::vec2& size = glm::vec2(0.5f),
-			const glm::vec3& color = glm::vec3(1.f),
-			int materialIndex = 0,
-			const glm::mat4& transform = glm::mat4(1.0f),
-			const QuadTexCoords& texCoords = QuadTexCoords(glm::vec2(0.f), glm::vec2(1.f, 0.f), glm::vec2(1.f), glm::vec2(0.f, 1.f))
-		);
+            const glm::vec2& position,
+            Texture* texture = nullptr,
+            const glm::vec2& size = glm::vec2(0.5f),
+            const glm::vec4& color = glm::vec4(1.f),
+            int materialIndex = 0,
+            const glm::mat4& transform = glm::mat4(1.0f),
+            const QuadTexCoords& texCoords = QuadTexCoords(glm::vec2(0.f), glm::vec2(1.f, 0.f), glm::vec2(1.f), glm::vec2(0.f, 1.f))
+        );
 
 		static void createQuad(
-			const glm::vec2& position,
-			class Sprite* sprite,
-			const glm::vec2& size = glm::vec2(0.5f),
-			const glm::vec3& color = glm::vec3(1.f),
-			int materialIndex = 0,
-			const glm::mat4& transform = glm::mat4(1.f)
-		);
+            const glm::vec2& position,
+            class Sprite* sprite,
+            const glm::vec2& size = glm::vec2(0.5f),
+            const glm::vec4& color = glm::vec4(1.f),
+            int materialIndex = 0,
+            const glm::mat4& transform = glm::mat4(1.f)
+        );
 
 
 		// Triangle
 
 		static void createTriangle(
-			const glm::vec2& position,
-			Texture* texture = nullptr,
-			TriangleOrientation orientation = TriangleOrientation::Orientation_RIGHT,
-			const glm::vec2& size = glm::vec2(0.5f),
-			const glm::vec3& color = glm::vec3(1.f),
-			int materialIndex = 0,
-			const glm::mat4& transform = glm::mat4(1.f),
-			const TriangleTexCoords& texCoords = TriangleTexCoords(glm::vec2(0.f), glm::vec2(1.f, 0.f), glm::vec2(0.f, 1.f))
-		);
+            const glm::vec2& position,
+            Texture* texture = nullptr,
+            TriangleOrientation orientation = TriangleOrientation::Orientation_RIGHT,
+            const glm::vec2& size = glm::vec2(0.5f),
+            const glm::vec4& color = glm::vec4(1.f),
+            int materialIndex = 0,
+            const glm::mat4& transform = glm::mat4(1.f),
+            const TriangleTexCoords& texCoords = TriangleTexCoords(glm::vec2(0.f), glm::vec2(1.f, 0.f), glm::vec2(0.f, 1.f))
+        );
 
 		static void createTriangle(
-			const glm::vec2& position,
-			Sprite* sprite,
-			TriangleOrientation orientation = TriangleOrientation::Orientation_RIGHT,
-			const glm::vec2& size = glm::vec2(0.5f),
-			const glm::vec3& color = glm::vec3(1.f),
-			int materialIndex = 0,
-			const glm::mat4& transform = glm::mat4(1.f)
-		);
+            const glm::vec2& position,
+            Sprite* sprite,
+            TriangleOrientation orientation = TriangleOrientation::Orientation_RIGHT,
+            const glm::vec2& size = glm::vec2(0.5f),
+            const glm::vec4& color = glm::vec4(1.f),
+            int materialIndex = 0,
+            const glm::mat4& transform = glm::mat4(1.f)
+        );
 
 		static void drawInScreen(Shader& screenShader);
 	    static void initScreen();

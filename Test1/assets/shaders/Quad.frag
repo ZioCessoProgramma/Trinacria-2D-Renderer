@@ -2,7 +2,7 @@
 
 in vec2 TexCoords;
 flat in int Index;
-in vec3 Color;
+in vec4 Color;
 flat in int MaterialIndex;
 in vec2 FragPos;
 out vec4 FragColor;
@@ -56,7 +56,7 @@ vec3 CalculateLight(vec3 lightPos, float attenuation, vec3 lightColor,
 vec3 CalculateDirectionalLight(vec2 lightDir, vec2 viewPos, vec3 lightColor,
 							   float specStrength, float diffuseStrength, vec3 baseColor);
 
-vec3 SumAllLights(vec3 baseColor);
+vec4 SumAllLights(vec3 baseColor, float alpha);
 
 PointLight FetchPointLight(int index);
 SpotLight FetchSpotLight(int index);
@@ -73,31 +73,26 @@ void main()
 	if(Index != 0)
 	{
         /*texture(u_Textures[Index], vec2(TexCoords.x, 1 - TexCoords.y))*/
-		vec4 color =  SampleTexture(Index, vec2(TexCoords.x, 1 - TexCoords.y));
-
-		if(color.a < 0.1f)
-		{
-			discard;
-		}
+		vec4 color = SampleTexture(Index, vec2(TexCoords.x, 1 - TexCoords.y));
 
 		if(u_AmbientStrength != 1.f)
 		{
-			FragColor = vec4(SumAllLights(color.rgb * Color), 1.f);
+			FragColor = SumAllLights(color.rgb * Color.rgb, Color.a * color.a);
 		}
 		else
 		{
-			FragColor = vec4(color.rgb * Color, 1.f);
+			FragColor = color * Color;
 		}
 	}
 	else
 	{
 		if(u_AmbientStrength != 1.f)
 		{
-			FragColor = vec4(SumAllLights(Color), 1.f);
+			FragColor = SumAllLights(Color.rgb, Color.a);
 		}
 		else
 		{
-			FragColor = vec4(Color, 1.f);
+			FragColor = Color;
 		}
 	}
 
@@ -122,7 +117,7 @@ vec3 CalculateLight(vec3 lightPos, float attenuation, vec3 lightColor,
 	return min(color * (u_AmbientStrength * u_Materials[MaterialIndex].ambient + diffuse + specular), vec3(1.f));
 }
 
-vec3 SumAllLights(vec3 baseColor)
+vec4 SumAllLights(vec3 baseColor, float alpha)
 {
 
 	vec3 pointLightWeight = vec3(0);
@@ -193,7 +188,7 @@ vec3 SumAllLights(vec3 baseColor)
 
 
 
-	return  pointLightWeight + spotLightWeight  + dirLightWeight;
+	return  vec4(pointLightWeight + spotLightWeight  + dirLightWeight, alpha);
 }
 
 vec3 CalculateDirectionalLight(vec2 lightDir, vec2 viewPos, vec3 lightColor,
