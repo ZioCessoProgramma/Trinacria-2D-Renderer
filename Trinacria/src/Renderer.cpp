@@ -12,6 +12,8 @@
 
 #include <GLFW/glfw3.h>
 
+#include "Trinacria/LightSystem.h"
+
 std::vector<TRCN_CORE_NAMESPACE::Vertex> TRCN_CORE_NAMESPACE::Renderer::_quadBuffer;
 std::vector<uint32_t> TRCN_CORE_NAMESPACE::Renderer::_quadIndexBuffer;
 
@@ -28,7 +30,7 @@ uint32_t TRCN_CORE_NAMESPACE::Renderer::_triangleVao;
 std::vector<std::pair<TRCN_CORE_NAMESPACE::Texture*, uint32_t>> TRCN_CORE_NAMESPACE::Renderer::_textures;
 
 std::array<TRCN_CORE_NAMESPACE::Material, 32> TRCN_CORE_NAMESPACE::Renderer::_materials;
-int TRCN_CORE_NAMESPACE::Renderer::materialCount = 0;
+int TRCN_CORE_NAMESPACE::Renderer::_materialCount = 0;
 
 TRCN_CORE_NAMESPACE::FrameBuffer TRCN_CORE_NAMESPACE::Renderer::_frameBuffer;
 TRCN_CORE_NAMESPACE::Texture TRCN_CORE_NAMESPACE::Renderer::_colorAttachment;
@@ -92,6 +94,8 @@ void TRCN_CORE_NAMESPACE::Renderer::Init(const glm::vec2& windowDimensions, GLFW
 
     _triangleBuffer.reserve(MaxTrianglesVertices);
 
+    initScreen();
+
     _colorAttachment.GenerateTexture();
     _colorAttachment.BoundTexImage(GL_RGB, GL_RGB, windowDimensions.x, windowDimensions.y,
         GL_UNSIGNED_BYTE, nullptr, GL_LINEAR);
@@ -106,13 +110,13 @@ void TRCN_CORE_NAMESPACE::Renderer::createQuad(const glm::vec2& position, Textur
     const glm::vec3& color, int materialIndex, const glm::mat4& transform,
     const QuadTexCoords& texCoords)
 {
-    if (_quadBuffer.size() > MaxQuadVertices)
+    if (_quadBuffer.size() >= MaxQuadVertices)
     {
         TRCN_LOG("Vertex buffer overflowed please start a new batch!");
         return;
     }
 
-    if (_quadIndexBuffer.size() > MaxQuadIndices)
+    if (_quadIndexBuffer.size() >= MaxQuadIndices)
     {
         TRCN_LOG("Index buffer overflowed please start a new batch!");
         return;
@@ -261,10 +265,19 @@ void Trinacria::DSL::Renderer::drawInScreen(Shader& screenShader)
 
     screenShader.Bind();
 
+    glBindVertexArray(_vaoScreen);
+
     _colorAttachment.Bind(GL_TEXTURE0);
 
     screenShader.SetUniformInt("u_ColorAttachment", 0);
 
+    glDrawArrays(GL_TRIANGLES, 0, 6);
+
+    _frameBuffer.Bind();
+}
+
+void Trinacria::DSL::Renderer::initScreen()
+{
     constexpr float screenQuadVertices[] = {
         -1.f, -1.f,
         1.f, -1.f,
@@ -274,25 +287,14 @@ void Trinacria::DSL::Renderer::drawInScreen(Shader& screenShader)
         -1.f, 1.f
     };
 
-    uint32_t vao;
+    glGenVertexArrays(1, &_vaoScreen);
+    glBindVertexArray(_vaoScreen);
 
-    glGenVertexArrays(1, &vao);
-    glBindVertexArray(vao);
-
-    uint32_t vbo;
-
-    glGenBuffers(1, &vbo);
-    glBindBuffer(GL_ARRAY_BUFFER, vbo);
+    glGenBuffers(1, &_vboScreen);
+    glBindBuffer(GL_ARRAY_BUFFER, _vboScreen);
     glBufferData(GL_ARRAY_BUFFER, sizeof(screenQuadVertices), screenQuadVertices, GL_STATIC_DRAW);
 
     attribPointer(0, 2, GL_FLOAT, 2 * sizeof(float), nullptr);
-
-    glDrawArrays(GL_TRIANGLES, 0, 6);
-
-    glDeleteBuffers(1, &vbo);
-    glDeleteVertexArrays(1, &vao);
-
-    _frameBuffer.Bind();
 }
 
 void TRCN_CORE_NAMESPACE::Renderer::EndScene()
@@ -347,15 +349,15 @@ void TRCN_CORE_NAMESPACE::Renderer::FlushBuffers()
 
 void Trinacria::DSL::Renderer::AddMaterial(const Material& material)
 {
-    if (materialCount >= 32) return;
+    if (_materialCount >= 32) return;
 
-    _materials[materialCount] = material;
-    material.SetUniforms(materialCount++);
+    _materials[_materialCount] = material;
+    material.SetUniforms(_materialCount++);
 }
 
 int Trinacria::DSL::Renderer::SearchMaterial(const Material& material)
 {
-    for (int i = 0; i < materialCount; i++)
+    for (int i = 0; i < _materialCount; i++)
     {
         if (_materials[i] == material)
         {
@@ -380,6 +382,9 @@ void TRCN_CORE_NAMESPACE::Renderer::Cleanup()
     glDeleteBuffers(1, &_ebo);
     glDeleteVertexArrays(1, &_vao);
 
+    glDeleteBuffers(1, &_vboScreen);
+    glDeleteVertexArrays(1, &_vaoScreen);
+
     glDeleteVertexArrays(1, &_triangleVao);
 
     glDeleteProgram(ShaderProgram.GetShaderProgram());
@@ -387,6 +392,7 @@ void TRCN_CORE_NAMESPACE::Renderer::Cleanup()
     glDeleteBuffers(1, &_triangleVbo);
 
     _frameBuffer.Cleanup();
+    LightSystem::Cleanup();
 }
 
 void TRCN_CORE_NAMESPACE::Renderer::attribPointer(uint32_t location, uint32_t nParameters, uint32_t parameterType,

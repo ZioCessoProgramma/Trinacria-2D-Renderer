@@ -12,8 +12,10 @@ static class dealing with light
 \doxysubsubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static void \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1LightSystem_a60969f1b8c36bff43b294d855818b6d4}{Init}} (float strength)
-\begin{DoxyCompactList}\small\item\em Inits the light system, needs to be done every frame. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1LightSystem_a42563a573425e82033511fc33aba6f12}{Init\+Frame}} (float strength)
+\begin{DoxyCompactList}\small\item\em Prepares the light system for the new frame. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1LightSystem_a08a32323a6eb1017487d4e8d1c2ba85f}{Init}} ()
+\begin{DoxyCompactList}\small\item\em inits the light system \end{DoxyCompactList}\item 
 static void \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1LightSystem_ae2356e6dab6d0d97cacd2419f96d62dd}{Set\+View\+Pos}} (glm\+::vec2 view\+Pos)
 \begin{DoxyCompactList}\small\item\em Sets the view pos. \end{DoxyCompactList}\item 
 static void \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1LightSystem_a5557ee0c49c627e8d5fb3feae3ef6edf}{Setup\+Light}} (const \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1PointLightData}{Point\+Light\+Data}} \&light\+Data)
@@ -24,7 +26,9 @@ static void \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1LightSystem_ab589b199
 \begin{DoxyCompactList}\small\item\em Adds a light to the scene. \end{DoxyCompactList}\item 
 \Hypertarget{classTRCN__CORE__NAMESPACE_1_1LightSystem_a8c2f7ed728589ee5a16ee2a034dd809c}\label{classTRCN__CORE__NAMESPACE_1_1LightSystem_a8c2f7ed728589ee5a16ee2a034dd809c} 
 static void {\bfseries Done} ()
-\begin{DoxyCompactList}\small\item\em use it when you finished adding lights, needs to be done at the end of every frame \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em use it when you finished adding lights, needs to be done at the end of every frame \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1LightSystem_ac754fb8ea0e678c67a17c9b4ab74eeb3}{Cleanup}} ()
+\begin{DoxyCompactList}\small\item\em cleans up the light system \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Static Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -63,16 +67,45 @@ static class dealing with light
 \label{doc-func-members}
 \Hypertarget{classTRCN__CORE__NAMESPACE_1_1LightSystem_doc-func-members}
 \doxysubsection{Member Function Documentation}
-\Hypertarget{classTRCN__CORE__NAMESPACE_1_1LightSystem_a60969f1b8c36bff43b294d855818b6d4}\index{TRCN\_CORE\_NAMESPACE::LightSystem@{TRCN\_CORE\_NAMESPACE::LightSystem}!Init@{Init}}
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1LightSystem_ac754fb8ea0e678c67a17c9b4ab74eeb3}\index{TRCN\_CORE\_NAMESPACE::LightSystem@{TRCN\_CORE\_NAMESPACE::LightSystem}!Cleanup@{Cleanup}}
+\index{Cleanup@{Cleanup}!TRCN\_CORE\_NAMESPACE::LightSystem@{TRCN\_CORE\_NAMESPACE::LightSystem}}
+\doxysubsubsection{\texorpdfstring{Cleanup()}{Cleanup()}}
+{\footnotesize\ttfamily \label{classTRCN__CORE__NAMESPACE_1_1LightSystem_ac754fb8ea0e678c67a17c9b4ab74eeb3} 
+void TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::\+Light\+System\+::\+Cleanup (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+cleans up the light system 
+
+\begin{DoxyNote}{Note}
+automatically called by Renderer\+::\+Cleanup() 
+\end{DoxyNote}
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1LightSystem_a08a32323a6eb1017487d4e8d1c2ba85f}\index{TRCN\_CORE\_NAMESPACE::LightSystem@{TRCN\_CORE\_NAMESPACE::LightSystem}!Init@{Init}}
 \index{Init@{Init}!TRCN\_CORE\_NAMESPACE::LightSystem@{TRCN\_CORE\_NAMESPACE::LightSystem}}
 \doxysubsubsection{\texorpdfstring{Init()}{Init()}}
-{\footnotesize\ttfamily \label{classTRCN__CORE__NAMESPACE_1_1LightSystem_a60969f1b8c36bff43b294d855818b6d4} 
-void TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::\+Light\+System\+::\+Init (\begin{DoxyParamCaption}\item[{float}]{strength}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily \label{classTRCN__CORE__NAMESPACE_1_1LightSystem_a08a32323a6eb1017487d4e8d1c2ba85f} 
+void TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::\+Light\+System\+::\+Init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
-Inits the light system, needs to be done every frame. 
+inits the light system 
 
+\begin{DoxyNote}{Note}
+needs to be called once before using it 
+\end{DoxyNote}
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1LightSystem_a42563a573425e82033511fc33aba6f12}\index{TRCN\_CORE\_NAMESPACE::LightSystem@{TRCN\_CORE\_NAMESPACE::LightSystem}!InitFrame@{InitFrame}}
+\index{InitFrame@{InitFrame}!TRCN\_CORE\_NAMESPACE::LightSystem@{TRCN\_CORE\_NAMESPACE::LightSystem}}
+\doxysubsubsection{\texorpdfstring{InitFrame()}{InitFrame()}}
+{\footnotesize\ttfamily \label{classTRCN__CORE__NAMESPACE_1_1LightSystem_a42563a573425e82033511fc33aba6f12} 
+void TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::\+Light\+System\+::\+Init\+Frame (\begin{DoxyParamCaption}\item[{float}]{strength}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Prepares the light system for the new frame. 
+
+\begin{DoxyNote}{Note}
+\+: needs to be called every frame 
+\end{DoxyNote}
 
 \begin{DoxyParams}{Parameters}
 {\em strength} & ambient strength, use the default values \\

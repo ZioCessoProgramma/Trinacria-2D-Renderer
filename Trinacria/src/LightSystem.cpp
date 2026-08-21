@@ -18,7 +18,7 @@ std::array<float, TRCN_CORE_NAMESPACE::LightSystem::MAX_POINT_LIGHTS * 8> TRCN_C
 std::array<float, TRCN_CORE_NAMESPACE::LightSystem::MAX_SPOT_LIGHTS * 12> TRCN_CORE_NAMESPACE::LightSystem::_spotLights;
 std::array<float, TRCN_CORE_NAMESPACE::LightSystem::MAX_DIRECTIONAL_LIGHTS * 8> TRCN_CORE_NAMESPACE::LightSystem::_dirLights;
 
-void Trinacria::DSL::LightSystem::Init(float strength)
+void Trinacria::DSL::LightSystem::InitFrame(float strength)
 {
     Renderer::ShaderProgram.SetUniformFloat("u_AmbientStrength", strength);
 
@@ -31,6 +31,24 @@ void Trinacria::DSL::LightSystem::Init(float strength)
     _dirLightIndex = 0;
     _spotLightIndex = 0;
     _pointLightIndex = 0;
+}
+
+void Trinacria::DSL::LightSystem::Init()
+{
+    _pointTexture.GenerateTexture();
+
+    _pointTexture.BoundTexImage(GL_RGBA32F, GL_RGBA, MAX_POINT_LIGHTS * 2, 1,
+        GL_FLOAT, _pointLights.data(), GL_NEAREST);
+
+    _spotTexture.GenerateTexture();
+
+    _spotTexture.BoundTexImage(GL_RGBA32F, GL_RGBA, MAX_SPOT_LIGHTS * 3, 1,
+        GL_FLOAT, _spotLights.data(), GL_NEAREST);
+
+    _directionalTexture.GenerateTexture();
+
+    _directionalTexture.BoundTexImage(GL_RGBA32F, GL_RGBA, MAX_DIRECTIONAL_LIGHTS * 2, 1,
+                                GL_FLOAT, _dirLights.data(), GL_NEAREST);
 }
 
 void Trinacria::DSL::LightSystem::SetViewPos(glm::vec2 viewPos)
@@ -55,7 +73,7 @@ void Trinacria::DSL::LightSystem::SetupLight(const PointLightData& lightData)
 
 void Trinacria::DSL::LightSystem::SetupLight(const SpotLightData& lightData)
 {
-    if (_spotLightIndex + 8 > _spotLights.size()) return;
+    if (_spotLightIndex + 12 > _spotLights.size()) return;
 
     _spotLights[_spotLightIndex] = lightData.LightColor.r;
     _spotLights[_spotLightIndex + 1] = lightData.LightColor.g;
@@ -91,54 +109,43 @@ void Trinacria::DSL::LightSystem::SetupLight(const DirectionalLightData& lightDa
 
 void Trinacria::DSL::LightSystem::Done()
 {
-    {
-        uint32_t id = _pointTexture.GetId();
-        glDeleteTextures(1, &id);
-    }
-
-    _pointTexture.GenerateTexture();
-
-    _pointTexture.BoundTexImage(GL_RGBA32F, GL_RGBA, MAX_POINT_LIGHTS * 2, 1,
-                                GL_FLOAT, _pointLights.data(), GL_NEAREST);
-
-    // The problem is that textures id changes but the slot
+    _pointTexture.BoundSubImage(GL_RGBA, MAX_POINT_LIGHTS * 2, 1, GL_FLOAT, _pointLights.data());
 
     Renderer::ShaderProgram.SetUniformInt("u_PointLights",
         _pointTexture.GetTextureChosenSlot() - GL_TEXTURE0);
 
     memset(_pointLights.data(), 0, sizeof(_pointLights));
 
-
-    {
-        uint32_t id = _spotTexture.GetId();
-        glDeleteTextures(1, &id);
-    }
-
-    _spotTexture.GenerateTexture();
-
-    _spotTexture.BoundTexImage(GL_RGBA32F, GL_RGBA, MAX_SPOT_LIGHTS * 3, 1,
-                                GL_FLOAT, _spotLights.data(), GL_NEAREST);
+    _spotTexture.BoundSubImage(GL_RGBA, MAX_SPOT_LIGHTS * 3, 1, GL_FLOAT, _spotLights.data());
 
     Renderer::ShaderProgram.SetUniformInt("u_SpotLights",
         _spotTexture.GetTextureChosenSlot() - GL_TEXTURE0);
 
-
     memset(_spotLights.data(), 0, sizeof(_spotLights));
 
-
-    {
-        uint32_t id = _directionalTexture.GetId();
-        glDeleteTextures(1, &id);
-    }
-
-    _directionalTexture.GenerateTexture();
-
-    _directionalTexture.BoundTexImage(GL_RGBA32F, GL_RGBA, MAX_DIRECTIONAL_LIGHTS * 2, 1,
-                                GL_FLOAT, _dirLights.data(), GL_NEAREST);
+    _directionalTexture.BoundSubImage(GL_RGBA, MAX_DIRECTIONAL_LIGHTS * 2, 1, GL_FLOAT, _pointLights.data());
 
     Renderer::ShaderProgram.SetUniformInt("u_DirLights",
         _directionalTexture.GetTextureChosenSlot() - GL_TEXTURE0);
 
     memset(_dirLights.data(), 0, sizeof(_dirLights));
 
+}
+
+void Trinacria::DSL::LightSystem::Cleanup()
+{
+    {
+        uint32_t id = _pointTexture.GetId();
+        glDeleteTextures(1, &id);
+    }
+
+    {
+        uint32_t id = _spotTexture.GetId();
+        glDeleteTextures(1, &id);
+    }
+
+    {
+        uint32_t id = _directionalTexture.GetId();
+        glDeleteTextures(1, &id);
+    }
 }

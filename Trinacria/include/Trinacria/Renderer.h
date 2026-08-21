@@ -225,10 +225,13 @@ namespace TRCN_CORE_NAMESPACE
 		static std::vector<std::pair<Texture*, uint32_t>> _textures;
 
 		static std::array<Material, 32> _materials;
-		static int materialCount;
+		static int _materialCount;
 
 		static FrameBuffer _frameBuffer;
 		static Texture _colorAttachment;
+
+	    inline static uint32_t _vboScreen;
+	    inline static uint32_t _vaoScreen;
 
 		static void attribPointer(uint32_t location, uint32_t nParameters, uint32_t parameterType,
 			size_t stride, void* offsetFromOrigin);
@@ -279,5 +282,6 @@ namespace TRCN_CORE_NAMESPACE
 		);
 
 		static void drawInScreen(Shader& screenShader);
+	    static void initScreen();
 	};
 }

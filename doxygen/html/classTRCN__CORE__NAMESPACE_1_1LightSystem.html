@@ -99,8 +99,10 @@ $(function(){initNavTree('classTRCN__CORE__NAMESPACE_1_1LightSystem.html','','cl
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a60969f1b8c36bff43b294d855818b6d4" id="r_a60969f1b8c36bff43b294d855818b6d4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a60969f1b8c36bff43b294d855818b6d4">Init</a> (float strength)</td></tr>
-<tr class="memdesc:a60969f1b8c36bff43b294d855818b6d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inits the light system, needs to be done every frame.  <br /></td></tr>
+<tr class="memitem:a42563a573425e82033511fc33aba6f12" id="r_a42563a573425e82033511fc33aba6f12"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a42563a573425e82033511fc33aba6f12">InitFrame</a> (float strength)</td></tr>
+<tr class="memdesc:a42563a573425e82033511fc33aba6f12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prepares the light system for the new frame.  <br /></td></tr>
+<tr class="memitem:a08a32323a6eb1017487d4e8d1c2ba85f" id="r_a08a32323a6eb1017487d4e8d1c2ba85f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a08a32323a6eb1017487d4e8d1c2ba85f">Init</a> ()</td></tr>
+<tr class="memdesc:a08a32323a6eb1017487d4e8d1c2ba85f"><td class="mdescLeft">&#160;</td><td class="mdescRight">inits the light system  <br /></td></tr>
 <tr class="memitem:ae2356e6dab6d0d97cacd2419f96d62dd" id="r_ae2356e6dab6d0d97cacd2419f96d62dd"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae2356e6dab6d0d97cacd2419f96d62dd">SetViewPos</a> (glm::vec2 viewPos)</td></tr>
 <tr class="memdesc:ae2356e6dab6d0d97cacd2419f96d62dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the view pos.  <br /></td></tr>
 <tr class="memitem:a5557ee0c49c627e8d5fb3feae3ef6edf" id="r_a5557ee0c49c627e8d5fb3feae3ef6edf"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5557ee0c49c627e8d5fb3feae3ef6edf">SetupLight</a> (const <a class="el" href="structTRCN__CORE__NAMESPACE_1_1PointLightData.html">PointLightData</a> &amp;lightData)</td></tr>
@@ -112,6 +114,8 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a8c2f7ed728589ee5a16ee2a034dd809c" id="r_a8c2f7ed728589ee5a16ee2a034dd809c"><td class="memItemLeft" align="right" valign="top"><a id="a8c2f7ed728589ee5a16ee2a034dd809c" name="a8c2f7ed728589ee5a16ee2a034dd809c"></a>
 static void&#160;</td><td class="memItemRight" valign="bottom"><b>Done</b> ()</td></tr>
 <tr class="memdesc:a8c2f7ed728589ee5a16ee2a034dd809c"><td class="mdescLeft">&#160;</td><td class="mdescRight">use it when you finished adding lights, needs to be done at the end of every frame <br /></td></tr>
+<tr class="memitem:ac754fb8ea0e678c67a17c9b4ab74eeb3" id="r_ac754fb8ea0e678c67a17c9b4ab74eeb3"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac754fb8ea0e678c67a17c9b4ab74eeb3">Cleanup</a> ()</td></tr>
+<tr class="memdesc:ac754fb8ea0e678c67a17c9b4ab74eeb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">cleans up the light system  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-attribs" class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -137,8 +141,36 @@ static constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>static class dealing with light </p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
-<a id="a60969f1b8c36bff43b294d855818b6d4" name="a60969f1b8c36bff43b294d855818b6d4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a60969f1b8c36bff43b294d855818b6d4">&#9670;&#160;</a></span>Init()</h2>
+<a id="ac754fb8ea0e678c67a17c9b4ab74eeb3" name="ac754fb8ea0e678c67a17c9b4ab74eeb3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac754fb8ea0e678c67a17c9b4ab74eeb3">&#9670;&#160;</a></span>Cleanup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TRCN_CORE_NAMESPACE::LightSystem::Cleanup </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>cleans up the light system </p>
+<dl class="section note"><dt>Note</dt><dd>automatically called by Renderer::Cleanup() </dd></dl>
+
+</div>
+</div>
+<a id="a08a32323a6eb1017487d4e8d1c2ba85f" name="a08a32323a6eb1017487d4e8d1c2ba85f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08a32323a6eb1017487d4e8d1c2ba85f">&#9670;&#160;</a></span>Init()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -148,6 +180,34 @@ static constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>
       <table class="memname">
         <tr>
           <td class="memname">void TRCN_CORE_NAMESPACE::LightSystem::Init </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>inits the light system </p>
+<dl class="section note"><dt>Note</dt><dd>needs to be called once before using it </dd></dl>
+
+</div>
+</div>
+<a id="a42563a573425e82033511fc33aba6f12" name="a42563a573425e82033511fc33aba6f12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42563a573425e82033511fc33aba6f12">&#9670;&#160;</a></span>InitFrame()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TRCN_CORE_NAMESPACE::LightSystem::InitFrame </td>
           <td>(</td>
           <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>strength</em></span></td><td>)</td>
           <td></td>
@@ -160,7 +220,8 @@ static constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>
 </table>
 </div><div class="memdoc">
 
-<p>Inits the light system, needs to be done every frame. </p>
+<p>Prepares the light system for the new frame. </p>
+<dl class="section note"><dt>Note</dt><dd>: needs to be called every frame </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">strength</td><td>ambient strength, use the default values </td></tr>

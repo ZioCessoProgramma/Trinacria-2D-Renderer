@@ -98,37 +98,57 @@ namespace TRCN_CORE_NAMESPACE
     {
     public:
         /**
-         * @brief Inits the light system, needs to be done every frame
+         * @brief Prepares the light system for the new frame
+         * @note: needs to be called every frame
          * @param strength ambient strength, use the default values
          */
-        static void Init(float strength);
+
+        static void InitFrame(float strength);
+
+        /**
+         * @brief inits the light system
+         * @note needs to be called once before using it
+         */
+
+        static void Init();
 
         /**
          * @brief Sets the view pos
          * @param viewPos the position from where you're viewing, like a camera position
          */
+
         static void SetViewPos(glm::vec2 viewPos);
 
         /**
          * @brief Adds a light to the scene
          * @param lightData the data of the light you wanna add
          */
+
         static void SetupLight(const PointLightData& lightData);
         /**
          * @brief Adds a light to the scene
          * @param lightData the data of the light you wanna add
          */
+
         static void SetupLight(const SpotLightData& lightData);
         /**
          * @brief Adds a light to the scene
          * @param lightData the data of the light you wanna add
          */
+
         static void SetupLight(const DirectionalLightData& lightData);
 
         /**
          * @brief use it when you finished adding lights, needs to be done at the end of every frame
          */
+
         static void Done();
+
+        /**
+         * @brief cleans up the light system
+         * @note automatically called by Renderer::Cleanup()
+         */
+        static void Cleanup();
 
         // ambient strength provided values
         static constexpr float WORLD_NOT_AFFECTED_BY_LIGHT = 1.f;

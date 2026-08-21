@@ -128,7 +128,7 @@ void RendererLayer::OnUpdate(float deltaTime)
 
 	Trinacria::DSL::Renderer::ShaderProgram.SetUniformMat4("u_View", viewProjection);
 
-	Trinacria::DSL::LightSystem::Init(Trinacria::DSL::LightSystem::DEFAULT_USE_OF_LIGHT);
+	Trinacria::DSL::LightSystem::InitFrame(Trinacria::DSL::LightSystem::DEFAULT_USE_OF_LIGHT);
 
 	Trinacria::DSL::PointLightData pointLight( glm::vec3(1.f, 1.f, 1.f),
 		pointLightTransform.Position, 1.f);
