@@ -203,6 +203,8 @@ void RendererLayer::OnAttach()
 
 
 	screenShader.LoadShader("assets/shaders/Screen.vert", "assets/shaders/Screen.frag");
+
+    Trinacria::DSL::LightSystem::Init();
 }
 
 void RendererLayer::OnDetach()
