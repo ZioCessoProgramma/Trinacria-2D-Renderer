@@ -84,7 +84,9 @@ void RendererLayer::OnAttach()
     // The init function does not initialize the window
     Trinacria::DSL::Renderer::Init(glm::vec2(800, 600), window);
 
-    Trinacria::DSL::Renderer::ShaderProgram.LoadShader(
+    // Have to use LoadCoreShader for ShaderProgram
+
+    Trinacria::DSL::Renderer::ShaderProgram.LoadCoreShader(
     "path/to/vertex.vert", "path/to/fragment.frag");
 
     screenShader.LoadShader("path/to/vertex.vert",
