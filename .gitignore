@@ -2,7 +2,7 @@
 .vs/
 bin/
 lib/
-cmake-build-debug/
+cmake-build-*/
 x64/
 x32/
 CMakeFiles/

@@ -12,6 +12,7 @@
 
 #include <GLFW/glfw3.h>
 
+#include "Trinacria/HUD.h"
 #include "Trinacria/LightSystem.h"
 
 std::vector<TRCN_CORE_NAMESPACE::Vertex> TRCN_CORE_NAMESPACE::Renderer::_quadBuffer;
@@ -176,7 +177,7 @@ void TRCN_CORE_NAMESPACE::Renderer::createQuad(const glm::vec2& position, Sprite
     createQuad(position, sprite->GetParent(), size, color, materialIndex, transform,texCoords);
 }
 
-void Trinacria::DSL::Renderer::CreateTriangle(const TriangleData& triangleData)
+void TRCN_CORE_NAMESPACE::Renderer::CreateTriangle(const TriangleData& triangleData)
 {
     if (triangleData.texture != nullptr)
     {
@@ -251,7 +252,7 @@ void TRCN_CORE_NAMESPACE::Renderer::createTriangle(const glm::vec2& position, Te
         texCoords.Coord2, color, materialIndex);
 }
 
-void Trinacria::DSL::Renderer::createTriangle(const glm::vec2& position, Sprite* sprite,
+void TRCN_CORE_NAMESPACE::Renderer::createTriangle(const glm::vec2& position, Sprite* sprite,
                                               TriangleOrientation orientation, const glm::vec2& size, const glm::vec4& color, int materialIndex, const glm::mat4& transform)
 {
     TriangleTexCoords texCoords = sprite->GetTriangleTexCoords();
@@ -260,7 +261,7 @@ void Trinacria::DSL::Renderer::createTriangle(const glm::vec2& position, Sprite*
     createTriangle(position, sprite->GetParent(), orientation, size, color, 0, transform, texCoords);
 }
 
-void Trinacria::DSL::Renderer::drawInScreen(Shader& screenShader)
+void TRCN_CORE_NAMESPACE::Renderer::drawInScreen(Shader& screenShader)
 {
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
     glDisable(GL_BLEND);
@@ -282,7 +283,7 @@ void Trinacria::DSL::Renderer::drawInScreen(Shader& screenShader)
     _frameBuffer.Bind();
 }
 
-void Trinacria::DSL::Renderer::initScreen()
+void TRCN_CORE_NAMESPACE::Renderer::initScreen()
 {
     constexpr float screenQuadVertices[] = {
         -1.f, -1.f,
@@ -326,12 +327,10 @@ void TRCN_CORE_NAMESPACE::Renderer::Draw(Shader& screenShader)
         std::string uniformName = std::string("u_Textures[") + std::to_string(element.second) + std::string("]");
 
         ShaderProgram.SetUniformInt(uniformName.c_str(), element.second - 1);
-    }
 
-    for (auto& element : _textures)
-    {
         element.first->Bind(element.second + GL_TEXTURE0 - 1);
     }
+
 
     glBindVertexArray(_vao);
 
@@ -341,6 +340,8 @@ void TRCN_CORE_NAMESPACE::Renderer::Draw(Shader& screenShader)
     glDrawArrays(GL_TRIANGLES, 0, _triangleBuffer.size());
 
     Texture::ClearTextureSlots();
+
+    HUD::draw();
 
     drawInScreen(screenShader);
 }
@@ -353,7 +354,7 @@ void TRCN_CORE_NAMESPACE::Renderer::FlushBuffers()
     _triangleBuffer.clear();
 }
 
-void Trinacria::DSL::Renderer::AddMaterial(const Material& material)
+void TRCN_CORE_NAMESPACE::Renderer::AddMaterial(const Material& material)
 {
     if (_materialCount >= 32) return;
 
@@ -361,7 +362,7 @@ void Trinacria::DSL::Renderer::AddMaterial(const Material& material)
     material.SetUniforms(_materialCount++);
 }
 
-int Trinacria::DSL::Renderer::SearchMaterial(const Material& material)
+int TRCN_CORE_NAMESPACE::Renderer::SearchMaterial(const Material& material)
 {
     for (int i = 0; i < _materialCount; i++)
     {
@@ -374,7 +375,7 @@ int Trinacria::DSL::Renderer::SearchMaterial(const Material& material)
     return 0;
 }
 
-void Trinacria::DSL::Renderer::OnResize(const glm::vec2& windowDimensions)
+void TRCN_CORE_NAMESPACE::Renderer::OnResize(const glm::vec2& windowDimensions)
 {
     _colorAttachment.BoundTexImage(GL_RGB, GL_RGB, windowDimensions.x, windowDimensions.y,
     GL_UNSIGNED_BYTE, nullptr, GL_LINEAR);
@@ -430,7 +431,7 @@ void TRCN_CORE_NAMESPACE::Renderer::ClearColorBuffer(const glm::vec3& color)
     glClear(GL_COLOR_BUFFER_BIT);
 }
 
-void Trinacria::DSL::Renderer::CreateQuad(const QuadData& quadData)
+void TRCN_CORE_NAMESPACE::Renderer::CreateQuad(const QuadData& quadData)
 {
     if (quadData.texture != nullptr)
     {
@@ -465,7 +466,7 @@ void TRCN_CORE_NAMESPACE::QuadTexCoords::Normalize(uint32_t texWidth, uint32_t t
     Coord3.y = Coord3.y / texHeight;
 }
 
-void Trinacria::DSL::TriangleTexCoords::Normalize(uint32_t texWidth, uint32_t texHeight)
+void TRCN_CORE_NAMESPACE::TriangleTexCoords::Normalize(uint32_t texWidth, uint32_t texHeight)
 {
     Coord0.x = Coord0.x / texWidth;
     Coord0.y = Coord0.y / texHeight;
