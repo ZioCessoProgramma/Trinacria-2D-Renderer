@@ -20,7 +20,7 @@
 \DoxyCodeLine{00020\ \ \ \ \ \{}
 \DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{public}:}
 \DoxyCodeLine{00029\ }
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Animation_a68fb8659c874226f002ed4729131000f}{Play}}(\textcolor{keywordtype}{float}\ deltaTime,\ \textcolor{keyword}{const}\ glm::vec2\&\ position,\ \textcolor{keyword}{const}\ glm::vec3\&\ color\ =\ 1.f,\ \textcolor{keywordtype}{int}\ materialIndex\ =\ 0)}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Animation_aee482ac1c338b82880c35af01ca96f5c}{Play}}(\textcolor{keywordtype}{float}\ deltaTime,\ \textcolor{keyword}{const}\ glm::vec2\&\ position,\ \textcolor{keyword}{const}\ glm::vec4\&\ color\ =\ glm::vec4(1.f),\ \textcolor{keywordtype}{int}\ materialIndex\ =\ 0)}
 \DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \_accumulatedDeltaTime\ +=\ deltaTime;}
 \DoxyCodeLine{00033\ }
@@ -39,7 +39,7 @@
 \DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Transform}{Transform}}\ transform(position,\ glm::vec2(0.5f));}
 \DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1QuadData}{QuadData}}\ data(transform,\ \&\_sprites[\_currentSpriteIndex],\ materialIndex,\ color);}
 \DoxyCodeLine{00048\ }
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Renderer_acd70e60944ef6db940d4c1697ab4354c}{Renderer::CreateQuad}}(data);}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Renderer_a156f9c0c378f4f6b17b04bf7a8937904}{Renderer::CreateQuad}}(data);}
 \DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ }
 \DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00052\ }
@@ -55,7 +55,7 @@
 \DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
 \DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TRCN\_ASSERT(\textcolor{keyword}{false},\ \textcolor{stringliteral}{"{}You\ cannot\ initialize\ an\ asset\ more\ than\ one\ time"{}});}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TRCN\_ASSERTEXP\_MSG(\textcolor{keyword}{false},\ \textcolor{stringliteral}{"{}You\ cannot\ initialize\ an\ asset\ more\ than\ one\ time"{}});}
 \DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00073\ }
 \DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \}}

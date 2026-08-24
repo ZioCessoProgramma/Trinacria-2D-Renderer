@@ -3,10 +3,37 @@
 #include <cstdint>
 
 #include "Macros.h"
+#include "Shader.h"
+#include "Transform.h"
 #include "glm/glm.hpp"
 
 namespace TRCN_CORE_NAMESPACE
 {
+    /**
+     * @brief struct containing all data a hud quad needs
+     */
+    struct HUDQuad
+    {
+        /**
+         * @brief the transform of the quad
+         */
+
+        Transform transform;
+
+        /**
+        * @brief texture index in texture array
+        * @note the texture array for the HUD is different from the one of the Renderer
+        */
+
+        uint32_t TextureIndex;
+
+        /**
+         * @brief the color of the hud quad
+         */
+
+        glm::vec4 Color;
+    };
+
     /**
      * @brief HUDVertex is the vertex that is used by the HUD
      */
@@ -29,18 +56,22 @@ namespace TRCN_CORE_NAMESPACE
          * @brief texture index in texture array
          * @note the texture array for the HUD is different from the one of the Renderer
          */
+
         uint32_t TextureIndex;
     };
 
     class HUD
     {
     public:
+
         /**
          * @brief initializes the HUD
+         * @param vertPath the path to the vertex shader that draws the HUD
+         * @param fragPath the path to the fragment shader that draws the HUD
          * @note to call once at the start of the application
          */
 
-        static void Init();
+        static void Init(const std::string& vertPath, const std::string& fragPath);
 
         /**
         * @brief cleans up the HUD
@@ -57,9 +88,19 @@ namespace TRCN_CORE_NAMESPACE
         static void EndHUD();
 
         /**
-         * @brief the maximum number of HUD vertices in the screen
-         * @warning to change this always use a multiplier of 4
+         * @brief creates a quad that will be later drawn
+         * @param HUDQuad the quad to create
          */
+
+        static void CreateHUDQuad(const HUDQuad& HUDQuad);
+
+        /**
+         * @brief flushes all the buffers
+         * @note call it at the end of the frame after Renderer::Draw
+         */
+
+        // TODO: add overload that makes you flush only a part of the buffer
+        static void FlushBuffers();
 
         static constexpr size_t MaxHUDQuads    =            100;
         static constexpr size_t MaxHUDVertices = MaxHUDQuads * 4;
@@ -69,10 +110,17 @@ namespace TRCN_CORE_NAMESPACE
 
         friend class Renderer;
 
-        static void draw() {}
+        inline static uint32_t _vao;
+        inline static uint32_t _vbo;
+        inline static uint32_t _ebo;
 
-        inline static uint32_t vao;
-        inline static uint32_t vbo;
-        inline static uint32_t ebo;
+        inline static std::vector<HUDVertex> _vertices;
+        inline static std::vector<uint32_t> _indices;
+
+        inline static Shader _shader;
+
+        static void draw();
+
+        static void createHUDQuad(const glm::vec2& position, const glm::vec4& color, uint32_t textureIndex, const glm::vec2& scale, const glm::mat4& matrix);
     };
 }

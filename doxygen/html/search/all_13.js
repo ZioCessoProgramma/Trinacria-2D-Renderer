@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['vertex_0',['Vertex',['../structTRCN__CORE__NAMESPACE_1_1Vertex.html',1,'TRCN_CORE_NAMESPACE']]]
+  ['unbind_0',['Unbind',['../classTRCN__CORE__NAMESPACE_1_1Texture.html#a47447853a2672a493593610dfef66131',1,'TRCN_CORE_NAMESPACE::Texture']]]
 ];

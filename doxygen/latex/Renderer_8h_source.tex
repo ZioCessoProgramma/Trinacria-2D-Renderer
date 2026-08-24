@@ -54,7 +54,7 @@
 \DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1TriangleTexCoords}{TriangleTexCoords}}(\textcolor{keyword}{const}\ glm::vec2\&\ coord0,\ \textcolor{keyword}{const}\ glm::vec2\&\ coord1,\ \textcolor{keyword}{const}\ glm::vec2\&\ coord2)\ :}
 \DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ Coord0(coord0),\ Coord1(coord1),\ Coord2(coord2)\ \{\ \}}
 \DoxyCodeLine{00086\ }
-\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1TriangleTexCoords_a3a07971c779237627b48baa49c57d3a8}{Normalize}}(uint32\_t\ texWidth,\ uint32\_t\ texHeight);}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ Normalize(uint32\_t\ texWidth,\ uint32\_t\ texHeight);}
 \DoxyCodeLine{00093\ \ \ \ \ \};}
 \DoxyCodeLine{00094\ }
 \DoxyCodeLine{00098\ \ \ \ \ \textcolor{keyword}{struct\ }Vertex}
@@ -62,10 +62,10 @@
 \DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ glm::vec2\ Position;}
 \DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ TextureIndex;}
 \DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ glm::vec2\ TexCoords;}
-\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ glm::vec3\ Color;}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ glm::vec4\ Color;}
 \DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ MaterialIndex;}
 \DoxyCodeLine{00105\ }
-\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ Vertex(\textcolor{keyword}{const}\ glm::vec2\&\ pos,\ \textcolor{keywordtype}{float}\ textureIndex,\ \textcolor{keyword}{const}\ glm::vec2\&\ texCoords,\ \textcolor{keyword}{const}\ glm::vec3\&\ color,\ \textcolor{keywordtype}{int}\ materialIndex)}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ Vertex(\textcolor{keyword}{const}\ glm::vec2\&\ pos,\ \textcolor{keywordtype}{float}\ textureIndex,\ \textcolor{keyword}{const}\ glm::vec2\&\ texCoords,\ \textcolor{keyword}{const}\ glm::vec4\&\ color,\ \textcolor{keywordtype}{int}\ materialIndex)}
 \DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ :\ Position(pos),\ TextureIndex(textureIndex),\ TexCoords(texCoords),\ Color(color),\ MaterialIndex(materialIndex)\ \{\ \}}
 \DoxyCodeLine{00108\ \ \ \ \ \};}
 \DoxyCodeLine{00109\ }
@@ -84,10 +84,10 @@
 \DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Renderer_a7e76d8dedb9fdd610f8620498a6bf437}{ClearColorBuffer}}(\textcolor{keyword}{const}\ glm::vec3\&\ color\ =\ \{\ 0.1f,\ 0.1f,\ 0.1f\ \});}
 \DoxyCodeLine{00139\ }
 \DoxyCodeLine{00144\ }
-\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Renderer_acd70e60944ef6db940d4c1697ab4354c}{CreateQuad}}(\textcolor{keyword}{const}\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1QuadData}{QuadData}}\&\ quadData);}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Renderer_a156f9c0c378f4f6b17b04bf7a8937904}{CreateQuad}}(\textcolor{keyword}{const}\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1QuadData}{QuadData}}\&\ quadData);}
 \DoxyCodeLine{00146\ }
 \DoxyCodeLine{00151\ }
-\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Renderer_a2431abca5baf4e10fa70b13347c92d9a}{CreateTriangle}}(\textcolor{keyword}{const}\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1TriangleData}{TriangleData}}\&\ triangleData);}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Renderer_acd29fc8cff86f2e091294b8600e7e115}{CreateTriangle}}(\textcolor{keyword}{const}\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1TriangleData}{TriangleData}}\&\ triangleData);}
 \DoxyCodeLine{00153\ }
 \DoxyCodeLine{00158\ }
 \DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Renderer_a35e1b63a99bd72a6ea5109db0170410b}{EndScene}}();}
@@ -100,13 +100,13 @@
 \DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Renderer_a30f0310196db838e5758645b5a38ae41}{FlushBuffers}}();}
 \DoxyCodeLine{00179\ }
 \DoxyCodeLine{00184\ }
-\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Renderer_a317bc0207c0e11e2fde7f4d10a691526}{AddMaterial}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Material}{Material}}\&\ material);}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Renderer_a4e62e06595e1793466838acba708ea56}{AddMaterial}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Material}{Material}}\&\ material);}
 \DoxyCodeLine{00186\ }
 \DoxyCodeLine{00192\ }
-\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Renderer_afd7a23c381d48e5b44f20159cedcb2de}{SearchMaterial}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Material}{Material}}\&\ material);}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Renderer_a3228543ebe79b8f354cbf8d210d9dfb5}{SearchMaterial}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Material}{Material}}\&\ material);}
 \DoxyCodeLine{00194\ }
 \DoxyCodeLine{00200\ }
-\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Renderer_ac90bfd39da6861d183ffd13280ea3fee}{OnResize}}(\textcolor{keyword}{const}\ glm::vec2\&\ windowDimensions);}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Renderer_a8c547e1480d511ef822826277c55a30a}{OnResize}}(\textcolor{keyword}{const}\ glm::vec2\&\ windowDimensions);}
 \DoxyCodeLine{00202\ }
 \DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ }
 \DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Shader}{Shader}}\ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Renderer_a1d545d8c44ce53a50a0cbeb6ad2367a3}{ShaderProgram}};}
@@ -147,7 +147,7 @@
 \DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec2\&\ position,}
 \DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Texture}{Texture}}*\ texture\ =\ \textcolor{keyword}{nullptr},}
 \DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec2\&\ size\ =\ glm::vec2(0.5f),}
-\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec3\&\ color\ =\ glm::vec3(1.f),}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec4\&\ color\ =\ glm::vec4(1.f),}
 \DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ materialIndex\ =\ 0,}
 \DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::mat4\&\ transform\ =\ glm::mat4(1.0f),}
 \DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1QuadTexCoords}{QuadTexCoords}}\&\ texCoords\ =\ \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1QuadTexCoords}{QuadTexCoords}}(glm::vec2(0.f),\ glm::vec2(1.f,\ 0.f),\ glm::vec2(1.f),\ glm::vec2(0.f,\ 1.f))}
@@ -157,7 +157,7 @@
 \DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec2\&\ position,}
 \DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{class}\ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Sprite}{Sprite}}*\ sprite,}
 \DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec2\&\ size\ =\ glm::vec2(0.5f),}
-\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec3\&\ color\ =\ glm::vec3(1.f),}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec4\&\ color\ =\ glm::vec4(1.f),}
 \DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ materialIndex\ =\ 0,}
 \DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::mat4\&\ transform\ =\ glm::mat4(1.f)}
 \DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ );}
@@ -170,7 +170,7 @@
 \DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Texture}{Texture}}*\ texture\ =\ \textcolor{keyword}{nullptr},}
 \DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \ \ \ \ TriangleOrientation\ orientation\ =\ TriangleOrientation::Orientation\_RIGHT,}
 \DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec2\&\ size\ =\ glm::vec2(0.5f),}
-\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec3\&\ color\ =\ glm::vec3(1.f),}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec4\&\ color\ =\ glm::vec4(1.f),}
 \DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ materialIndex\ =\ 0,}
 \DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::mat4\&\ transform\ =\ glm::mat4(1.f),}
 \DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1TriangleTexCoords}{TriangleTexCoords}}\&\ texCoords\ =\ \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1TriangleTexCoords}{TriangleTexCoords}}(glm::vec2(0.f),\ glm::vec2(1.f,\ 0.f),\ glm::vec2(0.f,\ 1.f))}
@@ -181,7 +181,7 @@
 \DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Sprite}{Sprite}}*\ sprite,}
 \DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \ \ \ \ TriangleOrientation\ orientation\ =\ TriangleOrientation::Orientation\_RIGHT,}
 \DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec2\&\ size\ =\ glm::vec2(0.5f),}
-\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec3\&\ color\ =\ glm::vec3(1.f),}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::vec4\&\ color\ =\ glm::vec4(1.f),}
 \DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ materialIndex\ =\ 0,}
 \DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ glm::mat4\&\ transform\ =\ glm::mat4(1.f)}
 \DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ );}

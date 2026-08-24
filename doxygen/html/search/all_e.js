@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['quaddata_0',['QuadData',['../structTRCN__CORE__NAMESPACE_1_1QuadData.html',1,'TRCN_CORE_NAMESPACE::QuadData'],['../structTRCN__CORE__NAMESPACE_1_1QuadData.html#ab35c4581d82d1a189b3e1927edfb58c0',1,'TRCN_CORE_NAMESPACE::QuadData::QuadData(const Transform &amp;transform, Texture *texture, int materialIndex=0, const glm::vec3 &amp;color=glm::vec3(1.f))'],['../structTRCN__CORE__NAMESPACE_1_1QuadData.html#a1b3f1c823a63ecbef38ef94a5b43fc3f',1,'TRCN_CORE_NAMESPACE::QuadData::QuadData(const Transform &amp;transform, Sprite *sprite, int materialIndex=0, const glm::vec3 &amp;color=glm::vec3(1.f))'],['../structTRCN__CORE__NAMESPACE_1_1QuadData.html#aa92634c56fcfae280f8285892b7b5ad5',1,'TRCN_CORE_NAMESPACE::QuadData::QuadData(const Transform &amp;transform, const glm::vec3 &amp;color=glm::vec3(1.f), int materialIndex=0)']]],
-  ['quadtexcoords_1',['QuadTexCoords',['../structTRCN__CORE__NAMESPACE_1_1QuadTexCoords.html',1,'TRCN_CORE_NAMESPACE']]]
+  ['pivot_0',['Pivot',['../classTRCN__CORE__NAMESPACE_1_1Transform.html#a495b2939a2d3298aa9528c81b67ec0a3',1,'TRCN_CORE_NAMESPACE::Transform']]],
+  ['play_1',['Play',['../classTRCN__CORE__NAMESPACE_1_1Animation.html#aee482ac1c338b82880c35af01ca96f5c',1,'TRCN_CORE_NAMESPACE::Animation']]],
+  ['pointlightdata_2',['PointLightData',['../structTRCN__CORE__NAMESPACE_1_1PointLightData.html',1,'TRCN_CORE_NAMESPACE']]],
+  ['position_3',['Position',['../structTRCN__CORE__NAMESPACE_1_1HUDVertex.html#a0e6fdd49901ab99b996d7b323dda5fec',1,'TRCN_CORE_NAMESPACE::HUDVertex::Position'],['../classTRCN__CORE__NAMESPACE_1_1Transform.html#aad53c8af56c663aaf43641603981ae66',1,'TRCN_CORE_NAMESPACE::Transform::Position']]]
 ];

@@ -1,9 +1,9 @@
 var structTRCN__CORE__NAMESPACE_1_1TriangleData =
 [
-    [ "TriangleData", "structTRCN__CORE__NAMESPACE_1_1TriangleData.html#a0801592afc1cad931c1d0dfe392280a2", null ],
-    [ "TriangleData", "structTRCN__CORE__NAMESPACE_1_1TriangleData.html#ab53f009c03abeed289ee767d2e7aae6f", null ],
-    [ "TriangleData", "structTRCN__CORE__NAMESPACE_1_1TriangleData.html#ae72236b2ae30191017e397dabcb837c9", null ],
-    [ "Color", "structTRCN__CORE__NAMESPACE_1_1TriangleData.html#ad23b16f4585fc0d68a06b7018edff253", null ],
+    [ "TriangleData", "structTRCN__CORE__NAMESPACE_1_1TriangleData.html#af1da16f61da2f80779d661d3fa66ae0c", null ],
+    [ "TriangleData", "structTRCN__CORE__NAMESPACE_1_1TriangleData.html#a9d7ba5ef3bed3e58f3379a85bdf022e0", null ],
+    [ "TriangleData", "structTRCN__CORE__NAMESPACE_1_1TriangleData.html#a60a8f51fedb29437d710ddaf9af05aef", null ],
+    [ "Color", "structTRCN__CORE__NAMESPACE_1_1TriangleData.html#aa8d918f7ee5b74ef62811b49d237bda3", null ],
     [ "MaterialIndex", "structTRCN__CORE__NAMESPACE_1_1TriangleData.html#afcef3ab5a1673d7f3cdf9be52b4dad2b", null ],
     [ "Orientation", "structTRCN__CORE__NAMESPACE_1_1TriangleData.html#a4f275596cb8019e63a11f35dbd82c2ea", null ],
     [ "sprite", "structTRCN__CORE__NAMESPACE_1_1TriangleData.html#a8e5554a53bbf2ad7861408a531d67bfa", null ],

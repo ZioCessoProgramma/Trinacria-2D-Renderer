@@ -1,41 +1,103 @@
 #include "Trinacria/HUD.h"
 
+#include <cstring>
 #include <glad/glad.h>
 
+#include "Trinacria/Assert.h"
 #include "Trinacria/Renderer.h"
 
-void TRCN_CORE_NAMESPACE::HUD::Init()
+void TRCN_CORE_NAMESPACE::HUD::Init(const std::string& vertPath, const std::string& fragPath)
 {
-    glGenVertexArrays(1, &vao);
-    glBindVertexArray(vao);
+    glGenVertexArrays(1, &_vao);
+    glBindVertexArray(_vao);
 
-    glGenBuffers(1, &vbo);
-    glBindBuffer(GL_ARRAY_BUFFER, vbo);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * MaxHUDVertices, nullptr, GL_DYNAMIC_DRAW);
+    glGenBuffers(1, &_vbo);
+    glBindBuffer(GL_ARRAY_BUFFER, _vbo);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(HUDVertex) * MaxHUDVertices, nullptr, GL_DYNAMIC_DRAW);
 
-    glGenBuffers(1, &ebo);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
+    glGenBuffers(1, &_ebo);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _ebo);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(uint32_t) * MaxHUDIndices, nullptr, GL_DYNAMIC_DRAW);
 
-    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex),
+    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(HUDVertex),
         (void*)offsetof(HUDVertex, Position));
 
     glEnableVertexAttribArray(0);
 
-    glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(Vertex),
+    glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(HUDVertex),
        (void*)offsetof(HUDVertex, Color));
 
     glEnableVertexAttribArray(1);
 
-    glVertexAttribIPointer(2, 1, GL_UNSIGNED_INT, sizeof(Vertex),
+    glVertexAttribIPointer(2, 1, GL_UNSIGNED_INT, sizeof(HUDVertex),
         (void*)offsetof(HUDVertex, TextureIndex));
 
     glEnableVertexAttribArray(2);
+
+    _shader.LoadShader(vertPath, fragPath);
 }
 
 void Trinacria::DSL::HUD::Cleanup()
 {
-    glDeleteVertexArrays(1, &vao);
-    glDeleteBuffers(1, &vbo);
-    glDeleteBuffers(1, &ebo);
+    glDeleteVertexArrays(1, &_vao);
+    glDeleteBuffers(1, &_vbo);
+    glDeleteBuffers(1, &_ebo);
+}
+
+void Trinacria::DSL::HUD::EndHUD()
+{
+    glBindBuffer(GL_ARRAY_BUFFER, _vbo);
+    glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(HUDVertex) * _vertices.size(), _vertices.data());
+
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _ebo);
+    glBufferSubData(GL_ELEMENT_ARRAY_BUFFER, 0, sizeof(uint32_t) * _indices.size(), _indices.data());
+}
+
+void Trinacria::DSL::HUD::CreateHUDQuad(const HUDQuad& HUDQuad)
+{
+    TRCN_DEPEND_START("Create HUD Quad");
+
+    TRCN_DEPEND_RETURN_ASSERT_VOID(_vertices.size() < MaxHUDVertices);
+    TRCN_DEPEND_RETURN_ASSERT_VOID(_indices.size() < MaxHUDIndices);
+
+    createHUDQuad(HUDQuad.transform.Position, HUDQuad.Color, HUDQuad.TextureIndex, HUDQuad.transform.Scale, glm::mat4(1.f));
+}
+
+void Trinacria::DSL::HUD::FlushBuffers()
+{
+    _vertices.clear();
+    _indices.clear();
+}
+
+void Trinacria::DSL::HUD::draw()
+{
+    _shader.Bind();
+
+    glBindVertexArray(_vao);
+
+    glDrawElements(GL_TRIANGLES, _indices.size(), GL_UNSIGNED_INT, nullptr);
+}
+
+void Trinacria::DSL::HUD::createHUDQuad(const glm::vec2& position, const glm::vec4& color, uint32_t textureIndex,
+                                        const glm::vec2& scale, const glm::mat4& matrix)
+{
+
+    glm::vec2 p0 = glm::vec2(matrix * glm::vec4(position, 0.f, 0.f));
+    glm::vec2 p1 = glm::vec2(matrix * glm::vec4(position + glm::vec2(scale.x, 0.f), 0.f, 0.f));
+    glm::vec2 p2 = glm::vec2(matrix * glm::vec4(position + scale, 0.f, 0.f));
+    glm::vec2 p3 = glm::vec2(matrix * glm::vec4(position + glm::vec2(0.f, scale.y), 0.f, 0.f));
+
+    _vertices.emplace_back(p0, color, textureIndex);
+    _vertices.emplace_back(p1, color, textureIndex);
+    _vertices.emplace_back(p2, color, textureIndex);
+    _vertices.emplace_back(p3, color, textureIndex);
+
+    size_t offset = _vertices.size() - 4;
+
+    _indices.push_back(offset);
+    _indices.push_back(offset + 1);
+    _indices.push_back(offset + 2);
+    _indices.push_back(offset + 2);
+    _indices.push_back(offset + 3);
+    _indices.push_back(offset);
 }

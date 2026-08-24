@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['keyboarddispatcher_0',['KeyBoardDispatcher',['../classTRCN__CORE__NAMESPACE_1_1InputPollerLayer.html#a899618ee2dd2eff05839789e37055042',1,'TRCN_CORE_NAMESPACE::InputPollerLayer']]],
-  ['keyboardevent_1',['KeyboardEvent',['../classTRCN__CORE__NAMESPACE_1_1KeyboardEvent.html',1,'TRCN_CORE_NAMESPACE::KeyboardEvent'],['../classTRCN__CORE__NAMESPACE_1_1KeyboardEvent.html#aa08c69f5286d457e61f10cd791094542',1,'TRCN_CORE_NAMESPACE::KeyboardEvent::KeyboardEvent()']]]
+  ['init_0',['Init',['../classTRCN__CORE__NAMESPACE_1_1Animation.html#adf6e328fe4776cb8eb9d1105c799765f',1,'TRCN_CORE_NAMESPACE::Animation::Init()'],['../classTRCN__CORE__NAMESPACE_1_1HUD.html#a4b306d147a76aa29b64b02d942fbaee5',1,'TRCN_CORE_NAMESPACE::HUD::Init()'],['../classTRCN__CORE__NAMESPACE_1_1LightSystem.html#a08a32323a6eb1017487d4e8d1c2ba85f',1,'TRCN_CORE_NAMESPACE::LightSystem::Init()'],['../classTRCN__CORE__NAMESPACE_1_1Renderer.html#a6dfb64b36179f695993d9341902abfbc',1,'TRCN_CORE_NAMESPACE::Renderer::Init()'],['../classTRCN__CORE__NAMESPACE_1_1Sprite.html#a8b43ffe9593bac9ab5a404c9c1149b1a',1,'TRCN_CORE_NAMESPACE::Sprite::Init()']]],
+  ['initframe_1',['InitFrame',['../classTRCN__CORE__NAMESPACE_1_1LightSystem.html#a42563a573425e82033511fc33aba6f12',1,'TRCN_CORE_NAMESPACE::LightSystem']]],
+  ['innerangleindegrees_2',['InnerAngleInDegrees',['../structTRCN__CORE__NAMESPACE_1_1SpotLightData.html#ae3cc45290954583be326f8720c6014b1',1,'TRCN_CORE_NAMESPACE::SpotLightData']]],
+  ['inputpollerlayer_3',['InputPollerLayer',['../classTRCN__CORE__NAMESPACE_1_1InputPollerLayer.html',1,'TRCN_CORE_NAMESPACE']]]
 ];

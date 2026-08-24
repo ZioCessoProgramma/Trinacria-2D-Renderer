@@ -1,0 +1,84 @@
+\doxysection{HUD.\+h}
+\hypertarget{HUD_8h_source}{}\label{HUD_8h_source}\index{/home/bigbenji/Documenti/cpp/trinacria-\/diesel/Trinacria/include/Trinacria/HUD.h@{/home/bigbenji/Documenti/cpp/trinacria-\/diesel/Trinacria/include/Trinacria/HUD.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}Macros.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}Shader.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}Transform.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}glm/glm.hpp"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{namespace\ }TRCN\_CORE\_NAMESPACE}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1HUDQuad}{HUDQuad}}}
+\DoxyCodeLine{00016\ \ \ \ \ \{}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Transform}{Transform}}\ \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1HUDQuad_ad523d329d857cb3e19e7c0cbd576ca15}{transform}};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1HUDQuad_a89ed46a7a89e8666778bb2c9ca316fcb}{TextureIndex}};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ glm::vec4\ \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1HUDQuad_ada73deacd93711cb7ce60efc54139be0}{Color}};}
+\DoxyCodeLine{00035\ \ \ \ \ \};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1HUDVertex}{HUDVertex}}}
+\DoxyCodeLine{00042\ \ \ \ \ \{}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ glm::vec2\ \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1HUDVertex_a0e6fdd49901ab99b996d7b323dda5fec}{Position}};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ glm::vec4\ \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1HUDVertex_ad37ac22605117fcdc6b63e31c3f4fb36}{Color}};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1HUDVertex_a1b7b29a3caba173a08dce297a49aa377}{TextureIndex}};}
+\DoxyCodeLine{00061\ \ \ \ \ \};}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1HUD}{HUD}}}
+\DoxyCodeLine{00064\ \ \ \ \ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1HUD_a4b306d147a76aa29b64b02d942fbaee5}{Init}}(\textcolor{keyword}{const}\ std::string\&\ vertPath,\ \textcolor{keyword}{const}\ std::string\&\ fragPath);}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1HUD_aae5facac70239c0a1593cb2bec8652ff}{Cleanup}}();}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1HUD_ad9f18fa8cab6b0bcc09ea0d83ce566d8}{EndHUD}}();}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1HUD_a5f631c916f1ee060b56dd65f9ffe98bb}{CreateHUDQuad}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1HUDQuad}{HUDQuad}}\&\ \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1HUDQuad}{HUDQuad}});}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ TODO:\ add\ overload\ that\ makes\ you\ flush\ only\ a\ part\ of\ the\ buffer}}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1HUD_a0f63f0d0d6f407e88b4adc5dabe3332a}{FlushBuffers}}();}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{size\_t}\ MaxHUDQuads\ \ \ \ =\ \ \ \ \ \ \ \ \ \ \ \ 100;}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{size\_t}\ MaxHUDVertices\ =\ MaxHUDQuads\ *\ 4;}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{size\_t}\ MaxHUDIndices\ \ =\ MaxHUDQuads\ *\ 6;}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }Renderer;}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keyword}{static}\ uint32\_t\ \_vao;}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keyword}{static}\ uint32\_t\ \_vbo;}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keyword}{static}\ uint32\_t\ \_ebo;}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keyword}{static}\ std::vector<HUDVertex>\ \_vertices;}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keyword}{static}\ std::vector<uint32\_t>\ \_indices;}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Shader}{Shader}}\ \_shader;}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ draw();}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ createHUDQuad(\textcolor{keyword}{const}\ glm::vec2\&\ position,\ \textcolor{keyword}{const}\ glm::vec4\&\ color,\ uint32\_t\ textureIndex,\ \textcolor{keyword}{const}\ glm::vec2\&\ scale,\ \textcolor{keyword}{const}\ glm::mat4\&\ matrix);}
+\DoxyCodeLine{00125\ \ \ \ \ \};}
+\DoxyCodeLine{00126\ \}}
+
+\end{DoxyCode}

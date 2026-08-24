@@ -7,6 +7,7 @@
 #include <glm/ext/matrix_transform.hpp>
 #include <Trinacria/ShapesData.h>
 
+#include "Trinacria/HUD.h"
 #include "Trinacria/LightSystem.h"
 #include "Trinacria/Materials.h"
 
@@ -17,6 +18,7 @@ static glm::vec3 color{ 1.f };
 void RendererLayer::OnUpdate(float deltaTime)
 {
 	Trinacria::DSL::Renderer::ClearColorBuffer();
+
 
 
 	// Ground
@@ -123,6 +125,13 @@ void RendererLayer::OnUpdate(float deltaTime)
 
 	Trinacria::DSL::Renderer::EndScene();
 
+    Trinacria::DSL::HUDQuad quad (Trinacria::DSL::Transform(glm::vec2(-0.3f, -0.9f), glm::vec2(0.6f, 0.1f))
+    , 0, glm::vec4(0.2f, 0.2f, 0.7f, 1.f));
+
+    Trinacria::DSL::HUD::CreateHUDQuad(quad);
+
+    Trinacria::DSL::HUD::EndHUD();
+
 	float zoom = _cameraData.Zoom;
 
 	glm::mat4 viewProjection = glm::scale(glm::mat4(1.f), glm::vec3(zoom, zoom, 1.f));
@@ -173,6 +182,7 @@ void RendererLayer::OnUpdate(float deltaTime)
 
 	Trinacria::DSL::Renderer::Draw(screenShader);
 	Trinacria::DSL::Renderer::FlushBuffers();
+    Trinacria::DSL::HUD::FlushBuffers();
 }
 
 void RendererLayer::OnAttach()
@@ -213,11 +223,13 @@ void RendererLayer::OnAttach()
 	screenShader.LoadShader("assets/shaders/Screen.vert", "assets/shaders/Screen.frag");
 
     Trinacria::DSL::LightSystem::Init();
+    Trinacria::DSL::HUD::Init("assets/shaders/HUD.vert", "assets/shaders/HUD.frag");
 }
 
 void RendererLayer::OnDetach()
 {
 	Trinacria::DSL::Renderer::Cleanup();
+    Trinacria::DSL::HUD::Cleanup();
 }
 
 void RendererLayer::SetCameraData(const CameraData& cameraData)

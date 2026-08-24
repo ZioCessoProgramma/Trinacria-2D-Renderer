@@ -68,7 +68,7 @@ namespace TRCN_CORE_NAMESPACE
 			}
 			else
 			{
-				TRCN_ASSERT(false, "You cannot initialize an asset more than one time");
+				TRCN_ASSERTEXP_MSG(false, "You cannot initialize an asset more than one time");
 			}
 
 		}
