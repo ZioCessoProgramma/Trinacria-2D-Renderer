@@ -132,6 +132,8 @@ void TRCN_CORE_NAMESPACE::Renderer::createQuad(const glm::vec2& position, Textur
     {
         if (!_textures.empty())
         {
+            // the index for the new texture is equal to the last index + 1
+
             textureIndex = _textures[_textures.size() - 1].second + 1;
         }
         else

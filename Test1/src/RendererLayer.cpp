@@ -19,6 +19,10 @@ void RendererLayer::OnUpdate(float deltaTime)
 {
 	Trinacria::DSL::Renderer::ClearColorBuffer();
 
+    Trinacria::DSL::HUDQuad quad (Trinacria::DSL::Transform(glm::vec2(-0.3f, -0.9f), glm::vec2(0.6f, 0.1f)),
+        0, glm::vec4(0.1f, 0.9f, 0.1f, 0.7f));
+
+    Trinacria::DSL::HUD::CreateHUDQuad(quad);
 
 
 	// Ground
@@ -125,10 +129,7 @@ void RendererLayer::OnUpdate(float deltaTime)
 
 	Trinacria::DSL::Renderer::EndScene();
 
-    Trinacria::DSL::HUDQuad quad (Trinacria::DSL::Transform(glm::vec2(-0.3f, -0.9f), glm::vec2(0.6f, 0.1f))
-    , 0, glm::vec4(0.2f, 0.2f, 0.7f, 1.f));
 
-    Trinacria::DSL::HUD::CreateHUDQuad(quad);
 
     Trinacria::DSL::HUD::EndHUD();
 
