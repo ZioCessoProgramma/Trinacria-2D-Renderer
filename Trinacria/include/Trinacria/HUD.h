@@ -3,35 +3,84 @@
 #include <cstdint>
 
 #include "Macros.h"
+#include "Renderer.h"
 #include "Shader.h"
+#include "Texture.h"
 #include "Transform.h"
 #include "glm/glm.hpp"
 
 namespace TRCN_CORE_NAMESPACE
 {
+    class Sprite;
     /**
      * @brief struct containing all data a hud quad needs
      */
-    struct HUDQuad
+    struct HUDQuadData
     {
         /**
-         * @brief the transform of the quad
+         * @brief constructor for quad with textures
+         * @param transform the transform of the quad, it contains position, scale, rotation etc...
+         * @param texture the texture of the quad
+         * @param color the color of the quad, it'll be multiplied with the texture color e.j. if the color is set to red the texture will appear red-ish
+         * @note use this only when dealing with textured quads. If it is plain color omit the texture parameter, it has a special constructor
+         */
+
+        HUDQuadData(const Transform& transform, Texture* texture, const glm::vec4& color = glm::vec4(1.f)) :
+            transform(transform), texture(texture), Color(color) { }
+
+        /**
+         * @brief constructor for quad with sprites
+         * @param transform the transform of the quad, it contains position, scale, rotation etc...
+         * @param sprite the sprite of the quad
+         * @param color the color of the quad, it'll be multiplied with the sprite color e.j. if the color is set to red the sprite will appear red-ish
+         * @note use this only when dealing with sprite quads. If it is plain color omit the sprite parameter, it has a special constructor
+         */
+
+        HUDQuadData(const Transform& transform, Sprite* sprite, const glm::vec4& color = glm::vec4(1.f)) :
+            transform(transform), sprite(sprite), Color(color) { }
+
+        /**
+         * @brief the constructor for plain color quads
+         * @param transform the transform of the quad, it contains position, scale, rotation etc...
+         * @param color the color of the quad
+         */
+
+        HUDQuadData(const Transform& transform, const glm::vec4& color = glm::vec4(1.f)) :
+            transform(transform), Color(color) { }
+
+        /**
+         * @brief the transform of the quad, it has position, scale, rotation etc...
          */
 
         Transform transform;
 
         /**
-        * @brief texture index in texture array
-        * @note the texture array for the HUD is different from the one of the Renderer
-        */
+         * @brief the texture of the quad
+         * @note if set to nullptr it'll use plain color or sprite
+         */
 
-        uint32_t TextureIndex;
+        Texture* texture = nullptr;
 
         /**
-         * @brief the color of the hud quad
+         * @brief the sprite of the quad
+         * @note if set to nullptr it'll use plain color or texture
+         */
+
+        Sprite* sprite = nullptr;
+
+        /**
+         * @brief the color of the quad, it'll be multiplied with the sprite/texture color e.j. if the color is set to red the sprite/texture will appear red-ish
          */
 
         glm::vec4 Color;
+
+        /**
+         * @brief texture coordinates for quad
+         * @note change it only if you know what you are doing
+         */
+
+        QuadTexCoords TexCoords = QuadTexCoords(glm::vec2(0.f), glm::vec2(1.f, 0.f),
+                                                glm::vec2(1.f), glm::vec2(0.f, 1.f));
     };
 
     /**
@@ -58,6 +107,12 @@ namespace TRCN_CORE_NAMESPACE
          */
 
         uint32_t TextureIndex;
+
+        /**
+         * @brief the tex coordinate (range [0; 1] [0; 1]) associated with this vertex
+         */
+
+        glm::vec2 TexCoord;
     };
 
     class HUD
@@ -92,7 +147,7 @@ namespace TRCN_CORE_NAMESPACE
          * @param HUDQuad the quad to create
          */
 
-        static void CreateHUDQuad(const HUDQuad& HUDQuad);
+        static void CreateHUDQuad(const HUDQuadData& HUDQuad);
 
         /**
          * @brief flushes all the buffers
@@ -117,10 +172,15 @@ namespace TRCN_CORE_NAMESPACE
         inline static std::vector<HUDVertex> _vertices;
         inline static std::vector<uint32_t> _indices;
 
+        inline static std::vector<std::pair<Texture*, uint32_t>> _textures;
+
         inline static Shader _shader;
 
         static void draw();
 
-        static void createHUDQuad(const glm::vec2& position, const glm::vec4& color, uint32_t textureIndex, const glm::vec2& scale, const glm::mat4& matrix);
+        static void createHUDQuad(const glm::vec2& position, const glm::vec4& color, uint32_t textureIndex, const glm::vec2& scale, const glm::mat4& matrix, const
+                                  QuadTexCoords& coord);
+
+        static bool findTextureIndex(uint32_t& outIndex, const Texture* texToFind);
     };
 }

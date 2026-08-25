@@ -34,7 +34,9 @@ void TRCN_CORE_NAMESPACE::HUD::Init(const std::string& vertPath, const std::stri
 
     glEnableVertexAttribArray(2);
 
-    _shader.LoadShader(vertPath, fragPath);
+    glVertexAttribPointer(3, 2, GL_FLOAT, GL_FALSE, sizeof(HUDVertex), (void*)offsetof(HUDVertex, TexCoord));
+
+    _shader.LoadCoreShader(vertPath, fragPath);
 }
 
 void Trinacria::DSL::HUD::Cleanup()
@@ -53,14 +55,28 @@ void Trinacria::DSL::HUD::EndHUD()
     glBufferSubData(GL_ELEMENT_ARRAY_BUFFER, 0, sizeof(uint32_t) * _indices.size(), _indices.data());
 }
 
-void Trinacria::DSL::HUD::CreateHUDQuad(const HUDQuad& HUDQuad)
+void Trinacria::DSL::HUD::CreateHUDQuad(const HUDQuadData& HUDQuad)
 {
     TRCN_DEPEND_START("Create HUD Quad");
 
     TRCN_DEPEND_RETURN_ASSERT_VOID(_vertices.size() < MaxHUDVertices);
     TRCN_DEPEND_RETURN_ASSERT_VOID(_indices.size() < MaxHUDIndices);
 
-    createHUDQuad(HUDQuad.transform.Position, HUDQuad.Color, HUDQuad.TextureIndex, HUDQuad.transform.Scale, glm::mat4(1.f));
+    uint32_t index = 0;
+
+    if (!findTextureIndex(index, HUDQuad.texture) && HUDQuad.texture)
+    {
+        index = _textures[_textures.size() - 1].second + 1;
+    }
+    else if (_textures.empty())
+    {
+        index = 1;
+    }
+
+    _textures.emplace_back(HUDQuad.texture, index);
+
+    createHUDQuad(HUDQuad.transform.Position, HUDQuad.Color, index, HUDQuad.transform.Scale,
+        glm::mat4(1.f), HUDQuad.TexCoords);
 }
 
 void Trinacria::DSL::HUD::FlushBuffers()
@@ -79,18 +95,17 @@ void Trinacria::DSL::HUD::draw()
 }
 
 void Trinacria::DSL::HUD::createHUDQuad(const glm::vec2& position, const glm::vec4& color, uint32_t textureIndex,
-                                        const glm::vec2& scale, const glm::mat4& matrix)
+                                        const glm::vec2& scale, const glm::mat4& matrix, const QuadTexCoords& coord)
 {
-
     glm::vec2 p0 = glm::vec2(matrix * glm::vec4(position, 0.f, 0.f));
     glm::vec2 p1 = glm::vec2(matrix * glm::vec4(position + glm::vec2(scale.x, 0.f), 0.f, 0.f));
     glm::vec2 p2 = glm::vec2(matrix * glm::vec4(position + scale, 0.f, 0.f));
     glm::vec2 p3 = glm::vec2(matrix * glm::vec4(position + glm::vec2(0.f, scale.y), 0.f, 0.f));
 
-    _vertices.emplace_back(p0, color, textureIndex);
-    _vertices.emplace_back(p1, color, textureIndex);
-    _vertices.emplace_back(p2, color, textureIndex);
-    _vertices.emplace_back(p3, color, textureIndex);
+    _vertices.emplace_back(p0, color, textureIndex, coord.Coord0);
+    _vertices.emplace_back(p1, color, textureIndex, coord.Coord1);
+    _vertices.emplace_back(p2, color, textureIndex, coord.Coord2);
+    _vertices.emplace_back(p3, color, textureIndex, coord.Coord3);
 
     size_t offset = _vertices.size() - 4;
 
@@ -100,4 +115,20 @@ void Trinacria::DSL::HUD::createHUDQuad(const glm::vec2& position, const glm::ve
     _indices.push_back(offset + 2);
     _indices.push_back(offset + 3);
     _indices.push_back(offset);
+}
+
+bool TRCN_CORE_NAMESPACE::HUD::findTextureIndex(uint32_t& out, const Texture* textureToFind)
+{
+    for (auto& tex : _textures)
+    {
+        if (tex.first == textureToFind)
+        {
+            out = tex.second;
+            return true;
+        }
+    }
+
+    out = 0;
+
+    return false;
 }

@@ -333,7 +333,6 @@ void TRCN_CORE_NAMESPACE::Renderer::Draw(Shader& screenShader)
         element.first->Bind(element.second + GL_TEXTURE0 - 1);
     }
 
-
     glBindVertexArray(_vao);
 
     glDrawElements(GL_TRIANGLES, _quadIndexBuffer.size(), GL_UNSIGNED_INT, nullptr);

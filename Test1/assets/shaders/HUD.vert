@@ -2,9 +2,14 @@
 
 layout(location = 0) in vec2 a_Pos;
 layout(location = 1) in vec4 a_Color;
-layout(location = 2) in int a_TextureIndex;
+layout(location = 2) in uint a_TextureIndex;
+layout(location = 3) in vec2 a_TexCoords;
+
+// TODO: changes in openGL
 
 out vec4 Color;
+
+flat out uint TextureIndex;
 
 void main()
 {
