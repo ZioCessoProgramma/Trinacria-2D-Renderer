@@ -8,12 +8,14 @@ layout(location = 3) in vec2 a_TexCoords;
 // TODO: changes in openGL
 
 out vec4 Color;
-
 flat out uint TextureIndex;
+out vec2 TexCoords;
 
 void main()
 {
     Color = a_Color;
+    TexCoords = a_TexCoords;
+    TextureIndex = a_TextureIndex;
 
     gl_Position = vec4(a_Pos, 0.f, 1.f);
 }

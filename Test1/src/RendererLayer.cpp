@@ -19,11 +19,9 @@ void RendererLayer::OnUpdate(float deltaTime)
 {
 	Trinacria::DSL::Renderer::ClearColorBuffer();
 
-    Trinacria::DSL::HUDQuad quad (Trinacria::DSL::Transform(glm::vec2(-0.3f, -0.9f), glm::vec2(0.6f, 0.1f)),
-        0, glm::vec4(0.1f, 0.9f, 0.1f, 0.7f));
+    Trinacria::DSL::HUDQuadData quad (Trinacria::DSL::Transform(glm::vec2(-0.3f, -0.9f), glm::vec2(0.6f, 0.1f)), &_healthBar, glm::vec4(1.f, 1.f, 1.f, 1.f));
 
     Trinacria::DSL::HUD::CreateHUDQuad(quad);
-
 
 	// Ground
 
@@ -191,6 +189,7 @@ void RendererLayer::OnAttach()
 	_grey.LoadTexture("assets/textures/grey.jpg");
 	_purple.LoadTexture("assets/textures/purple.jpg");
 	_triangleTex.LoadTexture("assets/textures/425.jpg");
+	_healthBar.LoadTexture("assets/textures/healthbar.png");
 
 	_playerAnimationSpriteSheet.LoadTexture("assets/textures/player.png", GL_NEAREST);
 

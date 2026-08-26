@@ -1,4 +1,5 @@
 #include "Trinacria/HUD.h"
+#include "Trinacria/Log.h"
 
 #include <cstring>
 #include <glad/glad.h>
@@ -35,6 +36,7 @@ void TRCN_CORE_NAMESPACE::HUD::Init(const std::string& vertPath, const std::stri
     glEnableVertexAttribArray(2);
 
     glVertexAttribPointer(3, 2, GL_FLOAT, GL_FALSE, sizeof(HUDVertex), (void*)offsetof(HUDVertex, TexCoord));
+    glEnableVertexAttribArray(3);
 
     _shader.LoadCoreShader(vertPath, fragPath);
 }
@@ -64,16 +66,19 @@ void Trinacria::DSL::HUD::CreateHUDQuad(const HUDQuadData& HUDQuad)
 
     uint32_t index = 0;
 
-    if (!findTextureIndex(index, HUDQuad.texture) && HUDQuad.texture)
-    {
-        index = _textures[_textures.size() - 1].second + 1;
-    }
-    else if (_textures.empty())
+    if (_textures.empty())
     {
         index = 1;
+	_textures.emplace_back(HUDQuad.texture, index);
+    }
+    else if (!findTextureIndex(index, HUDQuad.texture) && HUDQuad.texture)
+    {
+        index = _textures[_textures.size() - 1].second + 1;
+	_textures.emplace_back(HUDQuad.texture, index);
     }
 
-    _textures.emplace_back(HUDQuad.texture, index);
+
+    // TODO: use .GetMatrix()
 
     createHUDQuad(HUDQuad.transform.Position, HUDQuad.Color, index, HUDQuad.transform.Scale,
         glm::mat4(1.f), HUDQuad.TexCoords);
@@ -89,9 +94,20 @@ void Trinacria::DSL::HUD::draw()
 {
     _shader.Bind();
 
+    for (auto& tex : _textures)
+    {
+	std::string format = std::format("u_Textures[{}]", tex.second);
+
+	_shader.SetUniformInt(format.c_str(), tex.second - 1);
+
+	tex.first->Bind(tex.second + GL_TEXTURE0 - 1);
+    }
+
     glBindVertexArray(_vao);
 
     glDrawElements(GL_TRIANGLES, _indices.size(), GL_UNSIGNED_INT, nullptr);
+
+    Texture::ClearTextureSlots();
 }
 
 void Trinacria::DSL::HUD::createHUDQuad(const glm::vec2& position, const glm::vec4& color, uint32_t textureIndex,
