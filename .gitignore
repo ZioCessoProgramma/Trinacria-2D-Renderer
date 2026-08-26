@@ -22,4 +22,7 @@ CMakeCache.txt
 .pdb
 *.cmake
 
+/compile_commands.json
+.cache/
+
 build/
