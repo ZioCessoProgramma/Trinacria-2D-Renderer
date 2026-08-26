@@ -157,6 +157,8 @@ namespace TRCN_CORE_NAMESPACE
         // TODO: add overload that makes you flush only a part of the buffer
         static void FlushBuffers();
 
+        inline static Shader _shader;
+
         static constexpr size_t MaxHUDQuads    =            100;
         static constexpr size_t MaxHUDVertices = MaxHUDQuads * 4;
         static constexpr size_t MaxHUDIndices  = MaxHUDQuads * 6;
@@ -174,7 +176,6 @@ namespace TRCN_CORE_NAMESPACE
 
         inline static std::vector<std::pair<Texture*, uint32_t>> _textures;
 
-        inline static Shader _shader;
 
         static void draw();
 

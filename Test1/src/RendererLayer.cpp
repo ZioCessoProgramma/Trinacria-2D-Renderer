@@ -17,14 +17,19 @@ static glm::vec3 color{ 1.f };
 
 void RendererLayer::OnUpdate(float deltaTime)
 {
-	Trinacria::DSL::Renderer::ClearColorBuffer();
+    Trinacria::DSL::Renderer::ClearColorBuffer();
 
     Trinacria::DSL::HUDQuadData quad (Trinacria::DSL::Transform(glm::vec2(-0.3f, -0.9f), glm::vec2(0.6f, 0.1f)), &_healthBar, glm::vec4(1.f, 1.f, 1.f, 1.f));
 
     Trinacria::DSL::HUD::CreateHUDQuad(quad);
 
-	// Ground
+    Trinacria::DSL::HUD::_shader.Bind();
 
+    Trinacria::DSL::HUD::_shader.SetUniformInt("fillMap", 30);
+    Trinacria::DSL::HUD::_shader.SetUniformFloat("progress", 0.7f);
+
+	// Ground
+	
 	Trinacria::DSL::Transform ground(glm::vec2(0.f), glm::vec2(100.f));
 	Trinacria::DSL::QuadData groundData(ground, glm::vec4(1.f), 2);
 
@@ -179,6 +184,8 @@ void RendererLayer::OnUpdate(float deltaTime)
 
 	Trinacria::DSL::LightSystem::Done();
 
+    _healthBarFillMap.Bind(GL_TEXTURE30);
+
 	Trinacria::DSL::Renderer::Draw(screenShader);
 	Trinacria::DSL::Renderer::FlushBuffers();
     Trinacria::DSL::HUD::FlushBuffers();
@@ -189,7 +196,8 @@ void RendererLayer::OnAttach()
 	_grey.LoadTexture("assets/textures/grey.jpg");
 	_purple.LoadTexture("assets/textures/purple.jpg");
 	_triangleTex.LoadTexture("assets/textures/425.jpg");
-	_healthBar.LoadTexture("assets/textures/healthbar.png");
+	_healthBar.LoadTexture("assets/textures/healthbar.png", GL_NEAREST);
+	_healthBarFillMap.LoadTexture("assets/textures/healthbar-fillMap.png", GL_NEAREST);
 
 	_playerAnimationSpriteSheet.LoadTexture("assets/textures/player.png", GL_NEAREST);
 
