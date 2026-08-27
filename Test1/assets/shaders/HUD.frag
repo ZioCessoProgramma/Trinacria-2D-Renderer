@@ -8,8 +8,6 @@ flat in uint TextureIndex;
 
 in vec2 TexCoords;
 
-in vec2 FragPos;
-
 uniform sampler2D u_Textures[MAX_TEXTURE_SLOTS];
 // TODO: make array
 uniform sampler2D fillMap;

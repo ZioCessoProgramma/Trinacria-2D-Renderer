@@ -41,14 +41,14 @@ void TRCN_CORE_NAMESPACE::HUD::Init(const std::string& vertPath, const std::stri
     _shader.LoadCoreShader(vertPath, fragPath);
 }
 
-void Trinacria::DSL::HUD::Cleanup()
+void TRCN_CORE_NAMESPACE::HUD::Cleanup()
 {
     glDeleteVertexArrays(1, &_vao);
     glDeleteBuffers(1, &_vbo);
     glDeleteBuffers(1, &_ebo);
 }
 
-void Trinacria::DSL::HUD::EndHUD()
+void TRCN_CORE_NAMESPACE::HUD::EndHUD()
 {
     glBindBuffer(GL_ARRAY_BUFFER, _vbo);
     glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(HUDVertex) * _vertices.size(), _vertices.data());
@@ -57,7 +57,7 @@ void Trinacria::DSL::HUD::EndHUD()
     glBufferSubData(GL_ELEMENT_ARRAY_BUFFER, 0, sizeof(uint32_t) * _indices.size(), _indices.data());
 }
 
-void Trinacria::DSL::HUD::CreateHUDQuad(const HUDQuadData& HUDQuad)
+void TRCN_CORE_NAMESPACE::HUD::CreateHUDQuad(const HUDQuadData& HUDQuad)
 {
     TRCN_DEPEND_START("Create HUD Quad");
 
@@ -84,13 +84,13 @@ void Trinacria::DSL::HUD::CreateHUDQuad(const HUDQuadData& HUDQuad)
         glm::mat4(1.f), HUDQuad.TexCoords);
 }
 
-void Trinacria::DSL::HUD::FlushBuffers()
+void TRCN_CORE_NAMESPACE::HUD::FlushBuffers()
 {
     _vertices.clear();
     _indices.clear();
 }
 
-void Trinacria::DSL::HUD::draw()
+void TRCN_CORE_NAMESPACE::HUD::draw()
 {
     _shader.Bind();
 
@@ -110,7 +110,7 @@ void Trinacria::DSL::HUD::draw()
     Texture::ClearTextureSlots();
 }
 
-void Trinacria::DSL::HUD::createHUDQuad(const glm::vec2& position, const glm::vec4& color, uint32_t textureIndex,
+void TRCN_CORE_NAMESPACE::HUD::createHUDQuad(const glm::vec2& position, const glm::vec4& color, uint32_t textureIndex,
                                         const glm::vec2& scale, const glm::mat4& matrix, const QuadTexCoords& coord)
 {
     glm::vec2 p0 = glm::vec2(matrix * glm::vec4(position, 0.f, 0.f));
