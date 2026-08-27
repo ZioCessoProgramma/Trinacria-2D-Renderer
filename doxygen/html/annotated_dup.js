@@ -5,7 +5,7 @@ var annotated_dup =
       [ "Event", "classTRCN__CORE__NAMESPACE_1_1Event.html", "classTRCN__CORE__NAMESPACE_1_1Event" ],
       [ "EventDispatcher", "classTRCN__CORE__NAMESPACE_1_1EventDispatcher.html", "classTRCN__CORE__NAMESPACE_1_1EventDispatcher" ],
       [ "FrameBuffer", "classTRCN__CORE__NAMESPACE_1_1FrameBuffer.html", "classTRCN__CORE__NAMESPACE_1_1FrameBuffer" ],
-      [ "HUDQuad", "structTRCN__CORE__NAMESPACE_1_1HUDQuad.html", "structTRCN__CORE__NAMESPACE_1_1HUDQuad" ],
+      [ "HUDQuadData", "structTRCN__CORE__NAMESPACE_1_1HUDQuadData.html", "structTRCN__CORE__NAMESPACE_1_1HUDQuadData" ],
       [ "HUDVertex", "structTRCN__CORE__NAMESPACE_1_1HUDVertex.html", "structTRCN__CORE__NAMESPACE_1_1HUDVertex" ],
       [ "HUD", "classTRCN__CORE__NAMESPACE_1_1HUD.html", null ],
       [ "KeyboardEvent", "classTRCN__CORE__NAMESPACE_1_1KeyboardEvent.html", "classTRCN__CORE__NAMESPACE_1_1KeyboardEvent" ],

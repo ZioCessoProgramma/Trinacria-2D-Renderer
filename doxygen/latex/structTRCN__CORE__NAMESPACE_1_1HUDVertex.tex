@@ -19,7 +19,12 @@ glm\+::vec2 {\bfseries Position}
 glm\+::vec4 {\bfseries Color}
 \begin{DoxyCompactList}\small\item\em the color the vertex should have \end{DoxyCompactList}\item 
 uint32\+\_\+t \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1HUDVertex_a1b7b29a3caba173a08dce297a49aa377}{Texture\+Index}}
-\begin{DoxyCompactList}\small\item\em texture index in texture array \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em texture index in texture array \end{DoxyCompactList}\item 
+\Hypertarget{structTRCN__CORE__NAMESPACE_1_1HUDVertex_ab2a20a014eee3e002b1e72c42e32028f}\label{structTRCN__CORE__NAMESPACE_1_1HUDVertex_ab2a20a014eee3e002b1e72c42e32028f} 
+glm\+::vec2 {\bfseries Tex\+Coord}
+\begin{DoxyCompactList}\small\item\em the tex coordinate (range \mbox{[}0; 1\mbox{]} \mbox{[}0; 1\mbox{]}) associated with this vertex \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1HUDVertex_ad1a4c0e27ff5f1145b4e6f6d45f9c29e}{Fill\+Texture\+Index}}
+\begin{DoxyCompactList}\small\item\em the fill texture index in the texture array \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -28,7 +33,20 @@ uint32\+\_\+t \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1HUDVertex_a1b7b29a
 \label{doc-variable-members}
 \Hypertarget{structTRCN__CORE__NAMESPACE_1_1HUDVertex_doc-variable-members}
 \doxysubsection{Member Data Documentation}
-\Hypertarget{structTRCN__CORE__NAMESPACE_1_1HUDVertex_a1b7b29a3caba173a08dce297a49aa377}\index{TRCN\_CORE\_NAMESPACE::HUDVertex@{TRCN\_CORE\_NAMESPACE::HUDVertex}!TextureIndex@{TextureIndex}}
+\Hypertarget{structTRCN__CORE__NAMESPACE_1_1HUDVertex_ad1a4c0e27ff5f1145b4e6f6d45f9c29e}\index{TRCN\_CORE\_NAMESPACE::HUDVertex@{TRCN\_CORE\_NAMESPACE::HUDVertex}!FillTextureIndex@{FillTextureIndex}}
+\index{FillTextureIndex@{FillTextureIndex}!TRCN\_CORE\_NAMESPACE::HUDVertex@{TRCN\_CORE\_NAMESPACE::HUDVertex}}
+\doxysubsubsection{\texorpdfstring{FillTextureIndex}{FillTextureIndex}}
+{\footnotesize\ttfamily \label{structTRCN__CORE__NAMESPACE_1_1HUDVertex_ad1a4c0e27ff5f1145b4e6f6d45f9c29e} 
+uint32\+\_\+t TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::\+HUDVertex\+::\+Fill\+Texture\+Index}
+
+
+
+the fill texture index in the texture array 
+
+\begin{DoxyNote}{Note}
+it shares the same array with the other textures
+\end{DoxyNote}
+it\textquotesingle{}s used to know where to fill the progress bar. It replaces magenta with the color to fill \Hypertarget{structTRCN__CORE__NAMESPACE_1_1HUDVertex_a1b7b29a3caba173a08dce297a49aa377}\index{TRCN\_CORE\_NAMESPACE::HUDVertex@{TRCN\_CORE\_NAMESPACE::HUDVertex}!TextureIndex@{TextureIndex}}
 \index{TextureIndex@{TextureIndex}!TRCN\_CORE\_NAMESPACE::HUDVertex@{TRCN\_CORE\_NAMESPACE::HUDVertex}}
 \doxysubsubsection{\texorpdfstring{TextureIndex}{TextureIndex}}
 {\footnotesize\ttfamily \label{structTRCN__CORE__NAMESPACE_1_1HUDVertex_a1b7b29a3caba173a08dce297a49aa377} 
@@ -39,6 +57,8 @@ uint32\+\_\+t TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::\+HUDVertex\+::\+Texture\+Ind
 texture index in texture array 
 
 \begin{DoxyNote}{Note}
+0 for none 
+
 the texture array for the \doxylink{classTRCN__CORE__NAMESPACE_1_1HUD}{HUD} is different from the one of the \doxylink{classTRCN__CORE__NAMESPACE_1_1Renderer}{Renderer} 
 \end{DoxyNote}
 

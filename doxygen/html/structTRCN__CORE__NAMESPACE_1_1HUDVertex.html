@@ -107,10 +107,33 @@ glm::vec4&#160;</td><td class="memItemRight" valign="bottom"><b>Color</b></td></
 <tr class="memdesc:ad37ac22605117fcdc6b63e31c3f4fb36"><td class="mdescLeft">&#160;</td><td class="mdescRight">the color the vertex should have <br /></td></tr>
 <tr class="memitem:a1b7b29a3caba173a08dce297a49aa377" id="r_a1b7b29a3caba173a08dce297a49aa377"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1b7b29a3caba173a08dce297a49aa377">TextureIndex</a></td></tr>
 <tr class="memdesc:a1b7b29a3caba173a08dce297a49aa377"><td class="mdescLeft">&#160;</td><td class="mdescRight">texture index in texture array  <br /></td></tr>
+<tr class="memitem:ab2a20a014eee3e002b1e72c42e32028f" id="r_ab2a20a014eee3e002b1e72c42e32028f"><td class="memItemLeft" align="right" valign="top"><a id="ab2a20a014eee3e002b1e72c42e32028f" name="ab2a20a014eee3e002b1e72c42e32028f"></a>
+glm::vec2&#160;</td><td class="memItemRight" valign="bottom"><b>TexCoord</b></td></tr>
+<tr class="memdesc:ab2a20a014eee3e002b1e72c42e32028f"><td class="mdescLeft">&#160;</td><td class="mdescRight">the tex coordinate (range [0; 1] [0; 1]) associated with this vertex <br /></td></tr>
+<tr class="memitem:ad1a4c0e27ff5f1145b4e6f6d45f9c29e" id="r_ad1a4c0e27ff5f1145b4e6f6d45f9c29e"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad1a4c0e27ff5f1145b4e6f6d45f9c29e">FillTextureIndex</a></td></tr>
+<tr class="memdesc:ad1a4c0e27ff5f1145b4e6f6d45f9c29e"><td class="mdescLeft">&#160;</td><td class="mdescRight">the fill texture index in the texture array  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="structTRCN__CORE__NAMESPACE_1_1HUDVertex.html" title="HUDVertex is the vertex that is used by the HUD.">HUDVertex</a> is the vertex that is used by the <a class="el" href="classTRCN__CORE__NAMESPACE_1_1HUD.html">HUD</a>. </p>
 </div><a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
+<a id="ad1a4c0e27ff5f1145b4e6f6d45f9c29e" name="ad1a4c0e27ff5f1145b4e6f6d45f9c29e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1a4c0e27ff5f1145b4e6f6d45f9c29e">&#9670;&#160;</a></span>FillTextureIndex</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t TRCN_CORE_NAMESPACE::HUDVertex::FillTextureIndex</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>the fill texture index in the texture array </p>
+<dl class="section note"><dt>Note</dt><dd>it shares the same array with the other textures</dd></dl>
+<p>it's used to know where to fill the progress bar. It replaces magenta with the color to fill </p>
+
+</div>
+</div>
 <a id="a1b7b29a3caba173a08dce297a49aa377" name="a1b7b29a3caba173a08dce297a49aa377"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1b7b29a3caba173a08dce297a49aa377">&#9670;&#160;</a></span>TextureIndex</h2>
 
@@ -124,7 +147,9 @@ glm::vec4&#160;</td><td class="memItemRight" valign="bottom"><b>Color</b></td></
 </div><div class="memdoc">
 
 <p>texture index in texture array </p>
-<dl class="section note"><dt>Note</dt><dd>the texture array for the <a class="el" href="classTRCN__CORE__NAMESPACE_1_1HUD.html">HUD</a> is different from the one of the <a class="el" href="classTRCN__CORE__NAMESPACE_1_1Renderer.html" title="a static class deals with all the opengl and calculations">Renderer</a> </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>0 for none </dd>
+<dd>
+the texture array for the <a class="el" href="classTRCN__CORE__NAMESPACE_1_1HUD.html">HUD</a> is different from the one of the <a class="el" href="classTRCN__CORE__NAMESPACE_1_1Renderer.html" title="a static class deals with all the opengl and calculations">Renderer</a> </dd></dl>
 
 </div>
 </div>

@@ -10,7 +10,7 @@ var hierarchy =
     [ "TRCN_CORE_NAMESPACE::EventDispatcher&lt; EventType &gt;", "classTRCN__CORE__NAMESPACE_1_1EventDispatcher.html", null ],
     [ "TRCN_CORE_NAMESPACE::FrameBuffer", "classTRCN__CORE__NAMESPACE_1_1FrameBuffer.html", null ],
     [ "TRCN_CORE_NAMESPACE::HUD", "classTRCN__CORE__NAMESPACE_1_1HUD.html", null ],
-    [ "TRCN_CORE_NAMESPACE::HUDQuad", "structTRCN__CORE__NAMESPACE_1_1HUDQuad.html", null ],
+    [ "TRCN_CORE_NAMESPACE::HUDQuadData", "structTRCN__CORE__NAMESPACE_1_1HUDQuadData.html", null ],
     [ "TRCN_CORE_NAMESPACE::HUDVertex", "structTRCN__CORE__NAMESPACE_1_1HUDVertex.html", null ],
     [ "TRCN_CORE_NAMESPACE::Layer", "classTRCN__CORE__NAMESPACE_1_1Layer.html", [
       [ "TRCN_CORE_NAMESPACE::InputPollerLayer", "classTRCN__CORE__NAMESPACE_1_1InputPollerLayer.html", null ]

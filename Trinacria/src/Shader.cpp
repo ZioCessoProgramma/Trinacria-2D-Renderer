@@ -183,7 +183,7 @@ void Trinacria::DSL::Shader::LoadCoreShader(const std::string& vert, const std::
 
     fragmentSource.insert(versionLineEnd, std::format("\n#define MAX_TEXTURE_SLOTS {}\n", maxTextures));
 
-    size_t texturesUniformPos = fragmentSource.find("uniform sampler2D u_Textures[MAX_TEXTURE_SLOTS];", versionLineEnd);
+    size_t texturesUniformPos = fragmentSource.find("uniform sampler2D u_Textures[MAX_TEXTURE_SLOTS", versionLineEnd);
     size_t texturesUniformPosLineEnd = fragmentSource.find("\n", texturesUniformPos);
     texturesUniformPosLineEnd++;
 
@@ -192,7 +192,7 @@ void Trinacria::DSL::Shader::LoadCoreShader(const std::string& vert, const std::
 
     for (int i = 0; i < maxTextures; i++)
     {
-        function.append(std::format("case {}: return texture(u_Textures[{}], uv); break;", i, i));
+        function.append(std::format("case {}: return texture(u_Textures[{}], uv);", i, i));
     }
     function.append("}}\n");
 

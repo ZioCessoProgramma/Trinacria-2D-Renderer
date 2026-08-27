@@ -103,6 +103,7 @@ namespace TRCN_CORE_NAMESPACE
 
         /**
          * @brief texture index in texture array
+         * @note 0 for none
          * @note the texture array for the HUD is different from the one of the Renderer
          */
 
@@ -113,6 +114,14 @@ namespace TRCN_CORE_NAMESPACE
          */
 
         glm::vec2 TexCoord;
+
+        /**
+         * @brief the fill texture index in the texture array
+         * @note it shares the same array with the other textures
+         * @details it's used to know where to fill the progress bar. It replaces magenta with the color to fill
+         */
+
+        uint32_t FillTextureIndex;
     };
 
     class HUD
@@ -150,6 +159,13 @@ namespace TRCN_CORE_NAMESPACE
         static void CreateHUDQuad(const HUDQuadData& HUDQuad);
 
         /**
+         * @brief creates a quad that can be filled like a progress bar
+         * @param HUDQuad the quad to render
+         * @param fillTexture the texture that contains in magenta the pixels to fill
+         */
+        static void CreateProgressBar(const HUDQuadData& HUDQuad, Texture* fillTexture);
+
+        /**
          * @brief flushes all the buffers
          * @note call it at the end of the frame after Renderer::Draw
          */
@@ -180,8 +196,10 @@ namespace TRCN_CORE_NAMESPACE
         static void draw();
 
         static void createHUDQuad(const glm::vec2& position, const glm::vec4& color, uint32_t textureIndex, const glm::vec2& scale, const glm::mat4& matrix, const
-                                  QuadTexCoords& coord);
+                                  QuadTexCoords& coord, uint32_t fillTextureIndex);
 
         static bool findTextureIndex(uint32_t& outIndex, const Texture* texToFind);
+
+        static uint32_t setupTexture(Texture* texture);
     };
 }

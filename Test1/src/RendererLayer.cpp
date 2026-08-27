@@ -19,14 +19,14 @@ void RendererLayer::OnUpdate(float deltaTime)
 {
     Trinacria::DSL::Renderer::ClearColorBuffer();
 
-    Trinacria::DSL::HUDQuadData quad (Trinacria::DSL::Transform(glm::vec2(-0.3f, -0.9f), glm::vec2(0.6f, 0.1f)), &_healthBar, glm::vec4(1.f, 1.f, 1.f, 1.f));
+    Trinacria::DSL::HUDQuadData quad (Trinacria::DSL::Transform(glm::vec2(-0.3f, -0.9f),
+        glm::vec2(0.6f, 0.1f), 0, glm::vec2(0.f)), &_healthBar, glm::vec4(1.f, 1.f, 1.f, 1.f));
 
-    Trinacria::DSL::HUD::CreateHUDQuad(quad);
+    Trinacria::DSL::HUD::CreateProgressBar(quad, &_healthBarFillMap);
 
     Trinacria::DSL::HUD::_shader.Bind();
 
-    Trinacria::DSL::HUD::_shader.SetUniformInt("fillMap", 30);
-    Trinacria::DSL::HUD::_shader.SetUniformFloat("progress", 0.7f);
+    Trinacria::DSL::HUD::_shader.SetUniformFloat("progress", (glm::sin(glfwGetTime()) + 1.f) / 2.f);
 
 	// Ground
 	
@@ -132,8 +132,6 @@ void RendererLayer::OnUpdate(float deltaTime)
 
 	Trinacria::DSL::Renderer::EndScene();
 
-
-
     Trinacria::DSL::HUD::EndHUD();
 
 	float zoom = _cameraData.Zoom;
@@ -183,8 +181,6 @@ void RendererLayer::OnUpdate(float deltaTime)
 	Trinacria::DSL::Renderer::AddMaterial(groundMaterial);
 
 	Trinacria::DSL::LightSystem::Done();
-
-    _healthBarFillMap.Bind(GL_TEXTURE30);
 
 	Trinacria::DSL::Renderer::Draw(screenShader);
 	Trinacria::DSL::Renderer::FlushBuffers();

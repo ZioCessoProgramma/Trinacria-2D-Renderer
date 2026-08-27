@@ -38,6 +38,9 @@ void TRCN_CORE_NAMESPACE::HUD::Init(const std::string& vertPath, const std::stri
     glVertexAttribPointer(3, 2, GL_FLOAT, GL_FALSE, sizeof(HUDVertex), (void*)offsetof(HUDVertex, TexCoord));
     glEnableVertexAttribArray(3);
 
+    glVertexAttribIPointer(4, 1, GL_UNSIGNED_INT, sizeof(HUDVertex), (void*)(offsetof(HUDVertex, FillTextureIndex)));
+    glEnableVertexAttribArray(4);
+
     _shader.LoadCoreShader(vertPath, fragPath);
 }
 
@@ -64,24 +67,24 @@ void TRCN_CORE_NAMESPACE::HUD::CreateHUDQuad(const HUDQuadData& HUDQuad)
     TRCN_DEPEND_RETURN_ASSERT_VOID(_vertices.size() < MaxHUDVertices);
     TRCN_DEPEND_RETURN_ASSERT_VOID(_indices.size() < MaxHUDIndices);
 
-    uint32_t index = 0;
+    uint32_t index = setupTexture(HUDQuad.texture);
 
-    if (_textures.empty())
-    {
-        index = 1;
-	_textures.emplace_back(HUDQuad.texture, index);
-    }
-    else if (!findTextureIndex(index, HUDQuad.texture) && HUDQuad.texture)
-    {
-        index = _textures[_textures.size() - 1].second + 1;
-	_textures.emplace_back(HUDQuad.texture, index);
-    }
+    createHUDQuad(-HUDQuad.transform.Pivot, HUDQuad.Color, index, glm::vec2(1),
+                  HUDQuad.transform.GetMatrix(), HUDQuad.TexCoords, 0);
+}
 
+void TRCN_CORE_NAMESPACE::HUD::CreateProgressBar(const HUDQuadData& HUDQuad, Texture* fillTexture)
+{
+    TRCN_DEPEND_START("Create Progress Bar");
 
-    // TODO: use .GetMatrix()
+    TRCN_DEPEND_RETURN_ASSERT_VOID(_vertices.size() < MaxHUDVertices);
+    TRCN_DEPEND_RETURN_ASSERT_VOID(_indices.size() < MaxHUDIndices);
 
-    createHUDQuad(HUDQuad.transform.Position, HUDQuad.Color, index, HUDQuad.transform.Scale,
-        glm::mat4(1.f), HUDQuad.TexCoords);
+     uint32_t index = setupTexture(HUDQuad.texture);
+    uint32_t fillTexIndex = setupTexture(fillTexture);
+
+    createHUDQuad(-HUDQuad.transform.Pivot, HUDQuad.Color, index, glm::vec2(1),
+              HUDQuad.transform.GetMatrix(), HUDQuad.TexCoords, fillTexIndex);
 }
 
 void TRCN_CORE_NAMESPACE::HUD::FlushBuffers()
@@ -96,11 +99,11 @@ void TRCN_CORE_NAMESPACE::HUD::draw()
 
     for (auto& tex : _textures)
     {
-	std::string format = std::format("u_Textures[{}]", tex.second);
+        std::string format = std::format("u_Textures[{}]", tex.second);
 
-	_shader.SetUniformInt(format.c_str(), tex.second - 1);
+        _shader.SetUniformInt(format.c_str(), tex.second - 1);
 
-	tex.first->Bind(tex.second + GL_TEXTURE0 - 1);
+        tex.first->Bind(tex.second + GL_TEXTURE0 - 1);
     }
 
     glBindVertexArray(_vao);
@@ -111,17 +114,17 @@ void TRCN_CORE_NAMESPACE::HUD::draw()
 }
 
 void TRCN_CORE_NAMESPACE::HUD::createHUDQuad(const glm::vec2& position, const glm::vec4& color, uint32_t textureIndex,
-                                        const glm::vec2& scale, const glm::mat4& matrix, const QuadTexCoords& coord)
+                                             const glm::vec2& scale, const glm::mat4& matrix, const QuadTexCoords& coord, uint32_t fillTextureIndex)
 {
-    glm::vec2 p0 = glm::vec2(matrix * glm::vec4(position, 0.f, 0.f));
-    glm::vec2 p1 = glm::vec2(matrix * glm::vec4(position + glm::vec2(scale.x, 0.f), 0.f, 0.f));
-    glm::vec2 p2 = glm::vec2(matrix * glm::vec4(position + scale, 0.f, 0.f));
-    glm::vec2 p3 = glm::vec2(matrix * glm::vec4(position + glm::vec2(0.f, scale.y), 0.f, 0.f));
+    glm::vec2 p0 = glm::vec2(matrix * glm::vec4(position, 0.f, 1.f));
+    glm::vec2 p1 = glm::vec2(matrix * glm::vec4(position + glm::vec2(scale.x, 0.f), 0.f, 1.f));
+    glm::vec2 p2 = glm::vec2(matrix * glm::vec4(position + scale, 0.f, 1.f));
+    glm::vec2 p3 = glm::vec2(matrix * glm::vec4(position + glm::vec2(0.f, scale.y), 0.f, 1.f));
 
-    _vertices.emplace_back(p0, color, textureIndex, coord.Coord0);
-    _vertices.emplace_back(p1, color, textureIndex, coord.Coord1);
-    _vertices.emplace_back(p2, color, textureIndex, coord.Coord2);
-    _vertices.emplace_back(p3, color, textureIndex, coord.Coord3);
+    _vertices.emplace_back(p0, color, textureIndex, coord.Coord0, fillTextureIndex);
+    _vertices.emplace_back(p1, color, textureIndex, coord.Coord1, fillTextureIndex);
+    _vertices.emplace_back(p2, color, textureIndex, coord.Coord2, fillTextureIndex);
+    _vertices.emplace_back(p3, color, textureIndex, coord.Coord3, fillTextureIndex);
 
     size_t offset = _vertices.size() - 4;
 
@@ -147,4 +150,22 @@ bool TRCN_CORE_NAMESPACE::HUD::findTextureIndex(uint32_t& out, const Texture* te
     out = 0;
 
     return false;
+}
+
+uint32_t Trinacria::DSL::HUD::setupTexture(Texture* texture)
+{
+    uint32_t index = 0;
+
+    if (_textures.empty())
+    {
+        index = 1;
+        _textures.emplace_back(texture, index);
+    }
+    else if (!findTextureIndex(index, texture) && texture)
+    {
+        index = _textures[_textures.size() - 1].second + 1;
+        _textures.emplace_back(texture, index);
+    }
+
+    return index;
 }
