@@ -5,11 +5,10 @@ out vec4 FragColor;
 flat in uint TextureIndex;
 in vec2 TexCoords;
 flat in uint FillTextureIndex;
+flat in float Progress;
+in vec4 FillColor;
 
 uniform sampler2D u_Textures[MAX_TEXTURE_SLOTS];
-
-// TODO: in vertex
-uniform float progress;
 
 void main()
 {
@@ -19,13 +18,13 @@ void main()
     }
     else
     {
-        vec4 fillColor = SampleTexture(int(FillTextureIndex), TexCoords);
+        vec4 fillTexColor = SampleTexture(int(FillTextureIndex), TexCoords);
 
-        if(fillColor.rgb == vec3(1.f, 0.f, 1.f))
+        if(fillTexColor.rgb == vec3(1.f, 0.f, 1.f))
         {
-            if (TexCoords.x <= progress)
+            if (TexCoords.x <= Progress && Progress != -1.f)
             {
-                FragColor = vec4(0.3f, 0.7f, 0.3f, 0.9f);
+                FragColor = FillColor;
             }
             else
             {

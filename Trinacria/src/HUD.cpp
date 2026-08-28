@@ -41,6 +41,12 @@ void TRCN_CORE_NAMESPACE::HUD::Init(const std::string& vertPath, const std::stri
     glVertexAttribIPointer(4, 1, GL_UNSIGNED_INT, sizeof(HUDVertex), (void*)(offsetof(HUDVertex, FillTextureIndex)));
     glEnableVertexAttribArray(4);
 
+    glVertexAttribPointer(5, 1, GL_FLOAT, GL_FALSE, sizeof(HUDVertex), (void*)offsetof(HUDVertex, Progress));
+    glEnableVertexAttribArray(5);
+
+    glVertexAttribPointer(6, 4, GL_FLOAT, GL_FALSE, sizeof(HUDVertex), (void*)offsetof(HUDVertex, FillColor));
+    glEnableVertexAttribArray(6);
+
     _shader.LoadCoreShader(vertPath, fragPath);
 }
 
@@ -70,10 +76,10 @@ void TRCN_CORE_NAMESPACE::HUD::CreateHUDQuad(const HUDQuadData& HUDQuad)
     uint32_t index = setupTexture(HUDQuad.texture);
 
     createHUDQuad(-HUDQuad.transform.Pivot, HUDQuad.Color, index, glm::vec2(1),
-                  HUDQuad.transform.GetMatrix(), HUDQuad.TexCoords, 0);
+                  HUDQuad.transform.GetMatrix(), HUDQuad.TexCoords, 0, -1.f, glm::vec4(0.f));
 }
 
-void TRCN_CORE_NAMESPACE::HUD::CreateProgressBar(const HUDQuadData& HUDQuad, Texture* fillTexture)
+void TRCN_CORE_NAMESPACE::HUD::CreateProgressBar(const HUDQuadData& HUDQuad, Texture* fillTexture, float progress, const glm::vec4& fillColor)
 {
     TRCN_DEPEND_START("Create Progress Bar");
 
@@ -84,7 +90,7 @@ void TRCN_CORE_NAMESPACE::HUD::CreateProgressBar(const HUDQuadData& HUDQuad, Tex
     uint32_t fillTexIndex = setupTexture(fillTexture);
 
     createHUDQuad(-HUDQuad.transform.Pivot, HUDQuad.Color, index, glm::vec2(1),
-              HUDQuad.transform.GetMatrix(), HUDQuad.TexCoords, fillTexIndex);
+                  HUDQuad.transform.GetMatrix(), HUDQuad.TexCoords, fillTexIndex, progress, fillColor);
 }
 
 void TRCN_CORE_NAMESPACE::HUD::FlushBuffers()
@@ -114,17 +120,18 @@ void TRCN_CORE_NAMESPACE::HUD::draw()
 }
 
 void TRCN_CORE_NAMESPACE::HUD::createHUDQuad(const glm::vec2& position, const glm::vec4& color, uint32_t textureIndex,
-                                             const glm::vec2& scale, const glm::mat4& matrix, const QuadTexCoords& coord, uint32_t fillTextureIndex)
+                                             const glm::vec2& scale, const glm::mat4& matrix, const QuadTexCoords& coord, uint32_t fillTextureIndex, float progress, const
+                                             glm::vec4& fillColor)
 {
     glm::vec2 p0 = glm::vec2(matrix * glm::vec4(position, 0.f, 1.f));
     glm::vec2 p1 = glm::vec2(matrix * glm::vec4(position + glm::vec2(scale.x, 0.f), 0.f, 1.f));
     glm::vec2 p2 = glm::vec2(matrix * glm::vec4(position + scale, 0.f, 1.f));
     glm::vec2 p3 = glm::vec2(matrix * glm::vec4(position + glm::vec2(0.f, scale.y), 0.f, 1.f));
 
-    _vertices.emplace_back(p0, color, textureIndex, coord.Coord0, fillTextureIndex);
-    _vertices.emplace_back(p1, color, textureIndex, coord.Coord1, fillTextureIndex);
-    _vertices.emplace_back(p2, color, textureIndex, coord.Coord2, fillTextureIndex);
-    _vertices.emplace_back(p3, color, textureIndex, coord.Coord3, fillTextureIndex);
+    _vertices.emplace_back(p0, color, textureIndex, coord.Coord0, fillTextureIndex, progress, fillColor);
+    _vertices.emplace_back(p1, color, textureIndex, coord.Coord1, fillTextureIndex, progress, fillColor);
+    _vertices.emplace_back(p2, color, textureIndex, coord.Coord2, fillTextureIndex, progress, fillColor);
+    _vertices.emplace_back(p3, color, textureIndex, coord.Coord3, fillTextureIndex, progress, fillColor);
 
     size_t offset = _vertices.size() - 4;
 

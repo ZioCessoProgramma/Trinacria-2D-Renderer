@@ -19,14 +19,22 @@ void RendererLayer::OnUpdate(float deltaTime)
 {
     Trinacria::DSL::Renderer::ClearColorBuffer();
 
-    Trinacria::DSL::HUDQuadData quad (Trinacria::DSL::Transform(glm::vec2(-0.3f, -0.9f),
+    Trinacria::DSL::HUDQuadData progressBar (Trinacria::DSL::Transform(glm::vec2(-0.3f, -0.9f),
         glm::vec2(0.6f, 0.1f), 0, glm::vec2(0.f)), &_healthBar, glm::vec4(1.f, 1.f, 1.f, 1.f));
 
-    Trinacria::DSL::HUD::CreateProgressBar(quad, &_healthBarFillMap);
+    Trinacria::DSL::HUD::CreateProgressBar(progressBar, &_healthBarFillMap, (glm::sin(glfwGetTime()) + 1) / 2,
+        glm::vec4(0.2f, 0.7f, 0.2f, 0.7f));
 
-    Trinacria::DSL::HUD::_shader.Bind();
+    Trinacria::DSL::HUDQuadData quad(Trinacria::DSL::Transform(glm::vec2(-0.9f, 0.f),
+        glm::vec2(0.1f, 0.7f), 0, glm::vec2(0.15f, 0.25f)), &_purple, glm::vec4(0.7f, 0.2f, 0.2f, 1.f));
 
-    Trinacria::DSL::HUD::_shader.SetUniformFloat("progress", (glm::sin(glfwGetTime()) + 1.f) / 2.f);
+    Trinacria::DSL::HUD::CreateHUDQuad(quad);
+
+    Trinacria::DSL::HUDQuadData progressBar1 (Trinacria::DSL::Transform(glm::vec2(-0.3f, -0.8f),
+        glm::vec2(0.6f, 0.1f), 0, glm::vec2(0.f)), &_healthBar, glm::vec4(1.f, 1.f, 1.f, 1.f));
+
+    Trinacria::DSL::HUD::CreateProgressBar(progressBar1, &_healthBarFillMap, (glm::cos(glfwGetTime()) + 1) / 2,
+        glm::vec4(0.2f, 0.2f, 0.6f, 1.f));
 
 	// Ground
 	

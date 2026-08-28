@@ -122,6 +122,20 @@ namespace TRCN_CORE_NAMESPACE
          */
 
         uint32_t FillTextureIndex;
+
+        /**
+         * @brief the progress of the progress bar
+         * @note -1 when no progress
+         */
+
+        float Progress;
+
+        /**
+         * @brief the color to fill the progress bar with
+         * @note don't worry about it if are drawing just a quad
+         */
+
+        glm::vec4 FillColor;
     };
 
     class HUD
@@ -162,8 +176,11 @@ namespace TRCN_CORE_NAMESPACE
          * @brief creates a quad that can be filled like a progress bar
          * @param HUDQuad the quad to render
          * @param fillTexture the texture that contains in magenta the pixels to fill
+         * @param progress the progress in range [0, 1]
+         * @param fillColor the color to use when filling the progress bar
+         * @param
          */
-        static void CreateProgressBar(const HUDQuadData& HUDQuad, Texture* fillTexture);
+        static void CreateProgressBar(const HUDQuadData& HUDQuad, Texture* fillTexture, float progress, const glm::vec4& fillColor);
 
         /**
          * @brief flushes all the buffers
@@ -196,7 +213,7 @@ namespace TRCN_CORE_NAMESPACE
         static void draw();
 
         static void createHUDQuad(const glm::vec2& position, const glm::vec4& color, uint32_t textureIndex, const glm::vec2& scale, const glm::mat4& matrix, const
-                                  QuadTexCoords& coord, uint32_t fillTextureIndex);
+                                  QuadTexCoords& coord, uint32_t fillTextureIndex, float progress, const glm::vec4& fillColor);
 
         static bool findTextureIndex(uint32_t& outIndex, const Texture* texToFind);
 
