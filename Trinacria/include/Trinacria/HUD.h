@@ -7,6 +7,7 @@
 #include "Shader.h"
 #include "Texture.h"
 #include "Transform.h"
+#include "Trinacria/InputEvents.h"
 #include "glm/glm.hpp"
 
 namespace TRCN_CORE_NAMESPACE
@@ -138,6 +139,8 @@ namespace TRCN_CORE_NAMESPACE
         glm::vec4 FillColor;
     };
 
+    using OnClickType = std::function<void()>;
+
     class HUD
     {
     public:
@@ -173,6 +176,15 @@ namespace TRCN_CORE_NAMESPACE
         static void CreateHUDQuad(const HUDQuadData& HUDQuad);
 
         /**
+         * @brief it adds the specified call to a private array
+         * @note to be called once per button
+         * @param onClick the onClick function
+         * @param transformOfTheQuad
+         */
+
+        static void AddOnClickFunction(const OnClickType& onClick, const Transform& transformOfTheQuad);
+
+        /**
          * @brief creates a quad that can be filled like a progress bar
          * @param HUDQuad the quad to render
          * @param fillTexture the texture that contains in magenta the pixels to fill
@@ -180,6 +192,7 @@ namespace TRCN_CORE_NAMESPACE
          * @param fillColor the color to use when filling the progress bar
          * @param
          */
+
         static void CreateProgressBar(const HUDQuadData& HUDQuad, Texture* fillTexture, float progress, const glm::vec4& fillColor);
 
         /**
@@ -197,8 +210,8 @@ namespace TRCN_CORE_NAMESPACE
         static constexpr size_t MaxHUDIndices  = MaxHUDQuads * 6;
 
     private:
-
         friend class Renderer;
+	    friend class InputPollerLayer;
 
         inline static uint32_t _vao;
         inline static uint32_t _vbo;
@@ -209,6 +222,9 @@ namespace TRCN_CORE_NAMESPACE
 
         inline static std::vector<std::pair<Texture*, uint32_t>> _textures;
 
+	    inline static std::vector<std::pair<std::function<void()>, Transform>> _onClickAndPos;
+
+        inline static int _lastStateOfLeftMouseButton = GLFW_RELEASE;
 
         static void draw();
 
@@ -218,5 +234,9 @@ namespace TRCN_CORE_NAMESPACE
         static bool findTextureIndex(uint32_t& outIndex, const Texture* texToFind);
 
         static uint32_t setupTexture(Texture* texture);
+
+	    static void updateEvents(GLFWwindow* window, const glm::vec2& windowDimensions);
+
+        static bool isInRange(const Transform& transform, GLFWwindow* window, const glm::vec2& windowDimensions);
     };
 }

@@ -1,10 +1,10 @@
 #include "Trinacria/HUD.h"
-#include "Trinacria/Log.h"
-
 #include <cstring>
 #include <glad/glad.h>
 
+#include "GLFW/glfw3.h"
 #include "Trinacria/Assert.h"
+#include "Trinacria/Macros.h"
 #include "Trinacria/Renderer.h"
 
 void TRCN_CORE_NAMESPACE::HUD::Init(const std::string& vertPath, const std::string& fragPath)
@@ -77,6 +77,11 @@ void TRCN_CORE_NAMESPACE::HUD::CreateHUDQuad(const HUDQuadData& HUDQuad)
 
     createHUDQuad(-HUDQuad.transform.Pivot, HUDQuad.Color, index, glm::vec2(1),
                   HUDQuad.transform.GetMatrix(), HUDQuad.TexCoords, 0, -1.f, glm::vec4(0.f));
+}
+
+void Trinacria::DSL::HUD::AddOnClickFunction(const OnClickType& onClick, const Transform& transformOfTheQuad)
+{
+    _onClickAndPos.emplace_back(onClick, transformOfTheQuad);
 }
 
 void TRCN_CORE_NAMESPACE::HUD::CreateProgressBar(const HUDQuadData& HUDQuad, Texture* fillTexture, float progress, const glm::vec4& fillColor)
@@ -159,7 +164,7 @@ bool TRCN_CORE_NAMESPACE::HUD::findTextureIndex(uint32_t& out, const Texture* te
     return false;
 }
 
-uint32_t Trinacria::DSL::HUD::setupTexture(Texture* texture)
+uint32_t TRCN_CORE_NAMESPACE::HUD::setupTexture(Texture* texture)
 {
     uint32_t index = 0;
 
@@ -175,4 +180,59 @@ uint32_t Trinacria::DSL::HUD::setupTexture(Texture* texture)
     }
 
     return index;
+}
+
+void TRCN_CORE_NAMESPACE::HUD::updateEvents(GLFWwindow* window, const glm::vec2& windowDimensions)
+{
+    // cannot subscribe to input poller layer because it is a layer and it is logically incorrect
+
+    if(glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS && _lastStateOfLeftMouseButton == GLFW_RELEASE)
+    {
+        // TODO: check if is in button range
+
+        for (auto& el : _onClickAndPos)
+        {
+            if (isInRange(el.second, window, windowDimensions)) el.first();
+        }
+
+        _lastStateOfLeftMouseButton = GLFW_PRESS;
+    }
+    else
+    {
+        _lastStateOfLeftMouseButton = glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT);
+    }
+}
+
+bool Trinacria::DSL::HUD::isInRange(const Transform& transform, GLFWwindow* window, const glm::vec2& windowDimensions)
+{
+    double _xPos, _yPos;
+    glfwGetCursorPos(window, &_xPos, &_yPos);
+
+    auto xPos = ((float)_xPos / windowDimensions.x - 0.5f) * 2;
+    auto yPos = -((float)_yPos / windowDimensions.y - 0.5f) * 2;
+
+    // point to find
+    glm::vec2 P(xPos, yPos);
+
+    glm::mat4 matrix = transform.GetMatrix();
+
+    glm::vec2 A = glm::vec2(matrix * glm::vec4(-transform.Pivot, 0.f, 1.f));
+    glm::vec2 B = glm::vec2(matrix * glm::vec4(-transform.Pivot + glm::vec2(1.f, 0.f), 0.f, 1.f));
+    glm::vec2 D = glm::vec2(matrix * glm::vec4(-transform.Pivot + glm::vec2(0.f, 1.f), 0.f, 1.f));
+
+    glm::vec2 AB = B - A; // one length
+    glm::vec2 AD = D - A; // another one
+
+    glm::vec2 AP = P - A;
+
+    float lengthSquaredAB = glm::dot(AB, AB);
+    float lengthSquaredAD = glm::dot(AD, AD);
+
+    float dotABAP = glm::dot(AB, AP);
+    float dotADAP = glm::dot(AD, AP);
+
+    bool b = (dotABAP >= 0 && dotABAP <= lengthSquaredAB);
+    bool b1 = (dotADAP >= 0 && dotADAP <= lengthSquaredAD);
+
+    return b && b1;
 }

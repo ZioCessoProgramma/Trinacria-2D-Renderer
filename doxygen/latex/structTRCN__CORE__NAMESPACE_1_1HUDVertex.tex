@@ -24,7 +24,11 @@ uint32\+\_\+t \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1HUDVertex_a1b7b29a
 glm\+::vec2 {\bfseries Tex\+Coord}
 \begin{DoxyCompactList}\small\item\em the tex coordinate (range \mbox{[}0; 1\mbox{]} \mbox{[}0; 1\mbox{]}) associated with this vertex \end{DoxyCompactList}\item 
 uint32\+\_\+t \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1HUDVertex_ad1a4c0e27ff5f1145b4e6f6d45f9c29e}{Fill\+Texture\+Index}}
-\begin{DoxyCompactList}\small\item\em the fill texture index in the texture array \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em the fill texture index in the texture array \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1HUDVertex_a74dd4606c0251eb739ea4a4fc46541fe}{Progress}}
+\begin{DoxyCompactList}\small\item\em the progress of the progress bar \end{DoxyCompactList}\item 
+glm\+::vec4 \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1HUDVertex_a19af729091677a0c367c748a0bb04fa2}{Fill\+Color}}
+\begin{DoxyCompactList}\small\item\em the color to fill the progress bar with \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -33,6 +37,19 @@ uint32\+\_\+t \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1HUDVertex_ad1a4c0e
 \label{doc-variable-members}
 \Hypertarget{structTRCN__CORE__NAMESPACE_1_1HUDVertex_doc-variable-members}
 \doxysubsection{Member Data Documentation}
+\Hypertarget{structTRCN__CORE__NAMESPACE_1_1HUDVertex_a19af729091677a0c367c748a0bb04fa2}\index{TRCN\_CORE\_NAMESPACE::HUDVertex@{TRCN\_CORE\_NAMESPACE::HUDVertex}!FillColor@{FillColor}}
+\index{FillColor@{FillColor}!TRCN\_CORE\_NAMESPACE::HUDVertex@{TRCN\_CORE\_NAMESPACE::HUDVertex}}
+\doxysubsubsection{\texorpdfstring{FillColor}{FillColor}}
+{\footnotesize\ttfamily \label{structTRCN__CORE__NAMESPACE_1_1HUDVertex_a19af729091677a0c367c748a0bb04fa2} 
+glm\+::vec4 TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::\+HUDVertex\+::\+Fill\+Color}
+
+
+
+the color to fill the progress bar with 
+
+\begin{DoxyNote}{Note}
+don\textquotesingle{}t worry about it if are drawing just a quad 
+\end{DoxyNote}
 \Hypertarget{structTRCN__CORE__NAMESPACE_1_1HUDVertex_ad1a4c0e27ff5f1145b4e6f6d45f9c29e}\index{TRCN\_CORE\_NAMESPACE::HUDVertex@{TRCN\_CORE\_NAMESPACE::HUDVertex}!FillTextureIndex@{FillTextureIndex}}
 \index{FillTextureIndex@{FillTextureIndex}!TRCN\_CORE\_NAMESPACE::HUDVertex@{TRCN\_CORE\_NAMESPACE::HUDVertex}}
 \doxysubsubsection{\texorpdfstring{FillTextureIndex}{FillTextureIndex}}
@@ -46,7 +63,20 @@ the fill texture index in the texture array
 \begin{DoxyNote}{Note}
 it shares the same array with the other textures
 \end{DoxyNote}
-it\textquotesingle{}s used to know where to fill the progress bar. It replaces magenta with the color to fill \Hypertarget{structTRCN__CORE__NAMESPACE_1_1HUDVertex_a1b7b29a3caba173a08dce297a49aa377}\index{TRCN\_CORE\_NAMESPACE::HUDVertex@{TRCN\_CORE\_NAMESPACE::HUDVertex}!TextureIndex@{TextureIndex}}
+it\textquotesingle{}s used to know where to fill the progress bar. It replaces magenta with the color to fill \Hypertarget{structTRCN__CORE__NAMESPACE_1_1HUDVertex_a74dd4606c0251eb739ea4a4fc46541fe}\index{TRCN\_CORE\_NAMESPACE::HUDVertex@{TRCN\_CORE\_NAMESPACE::HUDVertex}!Progress@{Progress}}
+\index{Progress@{Progress}!TRCN\_CORE\_NAMESPACE::HUDVertex@{TRCN\_CORE\_NAMESPACE::HUDVertex}}
+\doxysubsubsection{\texorpdfstring{Progress}{Progress}}
+{\footnotesize\ttfamily \label{structTRCN__CORE__NAMESPACE_1_1HUDVertex_a74dd4606c0251eb739ea4a4fc46541fe} 
+float TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::\+HUDVertex\+::\+Progress}
+
+
+
+the progress of the progress bar 
+
+\begin{DoxyNote}{Note}
+-\/1 when no progress 
+\end{DoxyNote}
+\Hypertarget{structTRCN__CORE__NAMESPACE_1_1HUDVertex_a1b7b29a3caba173a08dce297a49aa377}\index{TRCN\_CORE\_NAMESPACE::HUDVertex@{TRCN\_CORE\_NAMESPACE::HUDVertex}!TextureIndex@{TextureIndex}}
 \index{TextureIndex@{TextureIndex}!TRCN\_CORE\_NAMESPACE::HUDVertex@{TRCN\_CORE\_NAMESPACE::HUDVertex}}
 \doxysubsubsection{\texorpdfstring{TextureIndex}{TextureIndex}}
 {\footnotesize\ttfamily \label{structTRCN__CORE__NAMESPACE_1_1HUDVertex_a1b7b29a3caba173a08dce297a49aa377} 

@@ -3,6 +3,7 @@
 #include "Macros.h"
 
 #include "Event.h"
+#include "glm/vec2.hpp"
 
 #define KEY_NUM 94
 
@@ -172,9 +173,14 @@ namespace TRCN_CORE_NAMESPACE
 		/**
 		 * @brief sets the window used to poll input state
 		 * @param window the GLFW window
+		 * @param windowDimensions
 		 */
 
-		void SetWindow(GLFWwindow* window) { _window = window; }
+		void SetWindow(GLFWwindow* window, const glm::vec2& windowDimensions)
+		{
+		    _window = window;
+		    _windowDimensions  = windowDimensions;
+		}
 
 		/**
 		 * @brief dispatcher of keyboard events
@@ -200,6 +206,7 @@ namespace TRCN_CORE_NAMESPACE
         void submitMouseEvent(int glfwKey, MouseValue mouseKey);
 
         GLFWwindow* _window = nullptr;
+	    glm::vec2 _windowDimensions;
 
         uint32_t _keys[KEY_NUM] = {};
         bool _wasPressed[KEY_NUM] = {};

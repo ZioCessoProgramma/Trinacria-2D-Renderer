@@ -25,8 +25,7 @@ void RendererLayer::OnUpdate(float deltaTime)
     Trinacria::DSL::HUD::CreateProgressBar(progressBar, &_healthBarFillMap, (glm::sin(glfwGetTime()) + 1) / 2,
 	    glm::vec4(0.2f, 0.7f, 0.2f, 0.7f));
 
-    Trinacria::DSL::HUDQuadData quad(Trinacria::DSL::Transform(glm::vec2(-0.9f, 0.f),
-		glm::vec2(0.1f, 0.7f), 0, glm::vec2(0.15f, 0.25f)), &_purple, glm::vec4(0.7f, 0.2f, 0.2f, 1.f));
+    Trinacria::DSL::HUDQuadData quad(buttonTransform, &_purple, glm::vec4(0.7f, 0.2f, 0.2f, 1.f));
 
     Trinacria::DSL::HUD::CreateHUDQuad(quad);
 
@@ -236,6 +235,8 @@ void RendererLayer::OnAttach()
 
     Trinacria::DSL::LightSystem::Init();
     Trinacria::DSL::HUD::Init("assets/shaders/HUD.vert", "assets/shaders/HUD.frag");
+
+    Trinacria::DSL::HUD::AddOnClickFunction([](){TRCN_LOG("Hello Bitches!");}, buttonTransform);
 }
 
 void RendererLayer::OnDetach()

@@ -15,7 +15,9 @@ static void \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1HUD_ac063a609472c831b
 \begin{DoxyCompactList}\small\item\em deals with open\+GL buffers \end{DoxyCompactList}\item 
 static void \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1HUD_aa2992fbe5850b4614c4d32e114527989}{Create\+HUDQuad}} (const \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1HUDQuadData}{HUDQuad\+Data}} \&HUDQuad)
 \begin{DoxyCompactList}\small\item\em creates a quad that will be later drawn \end{DoxyCompactList}\item 
-static void \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1HUD_a9500e05b3ee83e352e71351c77358c50}{Create\+Progress\+Bar}} (const \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1HUDQuadData}{HUDQuad\+Data}} \&HUDQuad, \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Texture}{Texture}} \texorpdfstring{$\ast$}{*}fill\+Texture)
+static void \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1HUD_ac4794341715ec51dbb92ee5d02dd36c2}{Add\+On\+Click\+Function}} (const On\+Click\+Type \&on\+Click, const \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Transform}{Transform}} \&transform\+Of\+The\+Quad)
+\begin{DoxyCompactList}\small\item\em it adds the specified call to a private array \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1HUD_ab4d8ee43d2cd9f6813be69a21eaa763f}{Create\+Progress\+Bar}} (const \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1HUDQuadData}{HUDQuad\+Data}} \&HUDQuad, \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Texture}{Texture}} \texorpdfstring{$\ast$}{*}fill\+Texture, float progress, const glm\+::vec4 \&fill\+Color)
 \begin{DoxyCompactList}\small\item\em creates a quad that can be filled like a progress bar \end{DoxyCompactList}\item 
 static void \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1HUD_ac07c74d744d7bfc3470fd8757bf91c07}{Flush\+Buffers}} ()
 \begin{DoxyCompactList}\small\item\em flushes all the buffers \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -39,12 +41,35 @@ static constexpr size\+\_\+t {\bfseries Max\+HUDIndices} = Max\+HUDQuads \texorp
 \item 
 \Hypertarget{classTRCN__CORE__NAMESPACE_1_1HUD_a70538530bc36e033e360880ef311df61}\label{classTRCN__CORE__NAMESPACE_1_1HUD_a70538530bc36e033e360880ef311df61} 
 class {\bfseries Renderer}
+\item 
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1HUD_a14f0f4eae9e7936720f347a5897c1a3d}\label{classTRCN__CORE__NAMESPACE_1_1HUD_a14f0f4eae9e7936720f347a5897c1a3d} 
+class {\bfseries Input\+Poller\+Layer}
 \end{DoxyCompactItemize}
 
 
 \label{doc-func-members}
 \Hypertarget{classTRCN__CORE__NAMESPACE_1_1HUD_doc-func-members}
 \doxysubsection{Member Function Documentation}
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1HUD_ac4794341715ec51dbb92ee5d02dd36c2}\index{TRCN\_CORE\_NAMESPACE::HUD@{TRCN\_CORE\_NAMESPACE::HUD}!AddOnClickFunction@{AddOnClickFunction}}
+\index{AddOnClickFunction@{AddOnClickFunction}!TRCN\_CORE\_NAMESPACE::HUD@{TRCN\_CORE\_NAMESPACE::HUD}}
+\doxysubsubsection{\texorpdfstring{AddOnClickFunction()}{AddOnClickFunction()}}
+{\footnotesize\ttfamily \label{classTRCN__CORE__NAMESPACE_1_1HUD_ac4794341715ec51dbb92ee5d02dd36c2} 
+void TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::\+HUD\+::\+Add\+On\+Click\+Function (\begin{DoxyParamCaption}\item[{const On\+Click\+Type \&}]{on\+Click}{, }\item[{const \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Transform}{Transform}} \&}]{transform\+Of\+The\+Quad}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+it adds the specified call to a private array 
+
+\begin{DoxyNote}{Note}
+to be called once per button 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em on\+Click} & the on\+Click function \\
+\hline
+{\em transform\+Of\+The\+Quad} & \\
+\hline
+\end{DoxyParams}
 \Hypertarget{classTRCN__CORE__NAMESPACE_1_1HUD_ada73644c74ac7da6c7a301ebe0abe271}\index{TRCN\_CORE\_NAMESPACE::HUD@{TRCN\_CORE\_NAMESPACE::HUD}!Cleanup@{Cleanup}}
 \index{Cleanup@{Cleanup}!TRCN\_CORE\_NAMESPACE::HUD@{TRCN\_CORE\_NAMESPACE::HUD}}
 \doxysubsubsection{\texorpdfstring{Cleanup()}{Cleanup()}}
@@ -73,11 +98,11 @@ creates a quad that will be later drawn
 {\em HUDQuad} & the quad to create \\
 \hline
 \end{DoxyParams}
-\Hypertarget{classTRCN__CORE__NAMESPACE_1_1HUD_a9500e05b3ee83e352e71351c77358c50}\index{TRCN\_CORE\_NAMESPACE::HUD@{TRCN\_CORE\_NAMESPACE::HUD}!CreateProgressBar@{CreateProgressBar}}
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1HUD_ab4d8ee43d2cd9f6813be69a21eaa763f}\index{TRCN\_CORE\_NAMESPACE::HUD@{TRCN\_CORE\_NAMESPACE::HUD}!CreateProgressBar@{CreateProgressBar}}
 \index{CreateProgressBar@{CreateProgressBar}!TRCN\_CORE\_NAMESPACE::HUD@{TRCN\_CORE\_NAMESPACE::HUD}}
 \doxysubsubsection{\texorpdfstring{CreateProgressBar()}{CreateProgressBar()}}
-{\footnotesize\ttfamily \label{classTRCN__CORE__NAMESPACE_1_1HUD_a9500e05b3ee83e352e71351c77358c50} 
-void TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::\+HUD\+::\+Create\+Progress\+Bar (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1HUDQuadData}{HUDQuad\+Data}} \&}]{HUDQuad}{, }\item[{\mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Texture}{Texture}} \texorpdfstring{$\ast$}{*}}]{fill\+Texture}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily \label{classTRCN__CORE__NAMESPACE_1_1HUD_ab4d8ee43d2cd9f6813be69a21eaa763f} 
+void TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::\+HUD\+::\+Create\+Progress\+Bar (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structTRCN__CORE__NAMESPACE_1_1HUDQuadData}{HUDQuad\+Data}} \&}]{HUDQuad}{, }\item[{\mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Texture}{Texture}} \texorpdfstring{$\ast$}{*}}]{fill\+Texture}{, }\item[{float}]{progress}{, }\item[{const glm\+::vec4 \&}]{fill\+Color}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
@@ -88,6 +113,12 @@ creates a quad that can be filled like a progress bar
 {\em HUDQuad} & the quad to render \\
 \hline
 {\em fill\+Texture} & the texture that contains in magenta the pixels to fill \\
+\hline
+{\em progress} & the progress in range \mbox{[}0, 1\mbox{]} \\
+\hline
+{\em fill\+Color} & the color to use when filling the progress bar \\
+\hline
+{\em } & \\
 \hline
 \end{DoxyParams}
 \Hypertarget{classTRCN__CORE__NAMESPACE_1_1HUD_ac063a609472c831b97ade13af42c9529}\index{TRCN\_CORE\_NAMESPACE::HUD@{TRCN\_CORE\_NAMESPACE::HUD}!EndHUD@{EndHUD}}
