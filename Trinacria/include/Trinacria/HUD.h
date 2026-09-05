@@ -85,10 +85,10 @@ namespace TRCN_CORE_NAMESPACE
     };
 
     /**
-     * @brief HUDVertex is the vertex that is used by the HUD
+     * @brief ProgressBarVertex is the vertex that is used by the HUD to make progress bars
      */
 
-    struct HUDVertex
+    struct ProgressBarVertex
     {
         /**
          * @brief position in screen in range [0, 1] [0, 1], pivot is at bottom left
@@ -139,6 +139,51 @@ namespace TRCN_CORE_NAMESPACE
         glm::vec4 FillColor;
     };
 
+    /**
+     * @brief ButtonVertex is the vertex that is used by the HUD to make buttons
+     */
+
+    struct ButtonVertex
+    {
+        /**
+         * @brief position in screen in range [0, 1] [0, 1], pivot is at bottom left
+         */
+
+        glm::vec2 Position;
+
+        /**
+         * @brief the color the vertex should have
+         */
+
+        glm::vec4 Color;
+
+        /**
+         * @brief texture index in texture array
+         * @note 0 for none
+         * @note the texture array for the HUD is different from the one of the Renderer
+         */
+
+        uint32_t TextureIndex;
+
+        /**
+         * @brief the tex coordinate (range [0; 1] [0; 1]) associated with this vertex
+         */
+
+        glm::vec2 TexCoord;
+
+        /**
+         * @brief the color to show when the cursor is on top
+         */
+
+        glm::vec4 HoveredColor;
+
+        /**
+         * @brief the color to when the button is being pressed
+         */
+
+        glm::vec4 PressedColor;
+    };
+
     using OnClickType = std::function<void()>;
 
     class HUD
@@ -147,12 +192,12 @@ namespace TRCN_CORE_NAMESPACE
 
         /**
          * @brief initializes the HUD
-         * @param vertPath the path to the vertex shader that draws the HUD
-         * @param fragPath the path to the fragment shader that draws the HUD
+         * @param progressBarVertPath the path to the vertex shader that draws the HUD
+         * @param progressBarFragPath the path to the fragment shader that draws the HUD
          * @note to call once at the start of the application
          */
 
-        static void Init(const std::string& vertPath, const std::string& fragPath);
+        static void Init(const std::string& progressBarVertPath, const std::string& progressBarFragPath);
 
         /**
         * @brief cleans up the HUD
@@ -176,6 +221,15 @@ namespace TRCN_CORE_NAMESPACE
         static void CreateHUDQuad(const HUDQuadData& HUDQuad);
 
         /**
+         * @brief creates a button that will be later drawn
+         * @param HUDQuad the quad to create
+         * @param  hoveredColor the color to show when the cursor is on it
+         * @param pressedColor the color to show when the button is being pressed
+         */
+
+        static void CreateButton(const HUDQuadData& HUDQuad, const glm::vec4& hoveredColor, const glm::vec4& pressedColor);
+
+        /**
          * @brief it adds the specified call to a private array
          * @note to be called once per button
          * @param onClick the onClick function
@@ -190,10 +244,10 @@ namespace TRCN_CORE_NAMESPACE
          * @param fillTexture the texture that contains in magenta the pixels to fill
          * @param progress the progress in range [0, 1]
          * @param fillColor the color to use when filling the progress bar
-         * @param
          */
 
-        static void CreateProgressBar(const HUDQuadData& HUDQuad, Texture* fillTexture, float progress, const glm::vec4& fillColor);
+        static void CreateProgressBar(const HUDQuadData& HUDQuad, Texture* fillTexture,
+            float progress, const glm::vec4& fillColor);
 
         /**
          * @brief flushes all the buffers
@@ -203,22 +257,42 @@ namespace TRCN_CORE_NAMESPACE
         // TODO: add overload that makes you flush only a part of the buffer
         static void FlushBuffers();
 
+        /**
+         * @brief it check for button clicking and other events
+         * @note there's no need to call this functions if InputLayer.Update() is call every frame
+         * @param window the GLFW window
+         * @param windowDimensions the dimensions
+         */
+
+        static void UpdateEvents(GLFWwindow* window, const glm::vec2& windowDimensions);
+
         inline static Shader _shader;
 
         static constexpr size_t MaxHUDQuads    =            100;
         static constexpr size_t MaxHUDVertices = MaxHUDQuads * 4;
         static constexpr size_t MaxHUDIndices  = MaxHUDQuads * 6;
 
+        static constexpr size_t MaxProgressBars         =                 100;
+        static constexpr size_t MaxProgressBarsVertices = MaxProgressBars * 4;
+        static constexpr size_t MaxProgressBarsIndices  = MaxProgressBars * 6;
+
     private:
         friend class Renderer;
 	    friend class InputPollerLayer;
 
-        inline static uint32_t _vao;
-        inline static uint32_t _vbo;
-        inline static uint32_t _ebo;
+        inline static uint32_t _progressBarsVao;
+        inline static uint32_t _progressBarsVbo;
+        inline static uint32_t _progressBarsEbo;
 
-        inline static std::vector<HUDVertex> _vertices;
-        inline static std::vector<uint32_t> _indices;
+        inline static std::vector<ProgressBarVertex> _progressBarVertices;
+        inline static std::vector<uint32_t> _progressBarIndices;
+
+        inline static uint32_t _buttonsVao;
+        inline static uint32_t _buttonsVbo;
+        inline static uint32_t _buttonsEbo;
+
+        inline static std::vector<ButtonVertex> _buttonVertices;
+        inline static std::vector<uint32_t> _buttonIndices;
 
         inline static std::vector<std::pair<Texture*, uint32_t>> _textures;
 
@@ -228,15 +302,24 @@ namespace TRCN_CORE_NAMESPACE
 
         static void draw();
 
-        static void createHUDQuad(const glm::vec2& position, const glm::vec4& color, uint32_t textureIndex, const glm::vec2& scale, const glm::mat4& matrix, const
-                                  QuadTexCoords& coord, uint32_t fillTextureIndex, float progress, const glm::vec4& fillColor);
+        static void createProgressBar(const glm::vec2& position, const glm::vec4& color, uint32_t textureIndex,
+            const glm::vec2& scale, const glm::mat4& matrix, const QuadTexCoords& coord,
+            uint32_t fillTextureIndex, float progress, const glm::vec4& fillColor
+        );
+
+        static void createHUDQuad(const glm::vec2& position, const glm::vec4& color, uint32_t textureIndex,
+            const glm::vec2& scale, const glm::mat4& matrix, const QuadTexCoords& coord,
+            const glm::vec4& hoveredColor, const glm::vec4& pressedColor
+        );
 
         static bool findTextureIndex(uint32_t& outIndex, const Texture* texToFind);
 
         static uint32_t setupTexture(Texture* texture);
 
-	    static void updateEvents(GLFWwindow* window, const glm::vec2& windowDimensions);
 
         static bool isInRange(const Transform& transform, GLFWwindow* window, const glm::vec2& windowDimensions);
+
+        static void setupProgressBars();
+        static void setupButtons();
     };
 }

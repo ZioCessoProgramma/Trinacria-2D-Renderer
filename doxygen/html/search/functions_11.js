@@ -11,7 +11,7 @@ var searchData=
   ['setuniformvec4_8',['SetUniformVec4',['../classTRCN__CORE__NAMESPACE_1_1Shader.html#a14737e4dd48ba63ab9a8ac05afd3cf13',1,'TRCN_CORE_NAMESPACE::Shader']]],
   ['setuplight_9',['SetupLight',['../classTRCN__CORE__NAMESPACE_1_1LightSystem.html#a5557ee0c49c627e8d5fb3feae3ef6edf',1,'TRCN_CORE_NAMESPACE::LightSystem::SetupLight(const PointLightData &amp;lightData)'],['../classTRCN__CORE__NAMESPACE_1_1LightSystem.html#a97b3556e1102df81cd69a58bb28b6f01',1,'TRCN_CORE_NAMESPACE::LightSystem::SetupLight(const SpotLightData &amp;lightData)'],['../classTRCN__CORE__NAMESPACE_1_1LightSystem.html#ab589b199202e4d558f7cc424e680753e',1,'TRCN_CORE_NAMESPACE::LightSystem::SetupLight(const DirectionalLightData &amp;lightData)']]],
   ['setviewpos_10',['SetViewPos',['../classTRCN__CORE__NAMESPACE_1_1LightSystem.html#ae2356e6dab6d0d97cacd2419f96d62dd',1,'TRCN_CORE_NAMESPACE::LightSystem']]],
-  ['setwindow_11',['SetWindow',['../classTRCN__CORE__NAMESPACE_1_1InputPollerLayer.html#a8f1c68fe396833c41509b2b2c226a49f',1,'TRCN_CORE_NAMESPACE::InputPollerLayer']]],
+  ['setwindow_11',['SetWindow',['../classTRCN__CORE__NAMESPACE_1_1InputPollerLayer.html#a51883c2e741e29869a29493ce66c92c1',1,'TRCN_CORE_NAMESPACE::InputPollerLayer']]],
   ['sprite_12',['Sprite',['../classTRCN__CORE__NAMESPACE_1_1Sprite.html#a3ff258f65843cd5eb9fa55c349d592c8',1,'TRCN_CORE_NAMESPACE::Sprite']]],
   ['spritesheet_13',['SpriteSheet',['../classTRCN__CORE__NAMESPACE_1_1SpriteSheet.html#ac5cb152af3e95997c14ec37c8279dfd1',1,'TRCN_CORE_NAMESPACE::SpriteSheet']]],
   ['subimage_14',['SubImage',['../classTRCN__CORE__NAMESPACE_1_1Texture.html#ae3c489e97ac0d7795a66a1816a45d47a',1,'TRCN_CORE_NAMESPACE::Texture']]],

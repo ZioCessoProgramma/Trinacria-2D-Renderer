@@ -5,5 +5,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
   node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
   rankdir="LR";
-  Node0 [id="Node000000",label="TRCN_CORE_NAMESPACE\l::HUDVertex",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$structTRCN__CORE__NAMESPACE_1_1HUDVertex.html",tooltip="HUDVertex is the vertex that is used by the HUD."];
+  Node0 [id="Node000000",label="TRCN_CORE_NAMESPACE\l::HUDQuadData",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$structTRCN__CORE__NAMESPACE_1_1HUDQuadData.html",tooltip="struct containing all data a hud quad needs"];
 }

@@ -25,9 +25,13 @@ void RendererLayer::OnUpdate(float deltaTime)
     Trinacria::DSL::HUD::CreateProgressBar(progressBar, &_healthBarFillMap, (glm::sin(glfwGetTime()) + 1) / 2,
 	    glm::vec4(0.2f, 0.7f, 0.2f, 0.7f));
 
-    Trinacria::DSL::HUDQuadData quad(buttonTransform, &_purple, glm::vec4(0.7f, 0.2f, 0.2f, 1.f));
+    Trinacria::DSL::HUDQuadData quad(_buttonTransform, glm::vec4(0.7f, 0.2f, 0.2f, 1.f));
 
     Trinacria::DSL::HUD::CreateHUDQuad(quad);
+
+    Trinacria::DSL::HUDQuadData quad_(_buttonTransform1, glm::vec4(0.2f, 0.7f, 0.2f, 1.f));
+
+    Trinacria::DSL::HUD::CreateHUDQuad(quad_);
 
     Trinacria::DSL::HUDQuadData progressBar1 (Trinacria::DSL::Transform(glm::vec2(-0.3f, -0.8f),
 		glm::vec2(0.6f, 0.1f), 0, glm::vec2(0.f)), &_healthBar, glm::vec4(1.f, 1.f, 1.f, 1.f));
@@ -74,19 +78,19 @@ void RendererLayer::OnUpdate(float deltaTime)
     // Tree
 
     {
-	Trinacria::DSL::Transform transform(glm::vec2(-1.f));
-	Trinacria::DSL::QuadData treeData(transform, &_tree);
+	    Trinacria::DSL::Transform transform(glm::vec2(-1.f));
+	    Trinacria::DSL::QuadData treeData(transform, &_tree);
 
-	Trinacria::DSL::Renderer::CreateQuad(treeData);
+	    Trinacria::DSL::Renderer::CreateQuad(treeData);
     }
 
     // Danger Zone
 
     {
-	Trinacria::DSL::Transform transform(glm::vec2(3.f), glm::vec2(6.f), 0.f, glm::vec2(0.f));
-	Trinacria::DSL::QuadData data(transform, glm::vec4(0.7f, 0.2f, 0.2f, 1.f), 1);
+	    Trinacria::DSL::Transform transform(glm::vec2(3.f), glm::vec2(6.f), 0.f, glm::vec2(0.f));
+	    Trinacria::DSL::QuadData data(transform, glm::vec4(0.7f, 0.2f, 0.2f, 1.f), 1);
 
-	Trinacria::DSL::Renderer::CreateQuad(data);
+	    Trinacria::DSL::Renderer::CreateQuad(data);
     }
 
     // Player
@@ -96,12 +100,12 @@ void RendererLayer::OnUpdate(float deltaTime)
     // Triangle
 
     {
-	Trinacria::DSL::Transform transform(glm::vec2(-4.f), glm::vec2(4.f), sin(glfwGetTime()) * 20);
+	    Trinacria::DSL::Transform transform(glm::vec2(-4.f), glm::vec2(4.f), sin(glfwGetTime()) * 20);
 
-	Trinacria::DSL::TriangleData data(transform, Trinacria::DSL::Texture::NO_TEXTURE,
-		0, Trinacria::DSL::TriangleOrientation::Orientation_RIGHT, glm::vec4(0.2f, 0.2f, 0.6f, 1.f));
+	    Trinacria::DSL::TriangleData data(transform, Trinacria::DSL::Texture::NO_TEXTURE,
+		    0, Trinacria::DSL::TriangleOrientation::Orientation_RIGHT, glm::vec4(0.2f, 0.2f, 0.6f, 1.f));
 
-	Trinacria::DSL::Renderer::CreateTriangle(data);
+	    Trinacria::DSL::Renderer::CreateTriangle(data);
     }
 
     // Point light
@@ -129,11 +133,11 @@ void RendererLayer::OnUpdate(float deltaTime)
     Trinacria::DSL::Renderer::CreateQuad(data1);
 
     {
-	Trinacria::DSL::Transform transform(glm::vec2(3.15f, 3.15f));
-	Trinacria::DSL::TriangleData data_(transform, 0, Trinacria::DSL::TriangleOrientation::Orientation_RIGHT,
-		glm::vec4(0.0f, 1.f, 0.0f, 0.6f));
+	    Trinacria::DSL::Transform transform(glm::vec2(3.15f, 3.15f));
+	    Trinacria::DSL::TriangleData data_(transform, 0, Trinacria::DSL::TriangleOrientation::Orientation_RIGHT,
+		    glm::vec4(0.0f, 1.f, 0.0f, 0.6f));
 
-	Trinacria::DSL::Renderer::CreateTriangle(data_);
+	    Trinacria::DSL::Renderer::CreateTriangle(data_);
     }
 
 
@@ -189,7 +193,7 @@ void RendererLayer::OnUpdate(float deltaTime)
 
     Trinacria::DSL::LightSystem::Done();
 
-    Trinacria::DSL::Renderer::Draw(screenShader);
+    Trinacria::DSL::Renderer::Draw(_screenShader);
     Trinacria::DSL::Renderer::FlushBuffers();
     Trinacria::DSL::HUD::FlushBuffers();
 }
@@ -231,12 +235,13 @@ void RendererLayer::OnAttach()
 	    "assets/shaders/Quad.frag");
 
 
-    screenShader.LoadShader("assets/shaders/Screen.vert", "assets/shaders/Screen.frag");
+    _screenShader.LoadShader("assets/shaders/Screen.vert", "assets/shaders/Screen.frag");
 
     Trinacria::DSL::LightSystem::Init();
     Trinacria::DSL::HUD::Init("assets/shaders/HUD.vert", "assets/shaders/HUD.frag");
 
-    Trinacria::DSL::HUD::AddOnClickFunction([](){TRCN_LOG("Hello Bitches!");}, buttonTransform);
+    Trinacria::DSL::HUD::AddOnClickFunction([] {TRCN_LOG("Hello Guys!");}, _buttonTransform);
+    Trinacria::DSL::HUD::AddOnClickFunction([] {TRCN_LOG("Hello Girls!");}, _buttonTransform1);
 }
 
 void RendererLayer::OnDetach()

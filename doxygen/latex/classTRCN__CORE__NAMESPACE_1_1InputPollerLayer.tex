@@ -26,7 +26,7 @@ virtual void \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1InputPollerLayer_a55
 \begin{DoxyCompactList}\small\item\em called when the layer is attached to the application \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1InputPollerLayer_a286943b5523a2ca7e1d62e200b5c2e88}{On\+Detach}} () override
 \begin{DoxyCompactList}\small\item\em called when the layer is detached from the application \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1InputPollerLayer_a8f1c68fe396833c41509b2b2c226a49f}{Set\+Window}} (GLFWwindow \texorpdfstring{$\ast$}{*}window)
+void \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1InputPollerLayer_a51883c2e741e29869a29493ce66c92c1}{Set\+Window}} (GLFWwindow \texorpdfstring{$\ast$}{*}window, const glm\+::vec2 \&window\+Dimensions)
 \begin{DoxyCompactList}\small\item\em sets the window used to poll input state \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -92,11 +92,11 @@ polls input state each frame and submits keyboard/mouse events
 
 Implements \mbox{\hyperlink{classTRCN__CORE__NAMESPACE_1_1Layer_af57c8876058ca813e1266f194f49b0f0}{TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::\+Layer}}.
 
-\Hypertarget{classTRCN__CORE__NAMESPACE_1_1InputPollerLayer_a8f1c68fe396833c41509b2b2c226a49f}\index{TRCN\_CORE\_NAMESPACE::InputPollerLayer@{TRCN\_CORE\_NAMESPACE::InputPollerLayer}!SetWindow@{SetWindow}}
+\Hypertarget{classTRCN__CORE__NAMESPACE_1_1InputPollerLayer_a51883c2e741e29869a29493ce66c92c1}\index{TRCN\_CORE\_NAMESPACE::InputPollerLayer@{TRCN\_CORE\_NAMESPACE::InputPollerLayer}!SetWindow@{SetWindow}}
 \index{SetWindow@{SetWindow}!TRCN\_CORE\_NAMESPACE::InputPollerLayer@{TRCN\_CORE\_NAMESPACE::InputPollerLayer}}
 \doxysubsubsection{\texorpdfstring{SetWindow()}{SetWindow()}}
-{\footnotesize\ttfamily \label{classTRCN__CORE__NAMESPACE_1_1InputPollerLayer_a8f1c68fe396833c41509b2b2c226a49f} 
-void TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::\+Input\+Poller\+Layer\+::\+Set\+Window (\begin{DoxyParamCaption}\item[{GLFWwindow \texorpdfstring{$\ast$}{*}}]{window}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily \label{classTRCN__CORE__NAMESPACE_1_1InputPollerLayer_a51883c2e741e29869a29493ce66c92c1} 
+void TRCN\+\_\+\+CORE\+\_\+\+NAMESPACE\+::\+Input\+Poller\+Layer\+::\+Set\+Window (\begin{DoxyParamCaption}\item[{GLFWwindow \texorpdfstring{$\ast$}{*}}]{window}{, }\item[{const glm\+::vec2 \&}]{window\+Dimensions}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
 
 
@@ -105,6 +105,8 @@ sets the window used to poll input state
 
 \begin{DoxyParams}{Parameters}
 {\em window} & the GLFW window \\
+\hline
+{\em window\+Dimensions} & \\
 \hline
 \end{DoxyParams}
 

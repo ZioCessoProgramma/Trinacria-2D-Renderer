@@ -57,9 +57,12 @@ private:
 
 	CameraData _cameraData;
 
-	Trinacria::DSL::Shader screenShader;
+	Trinacria::DSL::Shader _screenShader;
 
-    Trinacria::DSL::Transform buttonTransform = Trinacria::DSL::Transform(glm::vec2(-0.9f, 0.f),
-        glm::vec2(0.1f, 0.7f), 13, glm::vec2(0.15f, 0.25f));
+    Trinacria::DSL::Transform _buttonTransform = Trinacria::DSL::Transform(glm::vec2(-0.9f, 0.f),
+        glm::vec2(0.1f, 0.1f),0, glm::vec2(0.15f, 0.25f));
+
+    Trinacria::DSL::Transform _buttonTransform1 = Trinacria::DSL::Transform(glm::vec2(0.9f, 0.f),
+    glm::vec2(0.1f, 0.1f), 0, glm::vec2(0.15f, 0.25f));
 };
 
