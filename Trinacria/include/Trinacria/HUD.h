@@ -278,7 +278,6 @@ namespace TRCN_CORE_NAMESPACE
 
     private:
         friend class Renderer;
-	    friend class InputPollerLayer;
 
         inline static uint32_t _progressBarsVao;
         inline static uint32_t _progressBarsVbo;

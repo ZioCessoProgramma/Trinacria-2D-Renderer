@@ -7,12 +7,14 @@
 #include "Trinacria/Macros.h"
 #include "Trinacria/Renderer.h"
 
-void TRCN_CORE_NAMESPACE::HUD::Init(const std::string& progressBarVertPath, const std::string& progressBarFragPath)
+void TRCN_CORE_NAMESPACE::HUD::Init(const std::string& progressBarVertPath, const std::string& progressBarFragPath, const std::string& buttonVertPath, const std::string& buttonFragPath)
 {
     setupProgressBars();
     setupButtons();
 
     _shader.LoadCoreShader(progressBarVertPath, progressBarFragPath);
+    _shader.LoadCoreShader(buttonVertPath, buttonFragPath);
+
 
     _progressBarVertices.reserve(MaxProgressBars);
     _progressBarIndices.reserve(MaxProgressBarsIndices);
@@ -292,4 +294,38 @@ void Trinacria::DSL::HUD::setupButtons()
         sizeof(ButtonVertex), (void*)offsetof(ButtonVertex, PressedColor));
 
     glEnableVertexAttribArray(5);
+}
+
+void TRCN_CORE_NAMESPACE::HUD::createHUDQuad(const glm::vec2& position, const glm::vec4& color, uint32_t textureIndex, const glm::vec2& scale, const glm::mat4& matrix, const QuadTexCoords& coords, const glm::vec4& hoveredColor, const glm::vec4& pressedColor)
+{
+    glm::vec2 p0 = glm::vec2(matrix * glm::vec4(position, 0.f, 1.f));
+    glm::vec2 p1 = glm::vec2(matrix * glm::vec4(position + glm::vec2(scale.x, 0.f), 0.f, 1.f));
+    glm::vec2 p2 = glm::vec2(matrix * glm::vec4(position + scale, 0.f, 1.f));
+    glm::vec2 p3 = glm::vec2(matrix * glm::vec4(position + glm::vec2(0.f, scale.y), 0.f, 1.f));
+
+    _buttonVertices.emplace_back(p0, color, textureIndex, coords.Coord0, hoveredColor, pressedColor);
+    _buttonVertices.emplace_back(p1, color, textureIndex, coords.Coord1, hoveredColor, pressedColor);
+    _buttonVertices.emplace_back(p2, color, textureIndex, coords.Coord2, hoveredColor, pressedColor);
+    _buttonVertices.emplace_back(p3, color, textureIndex, coords.Coord3, hoveredColor, pressedColor);
+
+    size_t offset = _progressBarVertices.size() - 4;
+
+    _buttonIndices.push_back(offset);
+    _buttonIndices.push_back(offset + 1);
+    _buttonIndices.push_back(offset + 2);
+    _buttonIndices.push_back(offset + 2);
+    _buttonIndices.push_back(offset + 3);
+    _buttonIndices.push_back(offset);
+
+}
+
+void TRCN_CORE_NAMESPACE::HUD::CreateButton(const HUDQuadData& HUDQuad, const glm::vec4& hoveredColor, const glm::vec4& pressedColor)
+{
+    TRCN_DEPEND_START("Create Button");
+    TRCN_DEPEND_ASSERT(_buttonVertices.size() <= MaxHUDVertices);
+    TRCN_DEPEND_ASSERT(_buttonIndices.size() <= MaxHUDIndices);
+
+    uint32_t index = setupTexture(HUDQuad.texture);
+
+    createHUDQuad(-HUDQuad.transform.Pivot, HUDQuad.Color, index, glm::vec2(1.f), HUDQuad.transform.GetMatrix(), HUDQuad.TexCoords, hoveredColor, pressedColor);
 }
