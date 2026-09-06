@@ -227,7 +227,7 @@ namespace TRCN_CORE_NAMESPACE
          * @param pressedColor the color to show when the button is being pressed
          */
 
-        static void CreateButton(const HUDQuadData& HUDQuad, const glm::vec4& hoveredColor, const glm::vec4& pressedColor);
+        static void CreateButton(const HUDQuadData& HUDQuad, const glm::vec4& hoveredColor, const glm::vec4& pressedColor, GLFWwindow* window, const glm::vec2& windowDimensions);
 
         /**
          * @brief it adds the specified call to a private array

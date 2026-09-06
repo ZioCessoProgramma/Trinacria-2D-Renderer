@@ -7,14 +7,12 @@
 #include "Trinacria/Macros.h"
 #include "Trinacria/Renderer.h"
 
-void TRCN_CORE_NAMESPACE::HUD::Init(const std::string& progressBarVertPath, const std::string& progressBarFragPath, const std::string& buttonVertPath, const std::string& buttonFragPath)
+void TRCN_CORE_NAMESPACE::HUD::Init(const std::string& progressBarVertPath, const std::string& progressBarFragPath)
 {
     setupProgressBars();
     setupButtons();
 
     _shader.LoadCoreShader(progressBarVertPath, progressBarFragPath);
-    _shader.LoadCoreShader(buttonVertPath, buttonFragPath);
-
 
     _progressBarVertices.reserve(MaxProgressBars);
     _progressBarIndices.reserve(MaxProgressBarsIndices);
@@ -319,7 +317,7 @@ void TRCN_CORE_NAMESPACE::HUD::createHUDQuad(const glm::vec2& position, const gl
 
 }
 
-void TRCN_CORE_NAMESPACE::HUD::CreateButton(const HUDQuadData& HUDQuad, const glm::vec4& hoveredColor, const glm::vec4& pressedColor)
+void TRCN_CORE_NAMESPACE::HUD::CreateButton(const HUDQuadData& HUDQuad, const glm::vec4& hoveredColor, const glm::vec4& pressedColor, GLFWwindow* window, const glm::vec2& windowDimensions)
 {
     TRCN_DEPEND_START("Create Button");
     TRCN_DEPEND_ASSERT(_buttonVertices.size() <= MaxHUDVertices);
@@ -327,5 +325,19 @@ void TRCN_CORE_NAMESPACE::HUD::CreateButton(const HUDQuadData& HUDQuad, const gl
 
     uint32_t index = setupTexture(HUDQuad.texture);
 
-    createHUDQuad(-HUDQuad.transform.Pivot, HUDQuad.Color, index, glm::vec2(1.f), HUDQuad.transform.GetMatrix(), HUDQuad.TexCoords, hoveredColor, pressedColor);
+    glm::vec4 color = HUDQuad.Color;
+
+    if(isInRange(HUDQuad.transform, window, windowDimensions))
+    {
+	color = hoveredColor;
+	
+	// doing in this strange way because it is faster
+
+	if(glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS)
+	{
+	    color = pressedColor;
+	}
+    }
+
+    createProgressBar(-HUDQuad.transform.Pivot, color, index, glm::vec2(1.f), HUDQuad.transform.GetMatrix(), HUDQuad.TexCoords, 0, 0, glm::vec4(0.f));
 }

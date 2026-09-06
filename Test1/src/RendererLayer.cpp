@@ -27,7 +27,7 @@ void RendererLayer::OnUpdate(float deltaTime)
 
     Trinacria::DSL::HUDQuadData quad(_buttonTransform, glm::vec4(0.7f, 0.2f, 0.2f, 1.f));
 
-    Trinacria::DSL::HUD::CreateHUDQuad(quad);
+    Trinacria::DSL::HUD::CreateButton(quad, quad.Color - glm::vec4(0.1f, 0.1f, 0.1f, 0.f), quad.Color - glm::vec4(0.2f, 0.2f, 0.2f, 0.f), Application::Get()->GetWindow(), Application::Get()->GetWindowDimensions());
 
     Trinacria::DSL::HUDQuadData quad_(_buttonTransform1, glm::vec4(0.2f, 0.7f, 0.2f, 1.f));
 

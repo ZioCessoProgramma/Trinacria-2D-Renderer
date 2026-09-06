@@ -9,5 +9,5 @@ layout(location = 5) in vec4 a_PressedColor;
 
 void main()
 {
-
+    gl_Position = vec4(a_Pos, 0.f, 1.f);
 }
