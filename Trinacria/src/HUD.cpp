@@ -10,69 +10,65 @@
 void TRCN_CORE_NAMESPACE::HUD::Init(const std::string& progressBarVertPath, const std::string& progressBarFragPath)
 {
     setupProgressBars();
-    setupButtons();
 
     _shader.LoadCoreShader(progressBarVertPath, progressBarFragPath);
 
-    _progressBarVertices.reserve(MaxProgressBars);
-    _progressBarIndices.reserve(MaxProgressBarsIndices);
-
-    _buttonVertices.reserve(MaxHUDVertices);
-    _buttonIndices.reserve(MaxHUDIndices);
+    _vertices.reserve(MaxHUDVertices);
+    _indices.reserve(MaxHUDIndices);
 }
 
 void TRCN_CORE_NAMESPACE::HUD::Cleanup()
 {
-    glDeleteVertexArrays(1, &_progressBarsVao);
-    glDeleteBuffers(1, &_progressBarsVbo);
-    glDeleteBuffers(1, &_progressBarsEbo);
+    glDeleteVertexArrays(1, &_vao);
+    glDeleteBuffers(1, &_vbo);
+    glDeleteBuffers(1, &_ebo);
 }
 
 void TRCN_CORE_NAMESPACE::HUD::EndHUD()
 {
-    glBindBuffer(GL_ARRAY_BUFFER, _progressBarsVbo);
-    glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(ProgressBarVertex) * _progressBarVertices.size(), _progressBarVertices.data());
+    glBindBuffer(GL_ARRAY_BUFFER, _vbo);
+    glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(ProgressBarVertex) * _vertices.size(), _vertices.data());
 
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _progressBarsEbo);
-    glBufferSubData(GL_ELEMENT_ARRAY_BUFFER, 0, sizeof(uint32_t) * _progressBarIndices.size(), _progressBarIndices.data());
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _ebo);
+    glBufferSubData(GL_ELEMENT_ARRAY_BUFFER, 0, sizeof(uint32_t) * _indices.size(), _indices.data());
 }
 
 void TRCN_CORE_NAMESPACE::HUD::CreateHUDQuad(const HUDQuadData& HUDQuad)
 {
     TRCN_DEPEND_START("Create HUD Quad");
 
-    TRCN_DEPEND_RETURN_ASSERT_VOID(_progressBarVertices.size() < MaxHUDVertices);
-    TRCN_DEPEND_RETURN_ASSERT_VOID(_progressBarIndices.size() < MaxHUDIndices);
+    TRCN_DEPEND_RETURN_ASSERT_VOID(_vertices.size() < MaxHUDVertices);
+    TRCN_DEPEND_RETURN_ASSERT_VOID(_indices.size() < MaxHUDIndices);
 
     uint32_t index = setupTexture(HUDQuad.texture);
 
-    createProgressBar(-HUDQuad.transform.Pivot, HUDQuad.Color, index, glm::vec2(1),
+    createHUDQuad(-HUDQuad.transform.Pivot, HUDQuad.Color, index, glm::vec2(1),
                   HUDQuad.transform.GetMatrix(), HUDQuad.TexCoords, 0, -1.f, glm::vec4(0.f));
 }
 
 void Trinacria::DSL::HUD::AddOnClickFunction(const OnClickType& onClick, const Transform& transformOfTheQuad)
 {
-    _onClickAndPos.emplace_back(onClick, transformOfTheQuad);
+    _onClickAndTransform.emplace_back(onClick, transformOfTheQuad);
 }
 
 void TRCN_CORE_NAMESPACE::HUD::CreateProgressBar(const HUDQuadData& HUDQuad, Texture* fillTexture, float progress, const glm::vec4& fillColor)
 {
     TRCN_DEPEND_START("Create Progress Bar");
 
-    TRCN_DEPEND_RETURN_ASSERT_VOID(_progressBarVertices.size() < MaxHUDVertices);
-    TRCN_DEPEND_RETURN_ASSERT_VOID(_progressBarIndices.size() < MaxHUDIndices);
+    TRCN_DEPEND_RETURN_ASSERT_VOID(_vertices.size() < MaxHUDVertices);
+    TRCN_DEPEND_RETURN_ASSERT_VOID(_indices.size() < MaxHUDIndices);
 
      uint32_t index = setupTexture(HUDQuad.texture);
     uint32_t fillTexIndex = setupTexture(fillTexture);
 
-    createProgressBar(-HUDQuad.transform.Pivot, HUDQuad.Color, index, glm::vec2(1),
+    createHUDQuad(-HUDQuad.transform.Pivot, HUDQuad.Color, index, glm::vec2(1),
                   HUDQuad.transform.GetMatrix(), HUDQuad.TexCoords, fillTexIndex, progress, fillColor);
 }
 
 void TRCN_CORE_NAMESPACE::HUD::FlushBuffers()
 {
-    _progressBarVertices.clear();
-    _progressBarIndices.clear();
+    _vertices.clear();
+    _indices.clear();
 }
 
 void TRCN_CORE_NAMESPACE::HUD::draw()
@@ -88,14 +84,14 @@ void TRCN_CORE_NAMESPACE::HUD::draw()
         tex.first->Bind(tex.second + GL_TEXTURE0 - 1);
     }
 
-    glBindVertexArray(_progressBarsVao);
+    glBindVertexArray(_vao);
 
-    glDrawElements(GL_TRIANGLES, _progressBarIndices.size(), GL_UNSIGNED_INT, nullptr);
+    glDrawElements(GL_TRIANGLES, _indices.size(), GL_UNSIGNED_INT, nullptr);
 
     Texture::ClearTextureSlots();
 }
 
-void TRCN_CORE_NAMESPACE::HUD::createProgressBar(const glm::vec2& position, const glm::vec4& color, uint32_t textureIndex,
+void TRCN_CORE_NAMESPACE::HUD::createHUDQuad(const glm::vec2& position, const glm::vec4& color, uint32_t textureIndex,
                                              const glm::vec2& scale, const glm::mat4& matrix, const QuadTexCoords& coord, uint32_t fillTextureIndex, float progress, const
                                              glm::vec4& fillColor)
 {
@@ -104,19 +100,19 @@ void TRCN_CORE_NAMESPACE::HUD::createProgressBar(const glm::vec2& position, cons
     glm::vec2 p2 = glm::vec2(matrix * glm::vec4(position + scale, 0.f, 1.f));
     glm::vec2 p3 = glm::vec2(matrix * glm::vec4(position + glm::vec2(0.f, scale.y), 0.f, 1.f));
 
-    _progressBarVertices.emplace_back(p0, color, textureIndex, coord.Coord0, fillTextureIndex, progress, fillColor);
-    _progressBarVertices.emplace_back(p1, color, textureIndex, coord.Coord1, fillTextureIndex, progress, fillColor);
-    _progressBarVertices.emplace_back(p2, color, textureIndex, coord.Coord2, fillTextureIndex, progress, fillColor);
-    _progressBarVertices.emplace_back(p3, color, textureIndex, coord.Coord3, fillTextureIndex, progress, fillColor);
+    _vertices.emplace_back(p0, color, textureIndex, coord.Coord0, fillTextureIndex, progress, fillColor);
+    _vertices.emplace_back(p1, color, textureIndex, coord.Coord1, fillTextureIndex, progress, fillColor);
+    _vertices.emplace_back(p2, color, textureIndex, coord.Coord2, fillTextureIndex, progress, fillColor);
+    _vertices.emplace_back(p3, color, textureIndex, coord.Coord3, fillTextureIndex, progress, fillColor);
 
-    size_t offset = _progressBarVertices.size() - 4;
+    size_t offset = _vertices.size() - 4;
 
-    _progressBarIndices.push_back(offset);
-    _progressBarIndices.push_back(offset + 1);
-    _progressBarIndices.push_back(offset + 2);
-    _progressBarIndices.push_back(offset + 2);
-    _progressBarIndices.push_back(offset + 3);
-    _progressBarIndices.push_back(offset);
+    _indices.push_back(offset);
+    _indices.push_back(offset + 1);
+    _indices.push_back(offset + 2);
+    _indices.push_back(offset + 2);
+    _indices.push_back(offset + 3);
+    _indices.push_back(offset);
 }
 
 bool TRCN_CORE_NAMESPACE::HUD::findTextureIndex(uint32_t& out, const Texture* textureToFind)
@@ -161,7 +157,7 @@ void TRCN_CORE_NAMESPACE::HUD::UpdateEvents(GLFWwindow* window, const glm::vec2&
     {
         // TODO: check if is in button range
 
-        for (auto& el : _onClickAndPos)
+        for (auto& el : _onClickAndTransform)
         {
             if (isInRange(el.second, window, windowDimensions)) el.first();
         }
@@ -210,16 +206,16 @@ bool Trinacria::DSL::HUD::isInRange(const Transform& transform, GLFWwindow* wind
 
 void Trinacria::DSL::HUD::setupProgressBars()
 {
-    glGenVertexArrays(1, &_progressBarsVao);
-    glBindVertexArray(_progressBarsVao);
+    glGenVertexArrays(1, &_vao);
+    glBindVertexArray(_vao);
 
-    glGenBuffers(1, &_progressBarsVbo);
-    glBindBuffer(GL_ARRAY_BUFFER, _progressBarsVbo);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(ProgressBarVertex) * MaxProgressBarsVertices, nullptr, GL_DYNAMIC_DRAW);
+    glGenBuffers(1, &_vbo);
+    glBindBuffer(GL_ARRAY_BUFFER, _vbo);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(ProgressBarVertex) * MaxHUDVertices, nullptr, GL_DYNAMIC_DRAW);
 
-    glGenBuffers(1, &_progressBarsEbo);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _progressBarsEbo);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(uint32_t) * MaxProgressBarsIndices, nullptr, GL_DYNAMIC_DRAW);
+    glGenBuffers(1, &_ebo);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _ebo);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(uint32_t) * MaxHUDIndices, nullptr, GL_DYNAMIC_DRAW);
 
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(ProgressBarVertex),
         (void*)offsetof(ProgressBarVertex, Position));
@@ -249,79 +245,11 @@ void Trinacria::DSL::HUD::setupProgressBars()
     glEnableVertexAttribArray(6);
 }
 
-void Trinacria::DSL::HUD::setupButtons()
-{
-    glGenVertexArrays(1, &_buttonsVao);
-    glBindVertexArray(_buttonsVao);
-
-    glGenBuffers(1, &_buttonsVbo);
-    glBindBuffer(GL_ARRAY_BUFFER, _buttonsVbo);
-
-    glBufferData(GL_ARRAY_BUFFER, sizeof(ButtonVertex) * MaxHUDVertices, nullptr, GL_DYNAMIC_DRAW);
-
-    glGenBuffers(1, &_buttonsEbo);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _buttonsEbo);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(uint32_t) * MaxHUDIndices, nullptr, GL_DYNAMIC_DRAW);
-
-    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE,
-        sizeof(ButtonVertex), (void*)offsetof(ButtonVertex, Position));
-
-    glEnableVertexAttribArray(0);
-
-    glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE,
-        sizeof(ButtonVertex), (void*)offsetof(ButtonVertex, Color));
-
-    glEnableVertexAttribArray(1);
-
-    glVertexAttribIPointer(2, 1, GL_UNSIGNED_INT, sizeof(ButtonVertex),
-        (void*)offsetof(ButtonVertex, TextureIndex));
-
-    glEnableVertexAttribArray(2);
-
-    glVertexAttribPointer(3, 2, GL_FLOAT, GL_FALSE,
-        sizeof(ButtonVertex), (void*)offsetof(ButtonVertex, TexCoord));
-
-    glEnableVertexAttribArray(3);
-
-    glVertexAttribPointer(4, 4, GL_FLOAT, GL_FALSE,
-        sizeof(ButtonVertex), (void*)offsetof(ButtonVertex, HoveredColor));
-
-    glEnableVertexAttribArray(4);
-
-    glVertexAttribPointer(5, 4, GL_FLOAT, GL_FALSE,
-        sizeof(ButtonVertex), (void*)offsetof(ButtonVertex, PressedColor));
-
-    glEnableVertexAttribArray(5);
-}
-
-void TRCN_CORE_NAMESPACE::HUD::createHUDQuad(const glm::vec2& position, const glm::vec4& color, uint32_t textureIndex, const glm::vec2& scale, const glm::mat4& matrix, const QuadTexCoords& coords, const glm::vec4& hoveredColor, const glm::vec4& pressedColor)
-{
-    glm::vec2 p0 = glm::vec2(matrix * glm::vec4(position, 0.f, 1.f));
-    glm::vec2 p1 = glm::vec2(matrix * glm::vec4(position + glm::vec2(scale.x, 0.f), 0.f, 1.f));
-    glm::vec2 p2 = glm::vec2(matrix * glm::vec4(position + scale, 0.f, 1.f));
-    glm::vec2 p3 = glm::vec2(matrix * glm::vec4(position + glm::vec2(0.f, scale.y), 0.f, 1.f));
-
-    _buttonVertices.emplace_back(p0, color, textureIndex, coords.Coord0, hoveredColor, pressedColor);
-    _buttonVertices.emplace_back(p1, color, textureIndex, coords.Coord1, hoveredColor, pressedColor);
-    _buttonVertices.emplace_back(p2, color, textureIndex, coords.Coord2, hoveredColor, pressedColor);
-    _buttonVertices.emplace_back(p3, color, textureIndex, coords.Coord3, hoveredColor, pressedColor);
-
-    size_t offset = _progressBarVertices.size() - 4;
-
-    _buttonIndices.push_back(offset);
-    _buttonIndices.push_back(offset + 1);
-    _buttonIndices.push_back(offset + 2);
-    _buttonIndices.push_back(offset + 2);
-    _buttonIndices.push_back(offset + 3);
-    _buttonIndices.push_back(offset);
-
-}
-
 void TRCN_CORE_NAMESPACE::HUD::CreateButton(const HUDQuadData& HUDQuad, const glm::vec4& hoveredColor, const glm::vec4& pressedColor, GLFWwindow* window, const glm::vec2& windowDimensions)
 {
     TRCN_DEPEND_START("Create Button");
-    TRCN_DEPEND_ASSERT(_buttonVertices.size() <= MaxHUDVertices);
-    TRCN_DEPEND_ASSERT(_buttonIndices.size() <= MaxHUDIndices);
+    TRCN_DEPEND_ASSERT(_vertices.size() <= MaxHUDVertices);
+    TRCN_DEPEND_ASSERT(_indices.size() <= MaxHUDIndices);
 
     uint32_t index = setupTexture(HUDQuad.texture);
 
@@ -339,5 +267,5 @@ void TRCN_CORE_NAMESPACE::HUD::CreateButton(const HUDQuadData& HUDQuad, const gl
 	}
     }
 
-    createProgressBar(-HUDQuad.transform.Pivot, color, index, glm::vec2(1.f), HUDQuad.transform.GetMatrix(), HUDQuad.TexCoords, 0, 0, glm::vec4(0.f));
+    createHUDQuad(-HUDQuad.transform.Pivot, color, index, glm::vec2(1.f), HUDQuad.transform.GetMatrix(), HUDQuad.TexCoords, 0, 0, glm::vec4(0.f));
 }

@@ -31,7 +31,7 @@ void RendererLayer::OnUpdate(float deltaTime)
 
     Trinacria::DSL::HUDQuadData quad_(_buttonTransform1, glm::vec4(0.2f, 0.7f, 0.2f, 1.f));
 
-    Trinacria::DSL::HUD::CreateHUDQuad(quad_);
+    Trinacria::DSL::HUD::CreateButton(quad_, quad_.Color - glm::vec4(0.1f, 0.1f, 0.1f, 0.f), quad_.Color - glm::vec4(0.2f, 0.2f, 0.2f, 0.f), Application::Get()->GetWindow(), Application::Get()->GetWindowDimensions());
 
     Trinacria::DSL::HUDQuadData progressBar1 (Trinacria::DSL::Transform(glm::vec2(-0.3f, -0.8f),
 		glm::vec2(0.6f, 0.1f), 0, glm::vec2(0.f)), &_healthBar, glm::vec4(1.f, 1.f, 1.f, 1.f));

@@ -272,53 +272,35 @@ namespace TRCN_CORE_NAMESPACE
         static constexpr size_t MaxHUDVertices = MaxHUDQuads * 4;
         static constexpr size_t MaxHUDIndices  = MaxHUDQuads * 6;
 
-        static constexpr size_t MaxProgressBars         =                 100;
-        static constexpr size_t MaxProgressBarsVertices = MaxProgressBars * 4;
-        static constexpr size_t MaxProgressBarsIndices  = MaxProgressBars * 6;
-
     private:
         friend class Renderer;
 
-        inline static uint32_t _progressBarsVao;
-        inline static uint32_t _progressBarsVbo;
-        inline static uint32_t _progressBarsEbo;
+        inline static uint32_t _vao;
+        inline static uint32_t _vbo;
+        inline static uint32_t _ebo;
 
-        inline static std::vector<ProgressBarVertex> _progressBarVertices;
-        inline static std::vector<uint32_t> _progressBarIndices;
-
-        inline static uint32_t _buttonsVao;
-        inline static uint32_t _buttonsVbo;
-        inline static uint32_t _buttonsEbo;
-
-        inline static std::vector<ButtonVertex> _buttonVertices;
-        inline static std::vector<uint32_t> _buttonIndices;
+        inline static std::vector<ProgressBarVertex> _vertices;
+        inline static std::vector<uint32_t> _indices;
 
         inline static std::vector<std::pair<Texture*, uint32_t>> _textures;
 
-	    inline static std::vector<std::pair<std::function<void()>, Transform>> _onClickAndPos;
+	    inline static std::vector<std::pair<std::function<void()>, Transform>> _onClickAndTransform;
 
         inline static int _lastStateOfLeftMouseButton = GLFW_RELEASE;
 
         static void draw();
 
-        static void createProgressBar(const glm::vec2& position, const glm::vec4& color, uint32_t textureIndex,
-            const glm::vec2& scale, const glm::mat4& matrix, const QuadTexCoords& coord,
-            uint32_t fillTextureIndex, float progress, const glm::vec4& fillColor
-        );
-
         static void createHUDQuad(const glm::vec2& position, const glm::vec4& color, uint32_t textureIndex,
             const glm::vec2& scale, const glm::mat4& matrix, const QuadTexCoords& coord,
-            const glm::vec4& hoveredColor, const glm::vec4& pressedColor
+            uint32_t fillTextureIndex, float progress, const glm::vec4& fillColor
         );
 
         static bool findTextureIndex(uint32_t& outIndex, const Texture* texToFind);
 
         static uint32_t setupTexture(Texture* texture);
 
-
         static bool isInRange(const Transform& transform, GLFWwindow* window, const glm::vec2& windowDimensions);
 
         static void setupProgressBars();
-        static void setupButtons();
     };
 }
