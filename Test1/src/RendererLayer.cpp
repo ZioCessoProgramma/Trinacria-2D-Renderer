@@ -19,8 +19,10 @@ void RendererLayer::OnUpdate(float deltaTime)
 {
     Trinacria::DSL::Renderer::ClearColorBuffer();
 
-    Trinacria::DSL::HUDQuadData progressBar (Trinacria::DSL::Transform(glm::vec2(-0.3f, -0.9f),
-		glm::vec2(0.6f, 0.1f), 0, glm::vec2(0.f)), &_healthBar, glm::vec4(1.f, 1.f, 1.f, 1.f));
+    //_buttonTransform.Pivot = glm::vec2(glm::sin(glfwGetTime()), 0.5f);
+
+    Trinacria::DSL::HUDQuadData progressBar (Trinacria::DSL::Transform(glm::vec2(0.f, -0.9f),
+		glm::vec2(0.8f, 0.1f), 0, glm::vec2(0.5f)), &_healthBar, glm::vec4(1.f, 1.f, 1.f, 1.f));
 
     Trinacria::DSL::HUD::CreateProgressBar(progressBar, &_healthBarFillMap, (glm::sin(glfwGetTime()) + 1) / 2,
 	    glm::vec4(0.2f, 0.7f, 0.2f, 0.7f));
@@ -33,8 +35,8 @@ void RendererLayer::OnUpdate(float deltaTime)
 
     Trinacria::DSL::HUD::CreateButton(quad_, quad_.Color - glm::vec4(0.1f, 0.1f, 0.1f, 0.f), quad_.Color - glm::vec4(0.2f, 0.2f, 0.2f, 0.f), Application::Get()->GetWindow(), Application::Get()->GetWindowDimensions());
 
-    Trinacria::DSL::HUDQuadData progressBar1 (Trinacria::DSL::Transform(glm::vec2(-0.3f, -0.8f),
-		glm::vec2(0.6f, 0.1f), 0, glm::vec2(0.f)), &_healthBar, glm::vec4(1.f, 1.f, 1.f, 1.f));
+    Trinacria::DSL::HUDQuadData progressBar1 (Trinacria::DSL::Transform(glm::vec2(0.f, -0.8f),
+		glm::vec2(0.6f, 0.1f), 0, glm::vec2(0.5f)), &_healthBar, glm::vec4(1.f, 1.f, 1.f, 1.f));
 
     Trinacria::DSL::HUD::CreateProgressBar(progressBar1, &_healthBarFillMap, (glm::cos(glfwGetTime()) + 1) / 2,
 	    glm::vec4(0.2f, 0.2f, 0.6f, 1.f));
@@ -238,7 +240,8 @@ void RendererLayer::OnAttach()
     _screenShader.LoadShader("assets/shaders/Screen.vert", "assets/shaders/Screen.frag");
 
     Trinacria::DSL::LightSystem::Init();
-    Trinacria::DSL::HUD::Init("assets/shaders/HUD.vert", "assets/shaders/HUD.frag");
+    Trinacria::DSL::HUD::Init("assets/shaders/HUD.vert", "assets/shaders/HUD.frag",
+        Application::Get()->GetWindowDimensions());
 
     Trinacria::DSL::HUD::AddOnClickFunction([] {TRCN_LOG("Hello Guys!");}, _buttonTransform);
     Trinacria::DSL::HUD::AddOnClickFunction([] {TRCN_LOG("Hello Girls!");}, _buttonTransform1);

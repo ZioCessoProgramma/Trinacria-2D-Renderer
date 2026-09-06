@@ -15,6 +15,8 @@ flat out uint FillTextureIndex;
 flat out float Progress;
 out vec4 FillColor;
 
+uniform mat4 u_Transform;
+
 void main()
 {
     Color = a_Color;
@@ -24,5 +26,5 @@ void main()
     Progress = a_Progress;
     FillColor = a_FillColor;
 
-    gl_Position = vec4(a_Pos, 0.f, 1.f);
+    gl_Position =  u_Transform * vec4(a_Pos, 0.f, 1.f);
 }

@@ -7,11 +7,13 @@
 #include "Trinacria/Macros.h"
 #include "Trinacria/Renderer.h"
 
-void TRCN_CORE_NAMESPACE::HUD::Init(const std::string& progressBarVertPath, const std::string& progressBarFragPath)
+void TRCN_CORE_NAMESPACE::HUD::Init(const std::string& progressBarVertPath, const std::string& progressBarFragPath, const glm::vec2& windowDimensions)
 {
     setupProgressBars();
 
     _shader.LoadCoreShader(progressBarVertPath, progressBarFragPath);
+
+    onResize(windowDimensions);
 
     _vertices.reserve(MaxHUDVertices);
     _indices.reserve(MaxHUDIndices);
@@ -92,9 +94,12 @@ void TRCN_CORE_NAMESPACE::HUD::draw()
 }
 
 void TRCN_CORE_NAMESPACE::HUD::createHUDQuad(const glm::vec2& position, const glm::vec4& color, uint32_t textureIndex,
-                                             const glm::vec2& scale, const glm::mat4& matrix, const QuadTexCoords& coord, uint32_t fillTextureIndex, float progress, const
+                                             const glm::vec2& scale, glm::mat4 matrix, const QuadTexCoords& coord, uint32_t fillTextureIndex, float progress, const
                                              glm::vec4& fillColor)
 {
+    // to make this in NDC
+    matrix[3][0] *= _aspectRatio;
+
     glm::vec2 p0 = glm::vec2(matrix * glm::vec4(position, 0.f, 1.f));
     glm::vec2 p1 = glm::vec2(matrix * glm::vec4(position + glm::vec2(scale.x, 0.f), 0.f, 1.f));
     glm::vec2 p2 = glm::vec2(matrix * glm::vec4(position + scale, 0.f, 1.f));
@@ -183,9 +188,14 @@ bool Trinacria::DSL::HUD::isInRange(const Transform& transform, GLFWwindow* wind
 
     glm::mat4 matrix = transform.GetMatrix();
 
-    glm::vec2 A = glm::vec2(matrix * glm::vec4(-transform.Pivot, 0.f, 1.f));
-    glm::vec2 B = glm::vec2(matrix * glm::vec4(-transform.Pivot + glm::vec2(1.f, 0.f), 0.f, 1.f));
-    glm::vec2 D = glm::vec2(matrix * glm::vec4(-transform.Pivot + glm::vec2(0.f, 1.f), 0.f, 1.f));
+    // to make this in NDC
+    matrix[3][0] *= _aspectRatio;
+
+    glm::mat4 proj = glm::scale(glm::mat4(1.f), glm::vec3(windowDimensions.y / windowDimensions.x, 1.f, 1.f));
+
+    glm::vec2 A = glm::vec2(proj * matrix * glm::vec4(-transform.Pivot, 0.f, 1.f));
+    glm::vec2 B = glm::vec2(proj * matrix * glm::vec4(-transform.Pivot + glm::vec2(1.f, 0.f), 0.f, 1.f));
+    glm::vec2 D = glm::vec2(proj * matrix * glm::vec4(-transform.Pivot + glm::vec2(0.f, 1.f), 0.f, 1.f));
 
     glm::vec2 AB = B - A; // one length
     glm::vec2 AD = D - A; // another one
@@ -245,6 +255,16 @@ void Trinacria::DSL::HUD::setupProgressBars()
     glEnableVertexAttribArray(6);
 }
 
+void Trinacria::DSL::HUD::onResize(const glm::vec2& windowDimensions)
+{
+    glm::mat4 proj = glm::scale(glm::mat4(1.f), glm::vec3(windowDimensions.y / windowDimensions.x, 1.f, 1.f));
+
+    _shader.Bind();
+    _shader.SetUniformMat4("u_Transform", proj);
+
+    _aspectRatio = windowDimensions.x / windowDimensions.y;
+}
+
 void TRCN_CORE_NAMESPACE::HUD::CreateButton(const HUDQuadData& HUDQuad, const glm::vec4& hoveredColor, const glm::vec4& pressedColor, GLFWwindow* window, const glm::vec2& windowDimensions)
 {
     TRCN_DEPEND_START("Create Button");
@@ -255,16 +275,16 @@ void TRCN_CORE_NAMESPACE::HUD::CreateButton(const HUDQuadData& HUDQuad, const gl
 
     glm::vec4 color = HUDQuad.Color;
 
-    if(isInRange(HUDQuad.transform, window, windowDimensions))
+    if (isInRange(HUDQuad.transform, window, windowDimensions))
     {
-	color = hoveredColor;
-	
-	// doing in this strange way because it is faster
+        color = hoveredColor;
 
-	if(glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS)
-	{
-	    color = pressedColor;
-	}
+        // doing in this strange way because it is faster
+
+        if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS)
+        {
+            color = pressedColor;
+        }
     }
 
     createHUDQuad(-HUDQuad.transform.Pivot, color, index, glm::vec2(1.f), HUDQuad.transform.GetMatrix(), HUDQuad.TexCoords, 0, 0, glm::vec4(0.f));

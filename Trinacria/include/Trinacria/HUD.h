@@ -194,10 +194,11 @@ namespace TRCN_CORE_NAMESPACE
          * @brief initializes the HUD
          * @param progressBarVertPath the path to the vertex shader that draws the HUD
          * @param progressBarFragPath the path to the fragment shader that draws the HUD
+         * @param windowDimensions
          * @note to call once at the start of the application
          */
 
-        static void Init(const std::string& progressBarVertPath, const std::string& progressBarFragPath);
+        static void Init(const std::string& progressBarVertPath, const std::string& progressBarFragPath, const glm::vec2& windowDimensions);
 
         /**
         * @brief cleans up the HUD
@@ -288,11 +289,13 @@ namespace TRCN_CORE_NAMESPACE
 
         inline static int _lastStateOfLeftMouseButton = GLFW_RELEASE;
 
+        inline static float _aspectRatio;
+
         static void draw();
 
         static void createHUDQuad(const glm::vec2& position, const glm::vec4& color, uint32_t textureIndex,
-            const glm::vec2& scale, const glm::mat4& matrix, const QuadTexCoords& coord,
-            uint32_t fillTextureIndex, float progress, const glm::vec4& fillColor
+                                  const glm::vec2& scale, glm::mat4 matrix, const QuadTexCoords& coord,
+                                  uint32_t fillTextureIndex, float progress, const glm::vec4& fillColor
         );
 
         static bool findTextureIndex(uint32_t& outIndex, const Texture* texToFind);
@@ -302,5 +305,7 @@ namespace TRCN_CORE_NAMESPACE
         static bool isInRange(const Transform& transform, GLFWwindow* window, const glm::vec2& windowDimensions);
 
         static void setupProgressBars();
+
+        static void onResize(const glm::vec2& windowDimensions);
     };
 }

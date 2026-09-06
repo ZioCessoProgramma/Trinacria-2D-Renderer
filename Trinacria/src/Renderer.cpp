@@ -382,6 +382,8 @@ void TRCN_CORE_NAMESPACE::Renderer::OnResize(const glm::vec2& windowDimensions)
     GL_UNSIGNED_BYTE, nullptr, GL_LINEAR);
 
     glViewport(0, 0, windowDimensions.x, windowDimensions.y);
+
+    HUD::onResize(windowDimensions);
 }
 
 void TRCN_CORE_NAMESPACE::Renderer::Cleanup()

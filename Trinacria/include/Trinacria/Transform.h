@@ -71,6 +71,6 @@ namespace TRCN_CORE_NAMESPACE
         /**
          * @brief the center for all transformation (in the center of the object is vec2(0.5f) in bottom-left is vec2(0.f), etc...
          */
-        glm::vec2 Pivot = glm::vec2(0.f);
+        glm::vec2 Pivot = glm::vec2(0.5f);
     };
 }
